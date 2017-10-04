@@ -1,0 +1,58 @@
+<app-navbar></app-navbar>
+<section class="home-sec wrap">
+    <div class="home-form">
+        <div class="login home-panel">
+            <img src="./assets/img/logo-5.png" />
+            <div class="homeas-sec">
+            	<div class="text-center">
+	            	<h3 class="m-t-0"> Great ! </h3>
+	            	<h5> <div>We have sent the OTP.</div><div>Wait till we detect it.</div> </h5>
+	            </div>
+                <form class="otp example-form">
+                    <!-- <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
+                        <md-form-field>
+                            <span mdPrefix> <i class="cusIco-lock"></i>&nbsp; </span>
+                            <input mdInput placeholder="OTP" type="text">
+                        </md-form-field>
+                    </div> -->
+                    <div class="white-line form-group col-md-1 col-sm-1 col-xs-2 p-t-20">
+                    	<span class="font_22" mdPrefix> <i class="cusIco-lock"></i>&nbsp; </span>
+                    </div>
+	                <div class="p-l-0 col-md-11 col-sm-1 col-xs-10 otp-field">
+                    	<div class="row">
+		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                        <md-form-field>
+		                            <input mdInput placeholder="" #var1 maxlength="1" type="text" (input)="setfocus(var2)">
+		                        </md-form-field>
+		                    </div>
+		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                        <md-form-field>
+		                            <input mdInput placeholder="" #var2 maxlength="1" type="text" (input)="setfocus(var3)">
+		                        </md-form-field>
+		                    </div>
+		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                        <md-form-field>
+		                            <input mdInput placeholder=""  #var3 maxlength="1" type="text" (input)="setfocus(var4)">
+		                        </md-form-field>
+		                    </div>
+		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                        <md-form-field>
+		                            <input mdInput placeholder=""  #var4 maxlength="1" type="text" (input)="setfocus(var4)">
+		                        </md-form-field>
+		                    </div>
+		                </div>
+		            </div>
+                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                        <button type="button" class="btn custom-btn btn-round full-width" (click)="openDialog()"> Send </button>
+                    </div>
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+				        <a href="javascript:void(0);" class="color-white" (click)="openDialog()">  Resend </a>
+				    </div>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+    
+</section>
+

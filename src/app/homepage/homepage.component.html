@@ -1,0 +1,25 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="header-extra" ></div>
+		<section class="homepage-sec tb-wrap">
+		    <div class="homepage-listing">
+			    <ul class="homepage-ulist">
+			    	<li class="bg-red"> <a routerLink="/homepage2"> Jobs </a> </li>
+			    	<li class="bg-orange"> <a routerLink="/homepage2"> News </a> </li>
+			    	<li class="bg-yellow-g"> <a routerLink="/homepage2"> Politics </a> </li>
+			    	<li class="bg-blue"> <a routerLink="/homepage2"> Games </a> </li>
+			    	<li class="bg-green-g"> <a routerLink="/homepage2"> Newspaper </a> </li>	
+			    	<li class="bg-purple"> <a routerLink="/homepage2"> Healthcare </a> </li>	
+			    	<li class="bg-pink"> <a routerLink="/homepage2"> Agriculture </a> </li>	
+			    </ul>
+		    </div>
+		</section>
+		<app-footer></app-footer>
+	</div>
+</div>

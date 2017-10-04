@@ -1,0 +1,160 @@
+<div class="logo">
+    <a routerLink="/homepage" class="simple-text">
+        <div class="logo-img">
+            <img src="./assets/img/logo.png"/>
+        </div>
+        Netpar
+    </a>
+</div>
+    <div class="sidebar-wrapper ps-container" [perfect-scrollbar]="config">
+        <!-- <div class="user">
+            <div class="photo">
+                <img src="./assets/img/avatar1.jpg">
+            </div>
+            <div class="info">
+                <a class="" data-toggle="collapse" href="#collapseExample">
+                    <span>
+                        Tania Andrew
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <div class="collapse {{profile}}" id="collapseExample">
+                    <ul class="nav">
+                        <li routerLinkActive="active">
+                            <a routerLink="/profile">
+                                <span class="sidebar-mini">MP</span>
+                                <p>My Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="nav-container">
+            <ul class="nav">
+               
+                <li routerLinkActive="active" >
+                    <a routerLink="/homepage">
+                        <i class="material-icons">account_circle</i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="collapse" href="#profile" aria-expanded="false">
+                        <i class="material-icons">dashboard</i>
+                        <p>Profile<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse" id="profile" aria-expanded="false">
+                        <ul class="nav">
+                            <li routerLinkActive="active" >
+                                <a routerLink="/profile">
+                                    <span class="sidebar-mini">MP</span>
+                                    <p>My Profile</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active" >
+                                <a routerLink="/saved">
+                                    <span class="sidebar-mini">VS</span>
+                                    <p>View Saved</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active" >
+                                <a routerLink="/download">
+                                    <span class="sidebar-mini">VD</span>
+                                    <p>View Downloaded</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active" >
+                                <a routerLink="/contribution">
+                                    <span class="sidebar-mini">VC</span>
+                                    <p>View My Contribution</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li routerLinkActive="active" >
+                    <a routerLink="/user-contribution">
+                        <i class="material-icons">group</i>
+                        <p>Contribute</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/invite">
+                        <i class="material-icons">person</i>
+                        <p>Invite</p>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="collapse" href="#section" aria-expanded="false">
+                        <i class="material-icons">show_chart</i>
+                        <p>Section<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse" id="section" aria-expanded="false">
+                        <ul class="nav">
+                            <li>
+                                <a data-toggle="collapse" href="#news" aria-expanded="false">
+                                    <span class="sidebar-mini">FN</span>
+                                    <p>News <b class="caret"></b> </p>
+                                </a>
+                                <div class="collapse" id="news" aria-expanded="false">
+                                    <ul class="nav">
+                                        <li>
+                                            <a data-toggle="collapse" href="#subnews" aria-expanded="false">
+                                                <span class="sidebar-mini">FN</span>
+                                                <p>Sports News <b class="caret"></b> </p>
+                                            </a>
+                                            <div class="collapse" id="subnews" aria-expanded="false">
+                                                <ul class="nav">
+                                                    <li>
+                                                        <a routerLink="/news1">
+                                                            <span class="sidebar-mini">FN</span>
+                                                            <p>Sports News</p>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a routerLink="/news1">
+                                                            <span class="sidebar-mini">CN</span>
+                                                            <p>Cricket News</p>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a routerLink="/news1">
+                                                <span class="sidebar-mini">TN</span>
+                                                <p>Technology News</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/aboutus">
+                        <i class="material-icons">person</i>
+                        <p>About Us</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/rateus">
+                        <i class="material-icons">person</i>
+                        <p>Rate Us</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/privacy">
+                        <i class="material-icons">person</i>
+                        <p>Privacy Policy</p>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
