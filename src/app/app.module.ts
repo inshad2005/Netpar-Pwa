@@ -3,17 +3,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
-import { HttpModule, Http, JsonpModule } from "@angular/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdProgressBarModule, MdCheckboxModule, MdProgressSpinnerModule, MdSelectModule, MdInputModule, MdRadioModule} from "@angular/material";
 import { MdListModule, MdDialogModule } from '@angular/material';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { MdDatepickerModule, MdNativeDateModule} from '@angular/material';
-import { MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
-import { MdTabsModule} from '@angular/material';
+import {  MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
+import {MdTabsModule} from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
 
@@ -30,6 +28,11 @@ import { SecurityDialog2Component } from './otp/security-dialog2/security-dialog
 import { HomepageComponent } from './homepage/homepage.component';
 import { Homepage2Component } from './homepage2/homepage2.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
+import { Homepage3Component } from './homepage3/homepage3.component';
+import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.component';
+import { WelcomeScreen2Component } from './welcome-screen2/welcome-screen2.component';
+import { StateDialogComponent } from './welcome-screen2/state-dialog/state-dialog.component';
+import { LanguageDialogComponent } from './welcome-screen2/language-dialog/language-dialog.component';
 
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -52,6 +55,11 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HomepageComponent,
     Homepage2Component,
     ArticleDetailsComponent,
+    Homepage3Component,
+    WelcomeScreenComponent,
+    WelcomeScreen2Component,
+    StateDialogComponent,
+    LanguageDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,13 +80,10 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MdTooltipModule,
     MdTableModule,
     MdListModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ PopupComponent, SecurityDialogComponent, SecurityDialog2Component  ]
+  entryComponents: [ PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 
 })
 

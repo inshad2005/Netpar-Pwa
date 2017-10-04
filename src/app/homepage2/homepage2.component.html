@@ -1,33 +1,42 @@
-<app-navbar></app-navbar>
-<div class="header-extra"></div>
-<section class="homepage-sec tb-wrap">
-    <div class="homepage2-listing">
-	    <ul class="homepage2-ulist">
-	    	<li class="bg-red">
-	    		<a routerLink="/article-details"><img src="./assets/img/jobs-512.png"> 
-	    		<p>Jobs </p> </a>
-	    	</li>
-	    	<li class="bg-orange">
-	    		<a routerLink="/article-details"> <img src="./assets/img/news.png" /> 
-	    		<p>News </p> </a>
-	    	</li>
-	    	<li class="bg-yellow">
-	    		<a routerLink="/article-details"> <img src="./assets/img/politics-512.png" /> 
-	    		<p>Politics </p> </a>
-	    	</li>
-	    	<li class="bg-blue">
-	    		<a routerLink="/article-details"> <img src="./assets/img/science-512.png" /> 
-	    		<p>Science </p> </a>
-	    	</li>
-	    	<li class="bg-green">
-	    		<a routerLink="/article-details"> <img src="./assets/img/education-512.png" /> 
-	    		<p>Education </p> </a>
-	    	</li>	
-	    	<li class="bg-pink">
-	    		<a routerLink="/article-details"> <img src="./assets/img/agriculture-512.png" /> 
-	    		<p>Agriculture </p> </a>
-	    	</li>	
-	    </ul>
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
     </div>
-</section>
-<app-footer></app-footer>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="header-extra" ></div>
+		<section class="homepage-sec tb-wrap">
+		    <div class="homepage2-listing">
+			    <ul class="homepage2-ulist">
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-1.jpg"> 
+			    		<p>News </p> </a>
+			    	</li>
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-2.jpg">
+			    		<p>Education </p> </a>
+			    	</li>
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-3.jpg">
+			    		<p>Games </p> </a>
+			    	</li>
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-6.jpg">
+			    		<p>Jobs </p> </a>
+			    	</li>
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-4.jpg">
+			    		<p>Technology </p> </a>
+			    	</li>	
+			    	<li>
+			    		<a routerLink="/homepage3"><img src="./assets/img/img-5.jpg">
+			    		<p>Food </p> </a>
+			    	</li>	
+			    </ul>
+		    </div>
+		</section>
+		<app-footer></app-footer>
+	</div>
+</div>

@@ -1,14 +1,15 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
-@Component({
-  selector: 'app-homepage2',
-  templateUrl: './homepage2.component.html',
-  styleUrls: ['./homepage2.component.css']
-})
-export class Homepage2Component implements OnInit {
 
-  	private listTitles: any[];
+@Component({
+  selector: 'app-homepage3',
+  templateUrl: './homepage3.component.html',
+  styleUrls: ['./homepage3.component.css']
+})
+export class Homepage3Component implements OnInit {
+
+  private listTitles: any[];
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
@@ -35,5 +36,4 @@ export class Homepage2Component implements OnInit {
   		}
   		
   	}
-
 }

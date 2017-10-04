@@ -1,32 +1,41 @@
-<app-navbar></app-navbar>
-<div class="header-extra"></div>
-<div class="tb-wrap">
-	<section class="article-sec">
-		<div class="card">
-	    	<h4 class="text-rose font-400"> Delhi Metro Ridership falls </h4>
-	    	<p class="text-primary"> Metro Delhi </p>
-	    	<p class="help-note"><strong> By: </strong>
-	    		<span class="text-light"> Peter Parker </span>
-	    		<span class="text-light pull-right"> 12-Aug-2017 </span>
-	    	</p>
-	    </div>
-	    <div class="card">
-	    	<div class="row-cus">
-	    		<ul class="like-bar">
-	    			<li> <a routerLink="/article-details"> <i class="cusIco-okay"></i>Like </a> </li>
-	    			<li> <a routerLink="/article-details"> <i class="cusIco-msg"></i>Comment </a> </li>
-	    			<li> <a routerLink="/article-details"> <i class="cusIco-badge"></i>Save </a> </li>
-	    			<li> <a routerLink="/article-details"> <i class="cusIco-donload"></i>Download </a> </li>
-	    		</ul>
-	    	</div>
-	    	<div class="two-btn">
-	    		<button class="btn btn-rose"><i class="font_22 cusIco-call"></i> Call now </button>
-	    	</div>
-	    	<div class="two-btn">
-	    		<button class="btn btn-primary"><i class="font_22 cusIco-callme"></i> Call me back </button>
-	    	</div>
-	    </div>
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
 
-	</section>
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="header-extra" ></div>
+		<div class="tb-wrap">
+			<section class="article-sec">
+				<div class="card">
+			    	<h4 class="text-rose font-400"> Delhi Metro Ridership falls </h4>
+			    	<p class="text-primary"> Metro Delhi </p>
+			    	<p class="help-note"><strong> By: </strong>
+			    		<span class="text-light"> Peter Parker </span>
+			    		<span class="text-light pull-right"> 12-Aug-2017 </span>
+			    	</p>
+			    </div>
+			    <div class="card">
+			    	<div class="row-cus">
+			    		<ul class="like-bar">
+			    			<li> <a routerLink="/article-details"> <i class="cusIco-okay"></i>Like </a> </li>
+			    			<li> <a routerLink="/article-details"> <i class="cusIco-msg"></i>Comment </a> </li>
+			    			<li> <a routerLink="/article-details"> <i class="cusIco-badge"></i>Save </a> </li>
+			    			<li> <a routerLink="/article-details"> <i class="cusIco-donload"></i>Download </a> </li>
+			    		</ul>
+			    	</div>
+			    	<div class="two-btn">
+			    		<button class="btn btn-rose"><i class="font_22 cusIco-call"></i> Call now </button>
+			    	</div>
+			    	<div class="two-btn">
+			    		<button class="btn btn-primary"><i class="font_22 cusIco-callme"></i> Call me back </button>
+			    	</div>
+			    </div>
+
+			</section>
+		</div>
+		<app-footer></app-footer>
+	</div>
 </div>
-<app-footer></app-footer>

@@ -14,7 +14,7 @@ export class HomepageComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     count:number=1
-  constructor(location: Location,  private element: ElementRef) {
+    constructor(location: Location,  private element: ElementRef) {
       this.location = location;
           this.sidebarVisible = false;
     }
