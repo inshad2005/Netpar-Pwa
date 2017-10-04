@@ -3,15 +3,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpModule, Http, JsonpModule } from "@angular/http";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdProgressBarModule, MdCheckboxModule, MdProgressSpinnerModule, MdSelectModule, MdInputModule, MdRadioModule} from "@angular/material";
 import { MdListModule, MdDialogModule } from '@angular/material';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { MdDatepickerModule, MdNativeDateModule} from '@angular/material';
-import {  MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
-import {MdTabsModule} from '@angular/material';
+import { MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
+import { MdTabsModule} from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
 
@@ -70,6 +72,9 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MdTooltipModule,
     MdTableModule,
     MdListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent],

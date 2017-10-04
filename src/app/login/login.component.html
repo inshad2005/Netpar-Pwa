@@ -4,24 +4,51 @@
         <div class="login home-panel">
             <img src="./assets/img/logo-5.png" />
             <div class="homeas-sec">
-                <form class="example-form">
+                <form class="example-form" [formGroup]="complexForm">
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
                         <md-form-field>
                             <span mdPrefix><i class="cusIco-firstname"></i>&nbsp;</span>
-                            <input mdInput placeholder="First Name" type="text">
+                            <input mdInput placeholder="First Name" type="text" [formControl]="complexForm.controls['firstName']" [(ngModel)]="loginModel.firstName" name="firstName">
                         </md-form-field>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['firstName'].valid  && ( complexForm.controls['firstName'].touched)">
+                            <div *ngIf="complexForm.controls['firstName'].errors.required">
+                                first name  is empty
+                            </div>
+                            <div *ngIf="complexForm.controls['firstName'].errors.pattern">
+                                only alphabets are acceptable
+                            </div>
+                        </div>
                     </div>
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
                         <md-form-field>
                             <span mdPrefix> <i class="cusIco-lastname"></i>&nbsp; </span>
-                            <input mdInput placeholder="Last Name" type="text" >
+                            <input mdInput placeholder="Last Name" type="text" [formControl]="complexForm.controls['lastName']" [(ngModel)]="loginModel.lastName" name="lastName"  >
                         </md-form-field>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['lastName'].valid  && ( complexForm.controls['lastName'].touched)">
+                            <div *ngIf="complexForm.controls['lastName'].errors.required">
+                                last name  is empty
+                            </div>
+                            <div *ngIf="complexForm.controls['lastName'].errors.pattern">
+                                only alphabets are acceptable
+                            </div>
+                        </div>
                     </div>
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
                         <md-form-field>
                             <span mdPrefix> <i class="cusIco-contact"></i>&nbsp; </span>
-                            <input mdInput placeholder="Contact No" type="text" >
+                            <input mdInput placeholder="Contact No" type="text" [formControl]="complexForm.controls['contactNumber']" [(ngModel)]="loginModel.contactNumber" name="contactNumber"  >
                         </md-form-field>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['contactNumber'].valid  && ( complexForm.controls['contactNumber'].touched)">
+                            <div *ngIf="complexForm.controls['contactNumber'].errors.required ">
+                                contact number is empty
+                            </div>
+                            <div *ngIf="complexForm.controls['contactNumber'].errors.pattern">
+                                only digits are acceptable
+                            </div>
+                            <div *ngIf="complexForm.controls['contactNumber'].errors.minlength ">
+                                contact number must be at least 10 digits long.
+                            </div>
+                        </div> 
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                         <button class="btn custom-btn btn-round full-width" routerLink="/otp"> Sign In </button>
