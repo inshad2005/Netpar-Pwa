@@ -393,6 +393,82 @@ ul{
   box-shadow: 0 2px 1px 0 rgba(0,0,0,0.4);	
 }
 
+/* -------------Sidebar----------------- */
+
+.nav-open .off-canvas-sidebar, .nav-open .sidebar {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.sidebar, .off-canvas-sidebar {
+  position: fixed;
+  display: block;
+  top: 0;
+  height: 100vh;
+  width: 260px;
+  left: 0;
+  right: auto;
+  z-index: 1032;
+  visibility: visible;
+  background-color: #9A9A9A;
+  overflow-y: visible;
+  border-top: none;
+  text-align: left;
+  padding-right: 0px;
+  padding-left: 0;
+  -webkit-transform: translate3d(-260px, 0, 0);
+  -moz-transform: translate3d(-260px, 0, 0);
+  -o-transform: translate3d(-260px, 0, 0);
+  -ms-transform: translate3d(-260px, 0, 0);
+  transform: translate3d(-260px, 0, 0);
+  -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+
+.cusmain-panel{
+  width: 100%;
+  height: 100%;
+  float: left;
+  position: relative;
+}
+.nav-open .cusmain-panel::after {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 9;
+}
+/* .nav-open .cusmain-panel {
+  left: 0;
+  -webkit-transform: translate3d(260px, 0, 0);
+  -moz-transform: translate3d(260px, 0, 0);
+  -o-transform: translate3d(260px, 0, 0);
+  -ms-transform: translate3d(260px, 0, 0);
+  transform: translate3d(260px, 0, 0);
+} */
+.nav-open .cusmain-panel, .cusmain-panel{
+  -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+.sidebar .sidebar-wrapper .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini, .sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini{
+  line-height: 30px;
+  float: left;
+  position: relative;
+  margin-right: 5px;
+}
+
+
 
 /* ---------------Welcome screen---------------- */
 
@@ -443,9 +519,30 @@ ul{
   bottom: 7%;
 }
 
-.welcome-content .btn{
-  min-width: 190px;
-  padding: 12px 10px;
+.welcome-select.btn {
+  width: 230px;
+  padding: 7px 10px;
+  display: inline-block;
+  max-width: 80%;
+}
+.welcome-select .mat-select-value {
+  width: calc(100% - 18px);
+  text-align: center;
+} 
+.welcome-select .mat-select-value-text{
+  width: 100%;
+}
+.welcome-select.mat-select .mat-select-trigger {
+  font-size: 12px;
+}
+.welcome-select .mat-select-value, .welcome-select .mat-select-disabled .mat-select-value, .welcome-select .mat-select-arrow, .welcome-select .mat-select-trigger{
+  color: #fff;
+}
+.welcome-select .mat-select-placeholder.mat-floating-placeholder{
+  visibility: hidden;
+}
+.welcome-select .mat-select-underline, .welcome-select.mat-select:focus .mat-select-underline {
+  height: 0;
 }
 
 /**----------Home Sec-----------*/
@@ -599,6 +696,7 @@ ul{
   padding: 0;
   background-color: transparent;
   overflow: visible;
+  box-shadow: none;
 }
 .cdk-overlay-backdrop {
   position: fixed;
@@ -608,29 +706,15 @@ ul{
 }
 .cdk-overlay-pane{
 	max-width: 400px;
+  margin: auto 0;
 }
 .modal-content{
 	width: 100%;
   float: left;
   border-radius: 30px;
   background-color: #fff;
-  box-shadow: none;
   border: 3px solid #FECD08;
 }
-
-/* .modal-content.cus-modal::after {
-  position: absolute;
-  content: "";
-  background: url('./assets/img/popup_shape.svg');
-  background-repeat: no-repeat;
-  bottom: -60px;
-  left: -3px;
-  width: 102.5%;
-  height: 70px;
-  background-position: bottom left;
-  background-size: 93px;
-}
- */
 .cus-modal .modal-header.color-red{
 	color: #F44336;
 }
@@ -641,8 +725,7 @@ ul{
 	font-size: 54px;
 }
 
-
-/* -*---------Homepage Sec----- */
+/*---------Homepage Sec----- */
 
 .homepage-sec, .homepage-listing{
 	width: 100%;
@@ -976,76 +1059,4 @@ ul{
 }
 .like-bar > li > a{
   display: block;
-}
-.nav-open .off-canvas-sidebar, .nav-open .sidebar {
-  -webkit-transform: translate3d(0, 0, 0);
-  -moz-transform: translate3d(0, 0, 0);
-  -o-transform: translate3d(0, 0, 0);
-  -ms-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-.sidebar, .off-canvas-sidebar {
-  position: fixed;
-  display: block;
-  top: 0;
-  height: 100vh;
-  width: 260px;
-  left: 0;
-  right: auto;
-  z-index: 1032;
-  visibility: visible;
-  background-color: #9A9A9A;
-  overflow-y: visible;
-  border-top: none;
-  text-align: left;
-  padding-right: 0px;
-  padding-left: 0;
-  -webkit-transform: translate3d(-260px, 0, 0);
-  -moz-transform: translate3d(-260px, 0, 0);
-  -o-transform: translate3d(-260px, 0, 0);
-  -ms-transform: translate3d(-260px, 0, 0);
-  transform: translate3d(-260px, 0, 0);
-  -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-}
-
-.cusmain-panel{
-  width: 100%;
-  height: 100%;
-  float: left;
-  position: relative;
-}
-.nav-open .cusmain-panel::after {
-  position: fixed;
-  content: "";
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0,0,0,0.5);
-  z-index: 9;
-}
-/* .nav-open .cusmain-panel {
-  left: 0;
-  -webkit-transform: translate3d(260px, 0, 0);
-  -moz-transform: translate3d(260px, 0, 0);
-  -o-transform: translate3d(260px, 0, 0);
-  -ms-transform: translate3d(260px, 0, 0);
-  transform: translate3d(260px, 0, 0);
-} */
-.nav-open .cusmain-panel, .cusmain-panel{
-  -webkit-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -moz-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -o-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  -ms-transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-  transition: all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1);
-}
-.sidebar .sidebar-wrapper .nav [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini, .sidebar .sidebar-wrapper .user .info [data-toggle="collapse"] ~ div > ul > li > a .sidebar-mini{
-  line-height: 30px;
-  float: left;
-  position: relative;
-  margin-right: 5px;
 }

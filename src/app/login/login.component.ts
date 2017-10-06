@@ -5,17 +5,19 @@ import { LoginModel } from './login.model.component';
 import { LoginService } from './login.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { OtpService } from '../providers/otp.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[LoginService]
+  providers:[LoginService,OtpService]
 })
 export class LoginComponent implements OnInit {
 	complexForm: FormGroup;
 	loginModel: LoginModel = new LoginModel ();
- constructor(private router: Router, private loginService:LoginService,private formBuilder: FormBuilder) {
+ constructor(private router: Router, private loginService:LoginService,private formBuilder: FormBuilder,private otpService:OtpService) {
  	this.complexForm = formBuilder.group({
       'firstName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
       'lastName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
@@ -30,5 +32,13 @@ export class LoginComponent implements OnInit {
   onLogIn(){
   	this.router.navigate(['/welcome'],{ skipLocationChange: true });
   	localStorage['aut']='true';
+  }
+
+  onSendOtp(){
+    this.otpService.getOtp().subscribe(data=>{
+      alert(data)
+    },err=>{
+      alert(err)
+    })
   }
 }

@@ -8,12 +8,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MdProgressBarModule, MdCheckboxModule, MdProgressSpinnerModule, MdSelectModule, MdInputModule, MdRadioModule} from "@angular/material";
 import { MdListModule, MdDialogModule } from '@angular/material';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
 import { MdDatepickerModule, MdNativeDateModule} from '@angular/material';
 import {  MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
-import {MdTabsModule} from '@angular/material';
+import { MdTabsModule} from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpModule, Http, JsonpModule } from "@angular/http";
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -38,6 +44,10 @@ import { LanguageDialogComponent } from './welcome-screen2/language-dialog/langu
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
+
+export function HttpLoaderFactory(http: HttpClient) {
+    return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
+}
 
 @NgModule({
   declarations: [
@@ -78,8 +88,20 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     MdDatepickerModule,
     MdNativeDateModule,
     MdTooltipModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+        loader: {
+            provide: TranslateLoader,
+            useFactory: HttpLoaderFactory,
+            deps: [HttpClient]
+        }
+    }),
     MdTableModule,
     MdListModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
+    JsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent],

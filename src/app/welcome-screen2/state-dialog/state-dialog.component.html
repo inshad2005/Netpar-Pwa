@@ -1,32 +1,11 @@
 <div class="modal-content cus-modal">
 	<div class="row">
 		<div class="modal-header">
-			<h4 class="modal-title" > States <span class="pull-right"><a (click)="onClosed()"><i class="fa fa-times"></i></a></span> </h4>
+			<h4 class="modal-title" > States <span class="pull-right"><a (click)="onClosed()"><i class="fa fa-times"></i></a></span>  </h4>
 		</div>
 		<div class="modal-body">
 		    <md-list>
-				<md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State1  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State2  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State3  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State4  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State5  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State6  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State7  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State8  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State9  </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State10 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State11 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State12 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State13 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State14 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State15 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State16 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State17 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State18 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State19 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State20 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State21 </md-radio-button>
-	            <md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12"> State22 </md-radio-button>
+				<md-radio-button name="State" class="col-md-12 col-sm-12 col-xs-12" *ngFor="let state of states"> {{state.stateName}}</md-radio-button>
 			</md-list>
 		</div>
 	</div>

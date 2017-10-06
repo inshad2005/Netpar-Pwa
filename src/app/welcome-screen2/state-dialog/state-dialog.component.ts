@@ -1,24 +1,41 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
-import {MdListModule} from '@angular/material';
+import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
+import { MdListModule } from '@angular/material';
+import { StateService } from '../../providers/state.service'
 
 
 @Component({
   selector: 'app-state-dialog',
   templateUrl: './state-dialog.component.html',
-  styleUrls: ['./state-dialog.component.css']
+  styleUrls: ['./state-dialog.component.css'],
+  providers:[StateService]
 })
 export class StateDialogComponent implements OnInit {
-	
+	states;
+  unionTerritories;
 	constructor(private dialog: MdDialog, public dialogRef: MdDialogRef<StateDialogComponent>,
-  	@Inject(MD_DIALOG_DATA) public data: any) { }
+  	@Inject(MD_DIALOG_DATA) public data: any, private stateService:StateService) { }
 
   	ngOnInit() {
+      this.getStates();
+      // this.getUnionTerritories();
   	}
 
   	onClosed(){
 	  	this.dialogRef.close();
   	}
 
+    getStates(): void {
+      this.stateService.getStates().then(data =>{
+        this.states = data
+        // alert(JSON.stringify(data))
+      } );
+    }
 
+    // getUnionTerritories(): void {
+    //   this.stateService.getUnionTerritories().then(data =>{
+    //     this.unionTerritories = data
+    //     alert(JSON.stringify(data))
+    //   } );
+    // }
 }
