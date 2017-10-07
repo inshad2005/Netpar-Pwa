@@ -11,11 +11,11 @@ export interface Environment
 
 export const DEV: Environment = {
 	language:LANGUAGE.ENGLISH,
-	endPoint:'' 
+	endPoint:'http://52.15.178.19:3002/netpar/' 
 }
 
 export const PROD: Environment = {
 	language:LANGUAGE.MARATHI,
-	endPoint:'' 
+	endPoint:'http://52.15.178.19:3002/netpar/' 
 }
-export const environment: Environment= PROD;
+export const environment: Environment= DEV;

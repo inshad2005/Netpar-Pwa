@@ -8,12 +8,12 @@ import {MdListModule} from '@angular/material';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
-
+message
   constructor(private dialog: MdDialog, public dialogRef: MdDialogRef<PopupComponent>,
   @Inject(MD_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-  	
+    this.message=this.data.message;
   }
 
   onClosed(){

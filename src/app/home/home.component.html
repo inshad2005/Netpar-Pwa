@@ -1,18 +1,19 @@
+
 <section class="home-sec">
 	<div class="home-form">
         <div class="home-panel">
             <img src="./assets/img/logo-5.png" />
-            <h3 class="text-center"> Welcome </h3>
+            <h3 class="text-center"> {{"home.welcome" | translate}} </h3>
             <div class="homeas-sec">
             	<div class="homeas-btn">
             		<div class="btn-divs">
                         <div class="col-md-8 col-sm-7 col-xs-6">
-                            <button class="btn custom-btn btn-round" routerLink="/login"> Sign In <i class="material-icons">keyboard_backspace</i> </button>
+                            <button class="btn custom-btn btn-round" routerLink="/login" skipLocationChange='true'>{{"home.signin" | translate}} <i class="material-icons">keyboard_backspace</i> </button>
                         </div>
                     </div>
                     <div class="btn-divs">
                         <div class="col-md-8 col-sm-7 col-xs-6">
-                            <button class="btn black-btn btn-round" routerLink="/register"> Sign Up <i class="material-icons">keyboard_backspace</i></button>
+                            <button class="btn black-btn btn-round" (click)="onSignUp()"> {{"home.signup" | translate}} <i class="material-icons">keyboard_backspace</i></button>
                         </div>
                    </div>
                 </div>
@@ -20,6 +21,6 @@
         </div>
     </div>
     <div class="bottom-bar">
-    	<a routerLink="/home"> Take a Tour </a>
+    	<a routerLink="/home"> {{"home.takeTour" | translate}} </a>
     </div>
 </section>

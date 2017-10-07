@@ -39,7 +39,8 @@ import { WelcomeScreenComponent } from './welcome-screen/welcome-screen.componen
 import { WelcomeScreen2Component } from './welcome-screen2/welcome-screen2.component';
 import { StateDialogComponent } from './welcome-screen2/state-dialog/state-dialog.component';
 import { LanguageDialogComponent } from './welcome-screen2/language-dialog/language-dialog.component';
-
+import { Navbar2Component } from './components/navbar2/navbar2.component';
+import { AppProvider } from './providers/app';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -70,6 +71,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WelcomeScreen2Component,
     StateDialogComponent,
     LanguageDialogComponent,
+    Navbar2Component
   ],
   imports: [
     BrowserModule,
@@ -103,7 +105,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpModule,
     JsonpModule
   ],
-  providers: [],
+  providers: [AppProvider],
   bootstrap: [AppComponent],
   entryComponents: [ PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 

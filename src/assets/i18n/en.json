@@ -5,5 +5,12 @@
 
     "welcome":{
     	"welcome":"Welcome to Netpar"
+    },
+
+    "home":{
+    	"welcome":"Welcome",
+    	"signin":"Sign In",
+    	"signup":"Sign Up",
+    	"takeTour":"Take a Tour"
     }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { AppProvider } from '../providers/app'
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,22 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private appProvider:AppProvider,private router: Router,private location: Location) { }
 
   ngOnInit() {
+  }
+
+  onBack(){
+  	this.location.back();
+  }
+
+  onSignIn(){
+   	this.router.navigate(['/login'],{skipLocationChange:true});
+  }
+
+  onSignUp(){
+    this.appProvider.current.fromPageFlag="signup";
+  	this.router.navigate(['/login'],{skipLocationChange:true})
   }
 
 }

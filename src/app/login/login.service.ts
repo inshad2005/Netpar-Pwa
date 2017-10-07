@@ -13,7 +13,7 @@ export class LoginService {
   	Login(loginModel:any):  Observable<any> {
 		let body = loginModel;
         let api =  environment.endPoint;
-        return this.http.post(api,body)
+        return this.http.post(api+"login",body)
         .map(response => {
             return response.json();
         }).catch(error => {
@@ -21,4 +21,27 @@ export class LoginService {
         });
     }
 
+    Register(registerModel:any):  Observable<any> {
+        let body = registerModel;
+        let api =  environment.endPoint;
+        return this.http.post(api+"signUp",body)
+        .map(response => {
+            return response.json();
+        }).catch(error => {
+            return error;
+        });
+    }
+
+    VerifyMobile(mobileNumber):Observable<any>{
+        let body = {
+            mobileNumber:mobileNumber
+        }
+        let api  =  environment.endPoint;
+        return this.http.post(api+"checkMobile",body)
+        .map(response => {
+            return response.json();
+        }).catch(error => {
+            return error;
+        });
+    }
 }

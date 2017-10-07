@@ -1,4 +1,4 @@
-
+<app-navbar2></app-navbar2>
 <section class="home-sec wrap">
     <div class="home-form">
         <div class="login home-panel">
@@ -20,36 +20,46 @@
                     </div>
 	                <div class="p-l-0 col-md-11 col-sm-1 col-xs-10 otp-field">
                     	<div class="row">
-		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
 		                        <md-form-field>
-		                            <input mdInput placeholder="" #var1 maxlength="1" type="text" (input)="setfocus(var2)">
+		                            <input name="val1" mdInput placeholder="" #var1 maxlength="1" type="text" (input)="setfocus(1,null,var2)" [(ngModel)]="value1" >
 		                        </md-form-field>
 		                    </div>
-		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
 		                        <md-form-field>
-		                            <input mdInput placeholder="" #var2 maxlength="1" type="text" (input)="setfocus(var3)">
+		                            <input name="val2" mdInput placeholder="" #var2 maxlength="1" type="text" (input)="setfocus(2,var1,var3)" [(ngModel)]="value2">
 		                        </md-form-field>
 		                    </div>
-		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
 		                        <md-form-field>
-		                            <input mdInput placeholder=""  #var3 maxlength="1" type="text" (input)="setfocus(var4)">
+		                            <input name="val3" mdInput placeholder=""  #var3 maxlength="1" type="text" (input)="setfocus(3,var2,var4)" [(ngModel)]="value3">
 		                        </md-form-field>
 		                    </div>
-		                    <div class="white-line form-group col-md-3 col-sm-3 col-xs-3">
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
 		                        <md-form-field>
-		                            <input mdInput placeholder=""  #var4 maxlength="1" type="text" (input)="setfocus(var4)">
+		                            <input name="val4"  mdInput placeholder=""  #var4 maxlength="1" type="text" (input)="setfocus(4,var3,var5)" [(ngModel)]="value4">
+		                        </md-form-field>
+		                    </div>
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
+		                        <md-form-field>
+		                            <input name="val5" mdInput placeholder=""  #var5 maxlength="1" type="text" (input)="setfocus(5,var4,var6)" [(ngModel)]="value5">
+		                        </md-form-field>
+		                    </div>
+		                    <div class="white-line form-group col-md-2 col-sm-2 col-xs-2">
+		                        <md-form-field>
+		                            <input name="val6" mdInput placeholder=""  #var6 maxlength="1" type="text" (input)="setfocus(6,var5,null)" [(ngModel)]="value6">
 		                        </md-form-field>
 		                    </div>
 		                </div>
 		            </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button type="button" class="btn custom-btn btn-round full-width" (click)="openDialog()"> Send </button>
+                        <!-- <button type="button" class="btn custom-btn btn-round full-width" (click)="openDialog()"> Send </button> -->
+                        <button type="button" class="btn custom-btn btn-round full-width" (click)="onValidateOtp()">Submit</button>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 text-center">
 				        <a href="javascript:void(0);" class="color-white" (click)="openDialog()">  Resend </a>
 				    </div>
                 </form>
-            
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<!--  <button class="btn custom-btn btn-round full-width" (click)="onSendOtp()"> send otp </button> -->
+<app-navbar2></app-navbar2>
 <section class="home-sec wrap">
     <div class="home-form">
         <div class="login home-panel">
@@ -36,7 +36,7 @@
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
                         <md-form-field>
                             <span mdPrefix> <i class="cusIco-contact"></i>&nbsp; </span>
-                            <input mdInput placeholder="Contact No" type="text" [formControl]="complexForm.controls['contactNumber']" [(ngModel)]="loginModel.contactNumber" name="contactNumber"  >
+                            <input mdInput placeholder="Contact No" type="text" [formControl]="complexForm.controls['contactNumber']" [(ngModel)]="loginModel.mobileNumber" name="contactNumber"  >
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['contactNumber'].valid  && ( complexForm.controls['contactNumber'].touched)">
                             <div *ngIf="complexForm.controls['contactNumber'].errors.required ">
@@ -51,7 +51,8 @@
                         </div> 
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn custom-btn btn-round full-width" routerLink="/otp"> Sign In </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="!data" (click)="onLogIn()" [disabled]="!complexForm.valid"> Sign In </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="data" (click)="onNext()" [disabled]="!complexForm.valid"> Next </button>
                     </div>
                 </form>
             

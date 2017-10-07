@@ -8,6 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
+import { Navbar2Component } from './navbar2/navbar2.component';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -21,7 +22,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent 
+    SidebarComponent,
+    Navbar2Component 
   ],
   exports: [
     FooterComponent,

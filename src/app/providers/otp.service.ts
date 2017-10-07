@@ -9,24 +9,26 @@ export class OtpService {
 
   constructor(private http:Http) { }
 
-  getOtp():  Observable<any> {
-        let api =  "https://2factor.in/API/V1/c9b948e1-8bb7-11e7-94da-0200cd936042/SMS/+919914677420/AUTOGEN";
-    //     let options = new RequestOptions({
-	   //      headers: new Headers({
-	   //          "Accept":"application/xml",
-	   //           "Access-Control-Allow-Origin":"https://2factor.in",
-	   //           "Access-Control-Allow-Credentials": true
-				// // "Accept-Encoding":"gzip, deflate, br",
-				// // "Accept-Language":"en-US,en;q=0.8",
-				// // "Access-Control-Allow-Origin":"*",
-				// // "Connection":"keep-alive"
-	   //      }),
-    	// });
+  getOtp(mobileNumber):  Observable<any> {
+        let api =  "https://2factor.in/API/V1/c9b948e1-8bb7-11e7-94da-0200cd936042/SMS/+91"+mobileNumber+"/AUTOGEN";
         return this.http.get(api)
         .map(response => {
             return response;
         }).catch(error => {
             return error;
+        });
+    }
+
+    verifyOtp(sessionId,otp):  Observable<any>{
+        let api = "https://2factor.in/API/V1/c9b948e1-8bb7-11e7-94da-0200cd936042/SMS/VERIFY/"+sessionId+"/"+otp;
+        return this.http.get(api)
+        .map(response => {
+            return response;
+        }).catch(error => {
+            if (error.status == 400) {
+                alert('error');
+                return error
+            }
         });
     }
 
