@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   }
 
   onSignIn(){
+    this.appProvider.current.fromPageFlag="login";
    	this.router.navigate(['/login'],{skipLocationChange:true});
   }
 

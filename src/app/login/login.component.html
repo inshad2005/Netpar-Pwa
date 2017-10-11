@@ -12,7 +12,7 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['firstName'].valid  && ( complexForm.controls['firstName'].touched)">
                             <div *ngIf="complexForm.controls['firstName'].errors.required">
-                                first name  is empty
+                                first name  is required
                             </div>
                             <div *ngIf="complexForm.controls['firstName'].errors.pattern">
                                 only alphabets are acceptable
@@ -26,7 +26,7 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['lastName'].valid  && ( complexForm.controls['lastName'].touched)">
                             <div *ngIf="complexForm.controls['lastName'].errors.required">
-                                last name  is empty
+                                last name  is required
                             </div>
                             <div *ngIf="complexForm.controls['lastName'].errors.pattern">
                                 only alphabets are acceptable
@@ -40,19 +40,22 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['contactNumber'].valid  && ( complexForm.controls['contactNumber'].touched)">
                             <div *ngIf="complexForm.controls['contactNumber'].errors.required ">
-                                contact number is empty
+                                contact number is required
                             </div>
                             <div *ngIf="complexForm.controls['contactNumber'].errors.pattern">
                                 only digits are acceptable
                             </div>
-                            <div *ngIf="complexForm.controls['contactNumber'].errors.minlength ">
-                                contact number must be at least 10 digits long.
+                            <div *ngIf="complexForm.controls['contactNumber'].errors.minlength">
+                                contact number can not be less than 10 digits
+                            </div>
+                            <div *ngIf="complexForm.controls['contactNumber'].errors.maxlength">
+                                contact number can not be more than 10 digits
                             </div>
                         </div> 
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn custom-btn btn-round full-width" *ngIf="!data" (click)="onLogIn()" [disabled]="!complexForm.valid"> Sign In </button>
-                        <button class="btn custom-btn btn-round full-width" *ngIf="data" (click)="onNext()" [disabled]="!complexForm.valid"> Next </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='login'" (click)="onLogIn()" [disabled]="!complexForm.valid" > Sign In </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='signup'" (click)="onNext()" [disabled]="!complexForm.valid" > Next </button>
                     </div>
                 </form>
             
@@ -62,5 +65,6 @@
     <div class="bottom-bar">
         <a routerLink="/home"> Take a Tour </a>
     </div>
+    
 </section>
 

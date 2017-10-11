@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { PopupComponent } from './popup/popup.component';
+import { Popup2Component } from './popup2/popup2.component'
 import { SecurityDialogComponent } from './security-dialog/security-dialog.component';
 import { SecurityDialog2Component } from './security-dialog2/security-dialog2.component';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { OtpService } from '../providers/otp.service';
-import { AppProvider } from '../providers/app'
-
+import { AppProvider } from '../providers/app';
+import { UpdateMobileService } from '../providers/update-mobile.service';
+import { UpdateMobileNo } from './updateMobileNo.model.component'
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.css'],
-  providers:[OtpService]
+  providers:[OtpService,UpdateMobileService]
 })
 
 export class OtpComponent implements OnInit {
+  updateMobileNo:UpdateMobileNo=new UpdateMobileNo()
   data;
   loginModel;
   mobileNo;
   optResponse;
   validateResponse;
   sessionId;
+  errorMessage;
   otp=null;
   value1;
   value2;
@@ -30,22 +34,43 @@ export class OtpComponent implements OnInit {
   value5;
   value6;
  
-  	constructor(private appProvider:AppProvider,private router: Router,private dialog: MdDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
+  	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MdDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
   	ngOnInit() {
-      this.route.params.forEach((params: Params) => {
-            this.data= params['data'];
-            this.loginModel=params['loginModel'];
-            this.mobileNo=this.appProvider.current.mobileNumber;
-        });
-      this.onSendOtp(this.mobileNo);
+      this.mobileNo=this.appProvider.current.mobileNumber;
+       if (this.mobileNo) {
+          this.onSendOtp(this.mobileNo);
+       }
   	}
 
-    openDialog(): void {
+    openDialog(msg): void {
         let dialogRef = this.dialog.open(PopupComponent, {
             width: '240px',
+            data:{message:msg}
         });
         dialogRef.afterClosed().subscribe(result => {
-		 	this.securityDialog();
+          if (result=="update mobile") {
+            this.securityDialog();
+          }
+          if (result=="updated successfuly") {
+           this.router.navigate(['/homepage'],{skipLocationChange:true})
+          }
+		 	    
+        });
+    }
+
+     openDialog2(msg): void {
+        let dialogRef = this.dialog.open(Popup2Component, {
+            width: '400px', 
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            // alert(JSON.stringify(result.success));
+            if (result.success==true) {
+              this.errorMessage="mobile number updated"
+              this.openDialog(this.errorMessage);
+            }
+          }
+  
         });
     }
 
@@ -53,20 +78,26 @@ export class OtpComponent implements OnInit {
         let dialogRef = this.dialog.open(SecurityDialogComponent, {
         });
         dialogRef.afterClosed().subscribe(result => {
-      		this.securityDialog2();
+           if (result.respCode==1) {
+            this.openDialog2("hi");
+          }else if (result.respCode==0) {
+            this.errorMessage="entered detail does not match"
+            this.openDialog(this.errorMessage);
+          }
         });
     }
 
     securityDialog2(): void {
         let dialogRef = this.dialog.open(SecurityDialog2Component, {
+          data:{ message:"fromUpdate"}
         });
         dialogRef.afterClosed().subscribe(result => {
+
         });
     }
 
 
 	setfocus(cState,back,forword){
-    console.log(cState,back,forword);
     if(cState==1){
       if(this.value1.length==0){
 
@@ -112,14 +143,14 @@ export class OtpComponent implements OnInit {
 	}
 
 
-  onSubmit(){
-    if (this.data=="signup") {
-      this.router.navigate(["/register",{skipLocationChange:true}]);
-    }
-    else{
-      this.securityDialog2();
-    }
-  }
+  // onSubmit(){
+  //   if (this.data=="signup") {
+  //     this.router.navigate(["/register",{skipLocationChange:true}]);
+  //   }
+  //   else{
+  //     this.securityDialog2();
+  //   }
+  // }
 
   onSendOtp(mobileNo){
     this.otpService.getOtp(mobileNo).subscribe(data=>{
@@ -127,19 +158,26 @@ export class OtpComponent implements OnInit {
       console.log(this.optResponse);
       this.sessionId=this.optResponse.Details;
     },err=>{
-      console.log(err);   
+      this.errorMessage="incorrect mobile number";
+      this.openDialog(this.errorMessage);  
     })
   }
 
   onValidateOtp(){
+    // this.securityDialog();
     this.otpService.verifyOtp(this.sessionId,this.otp).subscribe(data=>{
-      alert(data);
       this.validateResponse=data.json();
       if(this.validateResponse.Status == "Success"){
-        this.router.navigate(["/register",{skipLocationChange:true}]);
+        // this.router.navigate(["/register",{skipLocationChange:true}]);
+        if (this.appProvider.current.toOtpPageFlag=="registerPage") {
+          this.router.navigate(["/register",{skipLocationChange:true}]);
+        }
+        else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
+            this.securityDialog();
+        }
       }else{
-        alert('else')
-        this.openDialog();
+        this.errorMessage="incorrect mobile number";
+        this.openDialog(this.errorMessage);
       }
     },err=>{
       console.log(err.status);

@@ -1,5 +1,4 @@
 <div class="modal-content cus-modal" >
-
 	<div class="modal-header text-center">
 		<h4 class="m-t-0"> Please answer the security question. </h4>
 	</div>
@@ -42,20 +41,18 @@
 	        </div> -->
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12 p-0">
 	        	<p><strong>Ques:</strong> What is your Gender? </p>
-	             <md-radio-group name="Gender" [(ngModel)]="securityDialogModel.gender">
+	             <md-radio-group name="Gender" [(ngModel)]="updateMobileModel.gender" >
                         <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
                         <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
                     </md-radio-group>
 	        </div>
-			<button class="btn custom-btn full-width btn-round" (click)="onOk()"> Ok </button>
+	        <div>
+	    	 <md-form-field>
+	            <span mdPrefix> <i class="cusIco-contact"></i>&nbsp; </span>
+	           <input mdInput placeholder="Previous Contact Number" type="text" name="contactNumber" [(ngModel)]="updateMobileModel.mobileNumber" >
+	        </md-form-field>
+	        </div>
+			<button class="btn custom-btn full-width btn-round" (click)="onUpdate()" > Update </button>
 		</div>
 	</div>
 </div>
-
-<!-- <div class="modal-content cus-modal" *ngIf="fromPage=='fromUpdate'">
-	<div class="modal-header text-center">
-		<h4 class="m-t-0"> Please answer the security question. </h4>
-	</div>
-	<div class="modal-body">
-		
-</div> -->

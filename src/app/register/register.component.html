@@ -1,50 +1,64 @@
-
+<!-- <button (click)="getDays()"> days</button> -->
 <section class="home-sec wrap">
     <div class="home-form">
         <div class="login home-panel">
             <img src="./assets/img/logo-5.png" />
             <div class="homeas-sec">
-                <form class="example-form">
+                <form class="example-form" [formGroup]="complexForm">
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
-                        <md-select placeholder="State" name="state" [(ngModel)]="registerModel.state">
+                        <md-select placeholder="State" name="state" [(ngModel)]="registerModel.state" [formControl]="complexForm.controls['state']">
                             <md-option *ngFor="let state of states"  [value]="state.stateName"> {{state.stateName}} </md-option>
                         </md-select>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['state'].valid  && ( complexForm.controls['state'].touched)">
+                            <div *ngIf="complexForm.controls['state'].errors.required">
+                                state is required
+                            </div>
+                        </div>
                     </div>
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="District" name="District" [(ngModel)]="registerModel.district">
+                        <md-select placeholder="District" [formControl]="complexForm.controls['district']" name="District" [(ngModel)]="registerModel.district">
                     		<md-option value="Nandurbar"> Nandurbar </md-option>
                         </md-select>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['district'].valid  && ( complexForm.controls['district'].touched)">
+                            <div *ngIf="complexForm.controls['district'].errors.required">
+                                district is required
+                            </div>
+                        </div>
                     </div>
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="Block" name="Block" [(ngModel)]="registerModel.block"  >
+                        <md-select placeholder="Block" name="Block" [formControl]="complexForm.controls['block']" [(ngModel)]="registerModel.block"  >
                             <md-option value="Akkalkuwa"> Akkalkuwa </md-option>
                             <md-option value="Akrani"> Akrani </md-option>
                         </md-select>
+                         <div style="color: #F44336" *ngIf="!complexForm.controls['block'].valid  && ( complexForm.controls['block'].touched)">
+                            <div *ngIf="complexForm.controls['block'].errors.required">
+                                block is required
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 p-b-0">
                     	<label class="color-white"> Date of Birth </label>
                     </div>
-                    <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
+                    <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
+                        <md-form-field>
+                            <input mdInput [mdDatepicker]="picker" [formControl]="complexForm.controls['dob']" placeholder="MM/DD/YYYY" name="dob" [(ngModel)]="DOB">
+                            <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                            <md-datepicker #picker></md-datepicker>
+                        </md-form-field>
+                        <div style="color: #F44336" *ngIf="!complexForm.controls['dob'].valid  && ( complexForm.controls['dob'].touched)">
+                            <div *ngIf="complexForm.controls['dob'].errors.required">
+                                Date of Birth is required
+                            </div>
+                        </div>
+                    </div>
+                   <!--  <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
                         <md-select placeholder="DD" name="Date" [(ngModel)]="dd">
-                    		<md-option value="01"> 01 </md-option>
-                            <md-option value="02"> 02 </md-option>
-                            <md-option value="03"> 03 </md-option>
-                            <md-option value="04"> 04 </md-option>
-                            <md-option value="05"> 05 </md-option>
+                    		<md-option value="01" *ngFor="let d of days"> {{d.value}} </md-option>
                         </md-select>
                     </div>
                     <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
                         <md-select placeholder="MM" name="month" [(ngModel)]="mm">
-                    		<md-option value="Jan">Jan</md-option>
-                            <md-option value="Feb">Feb</md-option>
-                            <md-option value="Mar">Mar</md-option>
-                            <md-option value="Jun">Jun</md-option>
-                            <md-option value="July">July</md-option>
-                            <md-option value="Aug">Aug</md-option>
-                            <md-option value="Sep">Sep</md-option>
-                            <md-option value="Oct">Oct</md-option>
-                            <md-option value="Nov">Nov</md-option>
-                            <md-option value="Dec">Dec</md-option>
+                    		<md-option value="Jan" *ngFor="let n of months">{{n.name}}</md-option>
                         </md-select>
                     </div>
                     <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
@@ -54,15 +68,20 @@
                             <md-option value="1982"> 1982 </md-option>
                             <md-option value="1983"> 1983 </md-option>
                         </md-select>
-                    </div>
+                    </div> -->
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12 p-0">
-                     <md-radio-group name="Gender" [(ngModel)]="registerModel.gender">
+                     <md-radio-group name="Gender" [formControl]="complexForm.controls['gender']" [(ngModel)]="registerModel.gender">
                         <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
                         <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
                     </md-radio-group>
+                     <div style="color: #F44336" *ngIf="!complexForm.controls['gender'].valid  && ( complexForm.controls['gender'].touched)">
+                            <div *ngIf="complexForm.controls['gender'].errors.required">
+                                gender is required
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn custom-btn btn-round full-width" (click)="onRegister()"> Sign Up </button>
+                        <button class="btn custom-btn btn-round full-width" [disabled]="!complexForm.valid" (click)="onRegister()"> Sign Up </button>
                     </div>
                 </form>
             

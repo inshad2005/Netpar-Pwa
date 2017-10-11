@@ -13,7 +13,7 @@ export class LoginService {
   	Login(loginModel:any):  Observable<any> {
 		let body = loginModel;
         let api =  environment.endPoint;
-        return this.http.post(api+"login",body)
+        return this.http.post(api+"authenticate",body)
         .map(response => {
             return response.json();
         }).catch(error => {
