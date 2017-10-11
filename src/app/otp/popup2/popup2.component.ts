@@ -2,7 +2,8 @@ import { Component, OnInit,Inject } from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { AppProvider } from '../../providers/app';
 import { UpdateMobileService } from '../../providers/update-mobile.service';
-import { UpdateMobileModel } from './updateMobile.model.component'
+import { UpdateMobileModel } from './updateMobile.model.component';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-popup2',
@@ -13,17 +14,23 @@ import { UpdateMobileModel } from './updateMobile.model.component'
 export class Popup2Component implements OnInit {
 	DOB;
 	date;
+  complexForm: FormGroup;
 	updateMobileModel:UpdateMobileModel=new UpdateMobileModel();
 
-  constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private dialog: MdDialog, public dialogRef: MdDialogRef<Popup2Component>,
-  @Inject(MD_DIALOG_DATA) public data: any) { }
+  constructor(private formBuilder: FormBuilder,private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private dialog: MdDialog, public dialogRef: MdDialogRef<Popup2Component>,
+  @Inject(MD_DIALOG_DATA) public data: any) { 
+     this.complexForm = formBuilder.group({
+      'dob':[null,Validators.compose([Validators.required])],
+      'gender':[null,Validators.compose([Validators.required])]
+    })
+  }
 
   ngOnInit() {
   }
 
  onUpdate(){
  	this.date=this.DOB.toString().split(" ");
-    this.updateMobileModel.dateOfBirth=this.date[2]+"-"+this.date[1]+"-"+this.date[3];
+  this.updateMobileModel.dateOfBirth=this.date[2]+"-"+this.date[1]+"-"+this.date[3];
  	this.updateMobileModel.firstName=this.appProvider.current.firstName;
  	this.updateMobileModel.lastName=this.appProvider.current.lastName;
  	this.updateMobileModel.mobileNumberNew=this.appProvider.current.mobileNumber;

@@ -12,5 +12,231 @@
     	"signin":"Sign In",
     	"signup":"Sign Up",
     	"takeTour":"Take a Tour"
+    },
+
+    "LaunchScreen2":{
+        "WelcometoNetpar":"Welcome to Netpar",
+        "Tagline":"Tagline",
+        "Comejoinus":"Come, join us"
+    },
+
+    "WelcomeScreen":{
+        "WelcometoNetpar":"Welcome to Netpar",
+        "SignIn":"Sign In",
+        "SignUp":"Sign Up"
+    },
+
+    "LoginScreen_SignIn":{
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "MobileNumber":"Mobile Number",
+        "SignIn":"Sign In ",
+        "NewUser":"New User? Sign Up"
+    },
+
+    "LoginScreen_SignUp":{
+        "FirstName":"First Name",
+        "LastName":"Last Name",
+        "MobileNumber":"Mobile Number",
+        "SignUp":"Sign Up",
+        "ExistingUser":"Existing User? Sign In"
+    },
+
+    "Login_SecurityQuestions":{
+        "State":"State",
+        "District":"District",
+        "Block":"Block",
+        "Date":"Date",
+        "Month":"Month",
+        "Year":"Year",
+        "DateofBirth":"Date of Birth",
+        "Gender":"Gender",
+        "Male":"Male",
+        "Female":"Female"
+    },
+
+    "Login_ErrorMessage_IncorrectMobileNumber":{
+        "sorry":"Sorry!",
+        "incorrectMobileNumber":"Your Mobile Number is incorrect, please retype it and try again",
+        "ok":"Ok"
+    },
+
+
+    "Login_ErrorMessage_MobileNumbernotenteredcorrectly":{
+        "sorry":"Sorry!",
+        "notRegistered":"Your Mobile Number is not registered with us, kindly sign up as a new user",
+        "SignUp":"Sign Up"
+    },
+
+
+    "Login_SuccessfulSignIn":{
+        "Welcomeback":"Welcome back",
+        "signInSuccessfull":"You have successfully signed in"
+    },
+
+    "Login_ErrorMessage_RecheckYourDetails":{
+        "sorry":"Sorry!",
+        "recheckDetails":"Please recheck your details again",
+        "Help":"Help",
+        "SignUp":"Sign Up"
+    },
+
+
+    "Login_ErrorMesage_UpdateYourMobileNumber":{
+        "updateMobile":"Do you want to update your mobile number?",
+        "yes":"Yes",
+        "no":"No"
+    },
+
+    "Login_ErrorMesage_IsThisYou":{
+        "Hi":"Hi",
+        "isThisYou":"Is this you?",
+        "yes":"Yes",
+        "no":"No"
+    },
+
+    "Login_ErrorMesage_SecurityQuestionAnswerisincorrect":{
+        "sorry":"Sorry!",
+        "incorrectAnswer":" Your Answer is incorrect",
+        "Help":"Help",
+        "SignUp":"Sign Up"
+    },
+
+    "OTPScreen":{
+        "OtpSent":"We have sent you the OTP, wait till we detect it",
+        "orYouCanEnter":"Or you can enter the OTP",
+        "enterOTp":"enter OTP",
+        "ResendOTP":"Resend OTP",
+        "Go":"Go"
+    },
+
+    "OTPScreen_ErrorMessage1":{
+        "sorry":"Sorry!",
+        "unableToDetect":"Sorry, we were unable to detect your OTP",
+        "ResendOTP":"Resend OTP",
+        "Help":"Help"
+    },
+
+    "BottomBarandTopBar":{
+        "welcomeForMale":"Welcome, Name (for male)",
+        "welcomeForFemale":"Welcome, Name (for female)",
+        "home":"Home",
+        "myAccount":"My Account"
+    },
+
+    "ContentItemView_Scroll1":{
+        "By":"By",
+        "Like":"Like",
+        "Comment":"Comment",
+        "Save":"Save", 
+        "Download":"Download",
+        "ContinueReading":"Continue Reading",
+        "ViewMore":"View More"
+    },
+
+    "ContentItemView_Scroll2":{
+        "Views":"Views",
+        "Likes":"Likes",
+        "Comments":"Comments",
+        "Saves":"Saves",
+        "Donwload":"Donwload",
+        "SuggestedArticles":"Suggested Articles"
+    },
+
+    "CommentBox":{
+        "Typeyourcomment":"Type your comment",
+        "EnteryouComment":"Enter you Comment"
+    },
+
+    "FloatingButtonScreen_Help":{
+        "Help":"Help",
+        "CallforHelp":"CallforHelp",
+        "WhatsappforHelp":"WhatsappforHelp",
+        "GotoourHelpSection":"GotoourHelpSection"
+    },
+
+    "FloatingButtonScreen_Share":{
+        "Share":"Share",
+        "Shareviatextmessage":"Share via text message",
+        "Shareonwhatsapp":"Share on whatsapp",
+        "ShareonFacebook":"Share on Facebook"
+    },
+
+    "ContentItemSaved":{
+        "saved":"SAVED!",
+        "viewSavedItems":"Go here/Click here to view your saved items"
+    },
+
+    "ContentItemDownloaded":{
+        "downloaded":"DOWNLOADED!",
+        "viewdownloadedItems":"Go here/Click here to view your downloaded items"
+    },
+
+    "MenuScreen":{
+        "Home":"Home",
+        "MyAccount":"My Account",
+        "ViewMySavedItems":"View My Saved Items",
+        "ViewMyDownloadedItems":"View My Downloaded Items",
+        "ViewMyContributions":"View My Contributions",
+        "FriendsOnTheNetwork":"Friends on the Network",
+        "Contribute":"Contribute",
+        "InviteFriends":"Invite Friends",
+        "Aboutus":"About us",
+        "Rateus":"Rate us"
+    },
+
+    "ProfilePage":{
+        "Edit":"Edit", 
+        "Logout":"Logout",
+        "ViewProfile":"View Profile",
+        "ViewSavedItems":"View Saved Items",
+        "ViewDownloadeditems":"View Downloaded items",
+        "MyContributions":"My Contributions",
+        "FriendsOnMyNetwork":"Friends on my Network"
+    },
+
+    "ProfilePage_Scroll1":{
+        "Downloaded":"Downloaded",
+        "SeeMore":"See More",
+        "FriendsOnMynetwork":"Friends on My network",
+        "SeeMore":"See More",
+        "SavedPosts":"Saved Posts",
+        "Contributions":"Contributions"
+    },
+
+    "DeletedPopupScreen":{
+        "deletedFromPhone":"This item will be deleted from your phone also",
+        "yes":"Yes", 
+        "no":"No"
+    },
+
+    "Friendsonthenetwork":{
+        "FriendsOnNetpar":"Friends On Netpar",
+        "InviteMoreFriends":"Invite More Friends",
+        "Invite":"Invite" 
+    },
+
+    "ContributionForm":{
+        "SelectState":"Select State",
+        "SelectLanguage":"Select Language",
+        "SelectSection":"Select Section",
+        "SelectCategory":"Select Category",
+        "SelectSubcategory":"Select Subcategory",
+        "Title":"Title",
+        "EnterYourDescriptionHere":"Enter Your Description Here",
+        "AttachMedia":"Attach Media"
+    },
+
+    "FiltersScreen":{
+        "ApplyFilter":"Apply Filter",
+        "ClearAllFilters":"Clear All Filters"
+    },
+
+    "Notifications":{
+        "Userhascommentedon":"User has commented on",
+        "Userlikesyour" :"User likes your",
+        "Yourcontributionhasbeenaccepted":"Your contribution has been accepted",
+        "Yourcontributionislive":"Your contribution is live"
     }
+
 }

@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 import { OtpService } from '../providers/otp.service';
 import { AppProvider } from '../providers/app';
 import { UpdateMobileService } from '../providers/update-mobile.service';
-import { UpdateMobileNo } from './updateMobileNo.model.component'
+import { UpdateMobileNo } from './updateMobileNo.model.component';
+
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
@@ -35,6 +36,7 @@ export class OtpComponent implements OnInit {
   value6;
  
   	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MdDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
+    
   	ngOnInit() {
       this.mobileNo=this.appProvider.current.mobileNumber;
        if (this.mobileNo) {

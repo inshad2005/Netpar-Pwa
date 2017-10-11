@@ -1,5 +1,4 @@
 <div class="modal-content cus-modal" >
-
 	<div class="modal-header text-center">
 		<h4 class="m-t-0"> Please answer the security question. </h4>
 	</div>
@@ -10,10 +9,15 @@
 	        </div>
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12" >
                 <md-form-field>
-                    <input mdInput [mdDatepicker]="picker" placeholder="MM/DD/YYYY" name="dob" [(ngModel)]="DOB">
+                    <input mdInput [mdDatepicker]="picker" placeholder="MM/DD/YYYY" name="dob"  [formControl]="complexForm.controls['dob']" [(ngModel)]="DOB">
                     <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
                     <md-datepicker #picker></md-datepicker>
                </md-form-field>
+                <div style="color: #F44336" *ngIf="!complexForm.controls['dob'].valid  && ( complexForm.controls['dob'].touched)">
+                    <div *ngIf="complexForm.controls['dob'].errors.required">
+                        Date of Birth is required
+                    </div>
+                </div>
 	         <!--    <md-select placeholder="DD" [(ngModel)]="dd">
 	        		<md-option value="01"> 01 </md-option>
 	                <md-option value="02"> 02 </md-option>
@@ -42,12 +46,17 @@
 	        </div> -->
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12 p-0">
 	        	<p><strong>Ques:</strong> What is your Gender? </p>
-	             <md-radio-group name="Gender" [(ngModel)]="securityDialogModel.gender">
-                        <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
-                        <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
-                    </md-radio-group>
+	             <md-radio-group name="Gender" [(ngModel)]="securityDialogModel.gender" [formControl]="complexForm.controls['gender']">
+                    <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
+                    <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
+                  </md-radio-group>
+                  <div style="color: #F44336" *ngIf="!complexForm.controls['gender'].valid  && ( complexForm.controls['gender'].touched)">
+                        <div *ngIf="complexForm.controls['gender'].errors.required">
+                            gender is required
+                        </div>
+                   </div>
 	        </div>
-			<button class="btn custom-btn full-width btn-round" (click)="onOk()"> Ok </button>
+			<button class="btn custom-btn full-width btn-round" (click)="onOk()" [disabled]="!complexForm.valid"> Ok </button>
 		</div>
 	</div>
 </div>

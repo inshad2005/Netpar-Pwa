@@ -43,7 +43,7 @@ export class WelcomeScreen2Component implements OnInit {
 
     onSelected(){
       if (this.selectedLanguage && this.selectedState) {
-       this.router.navigate(['/home'])
+       this.router.navigate(['/home'],{skipLocationChange:true})
       }
     }
 

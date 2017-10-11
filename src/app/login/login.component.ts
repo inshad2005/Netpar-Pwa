@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
   errorMessage;
   localData;
   securityDialogModel:any;
-  fromPage
-  DOB
+  fromPage;
+  DOB;
  constructor(private dialog: MdDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
  	this.complexForm = formBuilder.group({
       'firstName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
@@ -86,6 +86,9 @@ export class LoginComponent implements OnInit {
                 this.errorMessage="First Name and Last Name not matching";
                 this.openDialog(this.errorMessage);
               }
+          },err=>{
+            this.errorMessage="something went wrong"
+            this.openDialog(this.errorMessage);
           })
           
         }

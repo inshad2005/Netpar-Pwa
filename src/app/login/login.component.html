@@ -8,7 +8,7 @@
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
                         <md-form-field>
                             <span mdPrefix><i class="cusIco-firstname"></i>&nbsp;</span>
-                            <input mdInput placeholder="First Name" type="text" [formControl]="complexForm.controls['firstName']" [(ngModel)]="loginModel.firstName" name="firstName">
+                            <input mdInput placeholder="{{'LoginScreen_SignIn.FirstName'| translate}}" type="text" [formControl]="complexForm.controls['firstName']" [(ngModel)]="loginModel.firstName" name="firstName">
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['firstName'].valid  && ( complexForm.controls['firstName'].touched)">
                             <div *ngIf="complexForm.controls['firstName'].errors.required">
@@ -22,7 +22,7 @@
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
                         <md-form-field>
                             <span mdPrefix> <i class="cusIco-lastname"></i>&nbsp; </span>
-                            <input mdInput placeholder="Last Name" type="text" [formControl]="complexForm.controls['lastName']" [(ngModel)]="loginModel.lastName" name="lastName"  >
+                            <input mdInput placeholder="{{'LoginScreen_SignIn.LastName' | translate}}" type="text" [formControl]="complexForm.controls['lastName']" [(ngModel)]="loginModel.lastName" name="lastName"  >
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['lastName'].valid  && ( complexForm.controls['lastName'].touched)">
                             <div *ngIf="complexForm.controls['lastName'].errors.required">
@@ -36,7 +36,7 @@
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
                         <md-form-field>
                             <span mdPrefix> <i class="cusIco-contact"></i>&nbsp; </span>
-                            <input mdInput placeholder="Contact No" type="text" [formControl]="complexForm.controls['contactNumber']" [(ngModel)]="loginModel.mobileNumber" name="contactNumber"  >
+                            <input mdInput placeholder="{{'LoginScreen_SignIn.MobileNumber' | translate}}" type="text" [formControl]="complexForm.controls['contactNumber']" [(ngModel)]="loginModel.mobileNumber" name="contactNumber"  >
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['contactNumber'].valid  && ( complexForm.controls['contactNumber'].touched)">
                             <div *ngIf="complexForm.controls['contactNumber'].errors.required ">
@@ -54,7 +54,7 @@
                         </div> 
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='login'" (click)="onLogIn()" [disabled]="!complexForm.valid" > Sign In </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='login'" (click)="onLogIn()" [disabled]="!complexForm.valid" > {{"LoginScreen_SignIn.SignIn" | translate}} </button>
                         <button class="btn custom-btn btn-round full-width" *ngIf="data=='signup'" (click)="onNext()" [disabled]="!complexForm.valid" > Next </button>
                     </div>
                 </form>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject ,AfterViewInit} from '@angular/core';
 import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
 import { SecurityDialogModel } from './security-dialog2.model.component';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { SecurityDialog2Service } from './security-dialog2.service';
 import {AppProvider} from '../../providers/app'
 
@@ -12,11 +13,17 @@ import {AppProvider} from '../../providers/app'
 })
 export class SecurityDialog2Component implements AfterViewInit {
   securityDialogModel: SecurityDialogModel = new SecurityDialogModel();
+  complexForm: FormGroup;
   DOB;
   date;
   fromPage;
-  constructor(private appProvider:AppProvider,private securityDialog2Service:SecurityDialog2Service,private dialog: MdDialog, public dialogRef: MdDialogRef<SecurityDialog2Component>,
-  @Inject(MD_DIALOG_DATA) public data: any) { }
+  constructor(private formBuilder: FormBuilder,private appProvider:AppProvider,private securityDialog2Service:SecurityDialog2Service,private dialog: MdDialog, public dialogRef: MdDialogRef<SecurityDialog2Component>,
+  @Inject(MD_DIALOG_DATA) public data: any) { 
+    this.complexForm = formBuilder.group({
+      'dob':[null,Validators.compose([Validators.required])],
+      'gender':[null,Validators.compose([Validators.required])]
+    })
+  }
 
   ngAfterViewInit() {
     this.fromPage=this.data.message;

@@ -4,12 +4,12 @@
 	</div>
 	<div class="welcome-content welcome-content2 text-center">
 		<div class="col-md-12 col-sm-12 col-xs-12">
-			<md-select placeholder="Choose State" [(ngModel)]="selectedState" class="welcome-select btn btn-primary" (change)="onSelected()">
+			<md-select placeholder="{{'ContributionForm.SelectState' | translate}}" [(ngModel)]="selectedState" class="welcome-select btn btn-primary" (change)="onSelected()">
 	    		<md-option *ngFor="let state of states" [value]="state.stateName" > {{state.stateName}} </md-option>
 	        </md-select>
 	    </div>
 	    <div class="col-md-12 col-sm-12 col-xs-12">
-			<md-select placeholder="Choose Language"  [(ngModel)]="selectedLanguage" class="welcome-select btn btn-primary" (change)="onSelected()">
+			<md-select placeholder="{{'ContributionForm.SelectLanguage' | translate}}"  [(ngModel)]="selectedLanguage" class="welcome-select btn btn-primary" (change)="onSelected()">
 	    		<md-option *ngFor="let language of languages" [value]="language.languageName">{{language.languageName}}</md-option>
 	        </md-select>
 	    </div>

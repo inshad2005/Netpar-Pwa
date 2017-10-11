@@ -18,4 +18,4 @@ export const PROD: Environment = {
 	language:LANGUAGE.MARATHI,
 	endPoint:'http://52.15.178.19:3002/netpar/' 
 }
-export const environment: Environment= DEV;
+export const environment: Environment= PROD;
