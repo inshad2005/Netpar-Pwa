@@ -6,48 +6,48 @@
             <div class="homeas-sec">
                 <form class="example-form" [formGroup]="complexForm">
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
-                        <md-select placeholder="State" name="state" [(ngModel)]="registerModel.state" [formControl]="complexForm.controls['state']">
+                        <md-select placeholder="{{'Login_SecurityQuestions.State' | translate}}" name="state" [(ngModel)]="registerModel.state" [formControl]="complexForm.controls['state']">
                             <md-option *ngFor="let state of states"  [value]="state.stateName"> {{state.stateName}} </md-option>
                         </md-select>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['state'].valid  && ( complexForm.controls['state'].touched)">
                             <div *ngIf="complexForm.controls['state'].errors.required">
-                                state is required
+                                {{"Login_SecurityQuestions.stateRequired" | translate}}
                             </div>
                         </div>
                     </div>
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="District" [formControl]="complexForm.controls['district']" name="District" [(ngModel)]="registerModel.district">
+                        <md-select placeholder="{{'Login_SecurityQuestions.District' | translate}}" [formControl]="complexForm.controls['district']" name="District" [(ngModel)]="registerModel.district">
                     		<md-option value="Nandurbar"> Nandurbar </md-option>
                         </md-select>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['district'].valid  && ( complexForm.controls['district'].touched)">
                             <div *ngIf="complexForm.controls['district'].errors.required">
-                                district is required
+                                {{"Login_SecurityQuestions.districtRequired" | translate}}
                             </div>
                         </div>
                     </div>
                     <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="Block" name="Block" [formControl]="complexForm.controls['block']" [(ngModel)]="registerModel.block"  >
+                        <md-select placeholder="{{'Login_SecurityQuestions.Block' | translate}}" name="Block" [formControl]="complexForm.controls['block']" [(ngModel)]="registerModel.block"  >
                             <md-option value="Akkalkuwa"> Akkalkuwa </md-option>
                             <md-option value="Akrani"> Akrani </md-option>
                         </md-select>
                          <div style="color: #F44336" *ngIf="!complexForm.controls['block'].valid  && ( complexForm.controls['block'].touched)">
                             <div *ngIf="complexForm.controls['block'].errors.required">
-                                block is required
+                                {{"Login_SecurityQuestions.blockRequired" | translate}}
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 p-b-0">
-                    	<label class="color-white"> Date of Birth </label>
+                    	<label class="color-white"> {{'Login_SecurityQuestions.DateofBirth' | translate}} </label>
                     </div>
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
                         <md-form-field>
-                            <input mdInput [mdDatepicker]="picker" [formControl]="complexForm.controls['dob']" placeholder="MM/DD/YYYY" name="dob" [(ngModel)]="DOB">
+                            <input mdInput [mdDatepicker]="picker" [formControl]="complexForm.controls['dob']" placeholder="{{'Login_SecurityQuestions.Month' | translate}}/{{'Login_SecurityQuestions.Date' | translate}}/{{'Login_SecurityQuestions.Year' | translate}}" name="dob" [(ngModel)]="DOB">
                             <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
                             <md-datepicker #picker></md-datepicker>
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['dob'].valid  && ( complexForm.controls['dob'].touched)">
                             <div *ngIf="complexForm.controls['dob'].errors.required">
-                                Date of Birth is required
+                                {{"Login_SecurityQuestions.dobRequired" | translate}}
                             </div>
                         </div>
                     </div>
@@ -70,18 +70,18 @@
                         </md-select>
                     </div> -->
                     <div class="white-line form-group col-md-12 col-sm-12 col-xs-12 p-0">
-                     <md-radio-group name="Gender" [formControl]="complexForm.controls['gender']" [(ngModel)]="registerModel.gender">
-                        <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
-                        <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
+                     <md-radio-group name="{{'Login_SecurityQuestions.Gender' | translate}}" [formControl]="complexForm.controls['gender']" [(ngModel)]="registerModel.gender">
+                        <md-radio-button value="{{'Login_SecurityQuestions.Male' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Male' | translate}}</md-radio-button>
+                        <md-radio-button value="{{'Login_SecurityQuestions.Female' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Female' | translate}}</md-radio-button>
                     </md-radio-group>
                      <div style="color: #F44336" *ngIf="!complexForm.controls['gender'].valid  && ( complexForm.controls['gender'].touched)">
                             <div *ngIf="complexForm.controls['gender'].errors.required">
-                                gender is required
+                                {{"Login_SecurityQuestions.genderRequired" | translate}}
                             </div>
                         </div>
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
-                        <button class="btn custom-btn btn-round full-width" [disabled]="!complexForm.valid" (click)="onRegister()"> Sign Up </button>
+                        <button class="btn custom-btn btn-round full-width" [disabled]="!complexForm.valid" (click)="onRegister()"> {{'LoginScreen_SignUp.SignUp' | translate}} </button>
                     </div>
                 </form>
             

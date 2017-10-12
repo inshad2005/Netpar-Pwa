@@ -3,17 +3,6 @@
         "ma": "Marathi"
     },
 
-    "welcome":{
-    	"welcome":"नेटपर मध्ये आपले स्वागत आहे"
-    },
-
-    "home":{
-    	"welcome":"Welcome",
-    	"signin":"Sign In",
-    	"signup":"Sign Up",
-    	"takeTour":"Take a Tour"
-    },
-
     "LaunchScreen2":{
         "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
         "Tagline":"भारताचा डिजिटल मित्र ",
@@ -23,7 +12,8 @@
     "WelcomeScreen":{
         "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
         "SignIn":"साईन इन ",
-        "SignUp":"साईन अप"
+        "SignUp":"साईन अप",
+        "takeTour":"Take a Tour"
     },
 
     "LoginScreen_SignIn":{
@@ -31,7 +21,15 @@
         "LastName":"आडनाव ",
         "MobileNumber":"मोबाईल नंबर ",
         "SignIn":"साईन इन ",
-        "NewUser":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा."
+        "NewUser":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा.",
+        "Next":"Next",
+        "firstNameRequired":"first name  is required",
+        "lastNameRequired":"last name  is required",
+        "onlyAlphabets":"only alphabets are acceptable",
+        "mobileRequired":"Mobile number is required",
+        "onlyDigits":"only digits are acceptable",
+        "lessThanTen":"contact number can not be less than 10 digits",
+        "moreThanTen":"contact number can not be more than 10 digits"
     },
 
     "LoginScreen_SignUp":{
@@ -52,7 +50,12 @@
         "DateofBirth":"जन्म",
         "Gender":"तुम्ही कोण आहात?",
         "Male":"पुरूष",
-        "Female":"स्त्री"
+        "Female":"स्त्री",
+        "stateRequired":"state is required",
+        "districtRequired":"district is required",
+        "blockRequired":"block is required",
+        "dobRequired":"Date of Birth is required",
+        "genderRequired":"gender is required"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{

@@ -12,10 +12,10 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['firstName'].valid  && ( complexForm.controls['firstName'].touched)">
                             <div *ngIf="complexForm.controls['firstName'].errors.required">
-                                first name  is required
+                                {{"LoginScreen_SignIn.firstNameRequired" | translate}}
                             </div>
                             <div *ngIf="complexForm.controls['firstName'].errors.pattern">
-                                only alphabets are acceptable
+                                {{"LoginScreen_SignIn.onlyAlphabets" | translate}}
                             </div>
                         </div>
                     </div>
@@ -26,10 +26,10 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['lastName'].valid  && ( complexForm.controls['lastName'].touched)">
                             <div *ngIf="complexForm.controls['lastName'].errors.required">
-                                last name  is required
+                                {{"LoginScreen_SignIn.lastNameRequired" | translate}}
                             </div>
                             <div *ngIf="complexForm.controls['lastName'].errors.pattern">
-                                only alphabets are acceptable
+                                {{"LoginScreen_SignIn.onlyAlphabets" | translate}}
                             </div>
                         </div>
                     </div>
@@ -40,25 +40,24 @@
                         </md-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['contactNumber'].valid  && ( complexForm.controls['contactNumber'].touched)">
                             <div *ngIf="complexForm.controls['contactNumber'].errors.required ">
-                                contact number is required
+                                {{"LoginScreen_SignIn.mobileRequired" | translate}}
                             </div>
                             <div *ngIf="complexForm.controls['contactNumber'].errors.pattern">
-                                only digits are acceptable
+                                {{"LoginScreen_SignIn.onlyDigits" | translate}}
                             </div>
                             <div *ngIf="complexForm.controls['contactNumber'].errors.minlength">
-                                contact number can not be less than 10 digits
+                                {{"LoginScreen_SignIn.lessThanTen" | translate}}
                             </div>
                             <div *ngIf="complexForm.controls['contactNumber'].errors.maxlength">
-                                contact number can not be more than 10 digits
+                                {{"LoginScreen_SignIn.moreThanTen" | translate}}
                             </div>
                         </div> 
                     </div>
                     <div class="form-group col-md-12 col-sm-12 col-xs-12">
                         <button class="btn custom-btn btn-round full-width" *ngIf="data=='login'" (click)="onLogIn()" [disabled]="!complexForm.valid" > {{"LoginScreen_SignIn.SignIn" | translate}} </button>
-                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='signup'" (click)="onNext()" [disabled]="!complexForm.valid" > Next </button>
+                        <button class="btn custom-btn btn-round full-width" *ngIf="data=='signup'" (click)="onNext()" [disabled]="!complexForm.valid" > {{"LoginScreen_SignIn.Next" | translate}} </button>
                     </div>
                 </form>
-            
             </div>
         </div>
     </div>

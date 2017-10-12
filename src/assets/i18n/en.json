@@ -3,17 +3,6 @@
         "en": "English"
     },
 
-    "welcome":{
-    	"welcome":"Welcome to Netpar"
-    },
-
-    "home":{
-    	"welcome":"Welcome",
-    	"signin":"Sign In",
-    	"signup":"Sign Up",
-    	"takeTour":"Take a Tour"
-    },
-
     "LaunchScreen2":{
         "WelcometoNetpar":"Welcome to Netpar",
         "Tagline":"Tagline",
@@ -23,7 +12,8 @@
     "WelcomeScreen":{
         "WelcometoNetpar":"Welcome to Netpar",
         "SignIn":"Sign In",
-        "SignUp":"Sign Up"
+        "SignUp":"Sign Up",
+        "takeTour":"Take a Tour"
     },
 
     "LoginScreen_SignIn":{
@@ -31,7 +21,15 @@
         "LastName":"Last Name",
         "MobileNumber":"Mobile Number",
         "SignIn":"Sign In ",
-        "NewUser":"New User? Sign Up"
+        "NewUser":"New User? Sign Up",
+        "Next":"Next",
+        "firstNameRequired":"first name  is required",
+        "lastNameRequired":"last name  is required",
+        "onlyAlphabets":"only alphabets are acceptable",
+        "mobileRequired":"Mobile number is required",
+        "onlyDigits":"only digits are acceptable",
+        "lessThanTen":"contact number can not be less than 10 digits",
+        "moreThanTen":"contact number can not be more than 10 digits"
     },
 
     "LoginScreen_SignUp":{
@@ -46,13 +44,19 @@
         "State":"State",
         "District":"District",
         "Block":"Block",
-        "Date":"Date",
-        "Month":"Month",
-        "Year":"Year",
+        "Date":"DD",
+        "Month":"MM",
+        "Year":"YY",
         "DateofBirth":"Date of Birth",
         "Gender":"Gender",
         "Male":"Male",
-        "Female":"Female"
+        "Female":"Female",
+        "stateRequired":"state is required",
+        "districtRequired":"district is required",
+        "blockRequired":"block is required",
+        "dobRequired":"Date of Birth is required",
+        "genderRequired":"gender is required",
+        "anserSecurity":"Please answer the security question.",
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{

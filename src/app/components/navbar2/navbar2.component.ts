@@ -16,11 +16,12 @@ export class Navbar2Component implements OnInit {
 
     constructor(location: Location,  private element: ElementRef) {
       this.location = location;
-          this.sidebarVisible = false;
+      this.sidebarVisible = false;
     }
 
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
+      alert(JSON.stringify(this.listTitles));
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     }
@@ -36,6 +37,7 @@ export class Navbar2Component implements OnInit {
         this.sidebarVisible = true;
         localStorage['menuOpen']='true'
     };
+
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
@@ -43,6 +45,7 @@ export class Navbar2Component implements OnInit {
         body.classList.remove('nav-open');
         localStorage['menuOpen']='false'
     };
+
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
