@@ -1,21 +1,21 @@
 <div class="modal-content cus-modal" >
 	<div class="modal-header text-center">
-		<h4 class="m-t-0"> Please answer the security question. </h4>
+		<h4 class="m-t-0"> {{'Login_SecurityQuestions.anserSecurityQuestions' | translate}}  </h4>
 	</div>
 	<div class="modal-body">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12 p-b-0">
-	        	<p><strong>Ques:</strong> What is your Date of Birth? </p>
+	        	<p><strong>{{'Login_SecurityQuestions.Ques' | translate}}</strong> {{'Login_SecurityQuestions.dobQues' | translate}} </p>
 	        </div>
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12" >
                 <md-form-field>
-                    <input mdInput [mdDatepicker]="picker" placeholder="MM/DD/YYYY" name="dob"  [formControl]="complexForm.controls['dob']" [(ngModel)]="DOB">
+                    <input mdInput [mdDatepicker]="picker" placeholder="{{'Login_SecurityQuestions.Month' | translate}}/{{'Login_SecurityQuestions.Date' | translate}}/{{'Login_SecurityQuestions.Year' | translate}}" name="dob"  [formControl]="complexForm.controls['dob']" [(ngModel)]="DOB">
                     <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
                     <md-datepicker #picker></md-datepicker>
                </md-form-field>
                 <div style="color: #F44336" *ngIf="!complexForm.controls['dob'].valid  && ( complexForm.controls['dob'].touched)">
                     <div *ngIf="complexForm.controls['dob'].errors.required">
-                        Date of Birth is required
+                        {{'Login_SecurityQuestions.' | translate}}
                     </div>
                 </div>
 	         <!--    <md-select placeholder="DD" [(ngModel)]="dd">
@@ -45,14 +45,14 @@
 	            </md-select>
 	        </div> -->
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12 p-0">
-	        	<p><strong>Ques:</strong> What is your Gender? </p>
+	        	<p><strong>{{'Login_SecurityQuestions.Ques' | translate}}</strong>{{'Login_SecurityQuestions.genderQues' | translate}}</p>
 	             <md-radio-group name="Gender" [(ngModel)]="securityDialogModel.gender" [formControl]="complexForm.controls['gender']">
-                    <md-radio-button value="Male" class="col-md-6 col-sm-6 col-xs-6">Male</md-radio-button>
-                    <md-radio-button value="Female" class="col-md-6 col-sm-6 col-xs-6">Female</md-radio-button>
+                    <md-radio-button value="{{'Login_SecurityQuestions.Male' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Male' | translate}}</md-radio-button>
+                    <md-radio-button value="{{'Login_SecurityQuestions.Female' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Female' | translate}}</md-radio-button>
                   </md-radio-group>
                   <div style="color: #F44336" *ngIf="!complexForm.controls['gender'].valid  && ( complexForm.controls['gender'].touched)">
                         <div *ngIf="complexForm.controls['gender'].errors.required">
-                            gender is required
+                            {{'Login_SecurityQuestions.genderRequired' | translate}}
                         </div>
                    </div>
 	        </div>

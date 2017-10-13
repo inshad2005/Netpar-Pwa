@@ -4,11 +4,12 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
-  styleUrls: ['./article-details.component.css']
+  styleUrls: ['./article-details.component.css'],
+  providers:[]
 })
 export class ArticleDetailsComponent implements OnInit {
 
-   private listTitles: any[];
+    private listTitles: any[];
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
@@ -35,5 +36,7 @@ export class ArticleDetailsComponent implements OnInit {
   		}
   		
   	}
+
+    slideConfig = {"slidesToShow": 2, "slidesToScroll": 2, "arrows": false};
 
 }

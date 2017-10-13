@@ -51,11 +51,21 @@
         "Gender":"तुम्ही कोण आहात?",
         "Male":"पुरूष",
         "Female":"स्त्री",
-        "stateRequired":"state is required",
+       "stateRequired":"state is required",
         "districtRequired":"district is required",
         "blockRequired":"block is required",
         "dobRequired":"Date of Birth is required",
-        "genderRequired":"gender is required"
+        "genderRequired":"gender is required",
+        "anserSecurityQuestions":"Please answer the security question.",
+        "Ques":"Ques",
+        "stateQues":"What is your state?",
+        "districtQues":"What is your District?",
+        "blockQues":"What is your Block?",
+        "dobQues":"What is your Date of Birth?",
+        "genderQues":"What is your Gender?",
+        "mobileNumberQues":"What is your Last Mobile Number?",
+        "previousMobileNumber":"Previous mobile number",
+        "update":"Update"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{
@@ -86,6 +96,7 @@
 
 
     "Login_ErrorMesage_UpdateYourMobileNumber":{
+        "sorry":"माफ करा.",
         "updateMobile":"तुम्हाला तुमचा मोबाईल नंबर अपडेट करायचा आहे का?",
         "yes":"हो. नक्की.",
         "no":"नाही. सध्या गरज नाही."

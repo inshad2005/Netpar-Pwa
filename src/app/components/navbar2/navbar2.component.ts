@@ -7,6 +7,8 @@ import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common'
   templateUrl: './navbar2.component.html',
   styleUrls: ['./navbar2.component.css']
 })
+
+
 export class Navbar2Component implements OnInit {
 
   	private listTitles: any[];
@@ -21,7 +23,7 @@ export class Navbar2Component implements OnInit {
 
     ngOnInit(){
       this.listTitles = ROUTES.filter(listTitle => listTitle);
-      alert(JSON.stringify(this.listTitles));
+      // alert(JSON.stringify(this.listTitles));
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
     }

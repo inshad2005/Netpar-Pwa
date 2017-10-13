@@ -6,34 +6,148 @@
 
 	<app-navbar></app-navbar>
     <div class="cusmain-panel" (click)="navRemove()">
-		<div class="header-extra" ></div>
 		<div class="tb-wrap">
 			<section class="article-sec">
-				<div class="card">
-			    	<h4 class="text-rose font-400"> Delhi Metro Ridership falls </h4>
-			    	<p class="text-primary"> Metro Delhi </p>
-			    	<p class="help-note"><strong> By: </strong>
-			    		<span class="text-light"> Peter Parker </span>
-			    		<span class="text-light pull-right"> 12-Aug-2017 </span>
-			    	</p>
-			    </div>
-			    <div class="card">
-			    	<div class="row-cus">
-			    		<ul class="like-bar">
-			    			<li> <a routerLink="/article-details"> <i class="cusIco-okay"></i>Like </a> </li>
-			    			<li> <a routerLink="/article-details"> <i class="cusIco-msg"></i>Comment </a> </li>
-			    			<li> <a routerLink="/article-details"> <i class="cusIco-badge"></i>Save </a> </li>
-			    			<li> <a routerLink="/article-details"> <i class="cusIco-donload"></i>Download </a> </li>
-			    		</ul>
-			    	</div>
-			    	<div class="two-btn">
-			    		<button class="btn btn-rose"><i class="font_22 cusIco-call"></i> Call now </button>
-			    	</div>
-			    	<div class="two-btn">
-			    		<button class="btn btn-primary"><i class="font_22 cusIco-callme"></i> Call me back </button>
-			    	</div>
-			    </div>
+				<div class="card cus-card">
+					<div class="inner-card yellow-brd">
+				    	<h4 class="font-400"> Delhi Metro Ridership falls Ridership falls Ridership falls </h4>
+				    </div>
+				    <div class="inner-card dashed-brd">
+				    	<p> Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi  </p>
+				    	<p>
+				    		<strong> By: </strong>
+				    		<span class="text-blue"> Peter Parker </span>
+				    		<span class="text-light pull-right"> 12-Aug-2017 </span>
+				    	</p>
+				    	<p class="m-0 text-right font_12">
+				    		<i> 1500 Likes &#x25CF; 300 Comments </i>
+				    	</p>
+				    </div>
+			    	<ul class="like-bar dashed-brd">
+		    			<li class="active">
+		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay"></i></span> Like </a>
+		    			</li>
+		    			<li>
+		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> Comment </a> 
+		    			</li>
+		    			<li>
+		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> Save </a> 
+		    			</li>
+		    			<li>
+		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> Download </a> 
+		    			</li>
+		    		</ul>
+		    		<div class="inner-card dashed-brd">
+		    			<div class="form-group">
+		    				<img src="./assets/img/metro.jpeg" class="img-responsive rad-shad" />
+		    			</div>
+		    			<p class="text-light">Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment</p>
+		    		</div>
+		    		<ul class="like-bar dashed-brd">
+		    			<li>
+		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> 1500 </a> 
+		    			</li>
+		    			<li>
+		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay-o"></i></span> 1100 </a>
+		    			</li>
+		    			<li>
+		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> 500 </a> 
+		    			</li>
+		    			<li>
+		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> 200 </a> 
+		    			</li>
+		    		</ul>
+		    		<div class="inner-card dashed-brd"> <h4 class="font-16 m-0"> Comments </h4> </div>
+		    		<div class="inner-card dashed-brd">
+		    			<div class="col-md-12 col-sm-12 col-xs-12 p-0">
+		    				<md-form-field>
+	                            <textarea mdInput placeholder="Write your comment here..." rows="3"></textarea>
+	                        </md-form-field>
+		    			</div>
+		    			<div class="col-md-12 col-sm-12 col-xs-12 p-0 text-right form-group">
+		    				<button class="btn btn-info btn-sm">Send</button>
+		    			</div>
+		    			<div class="user-img">
+		    				<img src="./assets/img/profile_user.jpg" class="img-responsive" />
+		    			</div>
+		    			<div class="comment-box">
+		    				<h5 class="m-0"> Ravi Kumar </h5>
+		    				<p>About 5 lakh commuters travel daily in the Delhi Metro, as well as 2 to 3 lakh workers working on them travel by metro train daily.</p>
+		    			</div>
+			    		<div class="col-md-12 col-sm-12 col-xs-12 text-center">
+			    			<a routerLink="/comments-page" class="text-primary"><u>See more</u></a>
+			    		</div>
+		    		</div>
+		    		<div class="inner-card dashed-brd">
+		    			<h4 class="font-16 m-0"> Suggested Articles </h4>
+		    		</div>
+		    		<div class="inner-card">
+		    			<div class="suggested-ulist">
+			    			<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+						        <div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-1.jpg"> 
+						    			<div class="suggested-div color-red">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-2.jpg"> 
+						    			<div class="suggested-div color-orange">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-3.jpg"> 
+						    			<div class="suggested-div color-yellow">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-4.jpg"> 
+						    			<div class="suggested-div color-blue">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-5.jpg"> 
+						    			<div class="suggested-div color-green">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-6.jpg"> 
+						    			<div class="suggested-div color-purple">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						    	<div ngxSlickItem class="slide">
+							        <a routerLink="/article-details"><img src="./assets/img/img_r-7.jpg"> 
+						    			<div class="suggested-div color-pink">
+						    				<div class="suggested-text">News </div>
+						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+						    			</div>
+						    		</a>
+						    	</div>
+						        
+						    </ngx-slick>
+					    	
+					    </div>
+		    		</div>
 
+			    </div>
+			    
 			</section>
 		</div>
 		<app-footer></app-footer>

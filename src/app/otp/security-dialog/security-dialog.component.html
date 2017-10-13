@@ -1,41 +1,41 @@
 <div class="modal-content cus-modal">
 	<div class="modal-header text-center">
-		<h4 class="m-t-0"> Please answer the security question. </h4>
+		<h4 class="m-t-0"> {{'Login_SecurityQuestions.anserSecurityQuestions' | translate}}  </h4>
 	</div>
 	<div class="modal-body">
 		<div class="row">
 			<div class="form-group col-md-12 col-sm-12 col-xs-12">
-				<p><strong>Ques:</strong> What is your state? </p>
-	            <md-select placeholder="State" name="state" [(ngModel)]="securityModel.state" [formControl]="complexForm.controls['state']">
+				<p><strong>{{"Login_SecurityQuestions.Ques" | translate}}:</strong> {{"Login_SecurityQuestions.stateQues" | translate}}</p>
+	            <md-select placeholder="{{'Login_SecurityQuestions.State' | translate}}" name="state" [(ngModel)]="securityModel.state" [formControl]="complexForm.controls['state']">
                     <md-option *ngFor="let state of states"  [value]="state.stateName"> {{state.stateName}} </md-option>
                 </md-select>
                  <div style="color: #F44336" *ngIf="!complexForm.controls['state'].valid  && ( complexForm.controls['state'].touched)">
                     <div *ngIf="complexForm.controls['state'].errors.required">
-                        state is required
+                        {{"Login_SecurityQuestions.stateRequired" | translate}}
                     </div>
                  </div>
 	        </div>
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-				<p><strong>Ques:</strong> What is your District? </p>
-	           	<md-select placeholder="District" name="District" [(ngModel)]="securityModel.district" [formControl]="complexForm.controls['district']">
+				<p><strong>{{"Login_SecurityQuestions.Ques" | translate}}:</strong>{{"Login_SecurityQuestions.districtQues" | translate}}</p>
+	           	<md-select placeholder="{{'Login_SecurityQuestions.District' | translate}}" name="District" [(ngModel)]="securityModel.district" [formControl]="complexForm.controls['district']">
                     <md-option value="Nandurbar"> Nandurbar </md-option>
                 </md-select>
                 <div style="color: #F44336" *ngIf="!complexForm.controls['district'].valid  && ( complexForm.controls['district'].touched)">
                     <div *ngIf="complexForm.controls['district'].errors.required">
-                        district is required
+                        {{"Login_SecurityQuestions.districtRequired" | translate}}
                     </div>
                 </div>
 
 	        </div>
 	        <div class="form-group col-md-12 col-sm-12 col-xs-12">
-				<p><strong>Ques:</strong> What is your Block? </p>
-	            <md-select placeholder="Block" name="Block" [(ngModel)]="securityModel.block"  [formControl]="complexForm.controls['block']" >
+				<p><strong>{{"Login_SecurityQuestions.Ques" | translate}}:</strong> {{"Login_SecurityQuestions.blockQues" | translate}}</p>
+	            <md-select placeholder="{{'Login_SecurityQuestions.Block' | translate}}" name="Block" [(ngModel)]="securityModel.block"  [formControl]="complexForm.controls['block']" >
                     <md-option value="Akkalkuwa"> Akkalkuwa </md-option>
                     <md-option value="Akrani"> Akrani </md-option>
                 </md-select>
                  <div style="color: #F44336" *ngIf="!complexForm.controls['block'].valid  && ( complexForm.controls['block'].touched)">
                         <div *ngIf="complexForm.controls['block'].errors.required">
-                            block is required
+                            {{"Login_SecurityQuestions.blockRequired" | translate}}
                         </div>
                  </div>
 	        </div>

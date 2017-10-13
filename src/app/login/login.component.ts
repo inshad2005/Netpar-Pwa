@@ -50,20 +50,19 @@ export class LoginComponent implements OnInit {
           this.loginService.Login(this.loginModel)
           .subscribe(data=>{
               if(data.respCode == 1){
-               this.appProvider.current.firstName=data.info.firstName;
-               this.appProvider.current.lastName=data.info.lastName;
-               this.appProvider.current.district=data.info.district;
-               this.appProvider.current.state=data.info.state;
-               this.appProvider.current.block=data.info.block;
-               console.log(this.appProvider.current.firstName);
-                 if (localStorage['userInfo']) {
+                this.appProvider.current.firstName=data.info.firstName;
+                this.appProvider.current.lastName=data.info.lastName;
+                this.appProvider.current.district=data.info.district;
+                this.appProvider.current.state=data.info.state;
+                this.appProvider.current.block=data.info.block;
+                if (localStorage['userInfo']) {
                     this.localData=JSON.parse(localStorage['userInfo']);
-                       if (this.localData.mobileNumber == this.loginModel.mobileNumber) {
-                         this.router.navigate(['/homepage'],{skipLocationChange:true});
-                       }else {
-                         this.securityDialog();
-                       }
-                 }else{
+                    if (this.localData.mobileNumber == this.loginModel.mobileNumber) {
+                        this.router.navigate(['/category-view'],{skipLocationChange:true});
+                    }else {
+                      this.securityDialog();
+                    }
+                }else{
                    this.securityDialog();
                  }
               }
@@ -134,14 +133,15 @@ export class LoginComponent implements OnInit {
             data:{ message:msg}
         });
         dialogRef.afterClosed().subscribe(result => {
-
-          if (result>2) {
-            this.errorMessage="want to update new number"
-            this.openagain(this.errorMessage);
-          }
-           if (result=="update mobile") {
+          if (result) {
+            if (result>2) {
+              this.errorMessage="want to update new number"
+              this.openagain(this.errorMessage);
+            }
+            if (result=="update mobile") {
               this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
               this.verifyUser();
+            }
           }
         });
     }
@@ -164,8 +164,6 @@ export class LoginComponent implements OnInit {
         });
    }
 
-
-
     verifyUser(){
        this.loginService.VerifyMobile(this.loginModel.mobileNumber).subscribe(data=>{
               if (data.success==false) {
@@ -183,13 +181,14 @@ export class LoginComponent implements OnInit {
         let dialogRef = this.dialog.open(SecurityDialogComponent, {
         });
         dialogRef.afterClosed().subscribe(result => {
-          // alert(result)
-          if (result.respCode==1) {
-            this.securityDialog2();
-          }else if (result.respCode==0) {
-            this.errorMessage="entered detail does not match"
-            this.openDialog(this.errorMessage);
-          }
+         if(result){
+            if (result.respCode==1) {
+              this.securityDialog2();
+            }else if (result.respCode==0) {
+              this.errorMessage="entered detail does not match"
+              this.openDialog(this.errorMessage);
+            }
+         }
         });
     }
 
@@ -198,14 +197,14 @@ export class LoginComponent implements OnInit {
            data:{ message:"from login"}
         });
         dialogRef.afterClosed().subscribe(result => {
-          // alert(JSON.stringify(result));
-          if (result.respCode == 1) {
-            localStorage['userInfo']=JSON.stringify(result.info);
-            // alert(localStorage['userInfo']);
-            this.router.navigate(["/homepage"],{skipLocationChange:true})
-          }else{
-            this.errorMessage="gender or dob not matched";
-            this.openDialog(this.errorMessage);
+          if (result) {
+            if (result.respCode == 1) {
+              localStorage['userInfo']=JSON.stringify(result.info);
+              this.router.navigate(["/category-view"],{skipLocationChange:true})
+            }else{
+              this.errorMessage="gender or dob not matched";
+              this.openDialog(this.errorMessage);
+            }
           }
         });
     }

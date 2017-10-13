@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
        .subscribe(data=>{
          if (data.success==true) {
            localStorage['userInfo']=JSON.stringify(data.info);
-           this.router.navigate(["/homepage"],{skipLocationChange:true});
+           this.router.navigate(["/category-view"],{skipLocationChange:true});
          }
          else{
              this.openDialog();

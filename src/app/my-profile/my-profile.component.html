@@ -1,0 +1,332 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="tb-wrap">
+			<section class="article-sec">
+				<div class="card cus-card bg-img">
+	    			<div class="user-profile">	
+	    				<img src="./assets/img/profile_user.jpg" class="img-responsive" />
+	    				<div> Ravi Jasborn </div>
+	    			</div>
+
+	    			<div class="number-profile">
+	    				<div>
+	    					<span> 1452 </span>
+	    					<div> Friends</div>
+	    				</div>
+	    				<div>
+	    					<span> 1452 </span>
+	    					<div> Friends</div>
+	    				</div>
+	    				<div>
+	    					<span> 1452 </span>
+	    					<div> Contribution</div>
+	    				</div>
+	    			</div>
+	    			<div class="profile-detail">
+	    				<div class="list">
+	    					<span>
+	    						<i class="material-icons">call</i>
+	    					</span>
+	    					<span> +91-984746321 </span>
+	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
+	    				</div>
+	    				<div class="list">
+	    					<span>
+	    						<i class="fa fa-venus-mars"></i>
+	    					</span>
+	    					<span> Male </span>
+	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
+	    				</div>
+	    				<div class="list">
+	    					<span>
+	    						<i class="material-icons">location_on</i>
+	    					</span>
+	    					<span> 12 c, Agra, Uttar Pardesh </span>
+	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
+	    				</div>
+	    				<div class="list">
+	    					<span>
+	    						<i class="fa fa-calendar"></i>
+	    					</span>
+	    					<span> 05/01/1994 </span>
+	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
+	    				</div>
+                    </div>
+				</div>
+
+				<div class="card cus-card downloads">
+					<div class="list-heading brd-b">
+						Listing View <span class="pull-right"> <i class="fa fa-angle-right"></i> </span>
+					</div>
+					<div class="download-box">
+						<div class="dow-li md-2">
+							<img src="./assets/img/img-12.jpg" class="img-effect img-responsive" />
+							<span class="badge"> <i class="fa fa-trash"></i> </span>
+						</div>
+						<div class="dow-li md-2">
+							<img src="./assets/img/img-13.jpg" class="img-effect img-responsive" />
+							<span class="badge"> <i class="fa fa-trash"></i> </span>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/img-2.jpg" class="img-effect img-responsive" />
+							<span class="badge"> <i class="fa fa-trash"></i> </span>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/img-3.jpg" class="img-effect img-responsive" />
+							<span class="badge"> <i class="fa fa-trash"></i> </span>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/img-5.jpg" class="img-effect img-responsive" />
+							<span class="badge"> <i class="fa fa-trash"></i> </span>
+						</div>
+					</div>
+					<div class="list-heading brd-t">
+						<span class="pull-right"> View more <i class="fa fa-angle-right"></i> </span>
+					</div>
+				</div>
+
+
+				<div class="card cus-card friend-list">
+					<div class="list-heading">
+						Friends Network
+					</div>
+					<div class="download-box">
+						<div class="dow-li md-3">
+							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
+							<p> Raj Kumar </p>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
+							<p> Raj Kumar </p>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
+							<p> Raj Kumar </p>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
+							<p> Raj Kumar </p>
+						</div>
+						<div class="dow-li md-3">
+							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
+							<p> Raj Kumar </p>
+						</div>
+
+					</div>
+					<div class="list-heading brd-t">
+						<span class="pull-right"> View more <i class="fa fa-angle-right"></i> </span>
+					</div>
+				</div>
+
+				<div class="card cus-card">
+					<md-tab-group class="cus-mat">
+					  	<md-tab label="Saved Posts">
+					  		<div class="list-view3">
+				    			<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-red">
+							        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-orange">
+							        	<img src="./assets/img/img_r-2.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-yellow">
+							        	<img src="./assets/img/img_r-3.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-blue">
+							        	<img src="./assets/img/img_r-4.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-green">
+							        	<img src="./assets/img/img_r-5.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-purple">
+							        	<img src="./assets/img/img_r-6.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-pink">
+							        	<img src="./assets/img/img_r-7.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	
+						    </div>
+
+					  	</md-tab>
+					  	<md-tab label="My Contributions">
+					  		<div class="list-view3">
+				    			<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-red">
+							        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-orange">
+							        	<img src="./assets/img/img_r-2.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-yellow">
+							        	<img src="./assets/img/img_r-3.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-blue">
+							        	<img src="./assets/img/img_r-4.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-green">
+							        	<img src="./assets/img/img_r-5.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-purple">
+							        	<img src="./assets/img/img_r-6.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	<div class="view-lists grid-1">
+							        <a routerLink="/article-details" class="color-pink">
+							        	<img src="./assets/img/img_r-7.jpg" class="img-effect img-responsive"> 
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">News </div>
+							    			</div>
+							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    	
+						    </div>
+
+					  	</md-tab>
+					</md-tab-group>
+				</div>
+
+			</section>
+			<app-footer></app-footer>
+		</div>
+	</div>
+</div>

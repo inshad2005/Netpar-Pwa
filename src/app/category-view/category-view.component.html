@@ -1,0 +1,194 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="header-extra" ></div>
+		<section class="homepage-sec tb-wrap">
+		    <div class="homepage-listing" #fixedBox>
+			    <ul class="homepage-ulist">
+			    	<li class="bg-red"> <a routerLink="/homepage">
+			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Jobs </a> </li>
+			    	<li class="bg-orange"> <a routerLink="/homepage">
+			    		<img src="./assets/img/heart.png" class="img-responsive"> News </a> </li>
+			    	<li class="bg-yellow-g"> <a routerLink="/homepage">
+			    		<img src="./assets/img/politics-512.png" class="img-responsive"> Politics </a> </li>
+			    	<li class="bg-blue"> <a routerLink="/homepage">
+			    		<img src="./assets/img/coins.png" class="img-responsive"> Games </a> </li>
+			    	<li class="bg-green-g"> <a routerLink="/homepage">
+			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Newspaper </a> </li>	
+			    	<!-- <li class="bg-purple"> <a routerLink="/homepage">
+			    		<img src="./assets/img/heart.png" class="img-responsive"> Healthcare </a> </li>	
+			    	<li class="bg-pink"> <a routerLink="/homepage">
+			    		<img src="./assets/img/science-512.png" class="img-responsive"> Agriculture </a>
+			    	</li> -->	
+			    </ul>
+		    </div>	
+
+		    <div class="scroll-menu" *ngIf="showDiv">
+		    	<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-red">
+			        		<img src="./assets/img/agriculture-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-orange">
+			        		<img src="./assets/img/education-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-yellow-g">
+			        		<img src="./assets/img/jobs-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-blue">
+			        		<img src="./assets/img/news-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-green-g">
+			        		<img src="./assets/img/politics-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-purple">
+			        		<img src="./assets/img/science-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-pink">
+			        		<img src="./assets/img/agriculture-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        
+		       	</ngx-slick>
+		    </div>
+
+		    <div class="realpage-view">
+    			<div class="list-view list-view7">
+	    			<div class="big-view">
+	    				<div class="innerbig-view">
+	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
+	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+	    				</div>
+	    			</div>
+
+	    			<div class="view-lists grid-1">
+				        <a routerLink="/homepage" class="color-red">
+				        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+
+			    	<div class="view-lists grid-1 right-view">
+				        <a routerLink="/homepage" class="color-orange">
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+				        	<img src="./assets/img/img_r-2.jpg" class="img-effect img-responsive"> 
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-1">
+				        <a routerLink="/homepage" class="color-yellow">
+				        	<img src="./assets/img/img_r-3.jpg" class="img-effect img-responsive"> 
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/listing-view3" class="color-blue"><img src="./assets/img/img_r-4.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/listing-view3" class="color-green"><img src="./assets/img/img_r-5.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/listing-view3" class="color-purple"><img src="./assets/img/img_r-6.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div>
+
+			    	<!--  -->
+			    	<div class="big-view">
+	    				<div class="innerbig-view">
+	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
+	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+	    				</div>
+	    			</div>
+
+			    	<div class="view-lists grid-1 right-view">
+				        <a routerLink="/homepage" class="color-pink">
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+				        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+			    	
+			    </div>
+
+			</div>
+
+		</section>
+		<app-footer></app-footer>
+	</div>
+</div>

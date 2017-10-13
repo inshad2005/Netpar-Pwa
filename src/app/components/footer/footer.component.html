@@ -13,12 +13,43 @@
                         <i class="material-icons font_34">add_circle</i>
                     </a>
                 </li>
-                <li routerLinkActive="active">
-                    <a routerLink="/profile">
+                <li class="dropdown profile-dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="cusIco-profil"></i>
                         <div> My Profile </div>
                     </a>
+                    <div class="dropdown-menu">
+                        <ul class="profile-dropdown-menu">
+                            <li>
+                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                    <i class="cusIco-profil"></i> My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                    <i class="cusIco-donload"></i> My Downloads
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                    <i class="cusIco-friends"></i> Network Friends
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                    <i class="cusIco-badge"></i> My Saved
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                    <i class="fa fa-plus"></i> My Contributions
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
                 </li>
+
             </ul>
         </nav>
     </div>
@@ -26,19 +57,25 @@
     <div class="bottom-option">
         <ul class="bottom-ul" type="none">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-question"></i> </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <!-- <i class="material-icons">share</i> -->
+                    <img src="./assets/img/share.png" class="img-responsive" />
+                </a>
                 <ul class="dropdown-menu bottom-dropdown">
-                    <li> <a class="bg-blue" routerLink="/homepage"> <i class="material-icons">call</i> </a> </li>
-                    <li> <a class="bg-whatsapp" routerLink="/homepage"> <i class="fa fa-whatsapp"></i> </a> </li>
-                    <li> <a class="bg-red" routerLink="/homepage"> <i class="fa fa-handshake-o"></i> </a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-facebook"> <i class="fa fa-facebook"></i> </span><div>Facebook</div> </a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="fa fa-envelope-o"></i> </span> <div>Mail</div> </a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span> <div>Whatsapp</div> </a> </li>
                 </ul>
             </li>
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="material-icons">share</i></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <!-- <i class="fa fa-question"></i> -->
+                    <img src="./assets/img/help.png" class="img-responsive" />
+                </a>
                 <ul class="dropdown-menu bottom-dropdown">
-                    <li> <a class="bg-blue" routerLink="/homepage"> <i class="fa fa-facebook"></i> </a> </li>
-                    <li> <a class="bg-whatsapp" routerLink="/homepage"> <i class="fa fa-whatsapp"></i> </a> </li>
-                    <li> <a class="bg-red" routerLink="/homepage"> <i class="fa fa-twitter"></i> </a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="material-icons">call</i> </span><div>Call</div></a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>Contact</div></a> </li>
+                    <li> <a routerLink="/homepage"> <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>Help</div></a> </li>
                 </ul>
             </li>
         </ul>

@@ -56,7 +56,16 @@
         "blockRequired":"block is required",
         "dobRequired":"Date of Birth is required",
         "genderRequired":"gender is required",
-        "anserSecurity":"Please answer the security question.",
+        "anserSecurityQuestions":"Please answer the security question.",
+        "Ques":"Ques",
+        "stateQues":"What is your state?",
+        "districtQues":"What is your District?",
+        "blockQues":"What is your Block?",
+        "dobQues":"What is your Date of Birth?",
+        "genderQues":"What is your Gender?",
+        "mobileNumberQues":"What is your Last Mobile Number?",
+        "previousMobileNumber":"Previous mobile number",
+        "update":"Update"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{
@@ -87,6 +96,7 @@
 
 
     "Login_ErrorMesage_UpdateYourMobileNumber":{
+        "sorry":"Sorry!",
         "updateMobile":"Do you want to update your mobile number?",
         "yes":"Yes",
         "no":"No"
