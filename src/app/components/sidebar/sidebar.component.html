@@ -95,9 +95,9 @@
                     <div class="collapse" id="section" aria-expanded="false">
                         <ul class="nav">
                             <li>
-                                <a data-toggle="collapse" href="#news" aria-expanded="false">
-                                    <span class="sidebar-mini">FN</span>
-                                    <p>News <b class="caret"></b> </p>
+                                <a data-toggle="collapse" href="#news" aria-expanded="false" *ngFor="let sec of sections">
+                                    <span class="sidebar-mini">{{sec.sectionName.substring(0, 2)}}</span>
+                                    <p >{{sec.sectionName}}<b class="caret"></b> </p>
                                 </a>
                                 <div class="collapse" id="news" aria-expanded="false">
                                     <ul class="nav">

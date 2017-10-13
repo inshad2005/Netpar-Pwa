@@ -11,14 +11,16 @@ import { FetchSectionsService } from '../providers/fetch-sections.service'
   providers:[FetchSectionsService]
 })
 export class CategoryViewComponent implements OnInit {
-	private listTitles: any[];
+	  private listTitles: any[];
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
-    count:number=1
+    count:number=1;
+    sections;
+    bgClasses;
     constructor(private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
-      	this.location = location;
-        this.sidebarVisible = false;
+      this.location = location;
+      this.sidebarVisible = false;
     }
   	//constructor(@Inject(DOCUMENT) private document: any) { }
 	fixedBoxOffsetTop: number  = 0;
@@ -45,25 +47,55 @@ export class CategoryViewComponent implements OnInit {
 
   	@HostListener("window:scroll", [])
   	@HostListener("window:resize", [])
-
   	onWindowScroll() {
-    	const rect = this.fixedBox.nativeElement.getBoundingClientRect();
+    const rect = this.fixedBox.nativeElement.getBoundingClientRect();
     	if((-rect.top) > rect.height){
     		this.showDiv=true
   		}
   		else{
-           this.showDiv=false
-  		}
-    	
-	}
+        this.showDiv=false
+  		} 	
+	  }
 	slideConfig = {"slidesToShow": 4, "slidesToScroll": 2};
+
+
+// -----------------------------------------------------------mukul-----------------------------------------------
 
   fetchSections(){
     this.fetchSectionService.fetchSections().subscribe(data=>{
-      console.log(JSON.stringify(data));
+      // console.log(JSON.stringify(data));
+      if (data.success==true) {
+        this.sections=data.FinalArray;
+      }
+      
     },err =>{
       console.log(JSON.stringify(err));
     })
   }
+
+  bgClass(i){
+    if (i%7==0) {
+      return "bg-red";
+    }
+    else if (i%7==1) {
+      return "bg-orange";
+    }
+    else if (i%7==2) {
+      return "bg-yellow-g";
+    }
+     else if (i%7==3) {
+      return "bg-blue";
+    }
+     else if (i%7==4) {
+      return "bg-green-g";
+    }
+     else if (i%7==5) {
+      return "bg-purple";
+    }
+     else if (i%7==6) {
+      return "bg-pink";
+    }
+  }
+
 
 }

@@ -10,16 +10,23 @@
 		<section class="homepage-sec tb-wrap">
 		    <div class="homepage-listing" #fixedBox>
 			    <ul class="homepage-ulist">
-			    	<li class="bg-red"> <a routerLink="/homepage">
-			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Jobs </a> </li>
-			    	<li class="bg-orange"> <a routerLink="/homepage">
+			    	<div *ngFor="let sec of sections; let i=index">
+				    	<li class="{{bgClass(i)}}">
+				    		<a routerLink="/homepage">
+				    			<img *ngIf="sec.thumbnailImage" [src]="sec.thumbnailImage" class="img-responsive"> 
+				    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
+				    			{{sec.sectionName}}
+				    	    </a> 
+				    	</li>
+			    	</div>
+			    	<!-- <li class="bg-orange"> <a routerLink="/homepage">
 			    		<img src="./assets/img/heart.png" class="img-responsive"> News </a> </li>
 			    	<li class="bg-yellow-g"> <a routerLink="/homepage">
 			    		<img src="./assets/img/politics-512.png" class="img-responsive"> Politics </a> </li>
 			    	<li class="bg-blue"> <a routerLink="/homepage">
 			    		<img src="./assets/img/coins.png" class="img-responsive"> Games </a> </li>
 			    	<li class="bg-green-g"> <a routerLink="/homepage">
-			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Newspaper </a> </li>	
+			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Newspaper </a> </li>	 -->
 			    	<!-- <li class="bg-purple"> <a routerLink="/homepage">
 			    		<img src="./assets/img/heart.png" class="img-responsive"> Healthcare </a> </li>	
 			    	<li class="bg-pink"> <a routerLink="/homepage">
@@ -30,14 +37,17 @@
 
 		    <div class="scroll-menu" *ngIf="showDiv">
 		    	<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
-			        <div ngxSlickItem class="slide">
-			        	<a routerLink="/homepage" class="bg-red">
-			        		<img src="./assets/img/agriculture-512.png"> 
-			        		<div> Jobs </div>
+			        <div ngxSlickItem class="slide" *ngFor="let sec of sections;let i = index">
+			        	<a routerLink="/homepage" class="{{bgClass(i)}}">
+			        		<div>
+			        			<img *ngIf="sec.thumbnailImage" [src]="sec.thumbnailImage"> 
+			        			<img *ngIf="! sec.thumbnailImage" src="./assets/img/education-512.png"> 
+			        			<div> {{sec.sectionName}} </div>
+			        		</div>
 			        	</a>
 			        </div>
 			        
-			        <div ngxSlickItem class="slide">
+			        <!-- <div ngxSlickItem class="slide">
 			        	<a routerLink="/homepage" class="bg-orange">
 			        		<img src="./assets/img/education-512.png"> 
 			        		<div> Jobs </div>
@@ -72,7 +82,7 @@
 			        		<img src="./assets/img/agriculture-512.png"> 
 			        		<div> Jobs </div>
 			        	</a>
-			        </div>
+			        </div> -->
 			        
 		       	</ngx-slick>
 		    </div>
@@ -129,7 +139,6 @@
 			    			<div class="line"></div>
 			    		</a>
 			    	</div>
-
 			    	<div class="view-lists grid-3">
 				        <a routerLink="/listing-view3" class="color-blue"><img src="./assets/img/img_r-4.jpg"> 
 			    			<div class="suggested-div">
