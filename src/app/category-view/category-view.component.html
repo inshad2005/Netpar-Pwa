@@ -11,7 +11,7 @@
 		    <div class="homepage-listing" #fixedBox>
 			    <ul class="homepage-ulist">
 			    	<div *ngFor="let sec of sections; let i=index">
-				    	<li class="{{bgClass(i)}}">
+				    	<li class="{{bgClass(i)}}" *ngIf="i<=3">
 				    		<a routerLink="/homepage">
 				    			<img *ngIf="sec.thumbnailImage" [src]="sec.thumbnailImage" class="img-responsive"> 
 				    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">

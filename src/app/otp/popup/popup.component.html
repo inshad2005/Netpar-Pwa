@@ -58,10 +58,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='Invalid User'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry"}} </h4>
+		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}} </h4>
 	</div>
 	<div class="modal-body text-center">
-		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails"}}</p>
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
@@ -69,10 +69,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='Only mobile number is matching'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry"}} </h4>
+		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}}</h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails"}}</p>
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
@@ -80,10 +80,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='First Name and Last Name not matching'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry"}} </h4>
+		<h4 class="m-t-0">{{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}} </h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>{{"Login_ErrorMessage_RecheckYourDetails.sorry"}}</p>
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
@@ -91,10 +91,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='entered detail does not match'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry"}}  </h4>
+		<h4 class="m-t-0">{{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}}  </h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>{{"Login_ErrorMessage_RecheckYourDetails.sorry"}} </p>
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}} </p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
