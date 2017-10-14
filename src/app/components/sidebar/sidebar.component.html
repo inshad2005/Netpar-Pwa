@@ -37,38 +37,44 @@
                 <li routerLinkActive="active" >
                     <a routerLink="/category-view">
                         <i class="material-icons">account_circle</i>
-                        <p>Home</p>
+                        <p>{{"MenuScreen.Home" | translate}}</p>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#profile" aria-expanded="false">
                         <i class="material-icons">dashboard</i>
-                        <p>Profile<b class="caret"></b></p>
+                        <p>{{"MenuScreen.MyAccount" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="profile" aria-expanded="false">
                         <ul class="nav">
-                            <li routerLinkActive="active">
+                           <!--  <li routerLinkActive="active">
                                 <a routerLink="/my-profile">
                                     <span class="sidebar-mini">MP</span>
                                     <p>My Profile</p>
                                 </a>
-                            </li>
+                            </li> -->
                             <li routerLinkActive="active">
                                 <a routerLink="/my-contribution">
                                     <span class="sidebar-mini">VS</span>
-                                    <p>View Saved</p>
+                                    <p>{{"MenuScreen.ViewMySavedItems" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
                                 <a routerLink="/my-downloads">
                                     <span class="sidebar-mini">VD</span>
-                                    <p>View Downloaded</p>
+                                    <p>{{"MenuScreen.ViewMyDownloadedItems" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
                                 <a routerLink="/my-contribution">
                                     <span class="sidebar-mini">VC</span>
-                                    <p>View My Contribution</p>
+                                    <p>{{"MenuScreen.ViewMyContributions" | translate}}</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-contribution">
+                                    <span class="sidebar-mini">VS</span>
+                                    <p>{{"MenuScreen.FriendsOnTheNetwork" | translate}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -78,19 +84,19 @@
                 <li routerLinkActive="active" >
                     <a routerLink="/user-contribution">
                         <i class="material-icons">group</i>
-                        <p>Contribute</p>
+                        <p>{{"MenuScreen.Contribute" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
                     <a routerLink="/friends">
                         <i class="material-icons">person</i>
-                        <p>Invite</p>
+                        <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#section" aria-expanded="false">
                         <i class="material-icons">show_chart</i>
-                        <p>Section<b class="caret"></b></p>
+                        <p>{{"MenuScreen.section" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="section" aria-expanded="false">
                         <ul class="nav">
@@ -139,21 +145,21 @@
                 <li routerLinkActive="active" >
                     <a routerLink="/aboutus">
                         <i class="material-icons">person</i>
-                        <p>About Us</p>
+                        <p>{{"MenuScreen.Aboutus" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
                     <a routerLink="/rateus">
                         <i class="material-icons">person</i>
-                        <p>Rate Us</p>
+                        <p>{{"MenuScreen.Rateus" | translate}}</p>
                     </a>
                 </li>
-                <li routerLinkActive="active" >
+             <!--    <li routerLinkActive="active" >
                     <a routerLink="/privacy">
                         <i class="material-icons">person</i>
-                        <p>Privacy Policy</p>
+                        <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>
-                </li>
+                </li> -->
 
             </ul>
         </div>

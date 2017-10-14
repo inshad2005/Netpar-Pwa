@@ -32,12 +32,21 @@
         "moreThanTen":"contact number can not be more than 10 digits"
     },
 
+    "errorMessage":{
+        "sorry":"Sorry!",
+        "somethingWentWrong":"something went wrong",
+        "tryLater":"Please try after some time",
+        "invalidOtp":"Invalid Otp"
+    },
+
     "LoginScreen_SignUp":{
         "FirstName":"First Name",
         "LastName":"Last Name",
         "MobileNumber":"Mobile Number",
         "SignUp":"Sign Up",
-        "ExistingUser":"Existing User? Sign In"
+        "ExistingUser":"Existing User? Sign In",
+        "sorry":"Sorry!",
+        "alreadyRegistered":"Entered Mobile Number Is Already Registered"
     },
 
     "Login_SecurityQuestions":{
@@ -196,7 +205,8 @@
         "Contribute":"Contribute",
         "InviteFriends":"Invite Friends",
         "Aboutus":"About us",
-        "Rateus":"Rate us"
+        "Rateus":"Rate us",
+        "section":"Section"
     },
 
     "ProfilePage":{

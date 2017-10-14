@@ -13,11 +13,11 @@
 <div class="modal-content cus-modal" *ngIf="message=='something went wrong'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> Sorry </h4>
+		<h4 class="m-t-0">{{"errorMessage.sorry" | translate}}</h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>something went wrong</p>
-		<p>Please try after some time</p>
+		<p>{{"errorMessage.somethingWentWrong" | translate}}</p>
+		<p>{{"errorMessage.tryLater" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
@@ -25,10 +25,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='user already registered'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> Sorry </h4>
+		<h4 class="m-t-0"> {{"LoginScreen_SignUp.sorry" | translate}}</h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>Entered Mobile Number Is Already Registered</p>
+		<p>{{"LoginScreen_SignUp.alreadyRegistered" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
 	</div>
 </div>
@@ -113,10 +113,10 @@
 <div class="modal-content cus-modal" *ngIf="message=='Invalid otp'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
-		<h4 class="m-t-0"> Sorry </h4>
+		<h4 class="m-t-0"> {{"errorMessage.sorry" | translate}} </h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>Invalid otp</p>
+		<p>{{"errorMessage.invalidOtp" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Ok </button>
 	</div>
 </div>
@@ -130,7 +130,7 @@
 	<div class="modal-body text-center ">
 		<p>{{"Login_ErrorMesage_UpdateYourMobileNumber.updateMobile" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onUpdate()" > {{"Login_ErrorMesage_UpdateYourMobileNumber.yes" | translate}} </button>
-		<button class="btn custom-btn full-width btn-round" (click)="onClosed"> {{"Login_ErrorMesage_UpdateYourMobileNumber.no"}}</button>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()"> {{"Login_ErrorMesage_UpdateYourMobileNumber.no"}}</button>
 	</div>
 </div>
 
