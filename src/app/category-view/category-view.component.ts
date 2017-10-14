@@ -97,5 +97,9 @@ export class CategoryViewComponent implements OnInit {
     }
   }
 
+  onSections(sec){
+    console.log(JSON.stringify(sec));
+  }
+
 
 }
