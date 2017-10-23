@@ -1,86 +1,84 @@
 <!-- <button (click)="getDays()"> days</button> -->
+<app-navbar2></app-navbar2>
 <section class="home-sec wrap">
     <div class="home-form">
         <div class="login home-panel">
             <img src="./assets/img/logo-5.png" />
             <div class="homeas-sec">
                 <form class="example-form" [formGroup]="complexForm">
-                    <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
-                        <md-select placeholder="{{'Login_SecurityQuestions.State' | translate}}" name="state" [(ngModel)]="registerModel.state" [formControl]="complexForm.controls['state']">
-                            <md-option *ngFor="let state of states"  [value]="state.stateName"> {{state.stateName}} </md-option>
-                        </md-select>
+                    <div class="white-line form-group col-mat-12 col-sm-12 col-xs-12">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.State' | translate}}" name="state" [(ngModel)]="registerModel.state" [formControl]="complexForm.controls['state']">
+                            <mat-option  value="महाराष्ट्र"> महाराष्ट्र </mat-option>
+                        </mat-select>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['state'].valid  && ( complexForm.controls['state'].touched)">
                             <div *ngIf="complexForm.controls['state'].errors.required">
                                 {{"Login_SecurityQuestions.stateRequired" | translate}}
                             </div>
                         </div>
                     </div>
-                    <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="{{'Login_SecurityQuestions.District' | translate}}" [formControl]="complexForm.controls['district']" name="District" [(ngModel)]="registerModel.district">
-                    		<md-option value="Nandurbar"> Nandurbar </md-option>
-                        </md-select>
+                    <div class="white-line form-group col-mat-6 col-sm-6 col-xs-6">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.District' | translate}}" [formControl]="complexForm.controls['district']" name="District" [(ngModel)]="registerModel.district">
+                    		<mat-option value="नंदुरबार"> नंदुरबार </mat-option>
+                        </mat-select>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['district'].valid  && ( complexForm.controls['district'].touched)">
                             <div *ngIf="complexForm.controls['district'].errors.required">
                                 {{"Login_SecurityQuestions.districtRequired" | translate}}
                             </div>
                         </div>
                     </div>
-                    <div class="white-line form-group col-md-6 col-sm-6 col-xs-6">
-                        <md-select placeholder="{{'Login_SecurityQuestions.Block' | translate}}" name="Block" [formControl]="complexForm.controls['block']" [(ngModel)]="registerModel.block"  >
-                            <md-option value="Akkalkuwa"> Akkalkuwa </md-option>
-                            <md-option value="Akrani"> Akrani </md-option>
-                        </md-select>
+                    <div class="white-line form-group col-mat-6 col-sm-6 col-xs-6">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.Block' | translate}}" name="Block" [formControl]="complexForm.controls['block']" [(ngModel)]="registerModel.block"  >
+                            <mat-option value="अक्कलकुवा"> अक्कलकुवा </mat-option>
+                            <mat-option value="अक्रानी"> अक्रानी </mat-option>
+                        </mat-select>
                          <div style="color: #F44336" *ngIf="!complexForm.controls['block'].valid  && ( complexForm.controls['block'].touched)">
                             <div *ngIf="complexForm.controls['block'].errors.required">
                                 {{"Login_SecurityQuestions.blockRequired" | translate}}
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-sm-12 col-xs-12 p-b-0">
+                    <div class="col-mat-12 col-sm-12 col-xs-12 p-b-0">
                     	<label class="color-white"> {{'Login_SecurityQuestions.DateofBirth' | translate}} </label>
                     </div>
-                    <div class="white-line form-group col-md-12 col-sm-12 col-xs-12">
-                        <md-form-field>
-                            <input mdInput [mdDatepicker]="picker" [formControl]="complexForm.controls['dob']" placeholder="{{'Login_SecurityQuestions.Month' | translate}}/{{'Login_SecurityQuestions.Date' | translate}}/{{'Login_SecurityQuestions.Year' | translate}}" name="dob" [(ngModel)]="DOB">
-                            <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
-                            <md-datepicker #picker></md-datepicker>
-                        </md-form-field>
+                   <!--  <div class="white-line form-group col-mat-12 col-sm-12 col-xs-12">
+                        <mat-form-field>
+                            <input matInput [matDatepicker]="picker" [formControl]="complexForm.controls['dob']" placeholder="{{'Login_SecurityQuestions.Month' | translate}}/{{'Login_SecurityQuestions.Date' | translate}}/{{'Login_SecurityQuestions.Year' | translate}}" name="dob" [(ngModel)]="DOB">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
                         <div style="color: #F44336" *ngIf="!complexForm.controls['dob'].valid  && ( complexForm.controls['dob'].touched)">
                             <div *ngIf="complexForm.controls['dob'].errors.required">
                                 {{"Login_SecurityQuestions.dobRequired" | translate}}
                             </div>
                         </div>
-                    </div>
-                   <!--  <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
-                        <md-select placeholder="DD" name="Date" [(ngModel)]="dd">
-                    		<md-option value="01" *ngFor="let d of days"> {{d.value}} </md-option>
-                        </md-select>
-                    </div>
-                    <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
-                        <md-select placeholder="MM" name="month" [(ngModel)]="mm">
-                    		<md-option value="Jan" *ngFor="let n of months">{{n.name}}</md-option>
-                        </md-select>
-                    </div>
-                    <div class="white-line form-group col-md-4 col-sm-4 col-xs-4">
-                        <md-select placeholder="YYYY" name="year" [(ngModel)]="yy">
-                    		<md-option value="1980"> 1980 </md-option>
-                            <md-option value="1981"> 1981 </md-option>
-                            <md-option value="1982"> 1982 </md-option>
-                            <md-option value="1983"> 1983 </md-option>
-                        </md-select>
                     </div> -->
-                    <div class="white-line form-group col-md-12 col-sm-12 col-xs-12 p-0">
-                     <md-radio-group name="{{'Login_SecurityQuestions.Gender' | translate}}" [formControl]="complexForm.controls['gender']" [(ngModel)]="registerModel.gender">
-                        <md-radio-button value="{{'Login_SecurityQuestions.Male' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Male' | translate}}</md-radio-button>
-                        <md-radio-button value="{{'Login_SecurityQuestions.Female' | translate}}" class="col-md-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Female' | translate}}</md-radio-button>
-                    </md-radio-group>
+                    <div class="white-line form-group col-mat-4 col-sm-4 col-xs-4">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.Date' | translate}}" [formControl]="complexForm.controls['date']" name="Date" [(ngModel)]="dd">
+                    		<mat-option  [value]="d.value" *ngFor="let d of days"> {{d.value}} </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="white-line form-group col-mat-4 col-sm-4 col-xs-4">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.Month' | translate}}" [formControl]="complexForm.controls['month']" name="month" [(ngModel)]="mm">
+                    		<mat-option  [value]="m.name" *ngFor="let m of months">{{m.name}}</mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="white-line form-group col-mat-4 col-sm-4 col-xs-4">
+                        <mat-select placeholder="{{'Login_SecurityQuestions.Year' | translate}}" [formControl]="complexForm.controls['year']" name="year" [(ngModel)]="yy">
+                    		<mat-option  [value]="y.year" *ngFor="let y of years"> {{y.year}} </mat-option>
+                        </mat-select>
+                    </div>
+                    <div class="white-line form-group col-mat-12 col-sm-12 col-xs-12 p-0">
+                     <mat-radio-group name="{{'Login_SecurityQuestions.Gender' | translate}}" [formControl]="complexForm.controls['gender']" [(ngModel)]="registerModel.gender">
+                        <mat-radio-button value="male" class="col-mat-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Male' | translate}}</mat-radio-button>
+                        <mat-radio-button value="female" class="col-mat-6 col-sm-6 col-xs-6">{{'Login_SecurityQuestions.Female' | translate}}</mat-radio-button>
+                    </mat-radio-group>
                      <div style="color: #F44336" *ngIf="!complexForm.controls['gender'].valid  && ( complexForm.controls['gender'].touched)">
                             <div *ngIf="complexForm.controls['gender'].errors.required">
                                 {{"Login_SecurityQuestions.genderRequired" | translate}}
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
                         <button class="btn custom-btn btn-round full-width" [disabled]="!complexForm.valid" (click)="onRegister()"> {{'LoginScreen_SignUp.SignUp' | translate}} </button>
                     </div>
                 </form>

@@ -9,6 +9,14 @@
         "Comejoinus":"Come, join us"
     },
 
+    "validationPopups":{
+        "sorry":"Sorry!",
+        "enterFirstName":"Please Enter First Name",
+        "enterLastName":"Please Enter Last Name",
+        "enterMobileNumber":"Please Enter Mobile Number",
+        "incorrectMobileNumber":"your mobile number is incorrect retype it"
+    },
+
     "WelcomeScreen":{
         "WelcometoNetpar":"Welcome to Netpar",
         "SignIn":"Sign In",
@@ -17,6 +25,7 @@
     },
 
     "LoginScreen_SignIn":{
+        "previous":"Previous",
         "FirstName":"First Name",
         "LastName":"Last Name",
         "MobileNumber":"Mobile Number",
@@ -126,7 +135,9 @@
     },
 
     "OTPScreen":{
-        "OtpSent":"We have sent you the OTP, wait till we detect it",
+        "great":"Great!",
+        "OtpSent":"We have sent you the OTP,",
+        "wait":"wait till we detect it",
         "orYouCanEnter":"Or you can enter the OTP",
         "enterOTp":"enter OTP",
         "ResendOTP":"Resend OTP",

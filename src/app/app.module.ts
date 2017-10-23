@@ -6,12 +6,12 @@ import { RouterModule } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MdProgressBarModule, MdCheckboxModule, MdProgressSpinnerModule, MdSelectModule, MdInputModule, MdRadioModule} from "@angular/material";
-import { MdListModule, MdDialogModule } from '@angular/material';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
-import { MdDatepickerModule, MdNativeDateModule,MdExpansionModule} from '@angular/material';
-import {  MdTooltipModule, MdTableModule, MdPaginator } from "@angular/material";
-import { MdTabsModule} from '@angular/material';
+import { MatProgressBarModule, MatCheckboxModule, MatProgressSpinnerModule, MatSelectModule, MatInputModule, MatRadioModule} from "@angular/material";
+import { MatListModule, MatDialogModule } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDatepickerModule, MatNativeDateModule,MatExpansionModule} from '@angular/material';
+import {  MatTooltipModule, MatTableModule, MatPaginator } from "@angular/material";
+import { MatTabsModule} from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
@@ -29,9 +29,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { OtpComponent } from './otp/otp.component';
-import { PopupComponent } from './otp/popup/popup.component';
-import { SecurityDialogComponent } from './otp/security-dialog/security-dialog.component';
-import { SecurityDialog2Component } from './otp/security-dialog2/security-dialog2.component';
+import { PopupComponent } from './alerts/popup/popup.component';
+import { SecurityDialogComponent } from './alerts/security-dialog/security-dialog.component';
+import { SecurityDialog2Component } from './alerts/security-dialog2/security-dialog2.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { Homepage2Component } from './homepage2/homepage2.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
@@ -42,7 +42,7 @@ import { StateDialogComponent } from './welcome-screen2/state-dialog/state-dialo
 import { LanguageDialogComponent } from './welcome-screen2/language-dialog/language-dialog.component';
 import { Navbar2Component } from './components/navbar2/navbar2.component';
 import { AppProvider } from './providers/app';
-import { Popup2Component } from './otp/popup2/popup2.component';
+import { Popup2Component } from './alerts/popup2/popup2.component';
 import { ListingViewComponent } from './listing-view/listing-view.component';
 import { ListingView3Component } from './listing-view3/listing-view3.component';
 import { ListingView6Component } from './listing-view6/listing-view6.component';
@@ -54,6 +54,8 @@ import { FriendsComponent } from './friends/friends.component';
 import { MyContributionComponent } from './my-contribution/my-contribution.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { FilterComponent } from './filter/filter.component';
+import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
+import { ValidationBoxesComponent } from './alerts/validation-boxes/validation-boxes.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -97,6 +99,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MyContributionComponent,
     MyProfileComponent,
     FilterComponent,
+    RegisterationStepOneComponent,
+    ValidationBoxesComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,16 +109,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
     BrowserAnimationsModule,
     NoopAnimationsModule,
-    MdProgressBarModule,
-    MdCheckboxModule,
-    MdProgressSpinnerModule,
-    MdSelectModule,
-    MdInputModule,
-    MdRadioModule,
-    MdTabsModule,
-    MdDatepickerModule,
-    MdNativeDateModule,
-    MdTooltipModule,
+    MatProgressBarModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatInputModule,
+    MatRadioModule,
+    MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTooltipModule,
     HttpClientModule,
     TranslateModule.forRoot({
         loader: {
@@ -123,18 +127,18 @@ export function HttpLoaderFactory(http: HttpClient) {
             deps: [HttpClient]
         }
     }),
-    MdTableModule,
-    MdListModule,
+    MatTableModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
     JsonpModule,
-    MdExpansionModule,
+    MatExpansionModule,
     SlickModule.forRoot(),
   ],
   providers: [AppProvider],
   bootstrap: [AppComponent],
-  entryComponents: [ Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
+  entryComponents: [ ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 
 })
 

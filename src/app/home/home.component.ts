@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   onSignUp(){
     this.appProvider.current.fromPageFlag="signup";
-  	this.router.navigate(['/login'],{skipLocationChange:true})
+  	this.router.navigate(['/registerationStepOne'],{skipLocationChange:true})
   }
 
 }

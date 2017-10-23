@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdInputModule } from '@angular/material';
+import { MatInputModule } from '@angular/material';
 import { LoginModel } from './login.model.component';
 import { LoginService } from './login.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Params, ActivatedRoute } from '@angular/router';
 import { AppProvider } from '../providers/app';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { PopupComponent } from '../otp/popup/popup.component';
-import { Popup2Component } from '../otp/popup2/popup2.component'
-import { SecurityDialogComponent } from '../otp/security-dialog/security-dialog.component';
-import { SecurityDialog2Component } from '../otp/security-dialog2/security-dialog2.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PopupComponent } from '../alerts/popup/popup.component';
+import { Popup2Component } from '../alerts/popup2/popup2.component';
+import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component';
+import { SecurityDialogComponent } from '../alerts/security-dialog/security-dialog.component';
+import { SecurityDialog2Component } from '../alerts/security-dialog2/security-dialog2.component';
 
-
+declare var google
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,115 +22,125 @@ import { SecurityDialog2Component } from '../otp/security-dialog2/security-dialo
   providers:[LoginService]
 })
 export class LoginComponent implements OnInit {
-	complexForm: FormGroup;
+  @ViewChild('first') first:ElementRef;
+  @ViewChild('last') last:ElementRef;
+	// complexForm: FormGroup;
 	loginModel: LoginModel = new LoginModel ();
   data;
   verifiedData;
   errorMessage;
   localData;
+  loginButton=true;
   securityDialogModel:any;
   fromPage;
   DOB;
- constructor(private dialog: MdDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
- 	this.complexForm = formBuilder.group({
-      'firstName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
-      'lastName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
-      'contactNumber':[null, Validators.compose([Validators.minLength(10),Validators.maxLength(10),Validators.required, Validators.pattern("[0-9]*")])]
-    })
+  validationErrorMessage;
+ constructor(private dialog: MatDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
+ 	// this.complexForm = formBuilder.group({
+  //     'firstName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
+  //     'lastName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
+  //     'contactNumber':[null, Validators.compose([Validators.minLength(10),Validators.maxLength(10),Validators.required, Validators.pattern("[0-9]*")])]
+  //   })
    this.securityDialogModel={}
   }
 
-  ngOnInit() {
+    ngOnInit() {
       this.data= this.appProvider.current.fromPageFlag;
-  }
+       var options = {
+          sourceLanguage:
+              google.elements.transliteration.LanguageCode.ENGLISH,
+          destinationLanguage:
+              [google.elements.transliteration.LanguageCode.MARATHI],
+          shortcutKey: 'ctrl+g',
+          transliterationEnabled: true
+        };
+        var control = new google.elements.transliteration.TransliterationControl(options);
+        control.makeTransliteratable(['firstName','lastname']);
+    }
 
-  onLogIn(){
-    if (this.loginModel.mobileNumber.length==10) {
-        if(this.data=="login"){
-          this.loginModel.platform="Browser";
-          this.loginService.Login(this.loginModel)
-          .subscribe(data=>{
-              if(data.respCode == 1){
-                this.appProvider.current.firstName=data.info.firstName;
-                this.appProvider.current.lastName=data.info.lastName;
-                this.appProvider.current.district=data.info.district;
-                this.appProvider.current.state=data.info.state;
-                this.appProvider.current.block=data.info.block;
-                if (localStorage['userInfo']) {
-                    this.localData=JSON.parse(localStorage['userInfo']);
-                    if (this.localData.mobileNumber == this.loginModel.mobileNumber) {
-                        this.router.navigate(['/category-view'],{skipLocationChange:true});
-                    }else {
-                      this.securityDialog();
-                    }
-                }else{
-                   this.securityDialog();
-                 }
-              }
-              else if(data.respCode == 2 ){
-                this.appProvider.current.firstName=this.loginModel.firstName;
-                this.appProvider.current.lastName=this.loginModel.lastName;
-                // this.appProvider.current.previousMobileNumber=data.info.mobileNumber;
-                this.errorMessage="incorrect mobile number";
-                this.openDialog(this.errorMessage);
-              }
-              else if(data.respCode == 5 ){
-                 this.errorMessage="Invalid User";
-                 this.openDialog(this.errorMessage)
-              }
-              else if(data.respCode == 6){
-                this.errorMessage="Only mobile number is matching";
-                this.openDialog(this.errorMessage)
-              }
-              else if (data.respCode == 7) {
-                this.errorMessage="First Name and Last Name not matching";
-                this.openDialog(this.errorMessage);
-              }
-          },err=>{
-            this.errorMessage="something went wrong"
-            this.openDialog(this.errorMessage);
-          })
-          
+    onLogIn(){
+      let validate = {
+        firstName: this.loginModel.firstName,
+        lastName: this.loginModel.lastName,
+        mobileNumber:this.loginModel.mobileNumber
+      }
+      if (!validate.firstName) {
+        this.validationErrorMessage="first name missing"
+        this.openValidationAlert(this.validationErrorMessage);
+        return
+      } if (!validate.lastName) {
+        this.validationErrorMessage="last name missing"
+        this.openValidationAlert(this.validationErrorMessage);
+        return
+      } if(!validate.mobileNumber){
+        this.validationErrorMessage="mobile number missing"
+        this.openValidationAlert(this.validationErrorMessage);
+        return
+      }
+      this.mainLoginFunction();
+    }
+
+    mainLoginFunction(){
+        if (this.loginModel.mobileNumber.length==10) {
+            this.loginButton=false;
+            this.loginModel.platform="Browser";
+            this.loginModel.firstName=this.first.nativeElement.value;
+            this.loginModel.lastName=this.last.nativeElement.value;
+            this.loginService.Login(this.loginModel)
+            .subscribe(data=>{
+                this.loginButton=true;
+                if(data.respCode == 1){
+                  this.appProvider.current.firstName=data.info.firstName;
+                  this.appProvider.current.lastName=data.info.lastName;
+                  this.appProvider.current.district=data.info.district;
+                  this.appProvider.current.state=data.info.state;
+                  this.appProvider.current.block=data.info.block;
+                  if (localStorage['userInfo']) {
+                      this.localData=JSON.parse(localStorage['userInfo']);
+                      if (this.localData.mobileNumber == this.loginModel.mobileNumber) {
+                          this.openDialog("welcome back");
+                          this.router.navigate(['/category-view'],{skipLocationChange:true});
+                      }else {
+                        this.securityDialog();
+                      }
+                  }else{
+                     this.securityDialog();
+                   }
+                }
+                else if(data.respCode == 2 ){
+                  this.appProvider.current.firstName=this.loginModel.firstName;
+                  this.appProvider.current.lastName=this.loginModel.lastName;
+                  // this.appProvider.current.previousMobileNumber=data.info.mobileNumber;
+                  this.errorMessage="incorrect mobile number";
+                  this.openDialog(this.errorMessage);
+                }
+                else if(data.respCode == 5 ){
+                   this.errorMessage="Invalid User";
+                   this.openDialog(this.errorMessage)
+                }
+                else if(data.respCode == 6){
+                  this.errorMessage="Only mobile number is matching";
+                  this.openDialog(this.errorMessage)
+                }
+                else if (data.respCode == 7) {
+                  this.errorMessage="First Name and Last Name not matching";
+                  this.openDialog(this.errorMessage);
+                }
+            },err=>{
+              this.loginButton=true;
+              this.errorMessage="something went wrong"
+              this.openDialog(this.errorMessage);
+            })
+        }else{
+          this.validationErrorMessage="incorrect mobile number";
+          this.openValidationAlert(this.validationErrorMessage);
+          return 0
         }
-    }else{
-      this.errorMessage="incorrect mobile number";
-      this.openDialog(this.errorMessage);
-      return 0
     }
-  }
-
-  onNext(){
-    if (this.loginModel.mobileNumber.length==10) {
-       this.loginService.VerifyMobile(this.loginModel.mobileNumber)
-       .subscribe(data=>{
-         this.verifiedData=data;
-         if (this.verifiedData.success==true) {
-           this.appProvider.current.firstName=this.loginModel.firstName;
-           this.appProvider.current.lastName=this.loginModel.lastName;
-           this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
-           this.appProvider.current.newMobileNumber=this.loginModel.mobileNumber;
-           this.appProvider.current.toOtpPageFlag="registerPage"
-           this.router.navigate(['/otp'],{skipLocationChange:true});
-          }  
-          else if (this.verifiedData.success==false) {
-            this.errorMessage="user already registered";
-            this.openDialog(this.errorMessage);
-          }     
-       },err=>{
-            this.errorMessage="something went wrong"
-            this.openDialog(this.errorMessage);
-       })
-    }else{
-      this.errorMessage="incorrect mobile number"
-      this.openDialog(this.errorMessage);
-      return 0
-    }
-  }
-
 
     openDialog(msg): void {
         let dialogRef = this.dialog.open(PopupComponent, {
-            width: '240px',
+            width: '260px',
             data:{ message:msg}
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -142,13 +153,16 @@ export class LoginComponent implements OnInit {
               this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
               this.verifyUser();
             }
+            if (result=="Signup") {
+              this.resetForSignUp();
+            }
           }
         });
     }
 
    openagain(msg){
       let dialogRef = this.dialog.open(PopupComponent, {
-            width: '240px',
+            width: '260px',
             data:{ message:msg}
         });
         dialogRef.afterClosed().subscribe(result => {
@@ -164,18 +178,18 @@ export class LoginComponent implements OnInit {
         });
    }
 
-    verifyUser(){
-       this.loginService.VerifyMobile(this.loginModel.mobileNumber).subscribe(data=>{
-              if (data.success==false) {
-                 this.errorMessage="user already registered";
-                 this.openDialog(this.errorMessage);
-              }else if (data.success==true) {
-                this.appProvider.current.toOtpPageFlag="updateMobileNo";
-                this.router.navigate(['/otp'],{skipLocationChange:true});
-              }
-              // alert(JSON.stringify(data));
-            })
-    }
+  verifyUser(){
+      this.loginService.VerifyMobile(this.loginModel.mobileNumber).subscribe(data=>{
+          if (data.success==false) {
+             this.errorMessage="user already registered";
+             this.openDialog(this.errorMessage);
+          }else if (data.success==true) {
+            this.appProvider.current.toOtpPageFlag="updateMobileNo";
+            this.router.navigate(['/otp'],{skipLocationChange:true});
+          }
+          // alert(JSON.stringify(data));
+      })
+  }
 
     securityDialog(): void {
         let dialogRef = this.dialog.open(SecurityDialogComponent, {
@@ -208,5 +222,24 @@ export class LoginComponent implements OnInit {
           }
         });
     }
+
+    onNewUser(){
+     this.router.navigate(['/registerationStepOne'],{skipLocationChange:true})
+    }
+
+    resetForSignUp(){
+       this.router.navigate(['/registerationStepOne'])
+    }
+
+    openValidationAlert(msg){
+        let dialogRef = this.dialog.open(ValidationBoxesComponent, {
+            width: '260px',
+            data:{ message:msg}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          
+        });
+    }
+
 
 }

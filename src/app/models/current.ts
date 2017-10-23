@@ -9,6 +9,7 @@ export class Current {
     district:any;
     block:any;
     incorrectMobileDetailCount=0;
+    otp:any;
     constructor(public leadsFilter?: string) {
     }
 }

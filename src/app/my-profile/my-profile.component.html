@@ -11,7 +11,7 @@
 				<div class="card cus-card bg-img">
 	    			<div class="user-profile">	
 	    				<img src="./assets/img/profile_user.jpg" class="img-responsive" />
-	    				<div> Ravi Jasborn </div>
+	    				<div> {{userData.firstName}} {{userData.lastName}} </div>
 	    			</div>
 
 	    			<div class="number-profile">
@@ -33,7 +33,7 @@
 	    					<span>
 	    						<i class="material-icons">call</i>
 	    					</span>
-	    					<span> +91-984746321 </span>
+	    					<span> +91-{{userData.mobileNumber}} </span>
 	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
 	    				</div>
 	    				<div class="list">
@@ -47,14 +47,14 @@
 	    					<span>
 	    						<i class="material-icons">location_on</i>
 	    					</span>
-	    					<span> 12 c, Agra, Uttar Pardesh </span>
+	    					<span> {{userData.block}}, {{userData.district}},{{userData.state}} </span>
 	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
 	    				</div>
 	    				<div class="list">
 	    					<span>
 	    						<i class="fa fa-calendar"></i>
 	    					</span>
-	    					<span> 05/01/1994 </span>
+	    					<span> {{userData.dateOfBirth}} </span>
 	    					<span class=""> <i class="material-icons">mode_edit</i> </span>
 	    				</div>
                     </div>
@@ -65,23 +65,23 @@
 						Listing View <span class="pull-right"> <i class="fa fa-angle-right"></i> </span>
 					</div>
 					<div class="download-box">
-						<div class="dow-li md-2">
+						<div class="dow-li mat-2">
 							<img src="./assets/img/img-12.jpg" class="img-effect img-responsive" />
 							<span class="badge"> <i class="fa fa-trash"></i> </span>
 						</div>
-						<div class="dow-li md-2">
+						<div class="dow-li mat-2">
 							<img src="./assets/img/img-13.jpg" class="img-effect img-responsive" />
 							<span class="badge"> <i class="fa fa-trash"></i> </span>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/img-2.jpg" class="img-effect img-responsive" />
 							<span class="badge"> <i class="fa fa-trash"></i> </span>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/img-3.jpg" class="img-effect img-responsive" />
 							<span class="badge"> <i class="fa fa-trash"></i> </span>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/img-5.jpg" class="img-effect img-responsive" />
 							<span class="badge"> <i class="fa fa-trash"></i> </span>
 						</div>
@@ -97,23 +97,23 @@
 						Friends Network
 					</div>
 					<div class="download-box">
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
 							<p> Raj Kumar </p>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
 							<p> Raj Kumar </p>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
 							<p> Raj Kumar </p>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
 							<p> Raj Kumar </p>
 						</div>
-						<div class="dow-li md-3">
+						<div class="dow-li mat-3">
 							<img src="./assets/img/profile_user.jpg" class="img-effect img-responsive" />
 							<p> Raj Kumar </p>
 						</div>
@@ -125,8 +125,8 @@
 				</div>
 
 				<div class="card cus-card">
-					<md-tab-group class="cus-mat">
-					  	<md-tab label="Saved Posts">
+					<mat-tab-group class="cus-mat">
+					  	<mat-tab label="Saved Posts">
 					  		<div class="list-view3">
 				    			<div class="view-lists grid-1">
 							        <a routerLink="/article-details" class="color-red">
@@ -223,8 +223,8 @@
 						    	
 						    </div>
 
-					  	</md-tab>
-					  	<md-tab label="My Contributions">
+					  	</mat-tab>
+					  	<mat-tab label="My Contributions">
 					  		<div class="list-view3">
 				    			<div class="view-lists grid-1">
 							        <a routerLink="/article-details" class="color-red">
@@ -321,8 +321,8 @@
 						    	
 						    </div>
 
-					  	</md-tab>
-					</md-tab-group>
+					  	</mat-tab>
+					</mat-tab-group>
 				</div>
 
 			</section>

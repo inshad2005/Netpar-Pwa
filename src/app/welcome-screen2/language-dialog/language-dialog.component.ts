@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
-import {MdListModule} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {MatListModule} from '@angular/material';
 
 @Component({
   selector: 'app-language-dialog',
@@ -9,8 +9,8 @@ import {MdListModule} from '@angular/material';
 })
 export class LanguageDialogComponent implements OnInit {
 
-  	constructor(private dialog: MdDialog, public dialogRef: MdDialogRef<LanguageDialogComponent>,
-  	@Inject(MD_DIALOG_DATA) public data: any) { }
+  	constructor(private dialog: MatDialog, public dialogRef: MatDialogRef<LanguageDialogComponent>,
+  	@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   	ngOnInit() {
   	}

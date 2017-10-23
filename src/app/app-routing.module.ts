@@ -22,14 +22,16 @@ import { FriendsComponent } from './friends/friends.component';
 import { MyContributionComponent } from './my-contribution/my-contribution.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { FilterComponent } from './filter/filter.component';
+import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component'
 
 const routes: Routes = [// { path: 'home',      component: HomeComponent },
     // { path: 'admin',      component: AdminComponent },
-    { path: '',  redirectTo: 'welcome-screen', pathMatch: 'full' },
+    { path: '',  redirectTo: 'welcome-screen2', pathMatch: 'full' },
     { path: 'welcome-screen', component: WelcomeScreenComponent },
     { path: 'welcome-screen2', component: WelcomeScreen2Component },
     { path: 'home',  component: HomeComponent },
     { path: 'login', component: LoginComponent },
+    { path:'registerationStepOne',component:RegisterationStepOneComponent},
     { path: 'register', component: RegisterComponent },
     { path: 'otp', component: OtpComponent },
     { path: 'homepage', component: HomepageComponent },

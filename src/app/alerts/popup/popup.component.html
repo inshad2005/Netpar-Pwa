@@ -1,0 +1,165 @@
+<!-- <div class="modal-content cus-modal" *ngIf="message == 'incorrect mobile number'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> Sorry </h4>
+	</div>
+	<div class="modal-body text-center">
+		<p>Your number is incorrect.</p>
+		<p>Retype it and try again.</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Ok </button>
+	</div>
+</div> -->
+
+<div class="modal-content cus-modal" *ngIf="message=='something went wrong'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"errorMessage.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"errorMessage.somethingWentWrong" | translate}}</p>
+		<p>{{"errorMessage.tryLater" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='user already registered'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"LoginScreen_SignUp.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"LoginScreen_SignUp.alreadyRegistered" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='incorrect mobile number'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"Login_ErrorMessage_IncorrectMobileNumber.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMessage_IncorrectMobileNumber.incorrectMobileNumber" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}}</button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='Mobile Number not matching'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.notRegistered" | translate }}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.ok" | translate }} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='Invalid User'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center">
+		<p>{{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.notRegistered" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onSignup()" > {{"WelcomeScreen.SignUp" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='Only mobile number is matching'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='First Name and Last Name not matching'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='entered detail does not match'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"Login_ErrorMessage_RecheckYourDetails.sorry" | translate}}  </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMessage_RecheckYourDetails.recheckDetails" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='gender or dob not matched'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"Login_ErrorMesage_SecurityQuestionAnswerisincorrect.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMesage_SecurityQuestionAnswerisincorrect.incorrectAnswer" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='Invalid otp'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"errorMessage.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"errorMessage.invalidOtp" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Ok </button>
+	</div>
+</div>
+
+
+<div class="modal-content cus-modal" *ngIf="message=='want to update new number'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0"> {{"Login_ErrorMesage_UpdateYourMobileNumber.sorry" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMesage_UpdateYourMobileNumber.updateMobile" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onUpdate()" > {{"Login_ErrorMesage_UpdateYourMobileNumber.yes" | translate}} </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()"> {{"Login_ErrorMesage_UpdateYourMobileNumber.no" | translate}}</button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='mobile number updated'">
+	<div class="modal-header text-center color-green">
+		<h1 class="close-icon m-0"> <i class="material-icons">check_circle</i></h1>	
+		<h4 class="m-t-0"> Success </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>Your Mobile Number is updated Successfuly</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onUpdatedSuccessfuly()" > Ok </button>
+		<!-- <button class="btn custom-btn full-width btn-round" (click)="onClosed"> Cancel</button> -->
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='welcome back'">
+	<div class="modal-header text-center color-green">
+		<h1 class="close-icon m-0"> <i class="material-icons">check_circle</i></h1>	
+		<h4 class="m-t-0"> {{"Login_SuccessfulSignIn.Welcomeback" | translate}} </h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"Login_SuccessfulSignIn.signInSuccessfull" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onUpdatedSuccessfuly()" > Ok </button>
+		<!-- <button class="btn custom-btn full-width btn-round" (click)="onClosed"> Cancel</button> -->
+	</div>
+</div>
+
+
+
+
+
+

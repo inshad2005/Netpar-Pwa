@@ -769,9 +769,15 @@ ul{
 .cus-modal .modal-header .close-icon{
   line-height: 1;
 }
+.cus-modal .modal-header.color-green{
+  color: $color-green;
+}
+
 .cus-modal .modal-header .close-icon i{
   font-size: 54px;
 }
+
+
 
 /*---------Homepage Sec----- */
 
@@ -1367,6 +1373,8 @@ img.rad-shad{
     font-weight: normal;
   }
 } 
+
+
 
 .view-lists .line {
   margin: 6px 0 0;

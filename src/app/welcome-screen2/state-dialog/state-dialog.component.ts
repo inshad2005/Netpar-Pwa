@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA} from '@angular/material';
-import { MdListModule } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatListModule } from '@angular/material';
 import { StateService } from '../../providers/state.service'
 
 
@@ -13,8 +13,8 @@ import { StateService } from '../../providers/state.service'
 export class StateDialogComponent implements OnInit {
 	states;
   unionTerritories;
-	constructor(private dialog: MdDialog, public dialogRef: MdDialogRef<StateDialogComponent>,
-  	@Inject(MD_DIALOG_DATA) public data: any, private stateService:StateService) { }
+	constructor(private dialog: MatDialog, public dialogRef: MatDialogRef<StateDialogComponent>,
+  	@Inject(MAT_DIALOG_DATA) public data: any, private stateService:StateService) { }
 
   	ngOnInit() {
       this.getStates();

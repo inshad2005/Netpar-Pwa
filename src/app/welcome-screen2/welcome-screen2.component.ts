@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material'; 
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'; 
 import { StateDialogComponent } from './state-dialog/state-dialog.component';
 import { LanguageDialogComponent } from './language-dialog/language-dialog.component';
 import { StateService } from '../providers/state.service';
@@ -17,7 +17,7 @@ export class WelcomeScreen2Component implements OnInit {
   languages;
   selectedState;
   selectedLanguage;
-  constructor(private dialog: MdDialog, private router:Router, private stateService:StateService,private languageService:LanguageService) { 
+  constructor(private dialog: MatDialog, private router:Router, private stateService:StateService,private languageService:LanguageService) { 
 
   }
 
@@ -42,8 +42,8 @@ export class WelcomeScreen2Component implements OnInit {
     }
 
     onSelected(){
-      if (this.selectedLanguage && this.selectedState) {
-       this.router.navigate(['/home'],{skipLocationChange:true})
+      if (this.selectedLanguage) {
+       this.router.navigate(['/welcome-screen'],{skipLocationChange:true})
       }
     }
 

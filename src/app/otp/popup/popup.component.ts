@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { MdListModule } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatListModule } from '@angular/material';
 import { AppProvider } from '../../providers/app';
 
 
@@ -12,8 +12,8 @@ import { AppProvider } from '../../providers/app';
 export class PopupComponent implements OnInit {
   message;
   count;
-  constructor(private appProvider:AppProvider,private dialog: MdDialog, public dialogRef: MdDialogRef<PopupComponent>,
-  @Inject(MD_DIALOG_DATA) public data: any) { }
+  constructor(private appProvider:AppProvider,private dialog: MatDialog, public dialogRef: MatDialogRef<PopupComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
     // this.message=this.data.message;

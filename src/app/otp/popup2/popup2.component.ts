@@ -1,5 +1,5 @@
 import { Component, OnInit,Inject } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { AppProvider } from '../../providers/app';
 import { UpdateMobileService } from '../../providers/update-mobile.service';
 import { UpdateMobileModel } from './updateMobile.model.component';
@@ -17,8 +17,8 @@ export class Popup2Component implements OnInit {
   complexForm: FormGroup;
 	updateMobileModel:UpdateMobileModel=new UpdateMobileModel();
 
-  constructor(private formBuilder: FormBuilder,private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private dialog: MdDialog, public dialogRef: MdDialogRef<Popup2Component>,
-  @Inject(MD_DIALOG_DATA) public data: any) { 
+  constructor(private formBuilder: FormBuilder,private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private dialog: MatDialog, public dialogRef: MatDialogRef<Popup2Component>,
+  @Inject(MAT_DIALOG_DATA) public data: any) { 
      this.complexForm = formBuilder.group({
       'dob':[null,Validators.compose([Validators.required])],
       'gender':[null,Validators.compose([Validators.required])]

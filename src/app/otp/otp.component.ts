@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialog, MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
-import { PopupComponent } from './popup/popup.component';
-import { Popup2Component } from './popup2/popup2.component'
-import { SecurityDialogComponent } from './security-dialog/security-dialog.component';
-import { SecurityDialog2Component } from './security-dialog2/security-dialog2.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PopupComponent } from '../alerts/popup/popup.component';
+import { Popup2Component } from '../alerts/popup2/popup2.component'
+import { SecurityDialogComponent } from '../alerts/security-dialog/security-dialog.component';
+import { SecurityDialog2Component } from '../alerts/security-dialog2/security-dialog2.component';
 import { Params, ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { OtpService } from '../providers/otp.service';
@@ -34,8 +34,9 @@ export class OtpComponent implements OnInit {
   value4;
   value5;
   value6;
+  generatedOtp
  
-  	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MdDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
+  	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MatDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
     
   	ngOnInit() {
       this.mobileNo=this.appProvider.current.mobileNumber;
@@ -54,7 +55,7 @@ export class OtpComponent implements OnInit {
             this.securityDialog();
           }
           if (result=="updated successfuly") {
-           this.router.navigate(['/homepage'],{skipLocationChange:true})
+           this.router.navigate(['/category-view'],{skipLocationChange:true})
           }
 		 	    
         });
@@ -155,34 +156,50 @@ export class OtpComponent implements OnInit {
   // }
 
   onSendOtp(mobileNo){
-    this.otpService.getOtp(mobileNo).subscribe(data=>{
-      this.optResponse=data.json()
-      console.log(this.optResponse);
-      this.sessionId=this.optResponse.Details;
+    this.generatedOtp=Math.floor(Math.random() * 1000000);
+    this.otpService.sendOtp(mobileNo,this.generatedOtp).subscribe(data=>{
+      if (data.Status == "Success") {
+       this.appProvider.current.otp=data.otp;
+       console.log("otp saved"+ data.otp);
+      }
     },err=>{
       this.errorMessage="incorrect mobile number";
       this.openDialog(this.errorMessage);  
     })
   }
 
+  // onValidateOtp(){
+  //   // this.securityDialog();
+  //   this.otpService.verifyOtp(this.sessionId,this.otp).subscribe(data=>{
+  //     this.validateResponse=data.json();
+  //     if(this.validateResponse.Status == "Success"){
+  //       // this.router.navigate(["/register",{skipLocationChange:true}]);
+  //       if (this.appProvider.current.toOtpPageFlag=="registerPage") {
+  //         this.router.navigate(["/register",{skipLocationChange:true}]);
+  //       }
+  //       else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
+  //           this.securityDialog();
+  //       }
+  //     }else{
+  //       this.errorMessage="incorrect mobile number";
+  //       this.openDialog(this.errorMessage);
+  //     }
+  //   },err=>{
+  //     console.log(err.status);
+  //   })
+  // }
+
   onValidateOtp(){
-    // this.securityDialog();
-    this.otpService.verifyOtp(this.sessionId,this.otp).subscribe(data=>{
-      this.validateResponse=data.json();
-      if(this.validateResponse.Status == "Success"){
-        // this.router.navigate(["/register",{skipLocationChange:true}]);
-        if (this.appProvider.current.toOtpPageFlag=="registerPage") {
-          this.router.navigate(["/register",{skipLocationChange:true}]);
-        }
-        else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
-            this.securityDialog();
-        }
+      if(this.otp == this.appProvider.current.otp){
+          if (this.appProvider.current.toOtpPageFlag=="registerPage") {
+            this.router.navigate(["/register"],{skipLocationChange:true});
+          }
+          else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
+              this.securityDialog();
+          }
       }else{
-        this.errorMessage="incorrect mobile number";
+        this.errorMessage="Invalid otp";
         this.openDialog(this.errorMessage);
       }
-    },err=>{
-      console.log(err.status);
-    })
   }
 }

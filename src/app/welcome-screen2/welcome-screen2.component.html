@@ -3,15 +3,17 @@
 		<img src="./assets/img/logo_w.png" />
 	</div>
 	<div class="welcome-content welcome-content2 text-center">
-		<div class="col-md-12 col-sm-12 col-xs-12">
-			<md-select placeholder="{{'ContributionForm.SelectState' | translate}}" [(ngModel)]="selectedState" class="welcome-select btn btn-primary" (change)="onSelected()">
-	    		<md-option *ngFor="let state of states" [value]="state.stateName" > {{state.stateName}} </md-option>
-	        </md-select>
-	    </div>
-	    <div class="col-md-12 col-sm-12 col-xs-12">
-			<md-select placeholder="{{'ContributionForm.SelectLanguage' | translate}}"  [(ngModel)]="selectedLanguage" class="welcome-select btn btn-primary" (change)="onSelected()">
-	    		<md-option *ngFor="let language of languages" [value]="language.languageName">{{language.languageName}}</md-option>
-	        </md-select>
+		<!-- <div class="col-mat-12 col-sm-12 col-xs-12">
+			<mat-select placeholder="{{'ContributionForm.SelectState' | translate}}" [(ngModel)]="selectedState" class="welcome-select btn btn-primary" (change)="onSelected()">
+	    		<mat-option *ngFor="let state of states" [value]="state.stateName" > {{state.stateName}} </mat-option>
+	        </mat-select>
+	    </div> -->
+	    <div class="col-mat-12 col-sm-12 col-xs-12">
+	    	<mat-form-field>
+				<mat-select placeholder="{{'ContributionForm.SelectLanguage' | translate}}"  [(ngModel)]="selectedLanguage" class="welcome-select btn black-btn" (change)="onSelected()">
+		    		<mat-option value="मराठी">मराठी</mat-option>
+		        </mat-select>
+	    	</mat-form-field>
 	    </div>
 	</div>
 	<div class="triangle first-triangle"></div>

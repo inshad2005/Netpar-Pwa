@@ -9,6 +9,14 @@
         "Comejoinus":"या, नेटपरवर सहभागी व्हा. "
     },
 
+     "validationPopups":{
+        "sorry":"माफ करा.",
+        "enterFirstName":"नाव प्रविष्ट करा",
+        "enterLastName":"आडनाव प्रविष्ट करा",
+        "enterMobileNumber":"मोबाईल नंबर प्रविष्ट करा",
+        "incorrectMobileNumber":"आपला मोबाईल नंबर चुकीचा  पुन्हा टाईप करा !"
+    },
+
     "WelcomeScreen":{
         "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
         "SignIn":"साईन इन ",
@@ -17,6 +25,7 @@
     },
 
     "LoginScreen_SignIn":{
+        "previous":"परत",
         "FirstName":"नाव",
         "LastName":"आडनाव ",
         "MobileNumber":"मोबाईल नंबर ",
@@ -126,7 +135,9 @@
     },
 
     "OTPScreen":{
-        "OtpSent":"आम्ही तुम्हाला ओटीपी पाठवला आहे, तो आम्ही तपासेपर्यंत वाट पाहा",
+        "great":"Great!",
+        "OtpSent":"आम्ही तुम्हाला ओटीपी पाठवला आहे,",
+        "wait": "तो आम्ही तपासेपर्यंत वाट पाहा",
         "orYouCanEnter":"किंवा आपला ओटीपी टाइप करा",
         "enterOTp":"येथे ओटीपी लिहा",
         "ResendOTP":"पुन्हा ओटीपी पाठवा",
