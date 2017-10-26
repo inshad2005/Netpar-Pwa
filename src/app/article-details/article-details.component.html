@@ -10,10 +10,10 @@
 			<section class="article-sec">
 				<div class="card cus-card">
 					<div class="inner-card yellow-brd">
-				    	<h4 class="font-400"> Delhi Metro Ridership falls Ridership falls Ridership falls </h4>
+				    	<h4 class="font-400"> {{articleData.headline}} </h4>
 				    </div>
 				    <div class="inner-card dashed-brd">
-				    	<p> Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi Metro Delhi  </p>
+				    	<p>{{articleData.tagline}} </p>
 				    	<p>
 				    		<strong> By: </strong>
 				    		<span class="text-blue"> Peter Parker </span>
@@ -37,12 +37,76 @@
 		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> Download </a> 
 		    			</li>
 		    		</ul>
-		    		<div class="inner-card dashed-brd">
+		    		<!-- <div *ngFor="let article of articleData.contentBody">
+		    			<div *ngIf="article.tag=='image'">
+		    				<img src="{{article.url}}">
+		    			</div>
+		    			<div *ngIf="article.tag=='text'">
+		    				<div  [innerHtml]="getSafeContent(article.text)" ></div>
+		    			</div>
+		    		</div> -->
+		    		<div class="inner-card dashed-brd" *ngFor="let content of articleData.contentBody">
+					  	<div class="form-group" *ngIf="content.tag=='image'" [ngStyle]="{background:content.backgroundColor}">
+					   		<img [src]="content.url" class="img-responsive rad-shad" />
+					 	</div>
+						<div [ngStyle]="{background:content.backgroundColor}" *ngIf="content.tag=='text'">
+						   <p class="text-light">{{content.text}}</p>
+						</div>
+				  
+					  	<audio controls style="width:100%" *ngIf="content.tag=='audio'">
+					        <source [src]="content.url"  type="audio/mpeg" />
+					        Your browser does not support the audio element.
+					    </audio>
+					    <video id="my-video" controls preload="auto" width="100%" *ngIf="content.tag=='video'">
+					         <source [src]="content.url" type="video/mp4">
+					    </video>
+				        <div style="text-align: center;" *ngIf="content.tag=='document'" document><img width="50%" style="display: inline-block;" [src]="content.url"></div>
+				    	<table class="main" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" *ngIf="content.tag=='grid'">
+				            <tbody>
+				                <tr style="text-align: center;">
+				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
+				                        <audio controls style="width:100%" *ngIf="content.audiourl1!=null">
+							            	<source [src]="content.audiourl1"  type="audio/mpeg" />
+							             	Your browser does not support the audio element.
+							         	</audio>
+							        	<video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl1!=null">
+							             	<source [src]="content.videourl1" type="video/mp4">
+							         	</video>
+				                        <img *ngIf="content.documenturl1!=null" width="50%" style="display: inline-block;" [src]="content.documenturl1" >
+				                        <img *ngIf="content.imgurl1!=null" style="width:100%" [src]="content.imgurl1">
+				                    </td>
+				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
+				                        <audio controls style="width:100%" *ngIf="content.audiourl2!=null">
+								            <source [src]="content.audiourl2"  type="audio/mpeg" />
+								             Your browser does not support the audio element.
+								        </audio>
+								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl2!=null">
+								             <source [src]="content.videourl2" type="video/mp4">
+								        </video>
+				                        <img *ngIf="content.documenturl2!=null" width="50%" style="display: inline-block;" [src]="content.documenturl2" >
+				                        <img *ngIf="content.imgurl2!=null" style="width:100%" [src]="content.imgurl2">
+				                    </td>
+				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
+								        <audio controls style="width:100%" *ngIf="content.audiourl3!=null">
+								             <source [src]="content.audiourl3"  type="audio/mpeg" />
+								             Your browser does not support the audio element.
+								        </audio>
+								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl3!=null">
+								             <source [src]="content.videourl3" type="video/mp4">
+								        </video>
+				                        <img *ngIf="content.documenturl3!=null" width="50%" style="display: inline-block;" [src]="content.documenturl3" >
+				                        <img *ngIf="content.imgurl3!=null" style="width:100%" [src]="content.imgurl3">
+				                    </td>
+				                </tr>
+				            </tbody>
+				        </table>
+ 					</div>
+		    		<!-- <div class="inner-card dashed-brd">
 		    			<div class="form-group">
 		    				<img src="./assets/img/metro.jpeg" class="img-responsive rad-shad" />
 		    			</div>
 		    			<p class="text-light">Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment</p>
-		    		</div>
+		    		</div> -->
 		    		<ul class="like-bar dashed-brd">
 		    			<li>
 		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> 1500 </a> 

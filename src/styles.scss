@@ -562,15 +562,17 @@ ul{
   bottom: 7%;
 }
 
-.welcome-select.btn {
+.welcome-select.mat-form-field {
   width: 230px;
-  padding: 7px 10px;
   display: inline-block;
   max-width: 80%;
 }
+.welcome-select .btn{
+  padding: 10px;
+}
 .welcome-select .mat-select-value {
-  width: calc(100% - 18px);
-  text-align: center;
+  min-width: calc(100% - 18px);
+
 } 
 .welcome-select .mat-select-value-text{
   width: 100%;
@@ -578,13 +580,28 @@ ul{
 .welcome-select.mat-select .mat-select-trigger {
   font-size: 12px;
 }
+.welcome-select .mat-form-field-wrapper{
+  padding-bottom: 0;
+}
+.welcome-select .mat-form-field-infix{
+  padding: 0;
+  border-top: 0;
+}
+.welcome-select .mat-select{
+  margin: 0;
+}
 .welcome-select .mat-select-value, .welcome-select .mat-select-disabled .mat-select-value, .welcome-select .mat-select-arrow, .welcome-select .mat-select-trigger{
   color: #fff;
 }
-.welcome-select .mat-select-placeholder.mat-floating-placeholder{
+.welcome-select .mat-form-field-placeholder{
+  color: #fff;
+  top: 1.781em;
+  left: 9px;
+}
+.welcome-select .mat-input-placeholder.mat-floating-placeholder{
   visibility: hidden;
 }
-.welcome-select .mat-select-underline, .welcome-select.mat-select:focus .mat-select-underline {
+.welcome-select .mat-input-underline, .welcome-select.mat-select:focus .mat-input-underline, .welcome-select.mat-focused .mat-form-field-underline .mat-form-field-ripple {
   height: 0;
 }
 
@@ -732,9 +749,9 @@ ul{
 .white-line .mat-radio-outer-circle{
   border-color: #fff;
 }
-.mat-select .mat-select-trigger{
+/*.mat-select .mat-select-trigger{ 10-25
   min-width: 50px;
-}
+}*/
 
 
 /* -----custom modal------ */
@@ -1587,11 +1604,12 @@ img.rad-shad{
 }
 .list-view7 .view-lists.grid-1 img {
   max-width: 48%;
+  width: 100%;
 }
 
 .list-view7 .view-lists.grid-1.right-view img {
-  max-width: 48%;
-  margin-left: 52%;
+  max-width: 49%;
+  margin-left: 50%;
   float: none;
 }
 .list-view7 .view-lists.grid-1.right-view .list-text-wrap {
@@ -1883,4 +1901,8 @@ img.rad-shad{
 }
 .filter-box .mat-expansion-panel:not([class*=mat-elevation-z]){
   box-shadow: none;
+}
+.loop-div{
+  width: 100%;
+  float: left;
 }

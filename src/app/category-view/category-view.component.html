@@ -13,7 +13,7 @@
 			    	<div *ngFor="let sec of sections; let i=index">
 				    	<li class="{{bgClass(i)}}" *ngIf="i<=3">
 				    		<a routerLink="/listing-view3">
-				    			<img *ngIf="sec.thumbnailImage" [src]="sec.thumbnailImage" class="img-responsive"> 
+				    			<img *ngIf="sec.thumbnailImage" [src]="getThumbnailImage(sec.thumbnailImage)" class="img-responsive"> 
 				    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
 				    			{{sec.sectionName}}
 				    	    </a> 
@@ -40,7 +40,7 @@
 			        <div ngxSlickItem class="slide" *ngFor="let sec of sections;let i = index">
 			        	<a routerLink="/homepage" class="{{bgClass(i)}}">
 			        		<div>
-			        			<img *ngIf="sec.thumbnailImage" [src]="sec.thumbnailImage"> 
+			        			<img *ngIf="sec.thumbnailImage" [src]="getThumbnailImage(sec.thumbnailImage)"> 
 			        			<img *ngIf="! sec.thumbnailImage" src="./assets/img/education-512.png"> 
 			        			<div> {{sec.sectionName}} </div>
 			        		</div>
@@ -89,29 +89,89 @@
 
 		    <div class="realpage-view">
     			<div class="list-view list-view7">
-	    			<div class="big-view">
+	    			<!-- <div class="big-view">
 	    				<div class="innerbig-view">
 	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
 	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
 	    				</div>
-	    			</div>
-
-	    			<div class="view-lists grid-1">
-				        <a routerLink="/article-details" class="color-red">
-				        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
-			    			<div class="list-text-wrap one-heading">
-			    				<div class="text-red"> Games </div>
+	    			</div> -->
+	    			<div *ngFor="let postData of allPostData;let i = index" class="loop-div {{getclass(i)}}">
+		    			<div class="view-lists grid-1" *ngIf="i%6==0">
+					        <a  class="color-red" (click)="onFeeds(postData)">
+					        	<img src="{{postData.thumbnailPicture}}" class="img-effect img-responsive"> 
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text">{{postData.headline.slice(0,25)}}... </div>
+					    			</div>
+					    			<div class="detail-text"> {{postData.tagline}} </div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>
+					    <div class="view-lists grid-1 right-view" *ngIf="i%6==1">
+					        <a class="color-orange" (click)="onFeeds(postData)">
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text">{{postData.headline}}</div>
+					    			</div>
+					    			<div class="detail-text">{{postData.tagline}}</div>
+					    		</div>
+					        	<img src="{{postData.thumbnailPicture}}" class="img-effect img-responsive"> 
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>
+				    	<div class="view-lists grid-1" *ngIf="i%6==2">
+					        <a  class="color-yellow" (click)="onFeeds(postData)">
+					        	<img src="{{postData.thumbnailPicture}}" class="img-effect img-responsive"> 
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text">{{postData.headline}} </div>
+					    			</div>
+					    			<div class="detail-text"> {{postData.tagline}}</div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+			    		</div>
+			    		<div class="view-lists grid-3" *ngIf="i%6==3">
+					        <a  class="color-blue" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}"> 
 				    			<div class="suggested-div">
-				    				<div class="suggested-text">News </div>
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-				    		</div>
-		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-			    			<div class="line"></div>
-			    		</a>
-			    	</div>
+				    			<div class="detail-text"> {{postData.headline}}</div>
+				    		</a>
+			    		</div>
+				    	<div class="view-lists grid-3" *ngIf="i%6==4">
+					        <a  class="color-green" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}"> 
+				    			<div class="suggested-div">
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+				    			</div>
+				    			<div class="detail-text"> {{postData.headline}}</div>
+				    		</a>
+				    	</div>
+				    	<div class="view-lists grid-3" *ngIf="i%6==5">
+					        <a  class="color-purple" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}"> 
+				    			<div class="suggested-div">
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+				    			</div>
+				    			<div class="detail-text"> {{postData.headline}}</div>
+				    		</a>
+				    	</div>
+	    			</div>
+	    			
 
-			    	<div class="view-lists grid-1 right-view">
+<!-- 			    	<div class="view-lists grid-1 right-view">
 				        <a routerLink="/article-details" class="color-orange">
 			    			<div class="list-text-wrap one-heading">
 			    				<div class="text-red"> Games </div>
@@ -168,17 +228,15 @@
 			    			</div>
 			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
 			    		</a>
-			    	</div>
-
-			    	<!--  -->
-			    	<div class="big-view">
+			    	</div> -->
+			    	<!-- <div class="big-view">
 	    				<div class="innerbig-view">
 	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
 	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
 	    				</div>
-	    			</div>
+	    			</div> -->
 
-			    	<div class="view-lists grid-1 right-view">
+			    <!-- 	<div class="view-lists grid-1 right-view">
 				        <a routerLink="/article-details" class="color-pink">
 			    			<div class="list-text-wrap one-heading">
 			    				<div class="text-red"> Games </div>
@@ -191,12 +249,9 @@
 		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
 			    			<div class="line"></div>
 			    		</a>
-			    	</div>
-			    	
+			    	</div> -->
 			    </div>
-
 			</div>
-
 		</section>
 		<app-footer></app-footer>
 	</div>

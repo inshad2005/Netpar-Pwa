@@ -10,6 +10,7 @@ export class Current {
     block:any;
     incorrectMobileDetailCount=0;
     otp:any;
+    articleDetails:any;
     constructor(public leadsFilter?: string) {
     }
 }
