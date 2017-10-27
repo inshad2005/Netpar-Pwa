@@ -17,15 +17,15 @@
 				    	<p>
 				    		<strong> By: </strong>
 				    		<span class="text-blue"> Peter Parker </span>
-				    		<span class="text-light pull-right"> 12-Aug-2017 </span>
+				    		<span class="text-light pull-right"> {{articleData.dateOfCreation}} </span>
 				    	</p>
 				    	<p class="m-0 text-right font_12">
-				    		<i> 1500 Likes &#x25CF; 300 Comments </i>
+				    		<i> {{articleData.likeCount}} Likes &#x25CF; {{articleData.commentCount}} Comments </i>
 				    	</p>
 				    </div>
 			    	<ul class="like-bar dashed-brd">
 		    			<li class="active">
-		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay"></i></span> Like </a>
+		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> Like </a>
 		    			</li>
 		    			<li>
 		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> Comment </a> 

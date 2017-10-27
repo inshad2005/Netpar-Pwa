@@ -35,6 +35,7 @@ export class NavbarComponent implements OnInit {
         this.sidebarVisible = true;
         localStorage['menuOpen']='true'
     };
+
     sidebarClose() {
         const body = document.getElementsByTagName('body')[0];
         this.toggleButton.classList.remove('toggled');
@@ -42,14 +43,15 @@ export class NavbarComponent implements OnInit {
         body.classList.remove('nav-open');
         localStorage['menuOpen']='false'
     };
+    
     sidebarToggle() {
         // const toggleButton = this.toggleButton;
         // const body = document.getElementsByTagName('body')[0];
-        if (this.sidebarVisible === false) {
+        if (this.sidebarVisible == false) {
             this.sidebarOpen();
             this.sidebarVisible = false
         } else {
-           //this.sidebarClose();
+           this.sidebarClose();
         }
     };
 

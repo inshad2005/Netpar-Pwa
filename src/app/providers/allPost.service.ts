@@ -19,4 +19,15 @@ export class AllPostsService {
             return error;
         });
     }
+
+    likePost(articleLikeData): Observable<any>{
+        let api = environment.endPoint+"postLike";
+        let body=articleLikeData;
+        return this.http.post(api,body)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
 }

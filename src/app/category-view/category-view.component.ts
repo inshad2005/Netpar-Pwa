@@ -1,11 +1,14 @@
-import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef,AfterViewInit } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef,AfterViewInit,OnDestroy } from '@angular/core';
 import { DOCUMENT, BrowserModule } from '@angular/platform-browser';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FetchSectionsService } from '../providers/fetch-sections.service';
 import { AllPostsService } from'../providers/allPost.service' ;
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.prod';
-import { AppProvider } from '../providers/app'
+import { AppProvider } from '../providers/app';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/map';
 
 
 @Component({
@@ -14,7 +17,7 @@ import { AppProvider } from '../providers/app'
   styleUrls: ['./category-view.component.css'],
   providers:[FetchSectionsService,AllPostsService]
 })
-export class CategoryViewComponent implements AfterViewInit{
+export class CategoryViewComponent implements AfterViewInit ,OnDestroy{
 	  private listTitles: any[];
     location: Location;
     private toggleButton: any;
@@ -24,9 +27,6 @@ export class CategoryViewComponent implements AfterViewInit{
     bgClasses;
     thumbnailUrl=environment.thumbnail;
     allPostData;
-    gridStyle1;
-    gridStyle2;
-    gridStyle3;
     constructor(private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
@@ -41,8 +41,9 @@ export class CategoryViewComponent implements AfterViewInit{
   		this.onWindowScroll();
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-      this.fetchSections();
-      this.fetchAllPosts();
+      // this.fetchSections();
+      // this.fetchAllPosts();
+      this.fetchData();
   	}
 
   	navRemove(){
@@ -72,30 +73,6 @@ export class CategoryViewComponent implements AfterViewInit{
 // -----------------------------------------------------------mukul-----------------------------------------------
   getThumbnailImage(imageName){
     return environment.thumbnail+imageName;
-  }
-
-
-  fetchSections(){
-    this.fetchSectionService.fetchSections().subscribe(data=>{
-      // console.log(JSON.stringify(data));
-      if (data.success==true) {
-        this.sections=data.FinalArray;
-      }
-      
-    },err =>{
-      console.log(JSON.stringify(err));
-    })
-  }
-
-  fetchAllPosts(){
-    this.allPostsService.allPosts().subscribe(data=>{
-      if (data.success==true) {
-        this.allPostData=data.response;
-
-      }
-    },err =>{
-      console.log(JSON.stringify(err));
-    })
   }
 
   bgClass(i){
@@ -156,11 +133,22 @@ export class CategoryViewComponent implements AfterViewInit{
     this.router.navigate(["/article-details"],{skipLocationChange:true});
   }
 
-getclass(i){
-  if (i%6>2) {
-    return 'new'
+  getclass(i){
+    if (i%6>2) {
+      return 'new'
+    }
   }
-}
+
+  fetchData(){
+    Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts()]).subscribe(results => {
+      this.sections=results[0].FinalArray;
+      this.allPostData=results[1].response;
+    });
+  }
+
+  ngOnDestroy(){
+    
+  }
 
 
 }

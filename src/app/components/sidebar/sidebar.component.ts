@@ -100,7 +100,7 @@ export class SidebarComponent implements OnInit {
             this.template=' ';
             this.profile='';
         }
-}
+  }
 
   /*ngOnInit() {
       System.import('../../assets/js/sidebar-moving-tab.js');
