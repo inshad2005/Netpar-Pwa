@@ -43,6 +43,7 @@ export class WelcomeScreen2Component implements OnInit {
 
     onSelected(){
       if (this.selectedLanguage) {
+       localStorage['selectedLanguage']=this.selectedLanguage;
        this.router.navigate(['/welcome-screen'],{skipLocationChange:true})
       }
     }

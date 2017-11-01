@@ -21,22 +21,23 @@ export class RegisterationStepOneComponent implements OnInit {
   loginModel:LoginModel= new LoginModel();
   validationErrorMessage
   verifiedData;
-  errorMessage
+  errorMessage;
+  loading;
   constructor(private dialog: MatDialog,private appProvider:AppProvider,private loginService:LoginService, private router:Router,private formBuilder: FormBuilder) { 
 
 }
 
   ngOnInit() {
-    var options = {
-            sourceLanguage:
-                google.elements.transliteration.LanguageCode.ENGLISH,
-            destinationLanguage:
-                [google.elements.transliteration.LanguageCode.MARATHI],
-            shortcutKey: 'ctrl+g',
-            transliterationEnabled: true
-        };
-    var control = new google.elements.transliteration.TransliterationControl(options);
-    control.makeTransliteratable(['firstName','lastname']);
+    // var options = {
+    //         sourceLanguage:
+    //             google.elements.transliteration.LanguageCode.ENGLISH,
+    //         destinationLanguage:
+    //             [google.elements.transliteration.LanguageCode.MARATHI],
+    //         shortcutKey: 'ctrl+g',
+    //         transliterationEnabled: true
+    //     };
+    // var control = new google.elements.transliteration.TransliterationControl(options);
+    // control.makeTransliteratable(['firstName','lastname']);
   }
 
    onNext(){
@@ -63,10 +64,21 @@ export class RegisterationStepOneComponent implements OnInit {
     // this.router.navigate(['/otp'],{skipLocationChange:true});
   }
 
+  onBlurFirstName(){
+    this.appProvider.current.firstName_eng=this.loginModel.firstName;
+  }
+
+  onBlurLastName(){
+    this.appProvider.current.lastName_eng=this.loginModel.lastName;
+  }
+
   mainSignUpFunction(){
          this.loginModel.firstName=this.first.nativeElement.value;
          this.loginModel.lastName=this.last.nativeElement.value;
+         console.log(this.loginModel.firstName);
+         console.log(this.loginModel.lastName);
           if (this.loginModel.mobileNumber.length==10) {
+            this.loading=true
              this.loginService.VerifyMobile(this.loginModel.mobileNumber)
              .subscribe(data=>{
                this.verifiedData=data;
@@ -75,16 +87,22 @@ export class RegisterationStepOneComponent implements OnInit {
                  this.appProvider.current.lastName=this.last.nativeElement.value;
                  this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
                  this.appProvider.current.newMobileNumber=this.loginModel.mobileNumber;
-                 this.appProvider.current.toOtpPageFlag="registerPage"
+                 this.appProvider.current.toOtpPageFlag="registerPage";
+                 this.loading=false
                  this.router.navigate(['/otp'],{skipLocationChange:true});
+
                 }  
                 else if (this.verifiedData.success==false) {
                   this.errorMessage="user already registered";
                   this.openDialog(this.errorMessage);
+                  this.loading=false
+
                 }     
              },err=>{
                   this.errorMessage="something went wrong"
                   this.openDialog(this.errorMessage);
+                  this.loading=false
+
              })
           }else{
             this.errorMessage="incorrect mobile number"

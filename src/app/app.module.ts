@@ -56,6 +56,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { FilterComponent } from './filter/filter.component';
 import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
 import { ValidationBoxesComponent } from './alerts/validation-boxes/validation-boxes.component';
+import { RevupDirective } from './directives/revup.directive';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -101,6 +102,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterComponent,
     RegisterationStepOneComponent,
     ValidationBoxesComponent,
+    RevupDirective,
   ],
   imports: [
     BrowserModule,

@@ -26,9 +26,10 @@ export class RegisterComponent implements OnInit {
  dateValue;
  totalYears=100;
  years;
- dd
- mm
- yy
+ dd;
+ mm;
+ yy;
+ loading=false;
 
   constructor(private formBuilder: FormBuilder,private appProvider:AppProvider,private dialog: MatDialog,private router:Router,private stateService:StateService,private registerService:RegisterService,private route:  ActivatedRoute) { 
     this.complexForm = formBuilder.group({
@@ -43,7 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.getStatelist();
+  	 this.getStatelist();
      this.getDays();
      this.getMonths();
      this. getYears();
@@ -100,19 +101,25 @@ export class RegisterComponent implements OnInit {
        this.registerModel.dateOfBirth=this.dd+"-"+this.month+"-"+this.yy;
        this.registerModel.firstName=this.appProvider.current.firstName;
        this.registerModel.lastName=this.appProvider.current.lastName;
+       this.registerModel.firstName_eng=this.appProvider.current.firstName_eng;
+       this.registerModel.lastName_eng=this.appProvider.current.lastName_eng;
        this.registerModel.mobileNumber=this.appProvider.current.mobileNumber;
        this.registerModel.platform="Browser";
+       this.loading=true;
     	 this.registerService.Register(this.registerModel)
        .subscribe(data=>{
          if (data.success==true) {
+           this.loading=false
            localStorage['userInfo']=JSON.stringify(data.response);
            console.log(localStorage['userInfo'])
            this.router.navigate(["/category-view"],{skipLocationChange:true});
          }
          else{
+           this.loading=false
              this.openDialog();
          }
        },err=>{
+         this.loading=false
          this.openDialog();
        })
   }
@@ -154,7 +161,6 @@ export class RegisterComponent implements OnInit {
 
 
     getYears(){
-      
       var currentYear = new Date().getFullYear();
       this.years=[];
       for (var i = currentYear; i > currentYear - this.totalYears; i--) {

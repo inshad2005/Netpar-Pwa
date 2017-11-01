@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-
+import { Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,8 +12,8 @@ export class NavbarComponent implements OnInit {
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
-
-    constructor(location: Location,  private element: ElementRef) {
+    userData=JSON.parse(localStorage['userInfo']);
+    constructor(private translateService:TranslateService,location: Location,  private element: ElementRef) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -67,6 +67,11 @@ export class NavbarComponent implements OnInit {
               return this.listTitles[item].title;
           }
       }
-      return 'Dashboard';
+      if(titlee=='category-view'){
+        return this.translateService.instant('BottomBarandTopBar.welcomeForMale')+" "+ this.userData.firstName 
+      }
+      else{
+        return titlee;
+      }
     }
 }

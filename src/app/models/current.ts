@@ -11,6 +11,8 @@ export class Current {
     incorrectMobileDetailCount=0;
     otp:any;
     articleDetails:any;
+    firstName_eng:string;
+    lastName_eng:string;
     constructor(public leadsFilter?: string) {
     }
 }

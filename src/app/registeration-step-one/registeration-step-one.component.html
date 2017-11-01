@@ -1,5 +1,8 @@
 <app-navbar2></app-navbar2>
 <section class="home-sec wrap">
+    <div class="loader-box" *ngIf="loading">
+        <img src="./assets/img/netpar_logo.gif" class="img-responsive" />
+    </div>
     <div class="home-form">
         <div class="login home-panel">
             <img src="./assets/img/logo-5.png" />
@@ -8,7 +11,7 @@
                     <div class="white-line form-group col-mat-6 col-sm-6 col-xs-6">
                         <mat-form-field>
                             <span matPrefix><i class="cusIco-firstname"></i>&nbsp;</span>
-                            <input #first matInput placeholder="{{'LoginScreen_SignIn.FirstName'| translate}}" type="text"  [(ngModel)]="loginModel.firstName" name="firstName" id="firstName"  >
+                            <input #first matInput placeholder="{{'LoginScreen_SignIn.FirstName'| translate}}" type="text"  [(ngModel)]="loginModel.firstName" name="firstName" id="firstName" appRevup (blur)="onBlurFirstName()">
                         </mat-form-field>
                       <!--   <div style="color: #F44336" *ngIf="!complexForm.controls['firstName'].valid  && ( complexForm.controls['firstName'].touched)">
                             <div *ngIf="complexForm.controls['firstName'].errors.required">
@@ -22,7 +25,7 @@
                     <div class="white-line form-group col-mat-6 col-sm-6 col-xs-6">
                         <mat-form-field>
                             <span matPrefix> <i class="cusIco-lastname"></i>&nbsp; </span>
-                            <input #last matInput placeholder="{{'LoginScreen_SignIn.LastName' | translate}}" type="text" [(ngModel)]="loginModel.lastName" name="lastName" id="lastname" >
+                            <input #last matInput placeholder="{{'LoginScreen_SignIn.LastName' | translate}}" type="text" [(ngModel)]="loginModel.lastName" name="lastName" id="lastname" (blur)="onBlurLastName()" appRevup>
                         </mat-form-field>
                        <!--  <div style="color: #F44336" *ngIf="!complexForm.controls['lastName'].valid  && ( complexForm.controls['lastName'].touched)">
                             <div *ngIf="complexForm.controls['lastName'].errors.required">

@@ -6,7 +6,8 @@
     "LaunchScreen2":{
         "WelcometoNetpar":"Welcome to Netpar",
         "Tagline":"Tagline",
-        "Comejoinus":"Come, join us"
+        "Comejoinus":"Come, join us",
+        "Start":"Start"
     },
 
     "validationPopups":{
@@ -152,8 +153,8 @@
     },
 
     "BottomBarandTopBar":{
-        "welcomeForMale":"Welcome, Name (for male)",
-        "welcomeForFemale":"Welcome, Name (for female)",
+        "welcomeForMale":"Welcome, ",
+        "welcomeForFemale":"Welcome, ",
         "home":"Home",
         "myAccount":"My Account"
     },

@@ -15,26 +15,26 @@
 				    <div class="inner-card dashed-brd">
 				    	<p>{{articleData.tagline}} </p>
 				    	<p>
-				    		<strong> By: </strong>
-				    		<span class="text-blue"> Peter Parker </span>
+				    		<strong> {{"ContentItemView_Scroll1.By" | translate}}: </strong>
+				    		<span class="text-blue"> {{articleData.userList[0].firstName}} {{articleData.userList[0].lastName}} </span>
 				    		<span class="text-light pull-right"> {{articleData.dateOfCreation}} </span>
 				    	</p>
 				    	<p class="m-0 text-right font_12">
-				    		<i> {{articleData.likeCount}} Likes &#x25CF; {{articleData.commentCount}} Comments </i>
+				    		<i> {{articleData.likeCount}} {{"ContentItemView_Scroll1.Like" | translate}} &#x25CF; {{articleData.commentCount}} {{"ContentItemView_Scroll1.Comment" | translate}}  </i>
 				    	</p>
 				    </div>
 			    	<ul class="like-bar dashed-brd">
-		    			<li class="active">
-		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> Like </a>
+		    			<li >
+		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{"ContentItemView_Scroll1.Like" | translate}} </a>
 		    			</li>
 		    			<li>
-		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> Comment </a> 
+		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{"ContentItemView_Scroll1.Comment" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> Save </a> 
+		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> Download </a> 
+		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
 		    			</li>
 		    		</ul>
 		    		<!-- <div *ngFor="let article of articleData.contentBody">
@@ -121,29 +121,33 @@
 		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> 200 </a> 
 		    			</li>
 		    		</ul>
-		    		<div class="inner-card dashed-brd"> <h4 class="font-16 m-0"> Comments </h4> </div>
+		    		<div class="inner-card dashed-brd"> <h4 class="font-16 m-0"> {{"ContentItemView_Scroll2.Comments"| translate}} </h4> </div>
 		    		<div class="inner-card dashed-brd">
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0">
 		    				<mat-form-field>
-	                            <textarea matInput placeholder="Write your comment here..." rows="3"></textarea>
+	                            <textarea matInput placeholder="{{'CommentBox.EnteryouComment' | translate}}..." rows="3" [(ngModel)]="articleCommentModel.userComment"></textarea>
 	                        </mat-form-field>
 		    			</div>
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0 text-right form-group">
-		    				<button class="btn btn-info btn-sm">Send</button>
+		    				<button class="btn btn-info btn-sm" (click)="onComment()">Send</button>
 		    			</div>
-		    			<div class="user-img">
-		    				<img src="./assets/img/profile_user.jpg" class="img-responsive" />
+		    			<div *ngFor="let comment of articleData.user_comments; let i=index" class="loop-div">
+		    				<div *ngIf="i<1">
+		    					<div class="user-img">
+			    					<img src="./assets/img/profile_user.jpg" class="img-responsive" />
+			    				</div>
+				    			<div class="comment-box">
+				    				<h5 class="m-0"> {{comment.userName}} </h5>
+				    				<p>{{comment.userComment}}</p>
+				    			</div>
+					    		<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
+					    			<a routerLink="/comments-page" class="text-primary"><u>{{"ContentItemView_Scroll1.ViewMore" | translate}}</u></a>
+					    		</div>
+		    				</div>
 		    			</div>
-		    			<div class="comment-box">
-		    				<h5 class="m-0"> Ravi Kumar </h5>
-		    				<p>About 5 lakh commuters travel daily in the Delhi Metro, as well as 2 to 3 lakh workers working on them travel by metro train daily.</p>
-		    			</div>
-			    		<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
-			    			<a routerLink="/comments-page" class="text-primary"><u>See more</u></a>
-			    		</div>
 		    		</div>
 		    		<div class="inner-card dashed-brd">
-		    			<h4 class="font-16 m-0"> Suggested Articles </h4>
+		    			<h4 class="font-16 m-0"> {{"ContentItemView_Scroll2.SuggestedArticles" | translate}} </h4>
 		    		</div>
 		    		<div class="inner-card">
 		    			<div class="suggested-ulist">
@@ -203,8 +207,7 @@
 						    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 						    			</div>
 						    		</a>
-						    	</div>
-						        
+						    	</div>  
 						    </ngx-slick>
 					    	
 					    </div>

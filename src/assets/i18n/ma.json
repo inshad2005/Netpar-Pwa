@@ -6,7 +6,8 @@
     "LaunchScreen2":{
         "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
         "Tagline":"भारताचा डिजिटल मित्र ",
-        "Comejoinus":"या, नेटपरवर सहभागी व्हा. "
+        "Comejoinus":"या, नेटपरवर सहभागी व्हा. ",
+        "Start":"प्रारंभ"
     },
 
      "validationPopups":{
@@ -152,8 +153,8 @@
     },
 
     "BottomBarandTopBar":{
-        "welcomeForMale":"नमस्कार, नाव भाऊ ",
-        "welcomeForFemale":"नमस्कार, नाव वहिनी ",
+        "welcomeForMale":"नमस्कार, ",
+        "welcomeForFemale":"नमस्कार, ",
         "home":"होम",
         "myAccount":"माझं अकाऊंट "
     },

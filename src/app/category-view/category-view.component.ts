@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
 
+declare var $:any;
+declare var jQuery:any;
 
 @Component({
   selector: 'app-category-view',
@@ -17,7 +19,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./category-view.component.css'],
   providers:[FetchSectionsService,AllPostsService]
 })
-export class CategoryViewComponent implements AfterViewInit ,OnDestroy{
+export class CategoryViewComponent implements OnInit ,OnDestroy{
 	  private listTitles: any[];
     location: Location;
     private toggleButton: any;
@@ -27,6 +29,7 @@ export class CategoryViewComponent implements AfterViewInit ,OnDestroy{
     bgClasses;
     thumbnailUrl=environment.thumbnail;
     allPostData;
+    loading=false;
     constructor(private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
@@ -37,14 +40,42 @@ export class CategoryViewComponent implements AfterViewInit ,OnDestroy{
 
   	@ViewChild('fixedBox') fixedBox: ElementRef;
   	
-  	ngAfterViewInit() {
+  	ngOnInit() {
   		this.onWindowScroll();
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       // this.fetchSections();
       // this.fetchAllPosts();
       this.fetchData();
-  	}
+
+    }
+
+    scrollFunction(){
+      var ulHeight = $('.homepage-ulist').outerHeight();
+      var liHeight = $('.homepage-ulist li').outerHeight();
+      var sum = 0;
+      var i = 1;
+      if($('.homepage-ulist li').length > 4){
+        $('.homepage-ulist li:lt(4)').each(function () {
+          sum = sum + $(this).height();
+        });
+        liHeight = sum;
+        $('.homepage-ulist').height(liHeight);
+      }
+    }
+
+    swipr(swipe){
+       
+      $(swipe).closest('.homepage-listing').find('.homepage-ulist').toggleClass('active');
+      $(swipe).find('.up-down').toggle();
+    
+    }
+
+    getIndex(i){
+      if (i==0) {
+        this.scrollFunction();
+      }
+    }
 
   	navRemove(){
   		if (localStorage['menuOpen']=='true') {
@@ -140,12 +171,14 @@ export class CategoryViewComponent implements AfterViewInit ,OnDestroy{
   }
 
   fetchData(){
+    this.loading=true
     Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts()]).subscribe(results => {
+      this.loading=false
       this.sections=results[0].FinalArray;
       this.allPostData=results[1].response;
     });
   }
-
+  
   ngOnDestroy(){
     
   }

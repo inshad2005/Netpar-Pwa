@@ -22,12 +22,23 @@ export class AllPostsService {
 
     likePost(articleLikeData): Observable<any>{
         let api = environment.endPoint+"postLike";
-        let body=articleLikeData;
+        let body= articleLikeData;
         return this.http.post(api,body)
         .map(response =>{
             return response.json();
         }).catch(error =>{
             return error;
+        })
+    }
+
+    commentPost(articleCommentData): Observable<any>{
+        let api = environment.endPoint+"postComment";
+        let body = articleCommentData;
+        return this.http.post(api,body)
+        .map(response=>{
+             return response.json();
+        }).catch(error => {
+            return error
         })
     }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService} from '@ngx-translate/core';
-import { environment } from '../environments/environment.prod'
+import { environment } from '../environments/environment.prod';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,17 @@ import { environment } from '../environments/environment.prod'
 export class AppComponent {
   title = 'app';
 
-  constructor( private translateService: TranslateService,){
+  constructor(private router:Router, private translateService: TranslateService,){
   	translateService.setDefaultLang(environment.language);
   	translateService.use(environment.language);
+  	this.loginGuard();
+  }
+
+  loginGuard(){
+  	if(localStorage['userInfo']){
+  		this.router.navigate(['/category-view'])
+  	}else{
+  		this.router.navigate(['/welcome-screen2'])
+  	}
   }
 }

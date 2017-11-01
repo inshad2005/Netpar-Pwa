@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatInputModule } from '@angular/material';
-import { LoginModel } from './login.model.component';
+import { LoginModel,LoginEngModel } from './login.model.component';
 import { LoginService } from './login.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -22,10 +22,11 @@ declare var google
   providers:[LoginService]
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('first') first:ElementRef;
-  @ViewChild('last') last:ElementRef;
+  // @ViewChild('first') first:ElementRef;
+  // @ViewChild('last') last:ElementRef;
 	// complexForm: FormGroup;
 	loginModel: LoginModel = new LoginModel ();
+  loginEngModel:LoginEngModel= new LoginEngModel();
   data;
   verifiedData;
   errorMessage;
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
   fromPage;
   DOB;
   validationErrorMessage;
+  loading=false;
  constructor(private dialog: MatDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
  	// this.complexForm = formBuilder.group({
   //     'firstName': [null, Validators.compose([Validators.required,Validators.pattern("[a-zA-Z ]*")])],
@@ -45,24 +47,24 @@ export class LoginComponent implements OnInit {
   }
 
     ngOnInit() {
-      this.data= this.appProvider.current.fromPageFlag;
-       var options = {
-          sourceLanguage:
-              google.elements.transliteration.LanguageCode.ENGLISH,
-          destinationLanguage:
-              [google.elements.transliteration.LanguageCode.MARATHI],
-          shortcutKey: 'ctrl+g',
-          transliterationEnabled: true
-        };
-        var control = new google.elements.transliteration.TransliterationControl(options);
-        control.makeTransliteratable(['firstName','lastname']);
+      // this.data= this.appProvider.current.fromPageFlag;
+      //  var options = {
+      //     sourceLanguage:
+      //         google.elements.transliteration.LanguageCode.ENGLISH,
+      //     destinationLanguage:
+      //         [google.elements.transliteration.LanguageCode.MARATHI],
+      //     shortcutKey: 'ctrl+g',
+      //     transliterationEnabled: true
+      //   };
+      //   var control = new google.elements.transliteration.TransliterationControl(options);
+      //   control.makeTransliteratable(['firstName','lastname']);
     }
 
     onLogIn(){
       let validate = {
-        firstName: this.loginModel.firstName,
-        lastName: this.loginModel.lastName,
-        mobileNumber:this.loginModel.mobileNumber
+        firstName: this.loginEngModel.firstName_eng,
+        lastName: this.loginEngModel.lastName_eng,
+        mobileNumber:this.loginEngModel.mobileNumber
       }
       if (!validate.firstName) {
         this.validationErrorMessage="first name missing"
@@ -81,12 +83,13 @@ export class LoginComponent implements OnInit {
     }
 
     mainLoginFunction(){
-        if (this.loginModel.mobileNumber.length==10) {
+        if (this.loginEngModel.mobileNumber.length==10) {
             this.loginButton=false;
-            this.loginModel.platform="Browser";
-            this.loginModel.firstName=this.first.nativeElement.value;
-            this.loginModel.lastName=this.last.nativeElement.value;
-            this.loginService.Login(this.loginModel)
+            this.loginEngModel.platform="Browser";
+            this.loginEngModel.firstName=this.loginEngModel.firstName_eng;
+            this.loginEngModel.lastName=this.loginEngModel.lastName_eng;
+            this.loading=true;
+            this.loginService.Login(this.loginEngModel)
             .subscribe(data=>{
                 this.loginButton=true;
                 if(data.respCode == 1){
@@ -97,36 +100,47 @@ export class LoginComponent implements OnInit {
                   this.appProvider.current.block=data.info.block;
                   if (localStorage['userInfo']) {
                       this.localData=JSON.parse(localStorage['userInfo']);
-                      if (this.localData.mobileNumber == this.loginModel.mobileNumber) {
+                      if (this.localData.mobileNumber == this.loginEngModel.mobileNumber) {
+                          this.loading=false;
                           this.openDialog("welcome back");
                           this.router.navigate(['/category-view'],{skipLocationChange:true});
                       }else {
                         this.securityDialog();
+                        this.loading=false
                       }
                   }else{
                      this.securityDialog();
+                     this.loading=false
                    }
                 }
                 else if(data.respCode == 2 ){
-                  this.appProvider.current.firstName=this.loginModel.firstName;
-                  this.appProvider.current.lastName=this.loginModel.lastName;
+                  this.appProvider.current.firstName=this.loginEngModel.lastName_eng;
+                  this.appProvider.current.lastName=this.loginEngModel.lastName_eng;
                   // this.appProvider.current.previousMobileNumber=data.info.mobileNumber;
                   this.errorMessage="incorrect mobile number";
                   this.openDialog(this.errorMessage);
+                  this.loading=false
+
                 }
                 else if(data.respCode == 5 ){
                    this.errorMessage="Invalid User";
-                   this.openDialog(this.errorMessage)
+                   this.openDialog(this.errorMessage);
+                   this.loading=false
+
                 }
                 else if(data.respCode == 6){
                   this.errorMessage="Only mobile number is matching";
-                  this.openDialog(this.errorMessage)
+                  this.openDialog(this.errorMessage);
+                  this.loading=false
                 }
                 else if (data.respCode == 7) {
                   this.errorMessage="First Name and Last Name not matching";
                   this.openDialog(this.errorMessage);
+                  this.loading=false
+
                 }
             },err=>{
+              this.loading=false
               this.loginButton=true;
               this.errorMessage="something went wrong"
               this.openDialog(this.errorMessage);
@@ -150,7 +164,7 @@ export class LoginComponent implements OnInit {
               this.openagain(this.errorMessage);
             }
             if (result=="update mobile") {
-              this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
+              this.appProvider.current.mobileNumber=this.loginEngModel.mobileNumber;
               this.verifyUser();
             }
             if (result=="Signup") {
@@ -172,14 +186,14 @@ export class LoginComponent implements OnInit {
 
           }
           else if (result=="update mobile") {
-              this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
+              this.appProvider.current.mobileNumber=this.loginEngModel.mobileNumber;
               this.verifyUser();
           }
         });
    }
 
   verifyUser(){
-      this.loginService.VerifyMobile(this.loginModel.mobileNumber).subscribe(data=>{
+      this.loginService.VerifyMobile(this.loginEngModel.mobileNumber).subscribe(data=>{
           if (data.success==false) {
              this.errorMessage="user already registered";
              this.openDialog(this.errorMessage);

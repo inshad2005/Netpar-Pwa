@@ -8,4 +8,6 @@ export class RegisterModel {
 	block:string
 	dateOfBirth:string
 	gender:string
+	firstName_eng:string;
+	lastName_eng:string;
 }

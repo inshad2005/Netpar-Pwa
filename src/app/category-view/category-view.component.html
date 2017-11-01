@@ -13,15 +13,14 @@
 		<section class="homepage-sec tb-wrap">
 		    <div class="homepage-listing" #fixedBox>
 			    <ul class="homepage-ulist">
-			    	<div *ngFor="let sec of sections; let i=index" >
-				    	<li class="{{bgClass(i)}}" *ngIf="i<=3">
-				    		<a routerLink="/listing-view3">
-				    			<img *ngIf="sec.thumbnailImage" [src]="getThumbnailImage(sec.thumbnailImage)" class="img-responsive"> 
-				    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
-				    			{{sec.sectionName}}
-				    	    </a> 
-				    	</li>
-			    	</div>
+			    	<li class="{{bgClass(i)}}" *ngFor="let sec of sections; let i=index">
+			    		<a routerLink="/listing-view3" >
+			    			{{getIndex(i)}}
+			    			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}" class="img-responsive"> 
+			    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
+			    			{{sec.sectionName}}
+			    	    </a> 
+			    	</li>
 			    	<!-- <li class="bg-orange"> <a routerLink="/homepage">
 			    		<img src="./assets/img/heart.png" class="img-responsive"> News </a> </li>
 			    	<li class="bg-yellow-g"> <a routerLink="/homepage">
@@ -36,6 +35,16 @@
 			    		<img src="./assets/img/science-512.png" class="img-responsive"> Agriculture </a>
 			    	</li> -->	
 			    </ul>
+			    <div class="text-center">
+                    <span class="swiper" #swipe (click)="swipr(swipe)">
+                        <span class="up-down">
+                            <i class="fa fa-angle-double-down"></i>
+                        </span>
+                        <span class="up-down up">
+                            <i class="fa fa-angle-double-up"></i>
+                        </span>
+                    </span>
+                </div>
 		    </div>	
 
 		    <div class="scroll-menu" *ngIf="showDiv==true">
@@ -105,9 +114,9 @@
 				    			<div class="list-text-wrap one-heading">
 				    				<div class="text-red"> {{postData.sectionName}} </div>
 					    			<div class="suggested-div">
-					    				<div class="suggested-text">{{postData.headline.slice(0,25)}}... </div>
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}} </div>
 					    			</div>
-					    			<div class="detail-text"> {{postData.tagline}} </div>
+					    			<div class="detail-text" *ngIf="postData.tagline"> {{postData.tagline.slice(0,20)}} </div>
 					    		</div>
 			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
 				    			<div class="line"></div>
@@ -118,9 +127,9 @@
 				    			<div class="list-text-wrap one-heading">
 				    				<div class="text-red"> {{postData.sectionName}} </div>
 					    			<div class="suggested-div">
-					    				<div class="suggested-text">{{postData.headline.slice(0,25)}}</div>
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}}</div>
 					    			</div>
-					    			<div class="detail-text">{{postData.tagline}}</div>
+					    			<div class="detail-text" *ngIf="postData.tagline">{{postData.tagline.slice(0,20)}}</div>
 					    		</div>
 					        	<img src="{{postData.thumbnailPicture}}" class="img-effect img-responsive"> 
 			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
@@ -133,9 +142,9 @@
 				    			<div class="list-text-wrap one-heading">
 				    				<div class="text-red"> {{postData.sectionName}} </div>
 					    			<div class="suggested-div">
-					    				<div class="suggested-text">{{postData.headline.slice(0,25)}} </div>
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}} </div>
 					    			</div>
-					    			<div class="detail-text"> {{postData.tagline}}</div>
+					    			<div class="detail-text" *ngIf="postData.tagline"> {{postData.tagline.slice(0,20)}}</div>
 					    		</div>
 			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
 				    			<div class="line"></div>
@@ -148,7 +157,7 @@
 				    				<div class="suggested-text">{{postData.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> {{postData.headline.slice(0,25)}}</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
 				    		</a>
 			    		</div>
 				    	<div class="view-lists grid-3" *ngIf="i%6==4">
@@ -158,7 +167,7 @@
 				    				<div class="suggested-text">{{postData.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> {{postData.headline.slice(0,25)}}</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
 				    		</a>
 				    	</div>
 				    	<div class="view-lists grid-3" *ngIf="i%6==5">
@@ -168,7 +177,7 @@
 				    				<div class="suggested-text">{{postData.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> {{postData.headline.slice(0,25)}}</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
 				    		</a>
 				    	</div>
 	    			</div>

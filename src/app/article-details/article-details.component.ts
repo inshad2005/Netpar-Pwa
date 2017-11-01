@@ -3,7 +3,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AppProvider } from '../providers/app'
 import { DomSanitizer } from '@angular/platform-browser';
 import { AllPostsService } from '../providers/allPost.service' ;
-import { ArticleLikeModel } from './article-detail.model.component';
+import { ArticleLikeModel,ArticleCommentModel } from './article-detail.model.component';
 
 
 
@@ -20,11 +20,13 @@ export class ArticleDetailsComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     articleLikeModel: ArticleLikeModel = new ArticleLikeModel ();
+    articleCommentModel:ArticleCommentModel=new ArticleCommentModel();
+
     count:number=1;
     articleData;
     aritcleContents;
     likeClass;
-    likeIcon;
+    likeIcon='cusIco-okay-o';
     userData=JSON.parse(localStorage['userInfo']);
     constructor(private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
@@ -36,18 +38,18 @@ export class ArticleDetailsComponent implements OnInit {
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.articleData=this.appProvider.current.articleDetails;
-      console.log(this.userData);
+      console.log(this.articleData);
       // this.getSafeContent(this.articleData.contentBody)
   	}
 
   	navRemove(){
   		/*alert('home')*/
   		if (localStorage['menuOpen']=='true') {
-	  		const body = document.getElementsByTagName('body')[0];
+	  		  const body = document.getElementsByTagName('body')[0];
 	        this.toggleButton.classList.remove('toggled');
 	        this.sidebarVisible = false;
 	        body.classList.remove('nav-open');
-  			//localStorage['menuOpen']=='false'
+  			  //localStorage['menuOpen']=='false'
   		}
   	}
 
@@ -56,7 +58,7 @@ export class ArticleDetailsComponent implements OnInit {
     // ---------------------------------mukul--------------------------------------------
 
     getSafeContent(content) {
-        return this.domSanitizer.bypassSecurityTrustHtml(content);
+      return this.domSanitizer.bypassSecurityTrustHtml(content);
     }
 
     onLike(){
@@ -72,6 +74,29 @@ export class ArticleDetailsComponent implements OnInit {
         if (data.success==false) { 
           this.likeIcon='cusIco-okay-o'
         }
+      },err=>{
+
+      })
+    }
+
+    onComment(){
+      this.articleCommentModel.userId=this.userData._id;
+      this.articleCommentModel.articleName=this.articleData.headline;
+      this.articleCommentModel.articleId=this.articleData._id;
+      this.articleCommentModel.userPhone=this.userData.mobileNumber;
+      this.articleCommentModel.userName=this.userData.firstName+" "+this.userData.lastName;
+      this.articleCommentModel.sectionName=this.articleData.sectionName;
+      this.articleCommentModel.categoryName=this.articleData.categoryName;
+      this.articleCommentModel.subCategoryName=this.articleData.subCategoryName;
+      this.articleCommentModel.language=localStorage['selectedLanguage'];
+      this.allPostsService.commentPost(this.articleCommentModel).subscribe(data=>{
+        console.log(JSON.stringify(data));
+      })
+    }
+
+    fetchNewComment_OrLike(){
+      this.allPostsService.allPosts().subscribe(data=>{
+        
       },err=>{
 
       })
