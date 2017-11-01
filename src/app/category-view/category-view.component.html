@@ -52,7 +52,7 @@
 			        <div ngxSlickItem class="slide" *ngFor="let sec of sections;let i = index">
 			        	<a routerLink="/homepage" class="{{bgClass(i)}}">
 			        		<div>
-			        			<img *ngIf="sec.thumbnailImage" [src]="getThumbnailImage(sec.thumbnailImage)"> 
+			        			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}"> 
 			        			<img *ngIf="! sec.thumbnailImage" src="./assets/img/education-512.png"> 
 			        			<div> {{sec.sectionName}} </div>
 			        		</div>

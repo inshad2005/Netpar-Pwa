@@ -57,6 +57,7 @@ import { FilterComponent } from './filter/filter.component';
 import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
 import { ValidationBoxesComponent } from './alerts/validation-boxes/validation-boxes.component';
 import { RevupDirective } from './directives/revup.directive';
+import { CommentsComponent } from './article-details/comments/comments.component';
 
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -103,6 +104,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterationStepOneComponent,
     ValidationBoxesComponent,
     RevupDirective,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -140,7 +142,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [AppProvider],
   bootstrap: [AppComponent],
-  entryComponents: [ ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
+  entryComponents: [ CommentsComponent,ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 
 })
 

@@ -16,7 +16,7 @@
 				    	<p>{{articleData.tagline}} </p>
 				    	<p>
 				    		<strong> {{"ContentItemView_Scroll1.By" | translate}}: </strong>
-				    		<span class="text-blue"> {{articleData.userList[0].firstName}} {{articleData.userList[0].lastName}} </span>
+				    		<span class="text-blue" *ngIf="articleData.userList[0]"> {{articleData.userList[0].firstName}} {{articleData.userList[0].lastName}} </span>
 				    		<span class="text-light pull-right"> {{articleData.dateOfCreation}} </span>
 				    	</p>
 				    	<p class="m-0 text-right font_12">
@@ -50,7 +50,7 @@
 					   		<img [src]="content.url" class="img-responsive rad-shad" />
 					 	</div>
 						<div [ngStyle]="{background:content.backgroundColor}" *ngIf="content.tag=='text'">
-						   <p class="text-light">{{content.text}}</p>
+						   <div  [innerHtml]="getSafeContent(content.text)" ></div>
 						</div>
 				  
 					  	<audio controls style="width:100%" *ngIf="content.tag=='audio'">
@@ -109,16 +109,16 @@
 		    		</div> -->
 		    		<ul class="like-bar dashed-brd">
 		    			<li>
-		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> 1500 </a> 
+		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> {{articleData.pageView}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay-o"></i></span> 1100 </a>
+		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay-o"></i></span> {{articleData.likeCount}} </a>
 		    			</li>
 		    			<li>
-		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> 500 </a> 
+		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{articleData.commentCount}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> 200 </a> 
+		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> {{articleData.saveCount}} </a> 
 		    			</li>
 		    		</ul>
 		    		<div class="inner-card dashed-brd"> <h4 class="font-16 m-0"> {{"ContentItemView_Scroll2.Comments"| translate}} </h4> </div>
@@ -131,19 +131,17 @@
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0 text-right form-group">
 		    				<button class="btn btn-info btn-sm" (click)="onComment()">Send</button>
 		    			</div>
-		    			<div *ngFor="let comment of articleData.user_comments; let i=index" class="loop-div">
-		    				<div *ngIf="i<1">
-		    					<div class="user-img">
-			    					<img src="./assets/img/profile_user.jpg" class="img-responsive" />
-			    				</div>
-				    			<div class="comment-box">
-				    				<h5 class="m-0"> {{comment.userName}} </h5>
-				    				<p>{{comment.userComment}}</p>
-				    			</div>
-					    		<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
-					    			<a routerLink="/comments-page" class="text-primary"><u>{{"ContentItemView_Scroll1.ViewMore" | translate}}</u></a>
-					    		</div>
+		    			<div  class="loop-div" *ngIf="latestComment">
+	    					<div class="user-img">
+		    					<img src="./assets/img/profile_user.jpg" class="img-responsive" />
 		    				</div>
+			    			<div class="comment-box" >
+			    				<h5 class="m-0"> {{latestComment.userName}} <span class="pull-right"> {{latestComment.dateOfComment.split('T')[0]}} </span> </h5>
+			    				<p>{{latestComment.userComment}}</p>
+			    			</div>
+				    		<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
+				    			<a  class="text-primary" (click)="onViewMore()"><u>{{"ContentItemView_Scroll1.ViewMore" | translate}}</u></a>
+				    		</div>
 		    			</div>
 		    		</div>
 		    		<div class="inner-card dashed-brd">

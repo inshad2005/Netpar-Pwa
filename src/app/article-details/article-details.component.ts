@@ -1,9 +1,11 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef,AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppProvider } from '../providers/app'
 import { DomSanitizer } from '@angular/platform-browser';
 import { AllPostsService } from '../providers/allPost.service' ;
 import { ArticleLikeModel,ArticleCommentModel } from './article-detail.model.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -21,14 +23,14 @@ export class ArticleDetailsComponent implements OnInit {
     private sidebarVisible: boolean;
     articleLikeModel: ArticleLikeModel = new ArticleLikeModel ();
     articleCommentModel:ArticleCommentModel=new ArticleCommentModel();
-
     count:number=1;
     articleData;
     aritcleContents;
     likeClass;
     likeIcon='cusIco-okay-o';
+    latestComment;
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    constructor(private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -39,8 +41,13 @@ export class ArticleDetailsComponent implements OnInit {
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.articleData=this.appProvider.current.articleDetails;
       console.log(this.articleData);
+      this.getComments();
       // this.getSafeContent(this.articleData.contentBody)
   	}
+
+ 
+
+    
 
   	navRemove(){
   		/*alert('home')*/
@@ -69,14 +76,24 @@ export class ArticleDetailsComponent implements OnInit {
       this.allPostsService.likePost(this.articleLikeModel).subscribe(data=>{
         console.log(JSON.stringify(data));
         if (data.success==true && data.msg=="Post liked successfully!") {
-           this.likeIcon='cusIco-okay'
+           this.likeIcon='cusIco-okay';
+           this.articleData.likeCount = this.articleData.likeCount+1;  
         }
         if (data.success==false) { 
-          this.likeIcon='cusIco-okay-o'
+          this.likeIcon='cusIco-okay-o';
+          this.articleData.likeCount = this.articleData.likecount-1;
         }
       },err=>{
 
       })
+    }
+
+    getComments(){
+      let len = this.articleData.user_comments.length;
+      console.log(len);
+      console.log(JSON.stringify(this.articleData.user_comments))
+      this.latestComment = this.articleData.user_comments[len-1];
+      console.log(this.latestComment);
     }
 
     onComment(){
@@ -91,14 +108,19 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleCommentModel.language=localStorage['selectedLanguage'];
       this.allPostsService.commentPost(this.articleCommentModel).subscribe(data=>{
         console.log(JSON.stringify(data));
+        this.latestComment=data.response;
+        this.articleData.commentCount=this.articleData.commentCount+1;
       })
     }
 
-    fetchNewComment_OrLike(){
-      this.allPostsService.allPosts().subscribe(data=>{
+    onViewMore(){
+      let dialogRef = this.dialog.open(CommentsComponent, {
+            width: '360px',
+            data:{comments:this.articleData.user_comments}
+        });
+        dialogRef.afterClosed().subscribe(result => {
         
-      },err=>{
-
-      })
+        });
     }
+   
 }
