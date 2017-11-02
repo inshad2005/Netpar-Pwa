@@ -6,7 +6,7 @@ import { AllPostsService } from '../providers/allPost.service' ;
 import { ArticleLikeModel,ArticleCommentModel } from './article-detail.model.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CommentsComponent } from './comments/comments.component';
-
+import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
 
 
 @Component({
@@ -40,7 +40,7 @@ export class ArticleDetailsComponent implements OnInit {
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.articleData=this.appProvider.current.articleDetails;
-      console.log(this.articleData);
+      // console.log(this.articleData);
       this.getComments();
       // this.getSafeContent(this.articleData.contentBody)
   	}
@@ -74,7 +74,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleLikeModel.userId=this.userData._id;
       this.articleLikeModel.userPhone=this.userData.mobileNumber;
       this.allPostsService.likePost(this.articleLikeModel).subscribe(data=>{
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         if (data.success==true && data.msg=="Post liked successfully!") {
            this.likeIcon='cusIco-okay';
            this.articleData.likeCount = this.articleData.likeCount+1;  
@@ -90,13 +90,17 @@ export class ArticleDetailsComponent implements OnInit {
 
     getComments(){
       let len = this.articleData.user_comments.length;
-      console.log(len);
-      console.log(JSON.stringify(this.articleData.user_comments))
+      // console.log(len);
+      // console.log(JSON.stringify(this.articleData.user_comments))
       this.latestComment = this.articleData.user_comments[len-1];
-      console.log(this.latestComment);
+      // console.log(this.latestComment);
     }
 
     onComment(){
+      if (!this.articleCommentModel.userComment) {
+        this.openValidationAlert("please enter comment");
+        return
+      }
       this.articleCommentModel.userId=this.userData._id;
       this.articleCommentModel.articleName=this.articleData.headline;
       this.articleCommentModel.articleId=this.articleData._id;
@@ -107,7 +111,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleCommentModel.subCategoryName=this.articleData.subCategoryName;
       this.articleCommentModel.language=localStorage['selectedLanguage'];
       this.allPostsService.commentPost(this.articleCommentModel).subscribe(data=>{
-        console.log(JSON.stringify(data));
+        // console.log(JSON.stringify(data));
         this.latestComment=data.response;
         this.articleData.commentCount=this.articleData.commentCount+1;
       })
@@ -120,6 +124,16 @@ export class ArticleDetailsComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(result => {
         
+        });
+    }
+
+    openValidationAlert(msg){
+        let dialogRef = this.dialog.open(ValidationBoxesComponent, {
+            width: '260px',
+            data:{ message:msg}
+        });
+        dialogRef.afterClosed().subscribe(result => {
+          document.getElementById("mycomment").focus();
         });
     }
    

@@ -1,10 +1,9 @@
 <div class="wrapper">
-    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+ <!--    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
         <app-sidebar></app-sidebar>
         <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
-    </div>
-
-	<app-navbar></app-navbar>
+    </div> -->
+	<app-back-button-navbar></app-back-button-navbar>
     <div class="cusmain-panel" (click)="navRemove()">
 		<div class="tb-wrap">
 			<section class="article-sec">
@@ -125,7 +124,7 @@
 		    		<div class="inner-card dashed-brd">
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0">
 		    				<mat-form-field>
-	                            <textarea matInput placeholder="{{'CommentBox.EnteryouComment' | translate}}..." rows="3" [(ngModel)]="articleCommentModel.userComment"></textarea>
+	                            <textarea matInput placeholder="{{'CommentBox.EnteryouComment' | translate}}..." rows="3" [(ngModel)]="articleCommentModel.userComment" id="mycomment"></textarea>
 	                        </mat-form-field>
 		    			</div>
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0 text-right form-group">

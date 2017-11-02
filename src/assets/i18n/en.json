@@ -15,7 +15,8 @@
         "enterFirstName":"Please Enter First Name",
         "enterLastName":"Please Enter Last Name",
         "enterMobileNumber":"Please Enter Mobile Number",
-        "incorrectMobileNumber":"your mobile number is incorrect retype it"
+        "incorrectMobileNumber":"your mobile number is incorrect retype it",
+        "enterComment":"Please Enter Comment"
     },
 
     "WelcomeScreen":{

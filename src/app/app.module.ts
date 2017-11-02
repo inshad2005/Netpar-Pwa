@@ -20,7 +20,7 @@ import { HttpModule, Http, JsonpModule } from "@angular/http";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SlickModule } from 'ngx-slick';
-
+import { CeiboShare } from 'ng2-social-share';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -58,7 +58,8 @@ import { RegisterationStepOneComponent } from './registeration-step-one/register
 import { ValidationBoxesComponent } from './alerts/validation-boxes/validation-boxes.component';
 import { RevupDirective } from './directives/revup.directive';
 import { CommentsComponent } from './article-details/comments/comments.component';
-
+import { BackButtonNavbarComponent } from './components/back-button-navbar/back-button-navbar.component'
+import { FacebookModule } from 'ngx-facebook';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -105,6 +106,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ValidationBoxesComponent,
     RevupDirective,
     CommentsComponent,
+    BackButtonNavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -138,9 +140,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpModule,
     JsonpModule,
     MatExpansionModule,
+    FacebookModule,
     SlickModule.forRoot(),
   ],
   providers: [AppProvider],
+
   bootstrap: [AppComponent],
   entryComponents: [ CommentsComponent,ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 

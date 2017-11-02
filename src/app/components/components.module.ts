@@ -9,6 +9,7 @@ import { Navbar2Component } from './navbar2/navbar2.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
+import { BackButtonNavbarComponent } from './back-button-navbar/back-button-navbar.component';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -23,7 +24,8 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    Navbar2Component 
+    Navbar2Component,
+    BackButtonNavbarComponent 
   ],
   exports: [
     FooterComponent,

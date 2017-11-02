@@ -1,5 +1,5 @@
 <div class="logo">
-    <a routerLink="/homepage" class="simple-text">
+    <a routerLink="/homepage" skipLocationChange="true" class="simple-text">
         <div class="logo-img">
             <img src="./assets/img/logo.png"/>
         </div>
@@ -21,7 +21,7 @@
                 <div class="collapse {{profile}}" id="collapseExample">
                     <ul class="nav">
                         <li routerLinkActive="active">
-                            <a routerLink="/profile">
+                            <a routerLink="/profile"> skipLocationChange="true"
                                 <span class="sidebar-mini">MP</span>
                                 <p>My Profile</p>
                             </a>
@@ -33,9 +33,8 @@
 
         <div class="nav-container">
             <ul class="nav">
-               
                 <li routerLinkActive="active" >
-                    <a routerLink="/category-view">
+                    <a routerLink="/category-view"  skipLocationChange="true">
                         <i class="material-icons">account_circle</i>
                         <p>{{"MenuScreen.Home" | translate}}</p>
                     </a>
@@ -48,31 +47,31 @@
                     <div class="collapse" id="profile" aria-expanded="false">
                         <ul class="nav">
                             <li routerLinkActive="active">
-                                <a routerLink="/my-profile">
+                                <a routerLink="/my-profile" skipLocationChange="true" >
                                     <span class="sidebar-mini">MP</span>
                                     <p>{{"MenuScreen.MyAccount" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a routerLink="/my-contribution">
+                                <a routerLink="/my-contribution" skipLocationChange="true"> 
                                     <span class="sidebar-mini">VS</span>
                                     <p>{{"MenuScreen.ViewMySavedItems" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a routerLink="/my-downloads">
+                                <a routerLink="/my-downloads" skipLocationChange="true"> 
                                     <span class="sidebar-mini">VD</span>
                                     <p>{{"MenuScreen.ViewMyDownloadedItems" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a routerLink="/my-contribution">
+                                <a routerLink="/my-contribution" skipLocationChange="true"> 
                                     <span class="sidebar-mini">VC</span>
                                     <p>{{"MenuScreen.ViewMyContributions" | translate}}</p>
                                 </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a routerLink="/my-contribution">
+                                <a routerLink="/my-contribution" skipLocationChange="true"> 
                                     <span class="sidebar-mini">VS</span>
                                     <p>{{"MenuScreen.FriendsOnTheNetwork" | translate}}</p>
                                 </a>
@@ -82,13 +81,13 @@
                 </li>
 
                 <li routerLinkActive="active" >
-                    <a routerLink="/user-contribution">
+                    <a routerLink="/user-contribution" skipLocationChange="true"> 
                         <i class="material-icons">group</i>
                         <p>{{"MenuScreen.Contribute" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/friends">
+                    <a routerLink="/friends" skipLocationChange="true"> 
                         <i class="material-icons">person</i>
                         <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>
@@ -115,13 +114,13 @@
                                             <div class="collapse" id="{{category.categoryName}}" aria-expanded="false">
                                                 <ul class="nav">
                                                     <li *ngFor="let subCategory of category.section_subcategories">
-                                                        <a routerLink="/news1">
+                                                        <a routerLink="/news1" skipLocationChange="true"> 
                                                             <span class="sidebar-mini">{{subCategory.subCategoryName.substring(0, 2)}}</span>
                                                             <p>{{subCategory.subCategoryName}}</p>
                                                         </a>
                                                     </li>
                                                    <!--  <li>
-                                                        <a routerLink="/news1">
+                                                        <a routerLink="/news1" skipLocationChange="true"> 
                                                             <span class="sidebar-mini">CN</span>
                                                             <p>Cricket News</p>
                                                         </a>
@@ -137,19 +136,19 @@
 
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/aboutus">
+                    <a routerLink="/aboutus" skipLocationChange="true"> 
                         <i class="material-icons">person</i>
                         <p>{{"MenuScreen.Aboutus" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/rateus">
+                    <a routerLink="/rateus" skipLocationChange="true"> 
                         <i class="material-icons">person</i>
                         <p>{{"MenuScreen.Rateus" | translate}}</p>
                     </a>
                 </li>
              <!--    <li routerLinkActive="active" >
-                    <a routerLink="/privacy">
+                    <a routerLink="/privacy" skipLocationChange="true"> 
                         <i class="material-icons">person</i>
                         <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>

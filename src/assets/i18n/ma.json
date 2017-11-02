@@ -15,7 +15,8 @@
         "enterFirstName":"नाव प्रविष्ट करा",
         "enterLastName":"आडनाव प्रविष्ट करा",
         "enterMobileNumber":"मोबाईल नंबर प्रविष्ट करा",
-        "incorrectMobileNumber":"आपला मोबाईल नंबर चुकीचा  पुन्हा टाईप करा !"
+        "incorrectMobileNumber":"आपला मोबाईल नंबर चुकीचा  पुन्हा टाईप करा !",
+        "enterComment":"प्रतिक्रिया प्रविष्ट करा"
     },
 
     "WelcomeScreen":{

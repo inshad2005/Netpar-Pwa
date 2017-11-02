@@ -20,9 +20,9 @@ export class AppComponent {
 
   loginGuard(){
   	if(localStorage['userInfo']){
-  		this.router.navigate(['/category-view'])
+  		this.router.navigate(['/category-view'],{skipLocationChange:true})
   	}else{
-  		this.router.navigate(['/welcome-screen2'])
+  		this.router.navigate(['/welcome-screen2'],{skipLocationChange:true})
   	}
   }
 }

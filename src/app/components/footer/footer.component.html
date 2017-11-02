@@ -3,13 +3,13 @@
         <nav class="">
             <ul>
                 <li routerLinkActive="active">
-                    <a routerLink="/article-details">
+                    <a routerLink="/category-view" skipLocationChane="true">
                         <i class="cusIco-home"></i>
                         <div> {{"BottomBarandTopBar.home" | translate}} </div>
                     </a>
                 </li>
                 <li>
-                    <a class="text-yellow" routerLink="/homepage">
+                    <a class="text-yellow" routerLink="/homepage" skipLocationChane="true">
                         <i class="material-icons font_34">add_circle</i>
                     </a>
                 </li>
@@ -22,7 +22,7 @@
                         <ul class="profile-dropdown-menu">
                             <li>
                                 <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="cusIco-profil"></i> My Profile
+                                    <i class="cusIco-profil"></i>{{"MenuScreen.MyAccount" | translate}}
                                 </a>
                             </li>
                             <li>
@@ -60,9 +60,9 @@
                     <img src="./assets/img/share.png" class="img-responsive" />
                 </a>
                 <ul class="dropdown-menu bottom-dropdown">
-                    <li> <a routerLink="/homepage"> <span class="bg-facebook"> <i class="fa fa-facebook"></i> </span><div>{{"FloatingButtonScreen_Share.Shareviatextmessage" | translate}}</div> </a> </li>
-                    <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="fa fa-envelope-o"></i> </span> <div>{{"FloatingButtonScreen_Share.ShareonFacebook" | translate}}</div> </a> </li>
-                    <li> <a routerLink="/homepage"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareonwhatsapp"| translate}}</div> </a> </li>
+                    <li> <a (click)="share('http://europa.promaticstechnologies.com/netpar-pwa-dev')" > <span class="bg-facebook"> <i class="fa fa-facebook"></i> </span><div>{{"FloatingButtonScreen_Share.ShareonFacebook" | translate}}</div> </a> </li>
+                    <li> <a href="facebook://send?text=http://europa.promaticstechnologies.com/netpar-pwa-dev"> <span class="bg-blue"> <i class="fa fa-envelope-o"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareviatextmessage" | translate}}</div> </a> </li>
+                    <li> <a  href="whatsapp://send?text=http://europa.promaticstechnologies.com/netpar-pwa-dev"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareonwhatsapp"| translate}}</div> </a> </li>
                 </ul>
             </li>
             <li class="dropdown">

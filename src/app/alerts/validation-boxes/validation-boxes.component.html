@@ -43,4 +43,15 @@
 	</div>
 </div>
 
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'please enter comment'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"validationPopups.enterComment" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
 

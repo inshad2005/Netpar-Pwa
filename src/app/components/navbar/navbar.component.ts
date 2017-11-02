@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,8 +14,9 @@ export class NavbarComponent implements OnInit {
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    backButton=false
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private translateService:TranslateService,location: Location,  private element: ElementRef) {
+    constructor(private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -56,22 +59,25 @@ export class NavbarComponent implements OnInit {
     };
 
     getTitle(){
-      var titlee = this.location.prepareExternalUrl(this.location.path());
+      var titlee =  this.router.url;
       if(titlee.charAt(0) === '#'){
           titlee = titlee.slice( 2 );
       }
       titlee = titlee.split('/').pop();
-
-      for(var item = 0; item < this.listTitles.length; item++){
-          if(this.listTitles[item].path === titlee){
-              return this.listTitles[item].title;
-          }
-      }
       if(titlee=='category-view'){
         return this.translateService.instant('BottomBarandTopBar.welcomeForMale')+" "+ this.userData.firstName 
       }
+      else if (titlee=='article-details') {
+        return titlee;
+      }
       else{
         return titlee;
+      }
+    }
+
+    goBack(): void { 
+      if (this.router.url=='/article-details') {
+       this.router.navigate(['/category-view'],{skipLocationChange:true});
       }
     }
 }

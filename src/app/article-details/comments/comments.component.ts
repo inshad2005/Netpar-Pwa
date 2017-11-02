@@ -15,7 +15,6 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
   	this.comments=this.data.comments;
-  	console.log(JSON.stringify(this.comments))
   }
 
   onClosed(){
