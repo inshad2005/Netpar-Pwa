@@ -10,7 +10,7 @@ import { MatProgressBarModule, MatCheckboxModule, MatProgressSpinnerModule, MatS
 import { MatListModule, MatDialogModule } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { MatDatepickerModule, MatNativeDateModule,MatExpansionModule} from '@angular/material';
-import {  MatTooltipModule, MatTableModule, MatPaginator } from "@angular/material";
+import { MatTooltipModule, MatTableModule, MatPaginator } from "@angular/material";
 import { MatTabsModule} from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
@@ -57,7 +57,9 @@ import { FilterComponent } from './filter/filter.component';
 import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
 import { ValidationBoxesComponent } from './alerts/validation-boxes/validation-boxes.component';
 import { RevupDirective } from './directives/revup.directive';
-import { CommentsComponent } from './article-details/comments/comments.component';
+// import { CommentsComponent } from './article-details/comments/comments.component';
+import {CommentsComponent} from './comments/comments.component'
+
 import { BackButtonNavbarComponent } from './components/back-button-navbar/back-button-navbar.component'
 import { FacebookModule } from 'ngx-facebook';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -146,7 +148,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [AppProvider],
 
   bootstrap: [AppComponent],
-  entryComponents: [ CommentsComponent,ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
+  entryComponents: [ ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
 
 })
 

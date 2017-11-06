@@ -23,6 +23,7 @@ import { MyContributionComponent } from './my-contribution/my-contribution.compo
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { FilterComponent } from './filter/filter.component';
 import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
+import { CommentsComponent } from './comments/comments.component'
 
 const routes: Routes = [// { path: 'home',      component: HomeComponent },
     // { path: 'admin',      component: AdminComponent },
@@ -49,6 +50,7 @@ const routes: Routes = [// { path: 'home',      component: HomeComponent },
     { path: 'my-contribution', component: MyContributionComponent },
     { path: 'my-profile', component: MyProfileComponent },
     { path: 'filter', component: FilterComponent },
+    { path: 'comments', component: CommentsComponent }
 ];
 
 @NgModule({

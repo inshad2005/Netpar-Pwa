@@ -3,11 +3,11 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
 import { AppProvider } from '../providers/app'
 import { DomSanitizer } from '@angular/platform-browser';
 import { AllPostsService } from '../providers/allPost.service' ;
-import { ArticleLikeModel,ArticleCommentModel } from './article-detail.model.component';
+import { ArticleLikeModel,ArticleCommentModel,SaveArticle } from './article-detail.model.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CommentsComponent } from './comments/comments.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-article-details',
@@ -23,14 +23,16 @@ export class ArticleDetailsComponent implements OnInit {
     private sidebarVisible: boolean;
     articleLikeModel: ArticleLikeModel = new ArticleLikeModel ();
     articleCommentModel:ArticleCommentModel=new ArticleCommentModel();
+    saveArticle:SaveArticle=new SaveArticle();
     count:number=1;
     articleData;
     aritcleContents;
     likeClass;
-    likeIcon='cusIco-okay-o';
+    likeIcon;
+    saveIcon="cusIco-badge-o";
     latestComment;
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    constructor(private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -42,6 +44,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleData=this.appProvider.current.articleDetails;
       // console.log(this.articleData);
       this.getComments();
+      this.likeOrNot();
       // this.getSafeContent(this.articleData.contentBody)
   	}
 
@@ -68,6 +71,16 @@ export class ArticleDetailsComponent implements OnInit {
       return this.domSanitizer.bypassSecurityTrustHtml(content);
     }
 
+    likeOrNot(){
+      if (this.articleData.liked==false) {
+        this.likeIcon='cusIco-okay-o';
+        this.likeClass="";
+      }else if (this.articleData.liked=true) {
+        this.likeIcon='cusIco-okay';
+        this.likeClass="active"
+      }
+    }
+
     onLike(){
       this.articleLikeModel.articleId=this.articleData._id;
       this.articleLikeModel.articleName=this.articleData.headline;
@@ -77,11 +90,13 @@ export class ArticleDetailsComponent implements OnInit {
         // console.log(JSON.stringify(data));
         if (data.success==true && data.msg=="Post liked successfully!") {
            this.likeIcon='cusIco-okay';
+           this.likeClass="active";
            this.articleData.likeCount = this.articleData.likeCount+1;  
         }
         if (data.success==false) { 
           this.likeIcon='cusIco-okay-o';
-          this.articleData.likeCount = this.articleData.likecount-1;
+          this.likeClass=""
+          // this.articleData.likeCount = this.articleData.likecount-1;
         }
       },err=>{
 
@@ -89,11 +104,13 @@ export class ArticleDetailsComponent implements OnInit {
     }
 
     getComments(){
-      let len = this.articleData.user_comments.length;
-      // console.log(len);
-      // console.log(JSON.stringify(this.articleData.user_comments))
-      this.latestComment = this.articleData.user_comments[len-1];
-      // console.log(this.latestComment);
+      if (this.articleData.user_comments) {
+         let len = this.articleData.user_comments.length;
+        // console.log(len);
+        // console.log(JSON.stringify(this.articleData.user_comments))
+        this.latestComment = this.articleData.user_comments[len-1];
+        // console.log(this.latestComment);
+      }
     }
 
     onComment(){
@@ -117,14 +134,29 @@ export class ArticleDetailsComponent implements OnInit {
       })
     }
 
+    onSavePost(){
+      this.saveArticle.user_id=this.userData._id;
+      this.saveArticle.content_name=this.articleData.headline;
+      this.saveArticle.content_id=this.articleData._id;
+      this.allPostsService.savePost(this.saveArticle).subscribe(data=>{
+        console.log(JSON.stringify(data));
+        if (data.success==true) {
+          this.saveIcon="cusIco-badge";
+          this.articleData.saveCount=this.articleData.saveCount+1;
+        }
+      },err=>{
+        console.log(err)
+      })
+    }
+
     onViewMore(){
-      let dialogRef = this.dialog.open(CommentsComponent, {
-            width: '360px',
-            data:{comments:this.articleData.user_comments}
-        });
-        dialogRef.afterClosed().subscribe(result => {
-        
-        });
+      if (this.articleData.user_comments.length>0) {
+        this.appProvider.current.comments=this.articleData.user_comments;
+        this.router.navigate(['/comments'],{skipLocationChange:true})
+      }
+      else{
+        console.log('no comment to display')
+      }
     }
 
     openValidationAlert(msg){

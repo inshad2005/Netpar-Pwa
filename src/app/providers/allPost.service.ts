@@ -10,8 +10,8 @@ export class AllPostsService {
 
   constructor(private http:Http) { }
 	
-	allPosts():  Observable<any> {
-        let api =  environment.endPoint+"allPosts";
+	allPosts(userId):  Observable<any> {
+        let api =  environment.endPoint+"allPosts/"+userId;
         return this.http.get(api)
         .map(response => {
             return response.json();
@@ -39,6 +39,27 @@ export class AllPostsService {
              return response.json();
         }).catch(error => {
             return error
+        })
+    }
+
+    savePost(savePostData):Observable<any>{
+        let api = environment.endPoint+"savePost"
+        let body = savePostData
+        return this.http.post(api,body)
+        .map(response=>{
+            return response.json();
+        }).catch(error=>{
+            return error
+        })
+    }
+
+    getSavedPosts(userId):Observable<any>{
+        let api=environment.endPoint+"savedPosts/"+userId;
+        return this.http.get(api)
+        .map(response=>{
+            return response.json();
+        }).catch(error=>{
+            return error;
         })
     }
 }

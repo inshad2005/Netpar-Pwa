@@ -11,17 +11,21 @@ export class BackButtonNavbarComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
+    
   }
 
  	getTitle(){
-      var title =  this.router.url;
-      title = title.split('/').pop();
-      return title;
-    }
+    var title =  this.router.url;
+    title = title.split('/').pop();
+    return title;
+  }
 
-    goBack(): void { 
-      if (this.router.url=='/article-details') {
-       this.router.navigate(['/category-view'],{skipLocationChange:true});
-      }
+  goBack(): void { 
+    if (this.router.url=='/article-details') {
+     this.router.navigate(['/category-view'],{skipLocationChange:true});
     }
+    if (this.router.url=='/comments') {
+     this.router.navigate(['/article-details'],{skipLocationChange:true});
+    }
+  }
 }

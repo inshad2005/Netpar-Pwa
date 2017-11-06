@@ -17,3 +17,9 @@ export class ArticleCommentModel {
     subCategoryName:string;
     language:string;
 }
+
+export class SaveArticle {
+    user_id:string;
+    content_name:string;
+    content_id:string;
+}

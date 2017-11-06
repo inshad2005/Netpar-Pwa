@@ -13,6 +13,7 @@ export class Current {
     articleDetails:any;
     firstName_eng:string;
     lastName_eng:string;
+    comments:any
     constructor(public leadsFilter?: string) {
     }
 }

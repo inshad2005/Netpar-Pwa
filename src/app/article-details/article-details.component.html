@@ -23,14 +23,14 @@
 				    	</p>
 				    </div>
 			    	<ul class="like-bar dashed-brd">
-		    			<li >
+		    			<li class="{{likeClass}}">
 		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{"ContentItemView_Scroll1.Like" | translate}} </a>
 		    			</li>
 		    			<li>
 		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{"ContentItemView_Scroll1.Comment" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
+		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li>
 		    			<li>
 		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
@@ -206,7 +206,6 @@
 						    		</a>
 						    	</div>  
 						    </ngx-slick>
-					    	
 					    </div>
 		    		</div>
 

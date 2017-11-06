@@ -6,6 +6,7 @@ import { AllPostsService } from'../providers/allPost.service' ;
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment.prod';
 import { AppProvider } from '../providers/app';
+import { AnalyticsService } from '../providers/analytics.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
@@ -30,9 +31,13 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     thumbnailUrl=environment.thumbnail;
     allPostData;
     loading=false;
-    constructor(private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
+    activeSessionTime;
+    userInfo=JSON.parse(localStorage['userInfo']);
+    userid
+    constructor(private analyticsService: AnalyticsService,private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
+      this.userid=this.userInfo._id;
     }
   	//constructor(@Inject(DOCUMENT) private document: any) { }
 	fixedBoxOffsetTop: number  = 0;
@@ -47,7 +52,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
       // this.fetchSections();
       // this.fetchAllPosts();
       this.fetchData();
-
+      // this.updateSession()
     }
 
     scrollFunction(){
@@ -172,7 +177,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
 
   fetchData(){
     this.loading=true
-    Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts()]).subscribe(results => {
+    Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts(this.userid)]).subscribe(results => {
       this.loading=false
       this.sections=results[0].FinalArray;
       this.allPostData=results[1].response;
@@ -183,5 +188,31 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     
   }
 
+
+  updateSession(){
+    if (localStorage['userInfo']) {
+      this.analyticsService.updateSessionCount(this.userid).subscribe(data=>{
+        console.log(JSON.stringify(data));
+        this.activeSessionTime=data.lastUpdated;
+        this.activeTime();
+      },err=>{
+        console.log(err);
+      })
+    }
+  }
+
+  activeTime(){
+    if (localStorage['userInfo']) {
+      this.analyticsService.appUsingTime(this.userid,this.activeSessionTime).subscribe(data=>{
+        console.log(JSON.stringify(data));
+        this.activeSessionTime=this.activeSessionTime+2;
+      },err=>{
+
+      })
+      setTimeout(() => {
+        this.activeTime()
+      }, 2000);
+    }
+  }
 
 }
