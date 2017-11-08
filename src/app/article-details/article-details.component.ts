@@ -8,6 +8,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { CommentsComponent } from './comments/comments.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
 import { Router } from '@angular/router';
+import 'rxjs/Rx';
+import  * as download from 'file-download'
+
+
 
 @Component({
   selector: 'app-article-details',
@@ -168,5 +172,26 @@ export class ArticleDetailsComponent implements OnInit {
           document.getElementById("mycomment").focus();
         });
     }
-   
+
+    downloadFile(data){
+      console.log('aa');
+      var blob = new Blob();
+      console.log(blob);
+    }
+
+    onDownload(){
+      for (var i = 0; i < this.articleData.contentBody.length; ++i) {
+        if (this.articleData.contentBody[i].tag=='image') {
+          var url = this.articleData.contentBody[i].url;
+          var options = {
+              directory: "./images/cats/",
+              filename: "cat.gif"
+          }
+          download(url, options, function(err){
+              if (err) throw err
+              console.log("meow")
+          }) 
+        }
+      }
+    }  
 }

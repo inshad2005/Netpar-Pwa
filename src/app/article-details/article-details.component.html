@@ -33,7 +33,7 @@
 		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-orange" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
+		    				<a class="text-orange" (click)="onDownload()"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
 		    			</li>
 		    		</ul>
 		    		<!-- <div *ngFor="let article of articleData.contentBody">
