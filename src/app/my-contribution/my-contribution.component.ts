@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-import {AllPostsService} from '../providers/allPost.service';
-import {AppProvider} from '../providers/app';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AllPostsService } from '../providers/allPost.service';
+import { AppProvider } from '../providers/app';
 import { Router } from '@angular/router';
 
 @Component({

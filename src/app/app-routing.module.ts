@@ -12,6 +12,8 @@ import { Homepage2Component } from './homepage2/homepage2.component';
 import { Homepage3Component } from './homepage3/homepage3.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ListingViewComponent } from './listing-view/listing-view.component';
+import { ListingView2Component } from './listing-view2/listing-view2.component';
+
 import { ListingView3Component } from './listing-view3/listing-view3.component';
 import { ListingView6Component } from './listing-view6/listing-view6.component';
 import { ListingView5Component } from './listing-view5/listing-view5.component';
@@ -40,6 +42,7 @@ const routes: Routes = [// { path: 'home',      component: HomeComponent },
     { path: 'homepage3', component: Homepage3Component },
     { path: 'article-details', component: ArticleDetailsComponent },
     { path: 'listing-view', component: ListingViewComponent },
+    { path: 'listing-view2', component: ListingView2Component },
     { path: 'listing-view3', component: ListingView3Component },
     { path: 'listing-view6', component: ListingView6Component },
     { path: 'listing-view5', component: ListingView5Component },

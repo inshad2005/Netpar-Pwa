@@ -9,9 +9,9 @@ import { CommentsComponent } from './comments/comments.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
 import { Router } from '@angular/router';
 import 'rxjs/Rx';
-import  * as download from 'file-download'
-
-
+// import  * as download from 'file-download'
+import { Http ,Headers,RequestOptions,ResponseContentType} from '@angular/http';
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-article-details',
@@ -36,7 +36,7 @@ export class ArticleDetailsComponent implements OnInit {
     saveIcon="cusIco-badge-o";
     latestComment;
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    constructor(private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -116,6 +116,10 @@ export class ArticleDetailsComponent implements OnInit {
         // console.log(this.latestComment);
       }
     }
+    
+    onCommentIcon(){
+      document.getElementById("mycomment").focus();
+    }
 
     onComment(){
       if (!this.articleCommentModel.userComment) {
@@ -173,25 +177,54 @@ export class ArticleDetailsComponent implements OnInit {
         });
     }
 
-    downloadFile(data){
-      console.log('aa');
-      var blob = new Blob();
-      console.log(blob);
-    }
+   // downloadFile(data: Response){
+   //   console.log(data)
+   //    var blob = new Blob([data], {type: "url" });
+   //    var url= window.URL.createObjectURL(blob);
+   //    console.log(url)
+   //    window.open(url);
+   //  }
 
     onDownload(){
       for (var i = 0; i < this.articleData.contentBody.length; ++i) {
         if (this.articleData.contentBody[i].tag=='image') {
           var url = this.articleData.contentBody[i].url;
-          var options = {
-              directory: "./images/cats/",
-              filename: "cat.gif"
-          }
-          download(url, options, function(err){
-              if (err) throw err
-              console.log("meow")
-          }) 
+          // this.downloadFile(url);
         }
       }
-    }  
+    }
+
+    downloadFilee(url){
+      console.log(url)
+      const fr = new FileReader();
+        fr.onloadend = (loadEvent) => {
+            let demo = fr.result;
+            console.log(demo)
+        };
+        fr.readAsDataURL(url);
+    }
+
+
+    // onDownloadimage(){
+    //   download('http://unicorn.com/foo.jpg', 'dist').then(() => {
+    //       console.log('done!');
+    //   });
+    // }
+
+  downloadFile() {
+    this.http.get('http://ionicteam.com/netpar/uploads/content/contentData/1509737827.jpeg').subscribe(
+        (response) => {
+          console.log(response);
+          var mediaType = 'image/jpeg';
+          var blob = new Blob([response], {type: mediaType});
+          console.log(blob);
+          var filename = 'test.pdf';
+          saveAs(blob, filename);
+        });
+  }
+
+  getSafeUrl(url){
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
 }

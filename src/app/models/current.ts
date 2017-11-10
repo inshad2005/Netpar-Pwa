@@ -14,6 +14,10 @@ export class Current {
     firstName_eng:string;
     lastName_eng:string;
     comments:any
+    sectionDetails:any;
+    loginOrUpdateFlag:any;
+    userData:any;
+    previousMobileNumber:any;
     constructor(public leadsFilter?: string) {
     }
 }

@@ -117,7 +117,8 @@
 	</div>
 	<div class="modal-body text-center ">
 		<p>{{"errorMessage.invalidOtp" | translate}}</p>
-		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Ok </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onResend()" > Resend Otp </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Help </button>
 	</div>
 </div>
 
@@ -154,6 +155,18 @@
 	<div class="modal-body text-center ">
 		<p>{{"Login_SuccessfulSignIn.signInSuccessfull" | translate}}</p>
 		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Ok </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="message=='you are not registered'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"errorMessage.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p>{{"LoginScreen_SignIn.youAreNotRegistered" | translate}}</p>
+		
+		<button class="btn custom-btn full-width btn-round" (click)="onSignup()" > {{"WelcomeScreen.SignUp" | translate}} </button>
 	</div>
 </div>
 

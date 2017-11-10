@@ -15,7 +15,7 @@ export class UpdateMobileService {
   updateMobileNumber(updateModel:any):  Observable<any> {
         let body = updateModel;
         let api =  environment.endPoint;
-        return this.http.put(api+"updateMobileNumber",body)
+        return this.http.post(api+"updateContact",body)
         .map(response => {
             return response.json();
         }).catch(error => {

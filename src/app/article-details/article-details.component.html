@@ -27,13 +27,13 @@
 		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{"ContentItemView_Scroll1.Like" | translate}} </a>
 		    			</li>
 		    			<li>
-		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{"ContentItemView_Scroll1.Comment" | translate}} </a> 
+		    				<a class="text-rose" (click)="onCommentIcon()"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{"ContentItemView_Scroll1.Comment" | translate}} </a> 
 		    			</li>
 		    			<li>
 		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-orange" (click)="onDownload()"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
+		    				<a class="text-orange" (click)="downloadFile()"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
 		    			</li>
 		    		</ul>
 		    		<!-- <div *ngFor="let article of articleData.contentBody">
@@ -44,7 +44,7 @@
 		    				<div  [innerHtml]="getSafeContent(article.text)" ></div>
 		    			</div>
 		    		</div> -->
-		    		<div class="inner-card dashed-brd" *ngFor="let content of articleData.contentBody">
+		    		<div class="inner-card" *ngFor="let content of articleData.contentBody">
 					  	<div class="form-group" *ngIf="content.tag=='image'" [ngStyle]="{background:content.backgroundColor}">
 					   		<img [src]="content.url" class="img-responsive rad-shad" />
 					 	</div>
@@ -65,47 +65,42 @@
 				                <tr style="text-align: center;">
 				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
 				                        <audio controls style="width:100%" *ngIf="content.audiourl1!=null">
-							            	<source [src]="content.audiourl1"  type="audio/mpeg" />
+							            	<source [src]="getSafeUrl(content.audiourl1)"  type="audio/mpeg" />
 							             	Your browser does not support the audio element.
 							         	</audio>
 							        	<video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl1!=null">
-							             	<source [src]="content.videourl1" type="video/mp4">
+							             	<source [src]="getSafeUrl(content.videourl1)" type="video/mp4">
 							         	</video>
-				                        <img *ngIf="content.documenturl1!=null" width="50%" style="display: inline-block;" [src]="content.documenturl1" >
+				                        <img *ngIf="content.documenturl1!=null" width="50%" style="display: inline-block;" [src]="getSafeUrl(content.documenturl1)" >
 				                        <img *ngIf="content.imgurl1!=null" style="width:100%" [src]="content.imgurl1">
 				                    </td>
 				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
 				                        <audio controls style="width:100%" *ngIf="content.audiourl2!=null">
-								            <source [src]="content.audiourl2"  type="audio/mpeg" />
+								            <source [src]="getSafeUrl(content.audiourl2)"  type="audio/mpeg" />
 								             Your browser does not support the audio element.
 								        </audio>
 								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl2!=null">
-								             <source [src]="content.videourl2" type="video/mp4">
+								             <source [src]="getSafeUrl(content.videourl2)" type="video/mp4">
 								        </video>
 				                        <img *ngIf="content.documenturl2!=null" width="50%" style="display: inline-block;" [src]="content.documenturl2" >
-				                        <img *ngIf="content.imgurl2!=null" style="width:100%" [src]="content.imgurl2">
+				                        <img *ngIf="content.imgurl2!=null" style="width:100%" [src]="getSafeUrl(content.imgurl2)">
 				                    </td>
 				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
 								        <audio controls style="width:100%" *ngIf="content.audiourl3!=null">
-								             <source [src]="content.audiourl3"  type="audio/mpeg" />
+								             <source [src]="getSafeUrl(content.audiourl3)"  type="audio/mpeg" />
 								             Your browser does not support the audio element.
 								        </audio>
 								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl3!=null">
-								             <source [src]="content.videourl3" type="video/mp4">
+								             <source [src]="getSafeUrl(content.videourl3)" type="video/mp4">
 								        </video>
-				                        <img *ngIf="content.documenturl3!=null" width="50%" style="display: inline-block;" [src]="content.documenturl3" >
-				                        <img *ngIf="content.imgurl3!=null" style="width:100%" [src]="content.imgurl3">
+				                        <img *ngIf="content.documenturl3!=null" width="50%" style="display: inline-block;" [src]="getSafeUrl(content.documenturl3)" >
+				                        <img *ngIf="content.imgurl3!=null" style="width:100%" [src]="getSafeUrl(content.imgurl3)">
 				                    </td>
 				                </tr>
 				            </tbody>
 				        </table>
  					</div>
-		    		<!-- <div class="inner-card dashed-brd">
-		    			<div class="form-group">
-		    				<img src="./assets/img/metro.jpeg" class="img-responsive rad-shad" />
-		    			</div>
-		    			<p class="text-light">Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment. Delhi is in big trouble due to increased fare of the Metro, people obviously resentment</p>
-		    		</div> -->
+		    		<div class="inner-card dashed-brd"></div>
 		    		<ul class="like-bar dashed-brd">
 		    			<li>
 		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> {{articleData.pageView}} </a> 

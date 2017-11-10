@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef,AfterViewInit,OnDestroy } from '@angular/core';
-import { DOCUMENT, BrowserModule } from '@angular/platform-browser';
+import { DOCUMENT, BrowserModule,DomSanitizer } from '@angular/platform-browser';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FetchSectionsService } from '../providers/fetch-sections.service';
 import { AllPostsService } from'../providers/allPost.service' ;
@@ -33,8 +33,12 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     loading=false;
     activeSessionTime;
     userInfo=JSON.parse(localStorage['userInfo']);
-    userid
-    constructor(private analyticsService: AnalyticsService,private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
+    userid;
+    sectionTemplate;
+    isChanged;
+    previousTemplate;
+    callAgain;
+    constructor(private domSanitizer:DomSanitizer,private analyticsService: AnalyticsService,private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
       this.userid=this.userInfo._id;
@@ -181,11 +185,29 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
       this.loading=false
       this.sections=results[0].FinalArray;
       this.allPostData=results[1].response;
+      this.fetchSection();
     });
   }
   
   ngOnDestroy(){
-    
+    clearTimeout(this.callAgain) 
+  }
+
+  setSectionTemplate(){
+    console.log(this.sections[0].sectionViewFormat)
+    this.previousTemplate=this.sections[0].sectionViewFormat;
+    if (this.sections[0].sectionViewFormat=="Section Template One") {
+      this.sectionTemplate="Section Template One";
+    }else{
+      this.sectionTemplate="default Template";
+       console.log(this.sectionTemplate)
+    }
+  }
+
+  reloadPage(){
+    if (this.isChanged=true) {
+     this.ngOnInit();
+    }
   }
 
 
@@ -215,4 +237,30 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     }
   }
 
+  onSection(sectionData){
+    this.router.navigate(['/homepage'],{skipLocationChange:true})
+    console.log(JSON.stringify(sectionData));
+    this.appProvider.current.sectionDetails=sectionData;
+  }
+
+  fetchSection(){
+    this.fetchSectionService.fetchSections().subscribe(data=>{
+        this.setSectionTemplate();
+        let value= data.FinalArray[0].sectionViewFormat;
+        if(this.previousTemplate==value){
+          this.isChanged=false;
+          console.log(this.isChanged)
+        }else{
+          this.isChanged=true;
+          console.log(this.isChanged);
+          this.ngOnInit();
+        }
+    },err=>{
+
+    })
+    this.callAgain=setTimeout(() => {
+      this.fetchSection();
+    }, 5000);
+  }
+   
 }

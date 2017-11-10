@@ -74,7 +74,7 @@ ul{
   padding: 8px 20px;
   /* box-shadow: inset -2px -2px 5px 0px rgba(163, 131, 4, 0.75); */
 }
-.btn.custom-btn:hover{
+.btn.custom-btn:hover, .btn.custom-btn:focus{
   color: #000;
 }
 
@@ -1995,4 +1995,38 @@ img.rad-shad{
   border-radius: 4px;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26);
   background-color: #fff;
+}
+
+.homepage-ulist.sec{
+  padding: 5px;
+  width: 100%;
+  float: left;
+}
+.homepage-ulist.sec  > li{
+  margin-bottom: 5px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.homepage-ulist.sec  li a{
+  z-index: 1;
+  position: relative;
+  color: #fff;
+  display: block;
+  padding: 15px 10px;
+  background-size: cover;
+  background-position: center;
+  background: linear-gradient(to left, rgba(0,0,0,0.0) 20%, rgba(0,0,0,0.3) , rgba(0,0,0,0.8));
+}
+
+.view-lists.grid-2.list-view2 > a img{
+  float: left;
+  max-width: 75px;
+}
+.list-view2 .list-text-wrap{
+  margin-left: 80px;
+  padding-right: 0;
+}
+
+.view-lists.grid-2.list-view2 > a img{
+  border-radius: 5px;
 }

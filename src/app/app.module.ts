@@ -62,6 +62,11 @@ import {CommentsComponent} from './comments/comments.component'
 
 import { BackButtonNavbarComponent } from './components/back-button-navbar/back-button-navbar.component'
 import { FacebookModule } from 'ngx-facebook';
+import { ExistingUserCheckComponent } from './alerts/existing-user-check/existing-user-check.component';
+import { ListingView2Component } from './listing-view2/listing-view2.component';
+import { RecheckDetailsComponent } from './alerts/recheck-details/recheck-details.component';
+import { IsThisYouComponent } from './alerts/is-this-you/is-this-you.component';
+import { UpdateMobileNumberComponent } from './alerts/update-mobile-number/update-mobile-number.component';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -108,7 +113,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     ValidationBoxesComponent,
     RevupDirective,
     CommentsComponent,
-    BackButtonNavbarComponent
+    BackButtonNavbarComponent,
+    ExistingUserCheckComponent,
+    ListingView2Component,
+    RecheckDetailsComponent,
+    IsThisYouComponent,
+    UpdateMobileNumberComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +158,19 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [AppProvider],
 
   bootstrap: [AppComponent],
-  entryComponents: [ ValidationBoxesComponent,Popup2Component,PopupComponent, SecurityDialogComponent, SecurityDialog2Component, StateDialogComponent, LanguageDialogComponent  ]
+  entryComponents: [ 
+    IsThisYouComponent,
+    RecheckDetailsComponent,
+    ExistingUserCheckComponent,
+    ValidationBoxesComponent,
+    Popup2Component,
+    PopupComponent, 
+    SecurityDialogComponent,
+    SecurityDialog2Component,
+    StateDialogComponent, 
+    LanguageDialogComponent,
+    UpdateMobileNumberComponent
+  ]
 
 })
 

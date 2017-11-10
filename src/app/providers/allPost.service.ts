@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http ,Headers,RequestOptions} from '@angular/http';
+import { Http ,Headers,RequestOptions,ResponseContentType} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Rx';
 import 'rxjs/Rx';
@@ -61,5 +61,17 @@ export class AllPostsService {
         }).catch(error=>{
             return error;
         })
+    }
+
+    downloadFile(): Observable<any> {
+        let options = new RequestOptions({responseType: ResponseContentType.Blob,headers:new Headers({
+               "Access-Control-Allow-Origin":true
+            }) 
+        });
+        return this.http.get("http://ionicteam.com/netpar/uploads/content/contentData/1509737827.jpeg",options)
+            .map(res => res.blob())
+            .catch(err=>{
+                return err;
+            })
     }
 }

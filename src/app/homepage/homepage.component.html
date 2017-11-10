@@ -1,22 +1,40 @@
 <div class="wrapper">
-    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
-        <app-sidebar></app-sidebar>
-        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
-    </div>
-
-	<app-navbar></app-navbar>
+    <app-back-button-navbar></app-back-button-navbar>
     <div class="cusmain-panel" (click)="navRemove()">
 		<div class="header-extra" ></div>
 		<section class="homepage-sec tb-wrap">
-		    <div class="homepage-listing">
+		    <div class="homepage-listing" *ngIf="categoryTemplateStyle=='Category-view Template Four'">
 			    <ul class="homepage-ulist">
-			    	<li class="bg-red"> <a routerLink="/homepage2"> Jobs </a> </li>
-			    	<li class="bg-orange"> <a routerLink="/homepage2"> News </a> </li>
-			    	<li class="bg-yellow-g"> <a routerLink="/homepage2"> Politics </a> </li>
-			    	<li class="bg-blue"> <a routerLink="/homepage2"> Games </a> </li>
-			    	<li class="bg-green-g"> <a routerLink="/homepage2"> Newspaper </a> </li>	
-			    	<li class="bg-purple"> <a routerLink="/homepage2"> Healthcare </a> </li>	
-			    	<li class="bg-pink"> <a routerLink="/homepage2"> Agriculture </a> </li>	
+			    	<li class="{{bgClass(i)}}" *ngFor="let category of categories; let i=index"> 
+			    		<a> {{category.categoryName}} </a>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="homepage2-listing" *ngIf="categoryTemplateStyle=='Category-view Template Two'">
+			    <ul class="homepage2-ulist">
+			    	<li *ngFor="let category of categories">
+			    		<a><img src="{{category.thumbnailImage}}"> 
+			    		<p>{{category.categoryName}} </p> </a>
+			    	</li>
+			    </ul>
+		    </div>
+		    <div class="homepage2-listing" *ngIf="categoryTemplateStyle=='Category-view Template One'">
+			    <ul class="homepage2-ulist">
+			    	<li *ngFor="let category of categories">
+			    		<a ><img src="{{category.thumbnailImage}}"> 
+			    		<p>{{category.categoryName}} </p> </a>
+			    	</li>	
+			    </ul>
+		    </div>
+		    <div *ngIf="categoryTemplateStyle=='Category-view Template Three'">
+		    	 <ul class="homepage-ulist sec">
+			    	<li *ngFor="let category of categories; let i=index">
+			    		<div [ngStyle]="{'background-image': 'url(' + category.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    			<a>
+			    				{{category.categoryName}}
+			    	   		 </a> 
+			    		</div>
+			    	</li>
 			    </ul>
 		    </div>
 		</section>

@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatListModule } from '@angular/material';
 import { AppProvider } from '../../providers/app';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AppProvider } from '../../providers/app';
 export class PopupComponent implements OnInit {
   message;
   count;
-  constructor(private appProvider:AppProvider,private dialog: MatDialog, public dialogRef: MatDialogRef<PopupComponent>,
+  constructor(private router:Router,private appProvider:AppProvider,private dialog: MatDialog, public dialogRef: MatDialogRef<PopupComponent>,
   @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
@@ -50,7 +51,12 @@ export class PopupComponent implements OnInit {
   }
 
   onSignup(){
-    this.dialogRef.close("Signup")
+    this.dialogRef.close("Signup");
+    this.router.navigate(['/registerationStepOne'],{skipLocationChange:true})
+  }
+
+  onResend(){
+    this.dialogRef.close("ResendOtp");
   }
 
   // onOk(){

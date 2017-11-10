@@ -1,0 +1,8 @@
+<div class="modal-content cus-modal" >
+	<div class="modal-body text-center ">
+		<p>{{"Login_ErrorMesage_IsThisYou.Hi" | translate}} {{userInfo.firstName}} {{userInfo.lastName}}</p>
+		<p>{{"Login_ErrorMesage_IsThisYou.isThisYou" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onYes()" > {{"Login_ErrorMesage_IsThisYou.yes" | translate}} </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onNo()" > {{"Login_ErrorMesage_IsThisYou.no" | translate}} </button>
+	</div>
+</div>

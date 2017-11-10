@@ -25,7 +25,7 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     NavbarComponent,
     SidebarComponent,
     Navbar2Component,
-    BackButtonNavbarComponent 
+    BackButtonNavbarComponent,
   ],
   exports: [
     FooterComponent,

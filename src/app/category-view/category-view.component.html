@@ -12,9 +12,9 @@
 		<div class="header-extra" ></div>
 		<section class="homepage-sec tb-wrap">
 		    <div class="homepage-listing" #fixedBox>
-			    <ul class="homepage-ulist">
+			    <ul class="homepage-ulist" *ngIf="sectionTemplate=='Section Template One'">
 			    	<li class="{{bgClass(i)}}" *ngFor="let sec of sections; let i=index">
-			    		<a routerLink="/listing-view3" >
+			    		<a (click)= "onSection(sec)" >
 			    			{{getIndex(i)}}
 			    			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}" class="img-responsive"> 
 			    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
@@ -35,6 +35,18 @@
 			    		<img src="./assets/img/science-512.png" class="img-responsive"> Agriculture </a>
 			    	</li> -->	
 			    </ul>
+			    <ul class="homepage-ulist sec" *ngIf="sectionTemplate=='default Template'">
+			    	<li *ngFor="let sec of sections; let i=index">
+			    		<div [ngStyle]="{'background-image': 'url(' + sec.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    			<a >
+			    				{{getIndex(i)}}
+			    				{{sec.sectionName}}
+			    	   		 </a> 
+			    		</div>
+			    	</li>
+			    </ul>
+
+
 			    <div class="text-center">
                     <span class="swiper" #swipe (click)="swipr(swipe)">
                         <span class="up-down">

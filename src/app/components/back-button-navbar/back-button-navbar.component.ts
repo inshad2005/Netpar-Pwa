@@ -27,5 +27,8 @@ export class BackButtonNavbarComponent implements OnInit {
     if (this.router.url=='/comments') {
      this.router.navigate(['/article-details'],{skipLocationChange:true});
     }
+    if (this.router.url=='/homepage') {
+     this.router.navigate(['/category-view'],{skipLocationChange:true});
+    }
   }
 }

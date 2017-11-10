@@ -40,7 +40,8 @@
         "mobileRequired":"Mobile number is required",
         "onlyDigits":"only digits are acceptable",
         "lessThanTen":"contact number can not be less than 10 digits",
-        "moreThanTen":"contact number can not be more than 10 digits"
+        "moreThanTen":"contact number can not be more than 10 digits",
+        "youAreNotRegistered":"You are not registered,please signup "
     },
 
     "errorMessage":{
@@ -57,7 +58,8 @@
         "SignUp":"Sign Up",
         "ExistingUser":"Existing User? Sign In",
         "sorry":"Sorry!",
-        "alreadyRegistered":"Entered Mobile Number Is Already Registered"
+        "alreadyRegistered":"Entered Mobile Number Is Already Registered",
+        "Existing":"Existing User?"
     },
 
     "Login_SecurityQuestions":{

@@ -11,6 +11,7 @@ import { AppProvider } from '../providers/app';
 import { UpdateMobileService } from '../providers/update-mobile.service';
 import { UpdateMobileNo } from './updateMobileNo.model.component';
 
+
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
@@ -39,7 +40,11 @@ export class OtpComponent implements OnInit {
   	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MatDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
     
   	ngOnInit() {
-      this.mobileNo=this.appProvider.current.mobileNumber;
+      if (this.appProvider.current.toOtpPageFlag=="updateMobileNo") {
+        this.mobileNo=this.appProvider.current.newMobileNumber;
+      }else{
+        this.mobileNo=this.appProvider.current.mobileNumber;
+      }
        if (this.mobileNo) {
           this.onSendOtp(this.mobileNo);
        }
@@ -54,10 +59,12 @@ export class OtpComponent implements OnInit {
           if (result=="update mobile") {
             this.securityDialog();
           }
-          if (result=="updated successfuly") {
+          else if (result=="updated successfuly") {
            this.router.navigate(['/category-view'],{skipLocationChange:true})
           }
-		 	    
+          else if(result=="ResendOtp"){
+              this.onSendOtp(this.mobileNo);
+          } 
         });
     }
 
@@ -194,12 +201,27 @@ export class OtpComponent implements OnInit {
           if (this.appProvider.current.toOtpPageFlag=="registerPage") {
             this.router.navigate(["/register"],{skipLocationChange:true});
           }
+          if (this.appProvider.current.toOtpPageFlag=="SingIn") {
+            localStorage['userInfo']=JSON.stringify(this.appProvider.current.userData);
+            this.router.navigate(["/category-view"],{skipLocationChange:true})
+          }
           else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
-              this.securityDialog();
+              this.onUpdate();
           }
       }else{
         this.errorMessage="Invalid otp";
         this.openDialog(this.errorMessage);
       }
+  }
+
+  onUpdate(){
+    this.updateMobileNo.mobileNumberNew=this.mobileNo;
+    this.updateMobileNo.mobileNumber=this.appProvider.current.previousMobileNumber;
+    this.updateMobileService.updateMobileNumber(this.updateMobileNo).subscribe(data=>{
+       localStorage['userInfo']=JSON.stringify(data.info);
+       this.router.navigate(['/category-view'],{skipLocationChange:true})
+    },error=>{
+
+    })
   }
 }

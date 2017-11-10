@@ -20,7 +20,7 @@
     },
 
     "WelcomeScreen":{
-        "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
+        "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत",
         "SignIn":"साईन इन ",
         "SignUp":"साईन अप",
         "takeTour":"Take a Tour"
@@ -30,9 +30,9 @@
         "previous":"परत",
         "FirstName":"नाव",
         "LastName":"आडनाव ",
-        "MobileNumber":"मोबाईल नंबर ",
+        "MobileNumber":"मोबाईल नंबर",
         "SignIn":"साईन इन ",
-        "NewUser":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा.",
+        "NewUser":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा",
         "Next":"Next",
         "firstNameRequired":"first name  is required",
         "lastNameRequired":"last name  is required",
@@ -40,11 +40,12 @@
         "mobileRequired":"Mobile number is required",
         "onlyDigits":"only digits are acceptable",
         "lessThanTen":"contact number can not be less than 10 digits",
-        "moreThanTen":"contact number can not be more than 10 digits"
+        "moreThanTen":"contact number can not be more than 10 digits",
+        "youAreNotRegistered":"You are not registered,please signup "
     },
 
     "errorMessage":{
-        "sorry":"Sorry!",
+        "sorry":"माफ करा.",
         "somethingWentWrong":"something went wrong",
         "tryLater":"Please try after some time",
         "invalidOtp":"Invalid Otp"
@@ -57,7 +58,8 @@
         "SignUp":"साईन अप ",
         "ExistingUser":"विद्यमान वापरकर्ता ? साईन इन ",
         "sorry":"माफ करा.",
-        "alreadyRegistered":"Entered Mobile Number Is Already Registered"
+        "alreadyRegistered":"Entered Mobile Number Is Already Registered",
+        "Existing":"विद्यमान वापरकर्ता ?"
     },
 
     "Login_SecurityQuestions":{
@@ -71,10 +73,10 @@
         "Gender":"तुम्ही कोण आहात?",
         "Male":"पुरूष",
         "Female":"स्त्री",
-       "stateRequired":"state is required",
-        "districtRequired":"district is required",
-        "blockRequired":"block is required",
-        "dobRequired":"Date of Birth is required",
+       "stateRequired":"राज्य प्रविष्ट करा",
+        "districtRequired":"जिल्हा प्रविष्ट करा",
+        "blockRequired":"विभाग प्रविष्ट करा",
+        "dobRequired":"जन्म प्रविष्ट करा",
         "genderRequired":"gender is required",
         "anserSecurityQuestions":"Please answer the security question.",
         "Ques":"Ques",

@@ -1,39 +1,14 @@
 <div class="wrapper">
-    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
-        <app-sidebar></app-sidebar>
-        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
-    </div>
-
-	<app-navbar></app-navbar>
+	<app-back-button-navbar></app-back-button-navbar>
     <div class="cusmain-panel" (click)="navRemove()">
 		<div class="header-extra" ></div>
 		<section class="homepage-sec tb-wrap">
 		    <div class="homepage2-listing">
-			    <ul class="homepage2-ulist">
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-1.jpg"> 
-			    		<p>News </p> </a>
+			    <ul class="homepage2-ulist" >
+			    	<li *ngFor="let category of categories">
+			    		<a routerLink="/homepage3"><img src="{{category.thumbnailImage}}"> 
+			    		<p>{{category.categoryName}} </p> </a>
 			    	</li>
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-2.jpg">
-			    		<p>Education </p> </a>
-			    	</li>
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-3.jpg">
-			    		<p>Games </p> </a>
-			    	</li>
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-6.jpg">
-			    		<p>Jobs </p> </a>
-			    	</li>
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-4.jpg">
-			    		<p>Technology </p> </a>
-			    	</li>	
-			    	<li>
-			    		<a routerLink="/homepage3"><img src="./assets/img/img-5.jpg">
-			    		<p>Food </p> </a>
-			    	</li>	
 			    </ul>
 		    </div>
 		</section>

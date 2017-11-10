@@ -13,7 +13,6 @@
 	    				<img src="./assets/img/profile_user.jpg" class="img-responsive" />
 	    				<div> {{userData.firstName}} {{userData.lastName}} </div>
 	    			</div>
-
 	    			<div class="number-profile">
 	    				<div>
 	    					<span> 1452 </span>
@@ -59,7 +58,6 @@
 	    				</div>
                     </div>
 				</div>
-
 				<div class="card cus-card downloads">
 					<div class="list-heading brd-b">
 						Listing View <span class="pull-right"> <i class="fa fa-angle-right"></i> </span>
@@ -90,8 +88,6 @@
 						<span class="pull-right"> View more <i class="fa fa-angle-right"></i> </span>
 					</div>
 				</div>
-
-
 				<div class="card cus-card friend-list">
 					<div class="list-heading">
 						Friends Network
@@ -123,106 +119,24 @@
 						<span class="pull-right"> View more <i class="fa fa-angle-right"></i> </span>
 					</div>
 				</div>
-
 				<div class="card cus-card">
 					<mat-tab-group class="cus-mat">
 					  	<mat-tab label="Saved Posts">
 					  		<div class="list-view3">
-				    			<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-red">
-							        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+				    			<div class="view-lists grid-1" *ngFor="let savedPost of savedPosts;let i=index">
+							        <a (click)="onSaved(savedPost)" class="{{colorClass(i)}}">
+							        	<img src="{{savedPost.thumbnailPicture}}" class="img-effect img-responsive"> 
 						    			<div class="list-text-wrap one-heading">
 							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
+							    				<div class="suggested-text">{{savedPost.sectionName}} </div>
 							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+							    			<div class="detail-text"> {{savedPost.headline}} </div>
 						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
 							    		</div>
 						    			<div class="line"></div>
 						    		</a>
 						    	</div>
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-orange">
-							        	<img src="./assets/img/img_r-2.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-yellow">
-							        	<img src="./assets/img/img_r-3.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-blue">
-							        	<img src="./assets/img/img_r-4.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-green">
-							        	<img src="./assets/img/img_r-5.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-purple">
-							        	<img src="./assets/img/img_r-6.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-						    	<div class="view-lists grid-1">
-							        <a routerLink="/article-details" class="color-pink">
-							        	<img src="./assets/img/img_r-7.jpg" class="img-effect img-responsive"> 
-						    			<div class="list-text-wrap one-heading">
-							    			<div class="suggested-div">
-							    				<div class="suggested-text">News </div>
-							    			</div>
-							    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
-						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
-							    		</div>
-						    			<div class="line"></div>
-						    		</a>
-						    	</div>
-						    	
-						    </div>
-
+						    </div>	
 					  	</mat-tab>
 					  	<mat-tab label="My Contributions">
 					  		<div class="list-view3">

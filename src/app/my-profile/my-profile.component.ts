@@ -1,10 +1,13 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
-
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AllPostsService } from '../providers/allPost.service';
+import { AppProvider } from '../providers/app'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-my-profile',
   templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.css']
+  styleUrls: ['./my-profile.component.css'],
+  providers:[AllPostsService]
 })
 export class MyProfileComponent implements OnInit {
 
@@ -13,12 +16,15 @@ export class MyProfileComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     count:number=1;
-
-    userData
-    constructor(location: Location,  private element: ElementRef) {
-
+    userId;
+    userData;
+    savedPosts;
+    userInfo=JSON.parse(localStorage['userInfo']);
+    constructor(private router:Router,private appProvider:AppProvider,private allPostsService:AllPostsService,location: Location,  private element: ElementRef) {
+      this.userId=this.userInfo._id;
     	this.location = location;
       this.sidebarVisible = false;
+      this.getSavedPost();
     }
 
   	ngOnInit() {
@@ -40,5 +46,45 @@ export class MyProfileComponent implements OnInit {
   	}
 
     // --------------------------------------mukul-----------------------------------
+
+    getSavedPost(){
+      this.allPostsService.getSavedPosts(this.userId).subscribe(data=>{
+        if (data.success==true) {
+          this.savedPosts=data.saved_articles;
+        }
+      },err=>{
+
+      })
+    }
+
+    colorClass(i){
+      if (i%7==0) {
+        return "color-red";
+      }
+      else if (i%7==1) {
+        return "color-orange";
+      }
+      else if (i%7==2) {
+        return "color-yellow";
+      }
+       else if (i%7==3) {
+        return "color-blue";
+      }
+       else if (i%7==4) {
+        return "color-green";
+      }
+       else if (i%7==5) {
+        return "color-purple";
+      }
+       else if (i%7==6) {
+        return "color-pink";
+      }
+    }
+
+
+  onSaved(articleData){
+    this.appProvider.current.articleDetails=articleData;
+    this.router.navigate(["/article-details"],{skipLocationChange:true});
+  }
 
 }
