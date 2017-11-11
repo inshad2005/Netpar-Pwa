@@ -33,6 +33,8 @@
         "MobileNumber":"मोबाईल नंबर",
         "SignIn":"साईन इन ",
         "NewUser":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा",
+        "continueToSignIn":"साइन इन करणे सुरू ठेवा",
+        "haveANewNumber":"आपल्याकडे नवीन नंबर आहे? अपडेट करा",
         "Next":"Next",
         "firstNameRequired":"first name  is required",
         "lastNameRequired":"last name  is required",
@@ -48,7 +50,7 @@
         "sorry":"माफ करा.",
         "somethingWentWrong":"something went wrong",
         "tryLater":"Please try after some time",
-        "invalidOtp":"Invalid Otp"
+        "invalidOtp":"अवैध ओटीपी"
     },
 
     "LoginScreen_SignUp":{
@@ -58,7 +60,7 @@
         "SignUp":"साईन अप ",
         "ExistingUser":"विद्यमान वापरकर्ता ? साईन इन ",
         "sorry":"माफ करा.",
-        "alreadyRegistered":"Entered Mobile Number Is Already Registered",
+        "alreadyRegistered":"प्रवेश केला मोबाइल नंबर आधीपासूनच नोंदणीकृत आहे",
         "Existing":"विद्यमान वापरकर्ता ?"
     },
 
@@ -73,21 +75,23 @@
         "Gender":"तुम्ही कोण आहात?",
         "Male":"पुरूष",
         "Female":"स्त्री",
-       "stateRequired":"राज्य प्रविष्ट करा",
+        "stateRequired":"राज्य प्रविष्ट करा",
         "districtRequired":"जिल्हा प्रविष्ट करा",
         "blockRequired":"विभाग प्रविष्ट करा",
         "dobRequired":"जन्म प्रविष्ट करा",
-        "genderRequired":"gender is required",
-        "anserSecurityQuestions":"Please answer the security question.",
-        "Ques":"Ques",
-        "stateQues":"What is your state?",
-        "districtQues":"What is your District?",
-        "blockQues":"What is your Block?",
-        "dobQues":"What is your Date of Birth?",
-        "genderQues":"What is your Gender?",
+        "genderRequired":"लिंग प्रविष्ट करा",
+        "anserSecurityQuestions":"कृपया सुरक्षा प्रश्नाचे उत्तर द्या",
+        "Ques":"प्रश्न",
+        "stateQues":"तुमचे राज्य काय आहे?",
+        "districtQues":"तुमचे जिल्हा काय आहे?",
+        "blockQues":"तुमचे विभाग काय आहे?",
+        "dobQues":"तुमची जन्मतारीख काय आहे?",
+        "genderQues":"आपल्या लिंग काय आहे?",
         "mobileNumberQues":"What is your Last Mobile Number?",
         "previousMobileNumber":"Previous mobile number",
-        "update":"Update"
+        "update":"अपडेट",
+        "mobileNumber":"मोबाईल नंबर",
+        "newMobileNumber":"नवीन मोबाईल नंबर"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{
@@ -139,7 +143,7 @@
     },
 
     "OTPScreen":{
-        "great":"Great!",
+        "great":"महान!",
         "OtpSent":"आम्ही तुम्हाला ओटीपी पाठवला आहे,",
         "wait": "तो आम्ही तपासेपर्यंत वाट पाहा",
         "orYouCanEnter":"किंवा आपला ओटीपी टाइप करा",

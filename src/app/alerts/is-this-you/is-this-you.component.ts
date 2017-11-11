@@ -25,7 +25,7 @@ export class IsThisYouComponent implements OnInit {
   }
 
   onNo(){
-  	this.dialogRef.close();
+  	this.dialogRef.close("no");
   }
 
 }

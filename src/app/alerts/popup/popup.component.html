@@ -117,8 +117,8 @@
 	</div>
 	<div class="modal-body text-center ">
 		<p>{{"errorMessage.invalidOtp" | translate}}</p>
-		<button class="btn custom-btn full-width btn-round" (click)="onResend()" > Resend Otp </button>
-		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > Help </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onResend()" > {{"OTPScreen.ResendOTP" | translate}} </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"OTPScreen_ErrorMessage1.Help" | translate}} </button>
 	</div>
 </div>
 
@@ -164,11 +164,20 @@
 		<h4 class="m-t-0">{{"errorMessage.sorry" | translate}}</h4>
 	</div>
 	<div class="modal-body text-center ">
-		<p>{{"LoginScreen_SignIn.youAreNotRegistered" | translate}}</p>
+		<p>{{"Login_ErrorMessage_MobileNumbernotenteredcorrectly.notRegistered" | translate}}</p>
 		
 		<button class="btn custom-btn full-width btn-round" (click)="onSignup()" > {{"WelcomeScreen.SignUp" | translate}} </button>
 	</div>
 </div>
+
+<div class="modal-content cus-modal" *ngIf="message=='please Signup'">
+	<div class="modal-body text-center ">
+		<p>{{"LoginScreen_SignIn.NewUser" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onSignup()" > {{"WelcomeScreen.SignUp" | translate}} </button>
+	</div>
+</div>
+
+
 
 
 

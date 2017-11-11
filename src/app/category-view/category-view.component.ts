@@ -64,8 +64,8 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
       var liHeight = $('.homepage-ulist li').outerHeight();
       var sum = 0;
       var i = 1;
-      if($('.homepage-ulist li').length > 4){
-        $('.homepage-ulist li:lt(4)').each(function () {
+      if($('.homepage-ulist li').length > 5){
+        $('.homepage-ulist li:lt(5)').each(function () {
           sum = sum + $(this).height();
         });
         liHeight = sum;

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AppProvider } from '../providers/app';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ExistingUserCheckComponent } from '../alerts/existing-user-check/existing-user-check.component'
+import { ExistingUserCheckComponent } from '../alerts/existing-user-check/existing-user-check.component';
 
 @Component({
   selector: 'app-home',

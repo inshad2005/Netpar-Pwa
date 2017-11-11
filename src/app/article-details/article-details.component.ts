@@ -33,8 +33,11 @@ export class ArticleDetailsComponent implements OnInit {
     aritcleContents;
     likeClass;
     likeIcon;
-    saveIcon="cusIco-badge-o";
+    saveIcon;
+    saveClass
     latestComment;
+    continueClass="read-panel";
+    continueButtonVisible=true;
     userData=JSON.parse(localStorage['userInfo']);
     constructor(private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
@@ -49,6 +52,7 @@ export class ArticleDetailsComponent implements OnInit {
       // console.log(this.articleData);
       this.getComments();
       this.likeOrNot();
+      this.savedOrNot();
       // this.getSafeContent(this.articleData.contentBody)
   	}
 
@@ -82,6 +86,18 @@ export class ArticleDetailsComponent implements OnInit {
       }else if (this.articleData.liked=true) {
         this.likeIcon='cusIco-okay';
         this.likeClass="active"
+      }
+    }
+
+    savedOrNot(){
+      if (this.articleData.saved==false) {
+        console.log('false')
+        this.saveIcon="cusIco-badge-o";
+        this.saveClass="";
+      }else if (this.articleData.saved=true) {
+        console.log('true')
+        this.saveIcon='cusIco-badge';
+        this.saveClass="active"
       }
     }
 
@@ -225,6 +241,11 @@ export class ArticleDetailsComponent implements OnInit {
 
   getSafeUrl(url){
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+
+  onContinueReading(){
+    this.continueButtonVisible=false
+    return this.continueClass="";
   }
 
 }

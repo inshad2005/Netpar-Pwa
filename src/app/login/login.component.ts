@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit{
  validationErrorMessage
  errorMessage
  loginOrUpdate
+ loading=false;
  constructor(private dialog: MatDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
    console.log(this.appProvider.current.loginOrUpdateFlag);
    this.loginOrUpdate=this.appProvider.current.loginOrUpdateFlag;
@@ -79,7 +80,7 @@ export class LoginComponent implements OnInit{
 
     openRecheckDetails(){
       let dialogRef = this.dialog.open(RecheckDetailsComponent, {
-          width: '260px'
+          width: '320px'
       });
       dialogRef.afterClosed().subscribe(result => {
         
@@ -88,8 +89,10 @@ export class LoginComponent implements OnInit{
 
     loginFunction(mobileNumber){
       console.log("login fuction");
+      this.loading=true
       this.loginService.VerifyMobile(mobileNumber).subscribe(data=>{
         console.log(data);
+        this.loading=false
         if (data.msg=="This mobile number already exists in database!!") {
           this.appProvider.current.mobileNumber=this.mobileNumber;
           this.appProvider.current.toOtpPageFlag="SingIn";
@@ -104,16 +107,19 @@ export class LoginComponent implements OnInit{
           }
         }
       },error=>{
-          this.errorMessage="incorrect mobile number"
+          this.loading=false;
+          this.errorMessage="something went wrong"
           this.openDialog(this.errorMessage);
           return 0
       })
     }
 
     updateMobileNumber(mobileNumber){
+      this.loading=true;
       console.log("update function");
       this.appProvider.current.previousMobileNumber=this.mobileNumber;
       this.loginService.VerifyMobile(mobileNumber).subscribe(data=>{
+        this.loading=false;
         if (data.msg=="This mobile number already exists in database!!"){
           this.appProvider.current.firstName=data.info.firstName;
           this.appProvider.current.lastName=data.info.lastName;
@@ -124,7 +130,9 @@ export class LoginComponent implements OnInit{
           this.openDialog(this.errorMessage);
         }
       },error=>{
-
+          this.loading=false;
+          this.errorMessage="something went wrong"
+          this.openDialog(this.errorMessage);
       })
     }
 
@@ -137,6 +145,9 @@ export class LoginComponent implements OnInit{
           if (result) {
             if (result=="updateMobileNumber") {
               this.securityDialog();
+            }if (result=="no") {
+               this.errorMessage="please Signup"
+              this.openDialog(this.errorMessage);
             }
           }
         });
@@ -192,7 +203,9 @@ export class LoginComponent implements OnInit{
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
             if (result=="updateNewMobileNumber") {
+              this.loading=true;
               this.loginService.VerifyMobile(this.appProvider.current.newMobileNumber).subscribe(data=>{
+                this.loading=false
                 if (data.msg=="This mobile number already exists in database!!"){
                     this.errorMessage="user already registered";
                     this.openDialog(this.errorMessage);
@@ -201,7 +214,9 @@ export class LoginComponent implements OnInit{
                   this.router.navigate(["/otp"],{skipLocationChange:true})
                 }
               },error=>{
-
+                  this.loading=false;
+                  this.errorMessage="something went wrong"
+                  this.openDialog(this.errorMessage);
               })
             }
           }
@@ -395,8 +410,6 @@ export class LoginComponent implements OnInit{
   //   resetForSignUp(){
   //      this.router.navigate(['/registerationStepOne'])
   //   }
-
-
 
 
 }

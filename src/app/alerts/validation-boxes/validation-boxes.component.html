@@ -32,6 +32,61 @@
 	</div>
 </div>
 
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'state missing'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"Login_SecurityQuestions.stateRequired" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'district missing'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"Login_SecurityQuestions.districtRequired" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'block missing'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"Login_SecurityQuestions.blockRequired" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'Dob  missing'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"Login_SecurityQuestions.dobRequired" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
+<div class="modal-content cus-modal" *ngIf="errorMessage == 'gender missing'">
+	<div class="modal-header text-center color-red">
+		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	
+		<h4 class="m-t-0">{{"validationPopups.sorry" | translate}}</h4>
+	</div>
+	<div class="modal-body text-center ">
+		<p> {{"Login_SecurityQuestions.genderRequired" | translate}} </p>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()" > {{"Login_ErrorMessage_IncorrectMobileNumber.ok" | translate}} </button>
+	</div>
+</div>
+
 <div class="modal-content cus-modal" *ngIf="errorMessage == 'incorrect mobile number'">
 	<div class="modal-header text-center color-red">
 		<h1 class="close-icon m-0"> <i class="material-icons">highlight_off</i></h1>	

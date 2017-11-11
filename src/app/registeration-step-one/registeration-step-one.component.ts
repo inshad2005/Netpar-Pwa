@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PopupComponent } from '../alerts/popup/popup.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component';
+import { ExistingUserCheckComponent } from '../alerts/existing-user-check/existing-user-check.component';
+
 
 declare var google
 @Component({
@@ -16,8 +18,8 @@ declare var google
   providers:[LoginService]
 })
 export class RegisterationStepOneComponent implements OnInit {
-  @ViewChild('first') first:ElementRef;
-  @ViewChild('last') last:ElementRef;
+  // @ViewChild('first') first:ElementRef;
+  // @ViewChild('last') last:ElementRef;
   loginModel:LoginModel= new LoginModel();
   validationErrorMessage
   verifiedData;
@@ -42,19 +44,9 @@ export class RegisterationStepOneComponent implements OnInit {
 
    onNext(){
      let validate = {
-        firstName: this.loginModel.firstName,
-        lastName: this.loginModel.lastName,
         mobileNumber:this.loginModel.mobileNumber
       }
-      if (!validate.firstName) {
-        this.validationErrorMessage="first name missing"
-        this.openValidationAlert(this.validationErrorMessage);
-        return
-      } if (!validate.lastName) {
-        this.validationErrorMessage="last name missing"
-        this.openValidationAlert(this.validationErrorMessage);
-        return
-      } if(!validate.mobileNumber){
+      if(!validate.mobileNumber){
         this.validationErrorMessage="mobile number missing"
         this.openValidationAlert(this.validationErrorMessage);
         return
@@ -64,27 +56,25 @@ export class RegisterationStepOneComponent implements OnInit {
     // this.router.navigate(['/otp'],{skipLocationChange:true});
   }
 
-  onBlurFirstName(){
-    this.appProvider.current.firstName_eng=this.loginModel.firstName;
-  }
+  // onBlurFirstName(){
+  //   this.appProvider.current.firstName_eng=this.loginModel.firstName;
+  // }
 
-  onBlurLastName(){
-    this.appProvider.current.lastName_eng=this.loginModel.lastName;
-  }
+  // onBlurLastName(){
+  //   this.appProvider.current.lastName_eng=this.loginModel.lastName;
+  // }
 
   mainSignUpFunction(){
-         this.loginModel.firstName=this.first.nativeElement.value;
-         this.loginModel.lastName=this.last.nativeElement.value;
-         console.log(this.loginModel.firstName);
-         console.log(this.loginModel.lastName);
+         // this.loginModel.firstName=this.first.nativeElement.value;
+         // this.loginModel.lastName=this.last.nativeElement.value;
           if (this.loginModel.mobileNumber.length==10) {
             this.loading=true
              this.loginService.VerifyMobile(this.loginModel.mobileNumber)
              .subscribe(data=>{
                this.verifiedData=data;
                if (this.verifiedData.success==true) {
-                 this.appProvider.current.firstName=this.first.nativeElement.value;
-                 this.appProvider.current.lastName=this.last.nativeElement.value;
+                 // this.appProvider.current.firstName=this.first.nativeElement.value;
+                 // this.appProvider.current.lastName=this.last.nativeElement.value;
                  this.appProvider.current.mobileNumber=this.loginModel.mobileNumber;
                  this.appProvider.current.newMobileNumber=this.loginModel.mobileNumber;
                  this.appProvider.current.toOtpPageFlag="registerPage";
@@ -124,7 +114,20 @@ export class RegisterationStepOneComponent implements OnInit {
     }
 
     onExistingUser(){
-      this.router.navigate(['/login'],{skipLocationChange:true})
+      let dialogRef = this.dialog.open(ExistingUserCheckComponent, {
+          width: '350px'
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+           if(result=="SignIn"){
+            this.appProvider.current.loginOrUpdateFlag="SignIn" ;
+            this.router.navigate(['/login'],{skipLocationChange:true})
+           }else if (result=="Update") {
+             this.appProvider.current.loginOrUpdateFlag="Update";
+             this.router.navigate(['/login'],{skipLocationChange:true})
+           }
+        }
+      });
     }
 
     openValidationAlert(msg){
@@ -136,5 +139,6 @@ export class RegisterationStepOneComponent implements OnInit {
           
         });
     }
+
 
 }
