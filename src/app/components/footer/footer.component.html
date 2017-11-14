@@ -22,27 +22,27 @@
                         <ul class="profile-dropdown-menu">
                             <li>
                                 <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="cusIco-profil"></i>{{"MenuScreen.MyAccount" | translate}}
+                                    <i class="cusIco-profil"></i>{{"ProfilePage.ViewProfile" | translate}}
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="cusIco-donload"></i> My Downloads
+                                    <i class="cusIco-donload"></i> {{"ProfilePage.ViewDownloadeditems" | translate}}
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="cusIco-friends"></i> Network Friends
+                                    <i class="cusIco-friends"></i> {{"ProfilePage.FriendsOnMyNetwork" | translate}}
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/my-contribution" class="bg-yellow-g" skipLocationChange="true">
+                                    <i class="cusIco-badge"></i> {{"ProfilePage.ViewSavedItems" | translate}}
                                 </a>
                             </li>
                             <li>
                                 <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="cusIco-badge"></i> My Saved
-                                </a>
-                            </li>
-                            <li>
-                                <a routerLink="/my-profile" class="bg-yellow-g">
-                                    <i class="fa fa-plus"></i> My Contributions
+                                    <i class="fa fa-plus"></i> {{"ProfilePage.MyContributions" | translate}}
                                 </a>
                             </li>
                         </ul>
@@ -72,8 +72,8 @@
                 </a>
                 <ul class="dropdown-menu bottom-dropdown">
                     <!-- <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="material-icons">call</i> </span><div>Call</div></a> </li> -->
-                    <li> <a routerLink="/homepage"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>Contact</div></a> </li>
-                    <li> <a routerLink="/homepage"> <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>Help</div></a> </li>
+                    <li> <a > <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>{{"FloatingButtonScreen_Help.WhatsappforHelp" | translate}}</div></a> </li>
+                    <li> <a > <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>{{"FloatingButtonScreen_Help.Help" | translate}}</div></a> </li>
                 </ul>
             </li>
         </ul>

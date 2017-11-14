@@ -66,7 +66,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
       var i = 1;
       if($('.homepage-ulist li').length > 5){
         $('.homepage-ulist li:lt(5)').each(function () {
-          sum = sum + $(this).height();
+          sum = sum + $(this).outerHeight();
         });
         liHeight = sum;
         $('.homepage-ulist').height(liHeight);
@@ -184,7 +184,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts(this.userid)]).subscribe(results => {
       this.loading=false
       this.sections=results[0].FinalArray;
-      this.allPostData=results[1].response;
+      this.allPostData=results[1].response.filter(f=> f.publishStatus =="true" ||  f.publishStatus ==true);
       this.fetchSection();
     });
   }
@@ -241,6 +241,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     this.router.navigate(['/homepage'],{skipLocationChange:true})
     console.log(JSON.stringify(sectionData));
     this.appProvider.current.sectionDetails=sectionData;
+    this.appProvider.current.articleDetails=this.allPostData
   }
 
   fetchSection(){

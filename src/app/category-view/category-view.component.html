@@ -62,11 +62,11 @@
 		    <div class="scroll-menu" *ngIf="showDiv==true">
 		    	<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" *ngIf="sections">
 			        <div ngxSlickItem class="slide" *ngFor="let sec of sections;let i = index">
-			        	<a routerLink="/homepage" class="{{bgClass(i)}}">
+			        	<a (click)= "onSection(sec)" class="{{bgClass(i)}}">
 			        		<div>
 			        			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}"> 
 			        			<img *ngIf="! sec.thumbnailImage" src="./assets/img/education-512.png"> 
-			        			<div> {{sec.sectionName}} </div>
+			        			<div class="slick-text"> {{sec.sectionName}} </div>
 			        		</div>
 			        	</a>
 			        </div>

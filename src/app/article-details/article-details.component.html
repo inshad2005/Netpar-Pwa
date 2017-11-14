@@ -46,18 +46,18 @@
 		    		</div> -->
 		    		<div class="inner-card" *ngFor="let content of articleData.contentBody">
 					  	<div class="form-group" *ngIf="content.tag=='image'" [ngStyle]="{background:content.backgroundColor}">
-					   		<img [src]="content.url" class="img-responsive rad-shad" />
+					   		<img [src]="getSafeUrl(content.url)" class="img-responsive rad-shad" />
 					 	</div>
 						<div [ngStyle]="{background:content.backgroundColor}" *ngIf="content.tag=='text'">
 						   <div  [innerHtml]="getSafeContent(content.text)" ></div>
 						</div>
 				  
 					  	<audio controls style="width:100%" *ngIf="content.tag=='audio'">
-					        <source [src]="content.url"  type="audio/mpeg" />
+					        <source [src]="getSafeUrl(content.url)"  type="audio/mpeg" />
 					        Your browser does not support the audio element.
 					    </audio>
 					    <video id="my-video" controls preload="auto" width="100%" *ngIf="content.tag=='video'">
-					         <source [src]="content.url" type="video/mp4">
+					         <source [src]="getSafeUrl(content.url)" type="video/mp4">
 					    </video>
 				        <div style="text-align: center;" *ngIf="content.tag=='document'" document><img width="50%" style="display: inline-block;" [src]="content.url"></div>
 				    	<table class="main" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" *ngIf="content.tag=='grid'">
@@ -103,24 +103,43 @@
 		    		<div class="inner-card dashed-brd"></div>
 		    		<ul class="like-bar dashed-brd">
 		    			<li>
-		    				<a class="text-info" routerLink="/article-details"><span class="span-icns"> <i class="fa fa-eye"></i></span> {{articleData.pageView}} </a> 
+		    				<a class="text-info" ><span class="span-icns"> <i class="fa fa-eye"></i></span> {{articleData.pageView}} </a> 
+		    			</li>
+		    			<li class="{{likeClass}}">
+		    				<a class="text-danger" ><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{articleData.likeCount}} </a>
 		    			</li>
 		    			<li>
-		    				<a class="text-danger" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-okay-o"></i></span> {{articleData.likeCount}} </a>
+		    				<a class="text-rose" ><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{articleData.commentCount}} </a> 
 		    			</li>
-		    			<li>
-		    				<a class="text-rose" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{articleData.commentCount}} </a> 
+		    		<!-- 	<li class="{{likeClass}}">
+		    				<a class="text-danger" (click)="onLike()"><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{"ContentItemView_Scroll1.Like" | translate}} </a>
 		    			</li>
+						<li class="{{saveClass}}">
+		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
+		    			</li> -->
 		    			<li>
-		    				<a class="text-primary" routerLink="/article-details"><span class="span-icns"> <i class="cusIco-badge-o"></i></span> {{articleData.saveCount}} </a> 
+		    				<a class="text-primary" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{articleData.saveCount}} </a> 
 		    			</li>
 		    		</ul>
 		    		<div class="inner-card dashed-brd"> <h4 class="font-16 m-0"> {{"ContentItemView_Scroll2.Comments"| translate}} </h4> </div>
 		    		<div class="inner-card dashed-brd">
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0">
 		    				<mat-form-field>
-	                            <textarea matInput placeholder="{{'CommentBox.EnteryouComment' | translate}}..." rows="3" [(ngModel)]="articleCommentModel.userComment" id="mycomment"></textarea>
-	                        </mat-form-field>
+	                            <textarea matInput [matAutocomplete]="comment" placeholder="{{'CommentBox.EnteryouComment' | translate}}..." rows="3" [(ngModel)]="articleCommentModel.userComment" id="mycomment" #mycomment name="mycomment" (input)="onTransliteration(articleCommentModel.userComment,mycomment)" (keyup)="onKeyUp($event,mycomment)" (click)="clearSuggstion()"></textarea>
+	                            <mat-autocomplete #comment="matAutocomplete" >
+	                                <mat-option *ngFor="let suggestion of appProvider.current.suggestedString" [value]="suggestion" (click)="selectString(suggestion)" (onSelectionChange)="onSuugestionkeyup(suggestion)">
+	                                    <span>{{ suggestion }}</span>
+	                                </mat-option>
+	                            </mat-autocomplete>
+	                           <!--   <ul class="iframe-suggestion" >
+       									     <mat-option *ngFor="let state of appProvider.current.suggestedString" [value]="state" (click)="selectString(state)">
+                                                    <span>{{ state }}</span> 
+                                                    </mat-option>
+           							 <li *ngFor="let suggestion of appProvider.current.suggestedString" (click)="selectString(suggestion)">
+                 						<span>{{ suggestion }}</span> 
+           							 </li>
+          						</ul> -->
+	                       	</mat-form-field>                      	
 		    			</div>
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0 text-right form-group">
 		    				<button class="btn btn-info btn-sm" (click)="onComment()">Send</button>
@@ -203,11 +222,11 @@
 						    </ngx-slick>
 					    </div>
 		    		</div>
-
+		    		<div class="bg-gradient"> </div>
 			    </div>
 
 			    <div class="col-md-12 col-sm-12 col-xs-12 p-0">
-			    	<button class="btn bg-blue full-width" (click)="onContinueReading()" *ngIf="continueButtonVisible"> Continue Reading <i class="fa fa-chevron-down"></i> </button>
+			    	<button class="btn bg-blue full-width read-btn" (click)="onContinueReading()" *ngIf="continueButtonVisible"> Continue Reading <i class="fa fa-chevron-down"></i> </button>
 			    </div>
 			    
 			</section>

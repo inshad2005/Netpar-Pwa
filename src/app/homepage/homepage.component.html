@@ -29,7 +29,7 @@
 		    <div *ngIf="categoryTemplateStyle=='Category-view Template Three'">
 		    	 <ul class="homepage-ulist sec">
 			    	<li *ngFor="let category of categories; let i=index">
-			    		<div [ngStyle]="{'background-image': 'url(' + category.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    		<div class="homepage-bg" [ngStyle]="{'background-image': 'url(' + category.horigontalImage + ')'}" (click)= "onSection(sec)">
 			    			<a>
 			    				{{category.categoryName}}
 			    	   		 </a> 

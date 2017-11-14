@@ -1,3 +1,18 @@
 .read-panel{
-	height: 69vh;
+	height: 72vh;
+}
+
+.mat-input-placeholder-wrapper .mat-form-field-placeholder{
+	line-height: 1.52 !important;
+}
+
+.mat-form-field-placeholder {
+    line-height: 1.52 !important;
+}
+
+.mat-form-field {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.52!important;
 }

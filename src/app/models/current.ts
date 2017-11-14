@@ -18,6 +18,8 @@ export class Current {
     loginOrUpdateFlag:any;
     userData:any;
     previousMobileNumber:any;
+    suggestedString:any
+    currentLanguage:any
     constructor(public leadsFilter?: string) {
     }
 }

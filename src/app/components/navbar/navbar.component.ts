@@ -14,7 +14,8 @@ export class NavbarComponent implements OnInit {
     location: Location;
     private toggleButton: any;
     private sidebarVisible: boolean;
-    backButton=false
+    backButton=false;
+    logoutButtonVisible;
     userData=JSON.parse(localStorage['userInfo']);
     constructor(private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
       this.location = location;
@@ -69,6 +70,9 @@ export class NavbarComponent implements OnInit {
       }
       else if (titlee=='article-details') {
         return titlee;
+      }else if (titlee=='my-profile') {
+         this.logoutButtonVisible=true;
+         return this.translateService.instant('BottomBarandTopBar.welcomeForMale')+" "+ this.userData.firstName
       }
       else{
         return titlee;
@@ -79,5 +83,10 @@ export class NavbarComponent implements OnInit {
       if (this.router.url=='/article-details') {
        this.router.navigate(['/category-view'],{skipLocationChange:true});
       }
+    }
+
+    onLogOut(){
+      localStorage.clear();
+      this.router.navigate(['/welcome-screen2'],{skipLocationChange:true})
     }
 }

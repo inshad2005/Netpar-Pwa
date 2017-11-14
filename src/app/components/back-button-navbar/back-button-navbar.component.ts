@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
+import { AppProvider } from '../../providers/app'
 
 @Component({
   selector: 'app-back-button-navbar',
@@ -7,9 +8,14 @@ import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
   styleUrls: ['./back-button-navbar.component.css']
 })
 export class BackButtonNavbarComponent implements OnInit {
-
-  constructor(private router:Router) { }
-
+  articleData
+  sectionDetails
+  constructor(private appProvider:AppProvider,private router:Router) { 
+    this.articleData=this.appProvider.current.articleDetails;
+    this.sectionDetails=this.appProvider.current.sectionDetails;
+    console.log(this.articleData.subCategoryName)
+  }
+    
   ngOnInit() {
     
   }
@@ -17,7 +23,16 @@ export class BackButtonNavbarComponent implements OnInit {
  	getTitle(){
     var title =  this.router.url;
     title = title.split('/').pop();
-    return title;
+    if(title=='article-details'){
+      if (this.articleData) {
+       return this.articleData.subCategoryName
+      }
+    }else if(title=='homepage'){
+      return this.sectionDetails.sectionName
+    }
+    else{
+      return title;
+    }
   }
 
   goBack(): void { 

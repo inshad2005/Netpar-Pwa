@@ -115,7 +115,7 @@ export class RegisterationStepOneComponent implements OnInit {
 
     onExistingUser(){
       let dialogRef = this.dialog.open(ExistingUserCheckComponent, {
-          width: '350px'
+          width: '290px'
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result) {

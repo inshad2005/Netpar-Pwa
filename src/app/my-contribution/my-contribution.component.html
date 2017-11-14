@@ -10,7 +10,7 @@
 			<section class="invite-sec">
 				<div class="card cus-card">
 					<mat-tab-group>
-					  	<mat-tab label="Saved Posts">
+					  	<mat-tab label="{{'ProfilePage_Scroll1.SavedPosts' | translate}}">
 					  		<div class="list-view3">
 				    			<div class="view-lists grid-1" *ngFor="let savedPost of savedPosts;let i=index">
 							        <a (click)="onSaved(savedPost)" class="{{colorClass(i)}}">
@@ -27,7 +27,7 @@
 						    	</div>
 						    </div>	
 					  	</mat-tab>
-					  	<mat-tab label="My Contributions">
+					  	<mat-tab label="{{'ProfilePage_Scroll1.Contributions' | translate}}">
 					  		<div class="list-view3">
 				    			<div class="view-lists grid-1">
 							        <a routerLink="/article-details" class="color-red">

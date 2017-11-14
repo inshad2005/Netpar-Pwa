@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule, MatCheckboxModule, MatProgressSpinnerModule, MatSelectModule, MatInputModule, MatRadioModule} from "@angular/material";
-import { MatListModule, MatDialogModule } from '@angular/material';
+import { MatSnackBarModule,MatProgressBarModule, MatCheckboxModule, MatProgressSpinnerModule, MatSelectModule, MatInputModule, MatRadioModule} from "@angular/material";
+import { MatAutocompleteModule,MatListModule, MatDialogModule } from '@angular/material';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { MatDatepickerModule, MatNativeDateModule,MatExpansionModule} from '@angular/material';
 import { MatTooltipModule, MatTableModule, MatPaginator } from "@angular/material";
@@ -128,12 +128,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatProgressBarModule,
+    MatSnackBarModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatInputModule,
     MatRadioModule,
     MatTabsModule,
+    MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatTooltipModule,

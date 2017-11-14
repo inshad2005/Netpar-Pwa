@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="javascript:void(0);">{{getTitle()}}</a>
         </div>
         <ul class="nav navbar-nav navbar-right cus-navbar">
-            <li>
+            <li *ngIf="!logoutButtonVisible">
                 <a class="" href="javascript:void(0);">
                     <i class="material-icons">search</i>
                 </a>
@@ -41,9 +41,9 @@
                     </li>
                 </ul>
             </li>
-           <!--  <li>
-                <a href="#" class="text-red" title="Log Out"> <i class="material-icons">power_settings_new</i> </a>
-            </li> -->
+            <li *ngIf="logoutButtonVisible">
+                <a href="#" class="text-red" title="Log Out" (click)="onLogOut()"> <i class="material-icons">power_settings_new</i> </a>
+            </li>
 
         </ul>
 

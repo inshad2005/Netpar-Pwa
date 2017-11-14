@@ -4,20 +4,22 @@ import { AppProvider } from '../providers/app'
 import { DomSanitizer } from '@angular/platform-browser';
 import { AllPostsService } from '../providers/allPost.service' ;
 import { ArticleLikeModel,ArticleCommentModel,SaveArticle } from './article-detail.model.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA ,MatSnackBar,MatSnackBarVerticalPosition} from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
 import { CommentsComponent } from './comments/comments.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
 import { Router } from '@angular/router';
+import { TranslationService } from '../providers/translation.service'
 import 'rxjs/Rx';
 // import  * as download from 'file-download'
 import { Http ,Headers,RequestOptions,ResponseContentType} from '@angular/http';
 import {saveAs} from "file-saver";
-
+declare var google
 @Component({
   selector: 'app-article-details',
   templateUrl: './article-details.component.html',
   styleUrls: ['./article-details.component.css'],
-  providers:[AllPostsService]
+  providers:[AllPostsService,TranslationService]
 })
 export class ArticleDetailsComponent implements OnInit {
 
@@ -39,7 +41,17 @@ export class ArticleDetailsComponent implements OnInit {
     continueClass="read-panel";
     continueButtonVisible=true;
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    snackbarMessage;
+    currentString:any;
+    sendString:any;
+    selectedValue:any;
+    currentActiveIndex:number;
+    outputStringArrayLength:number;
+    caretPos
+    elementRefrence:any;
+    inputStringLength:number
+    outputStringLength:number
+    constructor(private translationService:TranslationService,private translateService:TranslateService,private snackBar: MatSnackBar,private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -53,12 +65,22 @@ export class ArticleDetailsComponent implements OnInit {
       this.getComments();
       this.likeOrNot();
       this.savedOrNot();
+      this.googleTransliterateFunction();
       // this.getSafeContent(this.articleData.contentBody)
   	}
 
- 
-
-    
+   googleTransliterateFunction(){
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.MARATHI],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+        var control = new google.elements.transliteration.TransliterationControl(options);
+        control.makeTransliteratable(['mycomment']);
+   }
 
   	navRemove(){
   		/*alert('home')*/
@@ -81,9 +103,11 @@ export class ArticleDetailsComponent implements OnInit {
 
     likeOrNot(){
       if (this.articleData.liked==false) {
+        console.log("liked false")
         this.likeIcon='cusIco-okay-o';
         this.likeClass="";
       }else if (this.articleData.liked=true) {
+        console.log("liked true")
         this.likeIcon='cusIco-okay';
         this.likeClass="active"
       }
@@ -91,13 +115,12 @@ export class ArticleDetailsComponent implements OnInit {
 
     savedOrNot(){
       if (this.articleData.saved==false) {
-        console.log('false')
+        console.log('saved false')
         this.saveIcon="cusIco-badge-o";
         this.saveClass="";
       }else if (this.articleData.saved=true) {
-        console.log('true')
+        console.log('saved true')
         this.saveIcon='cusIco-badge';
-        this.saveClass="active"
       }
     }
 
@@ -153,6 +176,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleCommentModel.language=localStorage['selectedLanguage'];
       this.allPostsService.commentPost(this.articleCommentModel).subscribe(data=>{
         // console.log(JSON.stringify(data));
+        this.articleCommentModel.userComment="";
         this.latestComment=data.response;
         this.articleData.commentCount=this.articleData.commentCount+1;
       })
@@ -167,6 +191,9 @@ export class ArticleDetailsComponent implements OnInit {
         if (data.success==true) {
           this.saveIcon="cusIco-badge";
           this.articleData.saveCount=this.articleData.saveCount+1;
+          this.snackbarMessage=this.translateService.instant('ContentItemSaved.saved');
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition)
         }
       },err=>{
         console.log(err)
@@ -175,7 +202,8 @@ export class ArticleDetailsComponent implements OnInit {
 
     onViewMore(){
       if (this.articleData.user_comments.length>0) {
-        this.appProvider.current.comments=this.articleData.user_comments;
+        this.appProvider.current.comments=this.articleData.user_comments.filter(f => f.status == "Reviewed");
+        console.log(this.appProvider.current.comments);
         this.router.navigate(['/comments'],{skipLocationChange:true})
       }
       else{
@@ -234,7 +262,7 @@ export class ArticleDetailsComponent implements OnInit {
           var mediaType = 'image/jpeg';
           var blob = new Blob([response], {type: mediaType});
           console.log(blob);
-          var filename = 'test.pdf';
+          var filename = 'test.jpeg';
           saveAs(blob, filename);
         });
   }
@@ -248,4 +276,108 @@ export class ArticleDetailsComponent implements OnInit {
     return this.continueClass="";
   }
 
+  openSnackBar(message: string, action: string,config) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
+
+ onTransliteration(value,event){
+   var myEl=event.target
+   this.elementRefrence=event
+   let post =this.getCaretPos(event)
+   this.currentString=value
+   let subValue=value.substring(0, post)
+   let localValue=subValue.split(' ')
+   let length=localValue.length
+   let letstring=localValue[length-1]
+   let replcedstring=letstring.match(/[a-zA-Z]+/g);
+   let stringForSend
+   if (replcedstring) {
+     stringForSend=replcedstring[0]
+   }
+   if (!stringForSend) {
+     return 
+   }
+   else if(stringForSend=='') {
+      return 
+   }
+   else if (/^[a-zA-Z]+$/.test(stringForSend)) {
+    this.sendString=stringForSend.toString()
+    this.translationService.onGetSuggetiion(stringForSend)
+        .subscribe(data => {     
+            this.appProvider.current.suggestedString=data
+            this.outputStringArrayLength=this.appProvider.current.suggestedString.length
+            this.currentActiveIndex=-1;
+            this.inputStringLength=this.sendString.length
+           },error=>{        
+     })
+   }
+ }
+
+  getCaretPos(oField) {
+    if (oField.selectionStart || oField.selectionStart == '0') {
+       this.caretPos = oField.selectionStart;
+       return this.caretPos
+    }
+  }
+
+  clearSuggstion(){
+    this.appProvider.current.suggestedString=[]
+  }
+
+  onKeyUp(event){
+    console.log(event.keyCode )
+    if(event.keyCode==32){
+      this.currentString=this.currentString.toString()
+      if (this.appProvider.current.suggestedString.length>0) {
+          if (this.currentActiveIndex==-1 || this.currentActiveIndex==0) {
+           let replaceWith=this.appProvider.current.suggestedString[0]
+           let output=this.currentString.replace(this.sendString ,replaceWith)
+          this.articleCommentModel.userComment=output
+          this.appProvider.current.suggestedString=[]
+          }else{
+           let replaceWith=this.appProvider.current.suggestedString[this.currentActiveIndex]
+           let output=this.currentString.replace(this.sendString ,replaceWith)
+           this.articleCommentModel.userComment=output
+           this.appProvider.current.suggestedString=[]
+          }
+      }
+
+    }else if (this.selectedValue && event.keyCode==13) {
+     this.currentString=this.currentString.toString()
+     if (this.outputStringArrayLength>0) {
+          let replaceWith=this.selectedValue+' '
+          let output=this.currentString.replace(this.sendString ,replaceWith)
+          this.articleCommentModel.userComment=output
+          this.appProvider.current.suggestedString=[]
+      }
+    }else if (event.keyCode==38) {
+       if (this.currentActiveIndex==-1 || this.currentActiveIndex==0) {
+         this.currentActiveIndex=this.outputStringArrayLength-1
+       }else{
+         this.currentActiveIndex=this.currentActiveIndex-1
+       }
+    }else if (event.keyCode==40) {
+       if (this.currentActiveIndex==this.currentActiveIndex-1) {
+         this.currentActiveIndex=0
+       }else{
+         this.currentActiveIndex=this.currentActiveIndex+1
+       }
+    }
+  }
+
+  onSuugestionkeyup(suggestion){
+    this.selectedValue=suggestion
+  }
+
+  selectString(suggestion){
+     this.currentString=this.currentString.toString()
+     this.outputStringLength=suggestion.length
+     let replaceWith=suggestion+' '
+     let output=this.currentString.replace(this.sendString ,replaceWith)
+     this.articleCommentModel.userComment=output
+     let sumIndex=(this.caretPos+this.outputStringLength)-this.inputStringLength
+     this.appProvider.current.suggestedString=[]
+  }
 }
