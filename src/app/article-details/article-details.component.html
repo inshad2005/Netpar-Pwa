@@ -33,7 +33,7 @@
 		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li>
 		    			<li>
-		    				<a class="text-orange" (click)="downloadFile()"><span class="span-icns"> <i class="cusIco-donload-o"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
+		    				<a class="text-orange" (click)="downloadFile()"><span class="span-icns"> <i class="{{downloadIcon}}"></i></span> {{"ContentItemView_Scroll1.Download" | translate}} </a> 
 		    			</li>
 		    		</ul>
 		    		<!-- <div *ngFor="let article of articleData.contentBody">
@@ -59,7 +59,7 @@
 					    <video id="my-video" controls preload="auto" width="100%" *ngIf="content.tag=='video'">
 					         <source [src]="getSafeUrl(content.url)" type="video/mp4">
 					    </video>
-				        <div style="text-align: center;" *ngIf="content.tag=='document'" document><img width="50%" style="display: inline-block;" [src]="content.url"></div>
+				        <div style="text-align: center;" *ngIf="content.tag=='document'" document><img width="50%" style="display: inline-block;" src="./assets/img/JAVA.png"></div>
 				    	<table class="main" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" *ngIf="content.tag=='grid'">
 				            <tbody>
 				                <tr style="text-align: center;">
@@ -71,7 +71,7 @@
 							        	<video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl1!=null">
 							             	<source [src]="getSafeUrl(content.videourl1)" type="video/mp4">
 							         	</video>
-				                        <img *ngIf="content.documenturl1!=null" width="50%" style="display: inline-block;" [src]="getSafeUrl(content.documenturl1)" >
+				                        <img *ngIf="content.documenturl1!=null" width="50%" style="display: inline-block;" src="./assets/img/JAVA.png" >
 				                        <img *ngIf="content.imgurl1!=null" style="width:100%" [src]="content.imgurl1">
 				                    </td>
 				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
@@ -82,7 +82,7 @@
 								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl2!=null">
 								             <source [src]="getSafeUrl(content.videourl2)" type="video/mp4">
 								        </video>
-				                        <img *ngIf="content.documenturl2!=null" width="50%" style="display: inline-block;" [src]="content.documenturl2" >
+				                        <img *ngIf="content.documenturl2!=null" width="50%" style="display: inline-block;" src="./assets/img/JAVA.png" >
 				                        <img *ngIf="content.imgurl2!=null" style="width:100%" [src]="getSafeUrl(content.imgurl2)">
 				                    </td>
 				                    <td style="width: 33.33%;border: 1px dashed #333;min-height: 100px;background-color: #f5f5f5;" >
@@ -93,7 +93,7 @@
 								        <video id="my-video" controls preload="auto" width="100%" *ngIf="content.videourl3!=null">
 								             <source [src]="getSafeUrl(content.videourl3)" type="video/mp4">
 								        </video>
-				                        <img *ngIf="content.documenturl3!=null" width="50%" style="display: inline-block;" [src]="getSafeUrl(content.documenturl3)" >
+				                        <img *ngIf="content.documenturl3!=null" width="50%" style="display: inline-block;" src="./assets/img/JAVA.png" >
 				                        <img *ngIf="content.imgurl3!=null" style="width:100%" [src]="getSafeUrl(content.imgurl3)">
 				                    </td>
 				                </tr>
@@ -144,17 +144,32 @@
 		    			<div class="col-mat-12 col-sm-12 col-xs-12 p-0 text-right form-group">
 		    				<button class="btn btn-info btn-sm" (click)="onComment()">Send</button>
 		    			</div>
-		    			<div  class="loop-div" *ngIf="latestComment">
+		    			<div  class="loop-div" *ngIf="latestComment && !viewAllComment">
 	    					<div class="user-img">
 		    					<img src="./assets/img/profile_user.jpg" class="img-responsive" />
 		    				</div>
-			    			<div class="comment-box" >
-			    				<h5 class="m-0"> {{latestComment.userName}} <span class="pull-right"> {{latestComment.dateOfComment.split('T')[0]}} </span> </h5>
-			    				<p>{{latestComment.userComment}}</p>
-			    			</div>
-				    		<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
-				    			<a  class="text-primary" (click)="onViewMore()"><u>{{"ContentItemView_Scroll1.ViewMore" | translate}}</u></a>
+		    				<div>
+		    					<div class="comment-box" >
+				    				<h5 class="m-0"> {{latestComment.userName}} <span class="pull-right"> {{latestComment.dateOfComment.split('T')[0]}} </span> </h5>
+				    				<p>{{latestComment.userComment}}</p>
+			    				</div>
+		    				</div>
+		    				<div class="col-mat-12 col-sm-12 col-xs-12 text-center">
+				    			<a  class="text-primary" (click)="onViewMoreComments()"><u>{{"ContentItemView_Scroll1.ViewMore" | translate}}</u></a>
 				    		</div>
+		    			</div>
+		    			<div *ngIf="viewAllComment">
+		    				<div  class="loop-div" *ngFor="let comment of articleData.user_comments">
+		    					<div class="user-img">
+			    					<img src="./assets/img/profile_user.jpg" class="img-responsive" />
+			    				</div>
+			    				<div>
+			    					<div class="comment-box" >
+					    				<h5 class="m-0"> {{comment.userName}} <span class="pull-right"> {{comment.dateOfComment.split('T')[0]}} </span> </h5>
+					    				<p>{{comment.userComment}}</p>
+				    				</div>
+			    				</div>
+			    			</div>
 		    			</div>
 		    		</div>
 		    		<div class="inner-card dashed-brd">

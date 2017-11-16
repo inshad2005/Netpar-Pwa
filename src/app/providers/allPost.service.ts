@@ -31,6 +31,18 @@ export class AllPostsService {
         })
     }
 
+    downloadPost(postid,userid): Observable<any>{
+        let api = environment.endPoint+"downloadDone/"+postid+"/"+userid;
+        return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
+
+    
+
     commentPost(articleCommentData): Observable<any>{
         let api = environment.endPoint+"postComment";
         let body = articleCommentData;
@@ -50,6 +62,16 @@ export class AllPostsService {
             return response.json();
         }).catch(error=>{
             return error
+        })
+    }
+
+    viewPost(postid,userid){
+        let api=environment.endPoint+"pageViewed/"+postid+"/"+userid;
+         return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
         })
     }
 

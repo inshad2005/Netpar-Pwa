@@ -9,11 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { CommentsComponent } from './comments/comments.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component'
 import { Router } from '@angular/router';
-import { TranslationService } from '../providers/translation.service'
+import { TranslationService } from '../providers/translation.service';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import 'rxjs/Rx';
 // import  * as download from 'file-download'
 import { Http ,Headers,RequestOptions,ResponseContentType} from '@angular/http';
-import {saveAs} from "file-saver";
+import { saveAs } from "file-saver";
 declare var google
 @Component({
   selector: 'app-article-details',
@@ -36,7 +37,8 @@ export class ArticleDetailsComponent implements OnInit {
     likeClass;
     likeIcon;
     saveIcon;
-    saveClass
+    saveClass;
+    downloadIcon="cusIco-donload-o";
     latestComment;
     continueClass="read-panel";
     continueButtonVisible=true;
@@ -49,9 +51,10 @@ export class ArticleDetailsComponent implements OnInit {
     outputStringArrayLength:number;
     caretPos
     elementRefrence:any;
-    inputStringLength:number
-    outputStringLength:number
-    constructor(private translationService:TranslationService,private translateService:TranslateService,private snackBar: MatSnackBar,private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    inputStringLength:number;
+    outputStringLength:number;
+    viewAllComment;
+    constructor(public toastr: ToastsManager,private translationService:TranslationService,private translateService:TranslateService,private snackBar: MatSnackBar,private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -66,6 +69,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.likeOrNot();
       this.savedOrNot();
       this.googleTransliterateFunction();
+      this.viewArticle();
       // this.getSafeContent(this.articleData.contentBody)
   	}
 
@@ -208,6 +212,7 @@ export class ArticleDetailsComponent implements OnInit {
       }
       else{
         console.log('no comment to display')
+        this.showCustom();
       }
     }
 
@@ -221,51 +226,27 @@ export class ArticleDetailsComponent implements OnInit {
         });
     }
 
-   // downloadFile(data: Response){
-   //   console.log(data)
-   //    var blob = new Blob([data], {type: "url" });
-   //    var url= window.URL.createObjectURL(blob);
-   //    console.log(url)
-   //    window.open(url);
-   //  }
-
-    onDownload(){
-      for (var i = 0; i < this.articleData.contentBody.length; ++i) {
-        if (this.articleData.contentBody[i].tag=='image') {
-          var url = this.articleData.contentBody[i].url;
-          // this.downloadFile(url);
-        }
-      }
-    }
-
-    downloadFilee(url){
-      console.log(url)
-      const fr = new FileReader();
-        fr.onloadend = (loadEvent) => {
-            let demo = fr.result;
-            console.log(demo)
-        };
-        fr.readAsDataURL(url);
-    }
-
-
-    // onDownloadimage(){
-    //   download('http://unicorn.com/foo.jpg', 'dist').then(() => {
-    //       console.log('done!');
-    //   });
-    // }
-
   downloadFile() {
-    this.http.get('http://ionicteam.com/netpar/uploads/content/contentData/1509737827.jpeg').subscribe(
-        (response) => {
-          console.log(response);
-          var mediaType = 'image/jpeg';
-          var blob = new Blob([response], {type: mediaType});
-          console.log(blob);
-          var filename = 'test.jpeg';
-          saveAs(blob, filename);
-        });
-  }
+      this.http.get("http://52.15.178.19:3002/netpar/downloadFile").subscribe(
+          (response) => {
+            this.downloaded();
+            console.log(response);
+            var mediaType = 'image/gif';
+            var blob = new Blob([response], {type: mediaType});
+            console.log(blob);
+            var filename = 'pretty image.gif';
+            saveAs(blob, filename);
+          });
+    }
+
+    downloaded(){
+      this.allPostsService.downloadPost(this.articleData._id,this.userData._id).subscribe(response=>{
+        console.log(response);
+        if (response.success==true) {
+         this.downloadIcon="cusIco-donload";
+        }
+      })
+    }
 
   getSafeUrl(url){
     return this.domSanitizer.bypassSecurityTrustResourceUrl(url);
@@ -380,4 +361,22 @@ export class ArticleDetailsComponent implements OnInit {
      let sumIndex=(this.caretPos+this.outputStringLength)-this.inputStringLength
      this.appProvider.current.suggestedString=[]
   }
+
+   showCustom() {
+      this.toastr.custom('<span style="color: red">no more comments to show</span>', null, {enableHTML: true});
+   }
+
+   onViewMoreComments(){
+     this.viewAllComment=true;
+     console.log(this.viewAllComment)
+   }
+
+
+   viewArticle(){
+     this.allPostsService.viewPost(this.articleData._id,this.userData._id).subscribe(response=>{
+       console.log(response);
+     },error=>{
+       console.log(error);
+     })
+   }
 }

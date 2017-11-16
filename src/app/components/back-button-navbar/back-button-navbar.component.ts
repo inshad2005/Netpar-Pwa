@@ -10,9 +10,11 @@ import { AppProvider } from '../../providers/app'
 export class BackButtonNavbarComponent implements OnInit {
   articleData
   sectionDetails
+  categoryData
   constructor(private appProvider:AppProvider,private router:Router) { 
     this.articleData=this.appProvider.current.articleDetails;
     this.sectionDetails=this.appProvider.current.sectionDetails;
+    this.categoryData=this.appProvider.current.categoryData;
     console.log(this.articleData.subCategoryName)
   }
     
@@ -25,10 +27,12 @@ export class BackButtonNavbarComponent implements OnInit {
     title = title.split('/').pop();
     if(title=='article-details'){
       if (this.articleData) {
-       return this.articleData.subCategoryName
+       return this.articleData.categoryName
       }
     }else if(title=='homepage'){
       return this.sectionDetails.sectionName
+    }else if(title=='homepage2'){
+      return this.categoryData.categoryName
     }
     else{
       return title;
@@ -44,6 +48,9 @@ export class BackButtonNavbarComponent implements OnInit {
     }
     if (this.router.url=='/homepage') {
      this.router.navigate(['/category-view'],{skipLocationChange:true});
+    } 
+    if(this.router.url=='/homepage2'){
+     this.router.navigate(['/homepage'],{skipLocationChange:true});
     }
   }
 }

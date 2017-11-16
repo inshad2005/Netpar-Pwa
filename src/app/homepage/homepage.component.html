@@ -6,14 +6,14 @@
 		    <div class="homepage-listing" *ngIf="categoryTemplateStyle=='Category-view Template Four'">
 			    <ul class="homepage-ulist">
 			    	<li class="{{bgClass(i)}}" *ngFor="let category of categories; let i=index"> 
-			    		<a> {{category.categoryName}} </a>
+			    		<a (click)= "onCategory(category)"> {{category.categoryName}} </a>
 			    	</li>
 			    </ul>
 		    </div>
 		    <div class="homepage2-listing" *ngIf="categoryTemplateStyle=='Category-view Template Two'">
 			    <ul class="homepage2-ulist">
 			    	<li *ngFor="let category of categories">
-			    		<a><img src="{{category.thumbnailImage}}"> 
+			    		<a (click)= "onCategory(category)"><img src="{{category.thumbnailImage}}"> 
 			    		<p>{{category.categoryName}} </p> </a>
 			    	</li>
 			    </ul>
@@ -21,7 +21,7 @@
 		    <div class="homepage2-listing" *ngIf="categoryTemplateStyle=='Category-view Template One'">
 			    <ul class="homepage2-ulist">
 			    	<li *ngFor="let category of categories">
-			    		<a ><img src="{{category.thumbnailImage}}"> 
+			    		<a (click)= "onCategory(category)" ><img src="{{category.thumbnailImage}}" > 
 			    		<p>{{category.categoryName}} </p> </a>
 			    	</li>	
 			    </ul>
@@ -29,7 +29,7 @@
 		    <div *ngIf="categoryTemplateStyle=='Category-view Template Three'">
 		    	 <ul class="homepage-ulist sec">
 			    	<li *ngFor="let category of categories; let i=index">
-			    		<div class="homepage-bg" [ngStyle]="{'background-image': 'url(' + category.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    		<div class="homepage-bg" [ngStyle]="{'background-image': 'url(' + category.horigontalImage + ')'}" (click)= "onCategory(category)">
 			    			<a>
 			    				{{category.categoryName}}
 			    	   		 </a> 

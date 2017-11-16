@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
 import { FetchSectionsService } from '../../providers/fetch-sections.service';
+import { AppProvider } from '../../providers/app'
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -36,7 +37,9 @@ export class SidebarComponent implements OnInit {
   sections;
   profile;
 
-  constructor(private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) { }
+  constructor(private appProvider:AppProvider,private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) { }
+
+
 
   ngOnInit() {
     //alert(this.route.url)
@@ -121,6 +124,7 @@ export class SidebarComponent implements OnInit {
       // console.log(JSON.stringify(data));
       if (data.success==true) {
         this.sections=data.FinalArray;
+        console.log(this.sections)
       }
       
     },err =>{

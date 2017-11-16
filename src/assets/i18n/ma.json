@@ -245,7 +245,9 @@
         "FriendsOnMynetwork":"नेटपर वरील माझे मित्र",
         "SeeMore":"आणखी दाखवा",
         "SavedPosts":"साठवलेले लेख",
-        "Contributions":"योगदान"
+        "Contributions":"योगदान",
+        "Friends":"मित्र",
+        "article":"लेख"
     },     
 
     "DeletedPopupScreen":{

@@ -1,8 +1,10 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef ,ViewContainerRef} from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppProvider } from '../providers/app'
 declare var jquery:any;
 declare var $ :any;
+import { Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-homepage',
@@ -18,9 +20,10 @@ export class HomepageComponent implements OnInit {
     sectionData;
     categories;
     categoryTemplateStyle;
-    constructor(private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    constructor( vRef: ViewContainerRef,public toastr: ToastsManager,private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
+      this.toastr.setRootViewContainerRef(vRef);
     }
   	ngOnInit() {
       const navbar: HTMLElement = this.element.nativeElement;
@@ -75,29 +78,39 @@ export class HomepageComponent implements OnInit {
       }
     }
 
-    bgClass(i){
-      if (i%7==0) {
-        return "bg-red";
-      }
-      else if (i%7==1) {
-        return "bg-orange";
-      }
-      else if (i%7==2) {
-        return "bg-yellow-g";
-      }
-       else if (i%7==3) {
-        return "bg-blue";
-      }
-       else if (i%7==4) {
-        return "bg-green-g";
-      }
-       else if (i%7==5) {
-        return "bg-purple";
-      }
-       else if (i%7==6) {
-        return "bg-pink";
+   bgClass(i){
+    if (i%5==0) {
+      return "bg-yellow-g";
+    }
+    else if (i%5==1) {
+      return "bg-red";
+    }
+    else if (i%5==2) {
+      return "bg-pink";
+    }
+     else if (i%5==3) {
+      return "bg-purple";
+    }
+     else if (i%5==4) {
+      return "bg-green-g";
+    }
+  }
+
+    onCategory(category){
+      console.log(category);
+      if (category.section_subcategories.length==0) {
+        console.log("nothing to show");
+        this.showCustom();
+      }else{
+        this.appProvider.current.categoryData=category;
+        this.router.navigate(['/homepage2'],{skipLocationChange:true});      
       }
     }
 
+
+     showCustom() {
+        console.log("toast function")
+        this.toastr.custom('<span style="color: red;background-Color:#000">Message in red.</span>', null, {enableHTML: true});
+     }
     
 }

@@ -19,7 +19,10 @@ export class Current {
     userData:any;
     previousMobileNumber:any;
     suggestedString:any
-    currentLanguage:any
+    currentLanguage:any;
+    sidebarMenuData:any;
+    categoryData:any;
+    allArticles:any;
     constructor(public leadsFilter?: string) {
     }
 }

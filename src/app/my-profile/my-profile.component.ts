@@ -20,11 +20,13 @@ export class MyProfileComponent implements OnInit {
     userData;
     savedPosts;
     userInfo=JSON.parse(localStorage['userInfo']);
+
     constructor(private router:Router,private appProvider:AppProvider,private allPostsService:AllPostsService,location: Location,  private element: ElementRef) {
       this.userId=this.userInfo._id;
     	this.location = location;
       this.sidebarVisible = false;
       this.getSavedPost();
+      console.log(this.userInfo)
     }
 
   	ngOnInit() {

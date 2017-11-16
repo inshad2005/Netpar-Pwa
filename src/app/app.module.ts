@@ -67,6 +67,10 @@ import { ListingView2Component } from './listing-view2/listing-view2.component';
 import { RecheckDetailsComponent } from './alerts/recheck-details/recheck-details.component';
 import { IsThisYouComponent } from './alerts/is-this-you/is-this-you.component';
 import { UpdateMobileNumberComponent } from './alerts/update-mobile-number/update-mobile-number.component';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import {ToastOptions} from 'ng2-toastr';
+
+import { AddContributionComponent } from './add-contribution/add-contribution.component';
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -118,7 +122,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ListingView2Component,
     RecheckDetailsComponent,
     IsThisYouComponent,
-    UpdateMobileNumberComponent
+    UpdateMobileNumberComponent,
+    AddContributionComponent
   ],
   imports: [
     BrowserModule,
@@ -156,6 +161,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     FacebookModule,
     SlickModule.forRoot(),
+    ToastModule.forRoot()
   ],
   providers: [AppProvider],
 

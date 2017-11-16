@@ -50,13 +50,9 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
   	@ViewChild('fixedBox') fixedBox: ElementRef;
   	
   	ngOnInit() {
-  		this.onWindowScroll();
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
-      // this.fetchSections();
-      // this.fetchAllPosts();
       this.fetchData();
-      // this.updateSession()
     }
 
     scrollFunction(){
@@ -99,8 +95,12 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
   	@HostListener("window:scroll", [])
   	@HostListener("window:resize", [])
   	onWindowScroll() {
-    const rect = this.fixedBox.nativeElement.getBoundingClientRect();
-    	if((-rect.top) > rect.height){
+      const rect = this.fixedBox.nativeElement.getBoundingClientRect();
+      var add_scroll = rect.height - 150;
+      console.log(add_scroll);
+      console.log(rect.top);
+      console.log(rect);
+    	if((-rect.top) > add_scroll){
     		this.showDiv=true
   		}
   		else{
@@ -116,50 +116,38 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
   }
 
   bgClass(i){
-    if (i%7==0) {
-      return "bg-red";
-    }
-    else if (i%7==1) {
-      return "bg-orange";
-    }
-    else if (i%7==2) {
+    if (i%5==0) {
       return "bg-yellow-g";
     }
-     else if (i%7==3) {
-      return "bg-blue";
+    else if (i%5==1) {
+      return "bg-red";
     }
-     else if (i%7==4) {
-      return "bg-green-g";
+    else if (i%5==2) {
+      return "bg-pink";
     }
-     else if (i%7==5) {
+     else if (i%5==3) {
       return "bg-purple";
     }
-     else if (i%7==6) {
-      return "bg-pink";
+     else if (i%5==4) {
+      return "bg-green-g";
     }
   }
 
   colorClass(i){
-    if (i%7==0) {
-      return "color-red";
-    }
-    else if (i%7==1) {
-      return "color-orange";
-    }
-    else if (i%7==2) {
+    if (i%5==0) {
       return "color-yellow";
     }
-     else if (i%7==3) {
-      return "color-blue";
+    else if (i%5==1) {
+      return "color-red";
     }
-     else if (i%7==4) {
-      return "color-green";
+    else if (i%5==2) {
+      return "color-pink";
     }
-     else if (i%7==5) {
+     else if (i%5==3) {
       return "color-purple";
     }
-     else if (i%7==6) {
-      return "color-pink";
+     else if (i%5==4) {
+      return "color-green";
     }
   }
 
@@ -184,8 +172,12 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     Observable.forkJoin([this.fetchSectionService.fetchSections(), this.allPostsService.allPosts(this.userid)]).subscribe(results => {
       this.loading=false
       this.sections=results[0].FinalArray;
+      this.appProvider.current.sidebarMenuData=results[0].FinalArray;
+      this.appProvider.current.allArticles=results[1];
       this.allPostData=results[1].response.filter(f=> f.publishStatus =="true" ||  f.publishStatus ==true);
       this.fetchSection();
+    },error=>{
+      this.loading=false;
     });
   }
   

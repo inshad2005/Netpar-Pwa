@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "netpar-pwa-dev",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

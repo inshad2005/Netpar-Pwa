@@ -45,6 +45,7 @@
     "ng2-dragula": "^1.5.0",
     "ng2-facebook-sdk": "^2.3.1",
     "ng2-social-share": "0.0.10",
+    "ng2-toastr": "^4.1.2",
     "ngx-facebook": "^2.4.0",
     "ngx-perfect-scrollbar": "^4.6.1",
     "ngx-slick": "^0.1.3",

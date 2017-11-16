@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { AppProvider } from '../providers/app'
 
 @Component({
   selector: 'app-listing-view',
@@ -13,10 +14,15 @@ export class ListingViewComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     count:number=1
-    constructor(location: Location,  private element: ElementRef) {
+    allArticles;
+
+    constructor(private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
+        this.allArticles=this.appProvider.current.allArticles;
+        console.log(this.allArticles);
     }
+
   	ngOnInit() {
   		//this.listTitles = ROUTES.filter(listTitle => listTitle);
   		const navbar: HTMLElement = this.element.nativeElement;
@@ -33,7 +39,6 @@ export class ListingViewComponent implements OnInit {
 	        body.classList.remove('nav-open');
   			//localStorage['menuOpen']=='false'
   		}
-  		
   	}
 
 }

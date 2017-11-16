@@ -563,7 +563,7 @@ ul{
 }
 .welcome-content {
   width: 100%;
-  bottom: 7%;
+  bottom: 3%;
   left: 0;
   right: 0;
   position: absolute;
@@ -915,14 +915,14 @@ span.swiper {
   min-height: 50px;
   width: 100%;
   float: left;
-  border-bottom: 4px solid #fff;
+  border-bottom: 2px solid #fff;
 }
 .homepage-ulist li > a {
   width: 100%;
   align-self: center;
   align-items: center;
   color: #fff;
-  padding: 5px 10px;
+  padding: 8px 10px;
   display: block;
 }
 .homepage-ulist li > a img {
@@ -1138,7 +1138,7 @@ footer{
   padding: 0;
   position: fixed;
   margin: 0 10px 0 0;
-  bottom: 53px;
+  bottom: 80px;
   right: 0;
   margin: 0 10px 0 0;
 }
@@ -1230,13 +1230,13 @@ footer{
   padding: 0;
 }
 .bottom-dropdown > li > a > span{
-  padding: 10px;
+  /*padding: 10px;*/
   color: #fff;
   text-align: center;
   border-radius: 100px;
   width: 40px;
   height: 40px;
-  line-height: 20px;
+  line-height: 45px;
   display: inline-block;
   box-shadow: 0 0 19px -1px rgba(0,0,0,0.25);
 }
@@ -1248,7 +1248,7 @@ footer{
   text-overflow: ellipsis;
 }
 .bottom-dropdown > li > a i{
-  font-size: 16px;
+  font-size: 20px;
 }
 
 
@@ -1551,7 +1551,7 @@ img.rad-shad{
     width: calc(100% - 30px);
     float: left;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
   }
 }
 .suggested-icons {
@@ -1604,7 +1604,7 @@ img.rad-shad{
 .detail-text{
   width: 100%;
   float: left;
-  font-size: 13px;
+  font-size: 12px;
   overflow: hidden;
   line-height: normal;
   font-weight: normal;
@@ -1690,11 +1690,11 @@ img.rad-shad{
   float: left;
 }*/
 .view-lists.grid-1 img{
-  max-width: 160px;
+  max-width: 140px;
   float: left;
 }
 .list-text-wrap{
-  margin-left: 166px;
+  margin-left: 144px;
   padding-right: 28px;
   position: relative;
   display: -webkit-flex;
@@ -1733,23 +1733,27 @@ img.rad-shad{
 .list-view7 .list-text-wrap {
   /*margin-left: 50%;*/
 }
+.list-view7 .list-text-wrap [class*="text-"]{
+  font-size: 11px;
+}
+
 /*.list-view7 .view-lists.grid-1 img {
   max-width: 48%;
   width: 100%;
 }*/
 .list-view7 .view-lists.grid-1 img {
-  height: 80px;
+  height: 95px;
   object-fit: cover;
   width: 100%;
 }
 
 .list-view7 .view-lists.grid-1.right-view img {
   /*max-width: 49%;*/
-  margin-left: calc(100% - 166px);
+  margin-left: calc(100% - 144px);
   float: none;
 }
 .list-view7 .view-lists.grid-1.right-view .list-text-wrap {
-  width: calc(100% - 166px);
+  width: calc(100% - 140px);
   float: left;
   margin: 0;
   padding-right: 0;
@@ -2160,3 +2164,164 @@ img.rad-shad{
   margin: 0;
   top: -5px;
 }
+
+.navbar .navbar-nav.cus-navbar > li > a img {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  width: 22px;
+}
+
+
+/* -16-11--- */
+.add-contribute-sec{
+  width: 100%;
+  float: left;
+  padding: 5px;
+  padding-bottom: 60px;
+}
+.add-contribute-sec .card{
+  padding-top: 10px;
+}
+.contribute-footer{
+  width: 100%;
+  float: left;
+  position: fixed;
+  bottom: 53px;
+  left: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0 -1px 3px 0 rgba(0,0,0,0.26);
+  padding: 6px 0;
+}
+
+.ul_contribute{
+  width: 100%;
+  float: left;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+}
+.ul_contribute >li {
+  text-align: center;
+  flex: 1 1 auto;
+}
+.ul_contribute > li img {
+  width: 30px;
+  display: inline-block;
+}
+.add-contribute-sec .input-group .input-group-addon{
+  padding-right: 0px;
+}
+
+
+/*--16-11*/
+
+.scroll-box {
+
+  width: 100%;
+
+  float: left;
+
+  background-color: #EEEEEE;
+
+}
+
+.scroll-box .slide{
+
+  padding: 5px;
+
+}
+
+.scroll-box .slick-slider{
+
+  padding: 0 25px;
+
+}
+
+.scroll-box .slick-prev {
+
+  left: 2px;
+
+}
+
+.scroll-box .slick-next {
+
+  right: 2px;
+
+}
+
+.slick-prev:before, .slick-next:before{
+
+  color: #000;
+
+}
+
+.scroll-box .slick-initialized .slick-slide{
+
+  height: 90px;
+
+}
+
+.scroll-box .slide > a{
+
+  display: block;
+
+  position: relative;
+
+  text-align: center;
+
+  overflow: hidden;
+
+  color: #fff;
+
+  height: 100%;
+
+  border-radius: 5px;
+
+  width: 100%;
+
+}
+
+.scroll-box .slide > a img{
+
+  display: inline-block;
+
+  width: 100%;
+
+}
+
+.scroll-box span.delete {
+
+  position: absolute;
+
+  top: 6px;
+
+  right: 6px;
+
+  width: 22px;
+
+  background-color: rgba(0,0,0,0.5);
+
+  border-radius: 100px;
+
+  height: 22px;
+
+  line-height: 22px;
+
+}
+
+.scroll-box .delete i{
+
+  font-size: 16px;
+
+}
+
+.scroll-box video{background-color: #afafaf;}
