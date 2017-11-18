@@ -23,6 +23,7 @@ export class Current {
     sidebarMenuData:any;
     categoryData:any;
     allArticles:any;
+    article_id:any;
     constructor(public leadsFilter?: string) {
     }
 }

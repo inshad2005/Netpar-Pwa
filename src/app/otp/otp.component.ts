@@ -202,6 +202,7 @@ export class OtpComponent implements OnInit {
             this.router.navigate(["/register"],{skipLocationChange:true});
           }
           if (this.appProvider.current.toOtpPageFlag=="SingIn") {
+            localStorage.setItem('isLoggedin', 'true');
             localStorage['userInfo']=JSON.stringify(this.appProvider.current.userData);
             this.router.navigate(["/category-view"],{skipLocationChange:true})
           }
@@ -219,6 +220,7 @@ export class OtpComponent implements OnInit {
     this.updateMobileNo.mobileNumber=this.appProvider.current.previousMobileNumber;
     this.updateMobileService.updateMobileNumber(this.updateMobileNo).subscribe(data=>{
        localStorage['userInfo']=JSON.stringify(data.info);
+       localStorage.setItem('isLoggedin', 'true');
        this.router.navigate(['/category-view'],{skipLocationChange:true})
     },error=>{
 

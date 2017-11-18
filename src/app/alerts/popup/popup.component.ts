@@ -68,4 +68,8 @@ export class PopupComponent implements OnInit {
   //     this.dialogRef.close();
   //   }
   // }
+
+  onDownload(){
+    this.dialogRef.close("yes");
+  }
 }

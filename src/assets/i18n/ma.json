@@ -4,14 +4,14 @@
     },
 
     "LaunchScreen2":{
-        "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत.",
+        "WelcometoNetpar":"नेटपरमध्ये तुमचे स्वागत",
         "Tagline":"भारताचा डिजिटल मित्र ",
-        "Comejoinus":"या, नेटपरवर सहभागी व्हा. ",
+        "Comejoinus":"या, नेटपरवर सहभागी व्हा ",
         "Start":"प्रारंभ"
     },
 
      "validationPopups":{
-        "sorry":"माफ करा.",
+        "sorry":"माफ करा",
         "enterFirstName":"नाव प्रविष्ट करा",
         "enterLastName":"आडनाव प्रविष्ट करा",
         "enterMobileNumber":"मोबाईल नंबर प्रविष्ट करा",
@@ -47,7 +47,7 @@
     },
 
     "errorMessage":{
-        "sorry":"माफ करा.",
+        "sorry":"माफ करा",
         "somethingWentWrong":"something went wrong",
         "tryLater":"Please try after some time",
         "invalidOtp":"अवैध ओटीपी"
@@ -59,7 +59,7 @@
         "MobileNumber":"मोबाईल नंबर ",
         "SignUp":"साईन अप ",
         "ExistingUser":"विद्यमान वापरकर्ता ? साईन इन ",
-        "sorry":"माफ करा.",
+        "sorry":"माफ करा",
         "alreadyRegistered":"प्रवेश केला मोबाइल नंबर आधीपासूनच नोंदणीकृत आहे",
         "Existing":"विद्यमान वापरकर्ता ?"
     },
@@ -84,27 +84,27 @@
         "Ques":"प्रश्न",
         "stateQues":"तुमचे राज्य काय आहे?",
         "districtQues":"तुमचे जिल्हा काय आहे?",
-        "blockQues":"तुमचे विभाग काय आहे?",
+        "blockQues":"तुमचे ताल काय आहे?",
         "dobQues":"तुमची जन्मतारीख काय आहे?",
         "genderQues":"आपल्या लिंग काय आहे?",
         "mobileNumberQues":"What is your Last Mobile Number?",
-        "previousMobileNumber":"Previous mobile number",
+        "previousMobileNumber":"आपला आधीचा संपर्क क्रमांक",
         "update":"अपडेट",
         "mobileNumber":"मोबाईल नंबर",
         "newMobileNumber":"नवीन मोबाईल नंबर"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{
-    	"sorry":"माफ करा.",
-        "incorrectMobileNumber":"तुम्ही दिलेला मोबाईल नंबर चुकीचा आहे. कृपया पुन्हा प्रयत्न करा. ",
+    	"sorry":"माफ करा",
+        "incorrectMobileNumber":"तुम्ही दिलेला मोबाईल नंबर चुकीचा आहे कृपया पुन्हा प्रयत्न करा ",
         "ok":"धन्यवाद"
     },
 
 
     "Login_ErrorMessage_MobileNumbernotenteredcorrectly":{
-    	"sorry":"माफ करा.",
-        "notRegistered":"तुम्ही दिलेला मोबाईल नंबर आमच्याकडे नोंदविण्यात आलेला नाही. कृपया नव्याने साईन अप करा. ",
-        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा."
+    	"sorry":"माफ करा",
+        "notRegistered":"तुम्ही दिलेला मोबाईल नंबर आमच्याकडे नोंदविण्यात आलेला नाही कृपया नव्याने साईन अप करा ",
+        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा"
     },
 
 
@@ -114,18 +114,18 @@
     },
 
     "Login_ErrorMessage_RecheckYourDetails":{
-    	"sorry":"माफ करा.",
-        "recheckDetails":"तुम्ही दिलेली माहिती तपासून पाहा.",
+    	"sorry":"माफ करा",
+        "recheckDetails":"तुम्ही दिलेली माहिती तपासून पाहा",
         "Help":"मदत",
-        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा.p"
+        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप कराp"
     },
 
 
     "Login_ErrorMesage_UpdateYourMobileNumber":{
-        "sorry":"माफ करा.",
+        "sorry":"माफ करा",
         "updateMobile":"तुम्हाला तुमचा मोबाईल नंबर अपडेट करायचा आहे का?",
-        "yes":"हो. नक्की.",
-        "no":"नाही. सध्या गरज नाही."
+        "yes":"हो नक्की",
+        "no":"नाही सध्या गरज नाही"
     },
 
     "Login_ErrorMesage_IsThisYou":{
@@ -136,10 +136,10 @@
     },
 
     "Login_ErrorMesage_SecurityQuestionAnswerisincorrect":{
-    	"sorry":"माफ करा.",
-        "incorrectAnswer":" तुम्ही दिलेली माहिती चुकीची आहे.",
+    	"sorry":"माफ करा",
+        "incorrectAnswer":" तुम्ही दिलेली माहिती चुकीची आहे",
         "Help":"मदत",
-        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा."
+        "SignUp":"नवीन अकाऊंट बनवण्यासाठी साईन अप करा"
     },
 
     "OTPScreen":{
@@ -283,6 +283,10 @@
         "Userlikesyour" :"वापरकर्त्याला हे आवडले आहे",
         "Yourcontributionhasbeenaccepted":"तुमचे योगदान मान्य करण्यात आले आहे",
         "Yourcontributionislive":"तुमचे योगदान प्रकाशित करण्यात आले आहे"
+    },
+
+    "download":{
+        "downloadAppFromPlaystore":"प्लेस्टोरवरून अनुप्रयोग डाउनलोड करा"
     }
 
 }

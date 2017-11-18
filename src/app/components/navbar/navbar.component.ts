@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
     logoutButtonVisible;
     userData=JSON.parse(localStorage['userInfo']);
     constructor(private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
-      this.location = location;
+          this.location = location;
           this.sidebarVisible = false;
     }
 
@@ -86,7 +86,7 @@ export class NavbarComponent implements OnInit {
     }
 
     onLogOut(){
-      localStorage.clear();
+      localStorage.removeItem('isLoggedin');
       this.router.navigate(['/welcome-screen2'],{skipLocationChange:true})
     }
 }

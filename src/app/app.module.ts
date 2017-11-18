@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule,MatProgressBarModule, MatCheckboxModule, MatProgressSpinnerModule, MatSelectModule, MatInputModule, MatRadioModule} from "@angular/material";
@@ -68,9 +68,11 @@ import { RecheckDetailsComponent } from './alerts/recheck-details/recheck-detail
 import { IsThisYouComponent } from './alerts/is-this-you/is-this-you.component';
 import { UpdateMobileNumberComponent } from './alerts/update-mobile-number/update-mobile-number.component';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
-import {ToastOptions} from 'ng2-toastr';
-
+import { ToastOptions } from 'ng2-toastr';
 import { AddContributionComponent } from './add-contribution/add-contribution.component';
+import { ShareArticleComponent } from './share-article/share-article.component';
+
+import {AuthGuard} from './security/auth.guard'
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -123,12 +125,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     RecheckDetailsComponent,
     IsThisYouComponent,
     UpdateMobileNumberComponent,
-    AddContributionComponent
+    AddContributionComponent,
+    ShareArticleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([]),
+    RouterModule.forRoot([],{ useHash: true }),
     PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
     BrowserAnimationsModule,
     NoopAnimationsModule,
@@ -163,7 +166,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SlickModule.forRoot(),
     ToastModule.forRoot()
   ],
-  providers: [AppProvider],
+  providers: [AppProvider,{provide: LocationStrategy, useClass: HashLocationStrategy},AuthGuard],
 
   bootstrap: [AppComponent],
   entryComponents: [ 

@@ -177,6 +177,13 @@
 	</div>
 </div>
 
+<div class="modal-content cus-modal" *ngIf="message=='Download from playstore'">
+	<div class="modal-body text-center ">
+		<p>{{"download.downloadAppFromPlaystore" | translate}}</p>
+		<button class="btn custom-btn full-width btn-round" (click)="onDownload()" > {{"ContentItemView_Scroll2.Donwload" | translate}} </button>
+		<button class="btn custom-btn full-width btn-round" (click)="onClosed()"> {{"Login_ErrorMesage_UpdateYourMobileNumber.no" | translate}}</button>
+	</div>
+</div>
 
 
 

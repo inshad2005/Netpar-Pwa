@@ -64,6 +64,7 @@ export class ArticleDetailsComponent implements OnInit {
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.articleData=this.appProvider.current.articleDetails;
+      this.appProvider.current.article_id=this.articleData._id;
       // console.log(this.articleData);
       this.getComments();
       this.likeOrNot();

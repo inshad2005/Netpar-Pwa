@@ -1363,7 +1363,7 @@ footer{
   text-align: center;
   line-height: 30px;
 }
-.like-bar li.active a.text-danger span.span-icns{
+.like-bar li.active a.text-primary span.span-icns{
   background-color: $color-primary;
 }
 .like-bar li.active a.text-warning span.span-icns{
@@ -1384,9 +1384,14 @@ footer{
 .like-bar li.active a.text-info span.span-icns{
   background-color: $color-info;
 }
+.like-bar li.active a.text-orange span.span-icns{
+  background-color: $color-orange;
+}
+
 .like-bar li.active a span.span-icns{
   color: #fff;
 }
+
 
 
 img.rad-shad{
@@ -1999,6 +2004,7 @@ img.rad-shad{
   width: 100%;
   float: left;
   padding: 3px;
+  position: relative;
   display: flex;
   display: -webkit-flex;
   display: -moz-flex;
@@ -2325,3 +2331,64 @@ img.rad-shad{
 }
 
 .scroll-box video{background-color: #afafaf;}
+
+
+  
+/*--18-11---*/
+
+.sidebar[data-background-color="orange"] .nav li.active > a > p{
+
+ color: #333;
+
+}
+.homepage-ulist > li div {
+
+   width: 100%;
+
+   float: left;
+
+}
+.download-popup {
+
+ position: absolute;
+
+ top: 0;
+
+ left: 0;
+
+ height: 100%;
+
+ width: 100%;
+
+ text-align: center;
+
+ z-index: 1;
+
+ background-color: rgba(255,255,255,0.9);
+
+}
+.flex-div {
+
+ height: 100%;
+
+ width: 100%;
+
+ display: flex;
+
+ align-items: center;
+
+ align-content: center;
+
+ align-self: center;
+
+}
+
+.flex-innerdiv {
+
+ width: 100%;
+
+}
+
+input.mat-input-element{
+  line-height: 20px;
+}

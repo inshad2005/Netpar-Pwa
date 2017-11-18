@@ -13,7 +13,6 @@ import { Homepage3Component } from './homepage3/homepage3.component';
 import { ArticleDetailsComponent } from './article-details/article-details.component';
 import { ListingViewComponent } from './listing-view/listing-view.component';
 import { ListingView2Component } from './listing-view2/listing-view2.component';
-
 import { ListingView3Component } from './listing-view3/listing-view3.component';
 import { ListingView6Component } from './listing-view6/listing-view6.component';
 import { ListingView5Component } from './listing-view5/listing-view5.component';
@@ -27,10 +26,12 @@ import { FilterComponent } from './filter/filter.component';
 import { RegisterationStepOneComponent } from './registeration-step-one/registeration-step-one.component';
 import { CommentsComponent } from './comments/comments.component';
 import { AddContributionComponent } from './add-contribution/add-contribution.component'
+import { AuthGuard } from './security/auth.guard'
+import { ShareArticleComponent } from './share-article/share-article.component'
 
 const routes: Routes = [// { path: 'home',      component: HomeComponent },
     // { path: 'admin',      component: AdminComponent },
-    // { path: '',  redirectTo: 'welcome-screen2', pathMatch: 'full' },
+    { path: '',   component: CategoryViewComponent,canActivate:[AuthGuard]},
     { path: 'welcome-screen', component: WelcomeScreenComponent },
     { path: 'welcome-screen2', component: WelcomeScreen2Component },
     { path: 'home',  component: HomeComponent },
@@ -55,11 +56,13 @@ const routes: Routes = [// { path: 'home',      component: HomeComponent },
     { path: 'my-profile', component: MyProfileComponent },
     { path: 'filter', component: FilterComponent },
     { path: 'comments', component: CommentsComponent },
-    { path: 'addContribution', component:AddContributionComponent}
+    { path: 'addContribution', component:AddContributionComponent},
+    { path: 'shareArticle/:id', component:ShareArticleComponent},
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

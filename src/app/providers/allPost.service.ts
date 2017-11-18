@@ -91,9 +91,19 @@ export class AllPostsService {
             }) 
         });
         return this.http.get("http://ionicteam.com/netpar/uploads/content/contentData/1509737827.jpeg",options)
-            .map(res => res.blob())
-            .catch(err=>{
-                return err;
-            })
+        .map(res => res.blob())
+        .catch(err=>{
+            return err;
+        })
+    }
+
+    sharedArticle(id){
+        let api =environment.endPoint+"getContent/"+id;
+        return this.http.get(api)
+        .map(response=>{
+            return response.json();
+        }).catch(error=>{
+            return error;
+        })
     }
 }

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
 import { CeiboShare } from 'ng2-social-share';
 import { FacebookService,InitParams,UIParams,UIResponse} from 'ngx-facebook';
+import { AppProvider } from '../../providers/app';
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-footer',
@@ -13,8 +16,9 @@ export class FooterComponent implements OnInit {
   test : Date = new Date();
   test2:any;
   showShareButton=false;
+  shareUrl
 
-  constructor(private router:Router,private fb: FacebookService) {
+  constructor(private domSanitizer:DomSanitizer,private appProvider:AppProvider,private router:Router,private fb: FacebookService) {
     let initParams: InitParams = {
       appId      : '223293578209386',
       xfbml      : true,
@@ -25,9 +29,11 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.shareUrl="http://europa.promaticstechnologies.com/netpar-pwa-dev/#/shareArticle/"+this.appProvider.current.article_id
   	this.test2=this.test.toISOString()
   	if(this.router.url=='/article-details'){
   		this.showShareButton=true;
+
   	}
   }
 
@@ -41,6 +47,13 @@ export class FooterComponent implements OnInit {
     .catch((e: any) => console.error(e));
  }
  
+ onwhatsapp(){
+   window.open("http://localhost:4200/#/shareArticle/"+this.appProvider.current.article_id)
+ }
+
+ safeUrl(){
+  return  this.domSanitizer.bypassSecurityTrustResourceUrl(this.shareUrl);
+ }
 
 
 }
