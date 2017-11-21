@@ -71,6 +71,9 @@ import { ToastModule } from 'ng2-toastr/ng2-toastr';
 import { ToastOptions } from 'ng2-toastr';
 import { AddContributionComponent } from './add-contribution/add-contribution.component';
 import { ShareArticleComponent } from './share-article/share-article.component';
+import { CropImageComponent } from './crop-image/crop-image.component';
+import { NgxCroppieModule } from 'ngx-croppie';
+
 
 import {AuthGuard} from './security/auth.guard'
 const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -126,7 +129,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     IsThisYouComponent,
     UpdateMobileNumberComponent,
     AddContributionComponent,
-    ShareArticleComponent
+    ShareArticleComponent,
+    CropImageComponent
   ],
   imports: [
     BrowserModule,
@@ -164,7 +168,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatExpansionModule,
     FacebookModule,
     SlickModule.forRoot(),
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    NgxCroppieModule
   ],
   providers: [AppProvider,{provide: LocationStrategy, useClass: HashLocationStrategy},AuthGuard],
 

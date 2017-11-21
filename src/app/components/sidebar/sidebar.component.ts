@@ -1,7 +1,8 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit,ElementRef,ViewContainerRef } from '@angular/core';
 import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
 import { FetchSectionsService } from '../../providers/fetch-sections.service';
-import { AppProvider } from '../../providers/app'
+import { AppProvider } from '../../providers/app';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -36,8 +37,11 @@ export class SidebarComponent implements OnInit {
   template;
   sections;
   profile;
-
-  constructor(private appProvider:AppProvider,private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) { }
+  private toggleButton: any;
+  sectionData
+  constructor(private toastr:ToastsManager,vRef: ViewContainerRef,private element:ElementRef,private appProvider:AppProvider,private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) {
+     
+   }
 
 
 
@@ -124,11 +128,55 @@ export class SidebarComponent implements OnInit {
       // console.log(JSON.stringify(data));
       if (data.success==true) {
         this.sections=data.FinalArray;
-        console.log(this.sections)
       }
       
     },err =>{
       console.log(JSON.stringify(err));
     })
   } 
+
+  navRemove(){
+      /*alert('home')*/
+      if (localStorage['menuOpen']=='true') {
+        const body = document.getElementsByTagName('body')[0];
+          body.classList.remove('nav-open');
+        //localStorage['menuOpen']=='false'
+      }
+    }
+
+    onSubCategory(subcategory){
+       console.log(subcategory)
+        let articlesInSubCategory=this.appProvider.current.allArticles.response.filter(f=>f.subCategoryName==subcategory.subCategoryName);
+        if (articlesInSubCategory.length==0) {
+          this.showCustom()
+        }
+        else{
+            this.appProvider.current.subCategoryData=subcategory;
+            this.route.navigate(['/listing-view'],{skipLocationChange:true})
+            this.navRemove()
+        }
+    }
+
+     listViewStyling(){
+        if (!this.sectionData.section_categories[0]) {
+           this.appProvider.current.listingViewFormat="Listing-view Template One";
+        }else if(this.sectionData.section_categories[0].listView=='yes'){
+          this.appProvider.current.listingViewFormat=this.sectionData.section_categories[0].listViewFormat;
+        }else{
+         this.appProvider.current.listingViewFormat="Listing-view Template One"
+        }
+      console.log(this.appProvider.current.listingViewFormat)
+    }
+
+    showCustom() {
+      console.log("toast function")
+      this.toastr.custom('<span style="color: red">या उपप्रकारमध्ये लेख नाही</span>', null, {enableHTML: true});
+    }
+
+    onSection(sectionData){
+       this.sectionData=sectionData
+       this.listViewStyling();
+    }
+
+
 }

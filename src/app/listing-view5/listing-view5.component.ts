@@ -1,5 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { AppProvider } from '../providers/app'
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +16,7 @@ export class ListingView5Component implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     count:number=1
-    constructor(location: Location,  private element: ElementRef) {
+    constructor(private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
     }
@@ -36,5 +38,6 @@ export class ListingView5Component implements OnInit {
   		}
   		
   	}
-
+    
+ 
 }

@@ -13,7 +13,7 @@ import { TranslationService } from '../providers/translation.service';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import 'rxjs/Rx';
 // import  * as download from 'file-download'
-import { Http ,Headers,RequestOptions,ResponseContentType} from '@angular/http';
+import { Http ,Headers,RequestOptions,ResponseContentType,RequestMethod} from '@angular/http';
 import { saveAs } from "file-saver";
 declare var google
 @Component({
@@ -65,7 +65,7 @@ export class ArticleDetailsComponent implements OnInit {
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.articleData=this.appProvider.current.articleDetails;
       this.appProvider.current.article_id=this.articleData._id;
-      // console.log(this.articleData);
+      console.log(this.appProvider.current.article_id);
       this.getComments();
       this.likeOrNot();
       this.savedOrNot();
@@ -126,6 +126,7 @@ export class ArticleDetailsComponent implements OnInit {
       }else if (this.articleData.saved=true) {
         console.log('saved true')
         this.saveIcon='cusIco-badge';
+        this.saveClass="active"
       }
     }
 
@@ -195,6 +196,7 @@ export class ArticleDetailsComponent implements OnInit {
         console.log(JSON.stringify(data));
         if (data.success==true) {
           this.saveIcon="cusIco-badge";
+          this.saveClass="active";
           this.articleData.saveCount=this.articleData.saveCount+1;
           this.snackbarMessage=this.translateService.instant('ContentItemSaved.saved');
           let verticalPosition: MatSnackBarVerticalPosition
@@ -228,14 +230,18 @@ export class ArticleDetailsComponent implements OnInit {
     }
 
   downloadFile() {
-      this.http.get("http://52.15.178.19:3002/netpar/downloadFile").subscribe(
+      this.http.get("http://52.15.178.19:3002/netpar/downloadFile",{
+            method: RequestMethod.Get,
+            responseType: ResponseContentType.Blob,
+            headers: new Headers({'Content-type': 'application/json'})
+        }).subscribe(
           (response) => {
             this.downloaded();
             console.log(response);
-            var mediaType = 'image/gif';
-            var blob = new Blob([response], {type: mediaType});
+            var mediaType = 'image/png';
+            var blob = new Blob([response.blob()], {type: mediaType});
             console.log(blob);
-            var filename = 'pretty image.gif';
+            var filename = 'pretty image.png';
             saveAs(blob, filename);
           });
     }

@@ -3,6 +3,8 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
+import { PopupComponent } from '../../alerts/popup/popup.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +19,7 @@ export class NavbarComponent implements OnInit {
     backButton=false;
     logoutButtonVisible;
     userData=JSON.parse(localStorage['userInfo']);
-    constructor(private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
+    constructor(private dialog: MatDialog,private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
           this.location = location;
           this.sidebarVisible = false;
     }
@@ -31,9 +33,9 @@ export class NavbarComponent implements OnInit {
     sidebarOpen() {
         const toggleButton = this.toggleButton;
         const body = document.getElementsByTagName('body')[0];
-        setTimeout(function(){
-            toggleButton.classList.add('toggled');
-        }, 500);
+        // setTimeout(function(){
+        //     toggleButton.classList.add('toggled');
+        // }, 500);
         body.classList.add('nav-open');
 
         this.sidebarVisible = true;
@@ -86,7 +88,22 @@ export class NavbarComponent implements OnInit {
     }
 
     onLogOut(){
-      localStorage.removeItem('isLoggedin');
-      this.router.navigate(['/welcome-screen2'],{skipLocationChange:true})
+      this.openDialog("do you want to logout")
     }
+
+     openDialog(msg): void {
+      let dialogRef = this.dialog.open(PopupComponent, {
+          width: '240px',
+          data:{ message:msg}
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          if (result=='logOut'){
+            localStorage.removeItem('isLoggedin');
+            this.router.navigate(['/welcome-screen2'],{skipLocationChange:true})
+          }
+        }
+      });
+    }
+
 }

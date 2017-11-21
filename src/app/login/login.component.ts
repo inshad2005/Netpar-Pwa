@@ -161,8 +161,18 @@ export class LoginComponent implements OnInit{
           if (result.respCode==1) {
             this.securityDialog2();
           }else if (result.respCode==0) {
-            this.errorMessage="entered detail does not match"
-            this.openDialog(this.errorMessage);
+            if (result.key=="state") {
+              this.errorMessage="state is incorrect"
+              this.openDialog(this.errorMessage);
+            }
+            if (result.key=="district") {
+              this.errorMessage="district is incorrect"
+              this.openDialog(this.errorMessage);
+            }
+            if (result.key=="block") {
+              this.errorMessage="block is incorrect"
+              this.openDialog(this.errorMessage);
+            }  
           }
        }
       });
@@ -177,8 +187,14 @@ export class LoginComponent implements OnInit{
           if (result.respCode == 1) {
             this.openUpdateMobileDialog();
           }else{
-            this.errorMessage="gender or dob not matched";
-            this.openDialog(this.errorMessage);
+            if(result.key=="gender"){
+              this.errorMessage="gender is incorrect";
+              this.openDialog(this.errorMessage);
+            }
+            if (result.key=="dateOfBirth") {
+               this.errorMessage="dob is incorrect";
+              this.openDialog(this.errorMessage);
+            }
           }
         }
       });
@@ -191,7 +207,11 @@ export class LoginComponent implements OnInit{
         });
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
-          
+            if (result=='block' || result=='state' || result=='district') {
+              this.securityDialog();
+            }else if(result=='gender'||result=='dob'){
+              this.securityDialog2();
+            }
           }
         });
     }

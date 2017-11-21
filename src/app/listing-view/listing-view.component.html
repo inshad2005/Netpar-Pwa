@@ -6,87 +6,226 @@
 
 	<app-navbar></app-navbar>
     <div class="cusmain-panel" (click)="navRemove()">
-		<div class="tb-wrap">
-			<section class="article-sec" >
+		<div class="tb-wrap"*ngIf="articleDataAtZeroIndex">
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template One'">
 				<div class="card cus-card">
-	    			<div class="list-view">
-		    			<div class="big-view">
+					<div >
+		    			<div class="list-view" >
+			    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
+			    				<div class="innerbig-view">
+			    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}"  class="img-effect img-responsive" />
+			    					<p class="overlay-text"> {{articleDataAtZeroIndex.headline}} </p>
+			    				</div>
+			    			</div>
+			    			<div class="view-lists grid-2" *ngFor="let article of allArticles;let i=index">
+						        <a  class="{{colorClass(i)}}" (click)="onArticle(article)"><img src="{{article.thumbnailPicture}}"> 
+					    			<div class="suggested-div">
+					    				<div class="line"></div>
+					    				<div class="suggested-text">{{article.tagline}}</div>
+					    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+					    			</div>
+					    			<div class="detail-text"> {{article.headline}} </div>
+					    		</a>
+					    	</div>
+					    </div>
+					</div>
+				</div>
+			</section>
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template Two'">
+				<div class="card cus-card">
+					<div class="list-view">
+		    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
 		    				<div class="innerbig-view">
-		    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
-		    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+		    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}" class="img-effect img-responsive" />
+		    					<p class="overlay-text">{{articleDataAtZeroIndex.headline}} </p>
 		    				</div>
 		    			</div>
-		    			<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-red"><img src="./assets/img/img_r-1.jpg"> 
+		    			<div class="view-lists grid-2 list-view2" *ngFor="let article of allArticles;let i=index">
+					        <a  class="{{colorClass(i)}}" (click)="onArticle(article)">
 				    			<div class="suggested-div">
 				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
+				    				<div class="suggested-text">{{article.tagline}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+					        	<img src="{{article.thumbnailPicture}}"> 
+				    			<div class="list-text-wrap"> {{article.headline.slice(0,25)}}</div>
+				    		</a>
+				    	</div> 	
+					</div>
+				</div>
+			</section>
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template Three'">
+				<div class="card cus-card">
+	    			<div class="list-view3">
+		    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
+		    				<div class="innerbig-view">
+		    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}" class="img-responsive" />
+		    					<p class="overlay-text">{{articleDataAtZeroIndex.headline}} </p>
+		    				</div>
+		    			</div>
+		    			<div class="view-lists grid-1"  *ngFor="let article of allArticles;let i=index">
+					        <a  class="{{colorClass(i)}}" (click)="onArticle(article)">
+					        	<img src="{{article.thumbnailPicture}}" class="img-effect img-responsive"> 
+				    			<div class="list-text-wrap one-heading">
+					    			<div class="suggested-div">
+					    				<div class="suggested-text">{{article.tagline}} </div>
+					    			</div>
+					    			<div class="detail-text"> {{article.headline.slice(0,25)}} </div>
+				    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+					    		</div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>	
+				    </div>
+				</div>
+			</section>
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template Four'">
+				<div class="card cus-card">
+	    			<div class="list-view">
+		    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
+		    				<div class="innerbig-view">
+		    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}" class="img-effect img-responsive" />
+		    					<p class="overlay-text">{{articleDataAtZeroIndex.headline}} </p>
+		    				</div>
+		    			</div>
+		    			<div *ngFor="let article of allArticles;let i = index" class="loop-div {{getclass(i)}}">
+		    				<div class="view-lists grid-1" *ngIf="i%6==0 || i%6==1 || i%6==2">
+						        <a  class="{{colorClass(i)}}" (click)="onArticle(article)">
+						        	<img src="{{article.thumbnailPicture}}" class="img-effect img-responsive"> 
+					    			<div class="list-text-wrap one-heading">
+					    				<div class="text-red"> {{article.subCategoryName}} </div>
+						    			<div class="suggested-div">
+						    				<div class="suggested-text">{{article.tagline}} </div>
+						    			</div>
+						    			<div class="detail-text"> {{article.headline.slice(0,25)}} </div>
+					    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+						    		</div>
+					    			<div class="line"></div>
+					    		</a>
+					    	</div>
+					    	<div class="view-lists grid-3" *ngIf="i%6==3 || i%6==4 || i%6==5">
+						        <a  class="{{colorClass(i)}}" (click)="onArticle(article)"><img src="{{article.thumbnailPicture}}" > 
+					    			<div class="suggested-div">
+					    				<div class="line"></div>
+					    				<div class="suggested-text">{{article.tagline}} </div>
+					    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+					    			</div>
+					    			<div class="detail-text"> {{article.headline.slice(0,25)}} </div>
+					    		</a>
+				    		</div>
+		    			</div>
+				    </div>
+				</div>
+			</section>
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template Five'">
+				<div class="card cus-card">
+	    			<div class="list-view3">
+		    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
+		    				<div class="innerbig-view">
+		    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}" class="img-responsive" />
+		    					<p class="overlay-text">{{articleDataAtZeroIndex.headline}}</p>
+		    				</div>
+		    			</div>
+		    			<div class="view-lists" *ngFor="let article of allArticles;let i=index">
+					        <a  class="{{colorClass(i)}}" (click)="onArticle(article)">
+					        	<div class="simple-list">
+					        		<div class="text-red">{{article.tagline}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text">{{article.headline.slice(0,25)}}</div>
+					    			</div>
+					    			<div class="detail-text">{{article.headline}}</div>
+				    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+					    		</div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>				    	
+				    </div>
+				</div>
+			</section>
+			<section class="article-sec" *ngIf="listingViewFormat=='Listing-view Template Six'">
+				<div class="card cus-card">
+	    			<div class="list-view list-view7">
+		    			<div class="big-view" (click)="onArticle(articleDataAtZeroIndex)">
+		    				<div class="innerbig-view">
+		    					<img src="{{articleDataAtZeroIndex.thumbnailPicture}}" class="img-effect img-responsive" />
+		    					<p class="overlay-text"> {{articleDataAtZeroIndex.headline}} </p>
+		    				</div>
+		    			</div>
+		    			<div *ngFor="let article of allArticles;let i = index" class="loop-div {{getclass(i)}}">
+		    			<div class="view-lists grid-1" *ngIf="i%6==0">
+					        <a  class="color-yellow" (click)="onArticle(article)">
+					        	<img src="{{article.thumbnailPicture}}" class="img-effect img-responsive"> 
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{article.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="article.headline">{{article.headline.slice(0,25)}} </div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="article.tagline"> {{article.tagline.slice(0,20)}} </div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
 				    		</a>
 				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-orange"><img src="./assets/img/img_r-2.jpg"> 
+					    <div class="view-lists grid-1 right-view" *ngIf="i%6==1">
+					        <a class="color-red" (click)="onArticle(article)">
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{article.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="article.headline">{{article.headline.slice(0,25)}}</div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="article.tagline">{{article.tagline.slice(0,20)}}</div>
+					    		</div>
+					        	<img src="{{article.thumbnailPicture}}" class="img-effect img-responsive"> 
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>
+				    	<div class="view-lists grid-1" *ngIf="i%6==2">
+					        <a  class="color-pink" (click)="onArticle(article)">
+					        	<img src="{{article.thumbnailPicture}}" class="img-effect img-responsive"> 
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{article.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="article.headline">{{article.headline.slice(0,25)}} </div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="article.tagline"> {{article.tagline.slice(0,20)}}</div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+			    		</div>
+			    		<div class="view-lists grid-3" *ngIf="i%6==3">
+					        <a  class="color-purple" (click)="onArticle(article)"><img src="{{article.thumbnailPicture}}"> 
 				    			<div class="suggested-div">
 				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
+				    				<div class="suggested-text">{{article.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+				    			<div class="detail-text" *ngIf="article.headline"> {{article.headline.slice(0,25)}}</div>
 				    		</a>
-				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-yellow"><img src="./assets/img/img_r-3.jpg"> 
+			    		</div>
+				    	<div class="view-lists grid-3" *ngIf="i%6==4">
+					        <a  class="color-green" (click)="onArticle(article)"><img src="{{article.thumbnailPicture}}"> 
 				    			<div class="suggested-div">
 				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
+				    				<div class="suggested-text">{{article.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+				    			<div class="detail-text" *ngIf="article.headline"> {{article.headline.slice(0,25)}}</div>
 				    		</a>
 				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-blue"><img src="./assets/img/img_r-4.jpg"> 
+				    	<div class="view-lists grid-3" *ngIf="i%6==5">
+					        <a  class="color-yellow" (click)="onArticle(article)"><img src="{{article.thumbnailPicture}}"> 
 				    			<div class="suggested-div">
 				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
+				    				<div class="suggested-text">{{article.sectionName}}</div>
 				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
 				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+				    			<div class="detail-text" *ngIf="article.headline"> {{article.headline.slice(0,25)}}</div>
 				    		</a>
 				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-green"><img src="./assets/img/img_r-5.jpg"> 
-				    			<div class="suggested-div">
-				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
-				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
-				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
-				    		</a>
-				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-purple"><img src="./assets/img/img_r-6.jpg"> 
-				    			<div class="suggested-div">
-				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
-				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
-				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
-				    		</a>
-				    	</div>
-				    	<div class="view-lists grid-2">
-					        <a routerLink="/listing-view3" class="color-pink"><img src="./assets/img/img_r-7.jpg"> 
-				    			<div class="suggested-div">
-				    				<div class="line"></div>
-				    				<div class="suggested-text">News </div>
-				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
-				    			</div>
-				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
-				    		</a>
-				    	</div>
-			        
+	    			</div>
+
 				    </div>
 
 				</div>

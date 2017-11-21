@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
   test : Date = new Date();
   test2:any;
   showShareButton=false;
-  shareUrl
+  shareUrl;
 
   constructor(private domSanitizer:DomSanitizer,private appProvider:AppProvider,private router:Router,private fb: FacebookService) {
     let initParams: InitParams = {
@@ -24,7 +24,6 @@ export class FooterComponent implements OnInit {
       xfbml      : true,
       version    : 'v2.10'
     };
- 
     fb.init(initParams);
   }
 
@@ -53,6 +52,22 @@ export class FooterComponent implements OnInit {
 
  safeUrl(){
   return  this.domSanitizer.bypassSecurityTrustResourceUrl(this.shareUrl);
+ }
+
+ getUrl(){
+    let url="whatsapp://send?text=http://europa.promaticstechnologies.com/netpar-pwa-dev/#/shareArticle/"+this.appProvider.current.article_id;
+    // alert(url);
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url)
+ }
+
+ safeUrlForSms(){
+   let url="sms:+919999999999?body=http://europa.promaticstechnologies.com/netpar-pwa-dev/#/shareArticle/"+this.appProvider.current.article_id;
+   return this.domSanitizer.bypassSecurityTrustResourceUrl(url)
+ }
+
+
+ articleId(){
+   return this.appProvider.current.article_id
  }
 
 

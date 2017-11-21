@@ -4,4 +4,5 @@ export class SecurityModel  {
 	block:string;
 	firstName:string;
 	lastName:string;
+	mobileNumber:string;
 }

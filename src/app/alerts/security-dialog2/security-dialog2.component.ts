@@ -96,7 +96,8 @@ export class SecurityDialog2Component implements OnInit {
     this.securityDialogModel.lastName=this.appProvider.current.lastName;
     this.securityDialogModel.state=this.appProvider.current.state
     this.securityDialogModel.district=this.appProvider.current.district
-    this.securityDialogModel.block=this.appProvider.current.block
+    this.securityDialogModel.block=this.appProvider.current.block;
+    this.securityDialogModel.mobileNumber=this.appProvider.current.previousMobileNumber;
     this.securityDialog2Service.SecurityStep2(this.securityDialogModel).subscribe(data=>{
       // alert(JSON.stringify(data));
       this.dialogRef.close(data);

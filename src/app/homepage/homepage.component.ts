@@ -50,32 +50,31 @@ export class HomepageComponent implements OnInit {
     }
 
     templateStyling(){
+      this.listViewStyling();
       if(this.sectionData.categoryView=='yes'){
         if (!this.sectionData.section_categories[0]) {
           this.categoryTemplateStyle="Category-view Template Four";
           console.log("Category-view Template Four");
           return;
-        }
-        if (this.sectionData.section_categories[0].categoryFormat=="Category-view Template One") {
-           this.categoryTemplateStyle="Category-view Template One";
-           console.log("Category-view Template One")
-        }
-        else if (this.sectionData.section_categories[0].categoryFormat=="Category-view Template Two") {
-          this.categoryTemplateStyle="Category-view Template Two";
-          console.log("Category-view Template Two")
-        }
-        else if(this.sectionData.section_categories[0].categoryFormat=='Category-view Template Three'){
-          this.categoryTemplateStyle="Category-view Template Three";
-          console.log("Category-view Template Three")
-        }
-        else if(this.sectionData.section_categories[0].categoryFormat=='Category-view Template Four'){
-          this.categoryTemplateStyle="Category-view Template Four";
-          console.log("Category-view Template Four")
+        }else{
+            this.categoryTemplateStyle=this.sectionData.section_categories[0].categoryFormat;
+            console.log(this.categoryTemplateStyle)
         }
       }else{
         this.categoryTemplateStyle="Category-view Template Four";
         console.log("Category-view Template Four")
       }
+    }
+
+    listViewStyling(){
+        if (!this.sectionData.section_categories[0]) {
+           this.appProvider.current.listingViewFormat="Listing-view Template One";
+        }else if(this.sectionData.section_categories[0].listView=='yes'){
+          this.appProvider.current.listingViewFormat=this.sectionData.section_categories[0].listViewFormat;
+        }else{
+         this.appProvider.current.listingViewFormat="Listing-view Template One"
+        }
+      console.log(this.appProvider.current.listingViewFormat)
     }
 
    bgClass(i){
@@ -108,9 +107,9 @@ export class HomepageComponent implements OnInit {
     }
 
 
-     showCustom() {
-        console.log("toast function")
-        this.toastr.custom('<span style="color: red;background-Color:#000">Message in red.</span>', null, {enableHTML: true});
-     }
+    showCustom() {
+      console.log("toast function")
+      this.toastr.custom('<span style="color: red">या प्रकारमध्ये उपप्रकार नाही</span>', null, {enableHTML: true});
+    }
     
 }

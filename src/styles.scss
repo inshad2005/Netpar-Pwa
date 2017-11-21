@@ -2392,3 +2392,71 @@ img.rad-shad{
 input.mat-input-element{
   line-height: 20px;
 }
+
+.read-panel{
+
+ height: calc(72vh - 18px);
+
+}
+
+
+
+.editor-sec{
+
+ width: 100%;
+
+ float: left;
+
+ height: 100%;
+
+ display: flex;
+
+ align-items: center;
+
+ background-color: #1f1f1f
+
+;
+
+}
+
+.editor-button{
+
+ width: 100%;
+
+ float: left;
+
+ position: fixed;
+
+ bottom: 0;
+
+ left: 0;
+
+ right: 0;
+
+}
+
+.editor-button button {
+
+ width: 50%;
+
+ display: inline-block;
+
+ background-color: #000;
+
+ color: #fff;
+
+ margin: 0;
+
+ padding: 15px 0;
+
+ float: left;
+
+ border-radius: 0;
+
+}
+
+.cropping-box{
+
+ width: 100%;
+
+}

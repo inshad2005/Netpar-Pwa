@@ -27,7 +27,8 @@ import { RegisterationStepOneComponent } from './registeration-step-one/register
 import { CommentsComponent } from './comments/comments.component';
 import { AddContributionComponent } from './add-contribution/add-contribution.component'
 import { AuthGuard } from './security/auth.guard'
-import { ShareArticleComponent } from './share-article/share-article.component'
+import { ShareArticleComponent } from './share-article/share-article.component';
+import { CropImageComponent } from './crop-image/crop-image.component';
 
 const routes: Routes = [// { path: 'home',      component: HomeComponent },
     // { path: 'admin',      component: AdminComponent },
@@ -58,6 +59,7 @@ const routes: Routes = [// { path: 'home',      component: HomeComponent },
     { path: 'comments', component: CommentsComponent },
     { path: 'addContribution', component:AddContributionComponent},
     { path: 'shareArticle/:id', component:ShareArticleComponent},
+    { path: 'crop-image',component:CropImageComponent}
 
 ];
 

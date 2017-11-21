@@ -108,7 +108,7 @@
 		    			<li class="{{likeClass}}">
 		    				<a class="text-danger" ><span class="span-icns"> <i class="{{likeIcon}}"></i></span> {{articleData.likeCount}} </a>
 		    			</li>
-		    			<li>
+		    			<li >
 		    				<a class="text-rose" ><span class="span-icns"> <i class="cusIco-msg-o"></i></span> {{articleData.commentCount}} </a> 
 		    			</li>
 		    		<!-- 	<li class="{{likeClass}}">
@@ -117,7 +117,7 @@
 						<li class="{{saveClass}}">
 		    				<a class="text-primary" (click)="onSavePost()" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{"ContentItemView_Scroll1.Save" | translate}} </a> 
 		    			</li> -->
-		    			<li>
+		    			<li class="{{saveClass}}">
 		    				<a class="text-primary" ><span class="span-icns"> <i class="{{saveIcon}}"></i></span> {{articleData.saveCount}} </a> 
 		    			</li>
 		    		</ul>
@@ -172,10 +172,10 @@
 			    			</div>
 		    			</div>
 		    		</div>
-		    		<div class="inner-card dashed-brd">
+		    		<div class="inner-card dashed-brd" *ngIf="articleData.suggestedArticle==true">
 		    			<h4 class="font-16 m-0"> {{"ContentItemView_Scroll2.SuggestedArticles" | translate}} </h4>
 		    		</div>
-		    		<div class="inner-card">
+		    		<div class="inner-card" *ngIf="articleData.suggestedArticle==true">
 		    			<div class="suggested-ulist">
 			    			<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig">
 						        <div ngxSlickItem class="slide">
@@ -237,11 +237,11 @@
 						    </ngx-slick>
 					    </div>
 		    		</div>
-		    		<div class="bg-gradient"> </div>
+		    		<div class="bg-gradient" *ngIf="continueButtonVisible"> </div>
 			    </div>
 
-			    <div class="col-md-12 col-sm-12 col-xs-12 p-0">
-			    	<button class="btn bg-blue full-width read-btn" (click)="onContinueReading()" *ngIf="continueButtonVisible"> Continue Reading <i class="fa fa-chevron-down"></i> </button>
+			    <div class="col-md-12 col-sm-12 col-xs-12 p-0" *ngIf="continueButtonVisible">
+			    	<button class="btn bg-blue full-width read-btn" (click)="onContinueReading()" > Continue Reading <i class="fa fa-chevron-down"></i> </button>
 			    </div>
 			    
 			</section>

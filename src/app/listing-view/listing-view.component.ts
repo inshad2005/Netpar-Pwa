@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppProvider } from '../providers/app'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listing-view',
@@ -15,12 +16,17 @@ export class ListingViewComponent implements OnInit {
     private sidebarVisible: boolean;
     count:number=1
     allArticles;
-
-    constructor(private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    listingViewFormat;
+    articleDataAtZeroIndex;
+    articleData;
+    constructor(private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
-        this.allArticles=this.appProvider.current.allArticles;
-        console.log(this.allArticles);
+        this.allArticles=this.appProvider.current.allArticles.response.filter(f=>f.subCategoryName==this.appProvider.current.subCategoryData.subCategoryName);
+        this.listingViewFormat=this.appProvider.current.listingViewFormat;
+        console.log('listviewdata'+ JSON.stringify(this.allArticles));
+        console.log(this.listingViewFormat)
+        this.getArticleData();
     }
 
   	ngOnInit() {
@@ -30,15 +36,46 @@ export class ListingViewComponent implements OnInit {
   	}
 
   	navRemove(){
-  		/*alert('home')*/
   		if (localStorage['menuOpen']=='true') {
-
-	  		const body = document.getElementsByTagName('body')[0];
-	        this.toggleButton.classList.remove('toggled');
-	        this.sidebarVisible = false;
-	        body.classList.remove('nav-open');
-  			//localStorage['menuOpen']=='false'
+  		  const body = document.getElementsByTagName('body')[0];
+        this.toggleButton.classList.remove('toggled');
+        this.sidebarVisible = false;
+        body.classList.remove('nav-open');
   		}
   	}
+
+    getArticleData(){
+      this.articleDataAtZeroIndex=this.allArticles[0];
+      this.allArticles.splice(0, 1);
+    }
+    
+    colorClass(i){
+      if (i%5==0) {
+        return "color-yellow";
+      }
+      else if (i%5==1) {
+        return "color-red";
+      }
+      else if (i%5==2) {
+        return "color-pink";
+      }
+       else if (i%5==3) {
+        return "color-purple";
+      }
+       else if (i%5==4) {
+        return "color-green";
+      }
+    }
+
+    getclass(i){
+      if (i%6>2) {
+        return 'new'
+      }
+    }
+
+    onArticle(articleData){
+      this.appProvider.current.articleDetails=articleData;
+      this.router.navigate(["/article-details"],{skipLocationChange:true});
+    }
 
 }

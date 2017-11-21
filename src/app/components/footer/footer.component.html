@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                <a routerLink="/friends" class="bg-yellow-g">
                                     <i class="cusIco-friends"></i> {{"ProfilePage.FriendsOnMyNetwork" | translate}}
                                 </a>
                             </li>
@@ -41,7 +41,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a routerLink="/my-profile" class="bg-yellow-g">
+                                <a routerLink="/my-profile" class="bg-yellow-g" skipLocationChange="true">
                                     <i class="fa fa-plus"></i> {{"ProfilePage.MyContributions" | translate}}
                                 </a>
                             </li>
@@ -61,8 +61,8 @@
                 </a>
                 <ul class="dropdown-menu bottom-dropdown">
                     <li> <a (click)="share(shareUrl)" > <span class="bg-facebook"> <i class="fa fa-facebook"></i> </span><div>{{"FloatingButtonScreen_Share.ShareonFacebook" | translate}}</div> </a> </li>
-                    <li> <a href="facebook://send?text=http://europa.promaticstechnologies.com/netpar-pwa-dev"> <span class="bg-blue"> <i class="fa fa-envelope-o"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareviatextmessage" | translate}}</div> </a> </li>
-                    <li> <a  href="whatsapp://send?text=http://europa.promaticstechnologies.com/netpar-pwa-dev/#/shareArticle/"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareonwhatsapp"| translate}}</div> </a> </li>
+                    <li> <a [href]="safeUrlForSms()"> <span class="bg-blue"> <i class="fa fa-envelope-o"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareviatextmessage" | translate}}</div> </a> </li>
+                    <li> <a  [href]="getUrl()"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span> <div>{{"FloatingButtonScreen_Share.Shareonwhatsapp"| translate}}</div> </a> </li>
                 </ul>
             </li>
             <li class="dropdown two-dropdown">
@@ -72,8 +72,8 @@
                 </a>
                 <ul class="dropdown-menu bottom-dropdown">
                     <!-- <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="material-icons">call</i> </span><div>Call</div></a> </li> -->
-                    <li> <a > <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>{{"FloatingButtonScreen_Help.WhatsappforHelp" | translate}}</div></a> </li>
-                    <li> <a > <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>{{"FloatingButtonScreen_Help.Help" | translate}}</div></a> </li>
+                    <li> <a href="intent://send/+917275583095#Intent;scheme=smsto;package=com.whatsapp;action=android.intent.action.SENDTO;end"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>{{"FloatingButtonScreen_Help.WhatsappforHelp" | translate}}</div></a> </li>
+                    <li> <a> <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>{{"FloatingButtonScreen_Help.Help" | translate}}</div></a> </li>
                 </ul>
             </li>
         </ul>

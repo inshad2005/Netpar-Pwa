@@ -89,9 +89,14 @@
         "genderQues":"What is your Gender?",
         "mobileNumberQues":"What is your Last Mobile Number?",
         "previousMobileNumber":"Previous mobile number",
-        "update":"अपडेट",
-        "mobileNumber":"मोबाईल नंबर",
-        "newMobileNumber":"नवीन मोबाईल नंबर"
+        "update":"update",
+        "mobileNumber":"mobile number",
+        "newMobileNumber":"new mobile number",
+        "stateIncorrect":"state is incorrect",
+        "districtIncorrect":"district is incorrect",
+        "blockIncorrect":"Block is incorrect",
+        "dobIncorrect":"Dob is incorrect",
+        "genderIncorrect":"gender is incorrect"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{

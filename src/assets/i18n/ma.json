@@ -91,7 +91,12 @@
         "previousMobileNumber":"आपला आधीचा संपर्क क्रमांक",
         "update":"अपडेट",
         "mobileNumber":"मोबाईल नंबर",
-        "newMobileNumber":"नवीन मोबाईल नंबर"
+        "newMobileNumber":"नवीन मोबाईल नंबर",
+        "stateIncorrect":"राज्य अयोग्य आहे",
+        "districtIncorrect":"जिल्हा अयोग्य आहे",
+        "blockIncorrect":"ताल अयोग्य आहे",
+        "dobIncorrect":"जन्मतारीख अयोग्य आहे",
+        "genderIncorrect":"लिंग अयोग्य आहे"
     },
 
     "Login_ErrorMessage_IncorrectMobileNumber":{
@@ -287,6 +292,18 @@
 
     "download":{
         "downloadAppFromPlaystore":"प्लेस्टोरवरून अनुप्रयोग डाउनलोड करा"
+    },
+
+    "toasterMsgs":{
+        "noCategory":"या विभागातील प्रकार नाही",
+        "noSubCategory":"या प्रकारमध्ये उपप्रकार नाही"
+    },
+
+    "logout":{
+        "wantToLogout":"आपण लॉगआउट करू इच्छिता",
+        "yes":"हो", 
+        "no":"नाही "
     }
+
 
 }

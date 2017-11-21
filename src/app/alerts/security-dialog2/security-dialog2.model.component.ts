@@ -6,4 +6,5 @@ export class SecurityDialogModel  {
 	block:string;
 	dateOfBirth:string;
 	gender:string;
+	mobileNumber:string;
 }

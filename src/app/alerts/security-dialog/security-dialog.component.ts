@@ -44,6 +44,7 @@ export class SecurityDialogComponent implements OnInit {
   onOk(){
     this.securityModel.firstName=this.appProvider.current.firstName;
     this.securityModel.lastName=this.appProvider.current.lastName;
+    this.securityModel.mobileNumber=this.appProvider.current.previousMobileNumber;
     this.securityDialogService.SecurityStep1(this.securityModel).subscribe(data=>{
       if (data) {
         this.appProvider.current.state=this.securityModel.state;

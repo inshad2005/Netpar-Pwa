@@ -24,6 +24,10 @@ export class Current {
     categoryData:any;
     allArticles:any;
     article_id:any;
+    subCategoryData:any;
+    listingViewFormat:any;
+    profilImagePath:any;
+    cropedImage:any;
     constructor(public leadsFilter?: string) {
     }
 }

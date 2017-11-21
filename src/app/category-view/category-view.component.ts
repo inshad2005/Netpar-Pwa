@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef,AfterViewInit,OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, ViewChild, ElementRef,AfterViewInit,OnDestroy,ViewContainerRef } from '@angular/core';
 import { DOCUMENT, BrowserModule,DomSanitizer } from '@angular/platform-browser';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FetchSectionsService } from '../providers/fetch-sections.service';
@@ -10,6 +10,9 @@ import { AnalyticsService } from '../providers/analytics.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/forkJoin';
 import 'rxjs/add/operator/map';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { TranslationService } from '../providers/translation.service';
+
 
 declare var $:any;
 declare var jQuery:any;
@@ -18,7 +21,7 @@ declare var jQuery:any;
   selector: 'app-category-view',
   templateUrl: './category-view.component.html',
   styleUrls: ['./category-view.component.css'],
-  providers:[FetchSectionsService,AllPostsService]
+  providers:[FetchSectionsService,AllPostsService,TranslationService]
 })
 export class CategoryViewComponent implements OnInit ,OnDestroy{
 	  private listTitles: any[];
@@ -38,10 +41,11 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     isChanged;
     previousTemplate;
     callAgain;
-    constructor(private domSanitizer:DomSanitizer,private analyticsService: AnalyticsService,private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
+    constructor(vRef: ViewContainerRef,private translationService:TranslationService,public toastr: ToastsManager,private domSanitizer:DomSanitizer,private analyticsService: AnalyticsService,private appProvider:AppProvider,private router:Router,private allPostsService:AllPostsService,private fetchSectionService:FetchSectionsService,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
       this.userid=this.userInfo._id;
+      this.toastr.setRootViewContainerRef(vRef);
     }
   	//constructor(@Inject(DOCUMENT) private document: any) { }
 	fixedBoxOffsetTop: number  = 0;
@@ -230,10 +234,15 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
   }
 
   onSection(sectionData){
-    this.router.navigate(['/homepage'],{skipLocationChange:true})
-    console.log(JSON.stringify(sectionData));
-    this.appProvider.current.sectionDetails=sectionData;
-    this.appProvider.current.articleDetails=this.allPostData
+    if (sectionData.section_categories.length==0) {
+      console.log("no category")
+      this.showCustom();
+    }else{
+      this.router.navigate(['/homepage'],{skipLocationChange:true})
+      console.log(JSON.stringify(sectionData));
+      this.appProvider.current.sectionDetails=sectionData;
+      this.appProvider.current.articleDetails=this.allPostData
+    }  
   }
 
   fetchSection(){
@@ -256,4 +265,9 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
     }, 5000);
   }
    
+
+  showCustom() {
+    console.log("toast function")
+    this.toastr.custom("<span style='color: red'>या विभागातील प्रकार नाही</span>", null, {enableHTML: true});
+  }
 }

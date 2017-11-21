@@ -72,4 +72,12 @@ export class PopupComponent implements OnInit {
   onDownload(){
     this.dialogRef.close("yes");
   }
+
+  onWrongSecurityAnswers(key){
+     this.dialogRef.close(key)
+  }
+
+  onLogout(){
+    this.dialogRef.close("logOut")
+  }
 }

@@ -1,8 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef,ViewContainerRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppProvider } from '../providers/app';
 import { Router } from '@angular/router';
-
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
   selector: 'app-homepage2',
@@ -19,10 +19,12 @@ export class Homepage2Component implements OnInit {
     sectionData;
     categoryData;
     subCategoryTemplateStyle
-    constructor(private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+    constructor( private toastr:ToastsManager,vRef: ViewContainerRef,private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       	this.location = location;
         this.sidebarVisible = false;
+        this.toastr.setRootViewContainerRef(vRef);
     }
+    
   	ngOnInit() {
   		//this.listTitles = ROUTES.filter(listTitle => listTitle);
       this.categoryData=this.appProvider.current.categoryData;
@@ -94,7 +96,18 @@ export class Homepage2Component implements OnInit {
 
   onSubcategory(subcategory){
     console.log(subcategory)
-    this.router.navigate(['/listing-view'],{skipLocationChange:true})
+    let articlesInSubCategory=this.appProvider.current.allArticles.response.filter(f=>f.subCategoryName==subcategory.subCategoryName);
+    if (articlesInSubCategory.length==0) {
+      this.showCustom()
+    }
+    else{
+        this.appProvider.current.subCategoryData=subcategory;
+        this.router.navigate(['/listing-view'],{skipLocationChange:true})
+    }
   }
 
+    showCustom() {
+      console.log("toast function")
+      this.toastr.custom('<span style="color: red">या उपप्रकारमध्ये लेख नाही</span>', null, {enableHTML: true});
+    }
 }

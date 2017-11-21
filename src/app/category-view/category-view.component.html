@@ -37,7 +37,13 @@
 			    </ul>
 			    <ul class="homepage-ulist sec" *ngIf="sectionTemplate=='default Template'">
 			    	<li *ngFor="let sec of sections; let i=index">
-			    		<div [ngStyle]="{'background-image': 'url(' + sec.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    		<div *ngIf="sec.horigontalImage" [ngStyle]="{'background-image': 'url(' + sec.horigontalImage + ')'}" (click)= "onSection(sec)">
+			    			<a >
+			    				{{getIndex(i)}}
+			    				{{sec.sectionName}}
+			    	   		 </a> 
+			    		</div>
+			    		<div *ngIf="!sec.horigontalImage" style="background-image:url('http://placehold.it/300x180')" (click)= "onSection(sec)">
 			    			<a >
 			    				{{getIndex(i)}}
 			    				{{sec.sectionName}}
