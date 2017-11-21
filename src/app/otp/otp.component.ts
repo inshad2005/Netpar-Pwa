@@ -204,6 +204,7 @@ export class OtpComponent implements OnInit {
           if (this.appProvider.current.toOtpPageFlag=="SingIn") {
             localStorage.setItem('isLoggedin', 'true');
             localStorage['userInfo']=JSON.stringify(this.appProvider.current.userData);
+            localStorage['profileImage']=this.appProvider.current.userData.userImage;
             this.router.navigate(["/category-view"],{skipLocationChange:true})
           }
           else if(this.appProvider.current.toOtpPageFlag=="updateMobileNo"){
@@ -221,6 +222,7 @@ export class OtpComponent implements OnInit {
     this.updateMobileService.updateMobileNumber(this.updateMobileNo).subscribe(data=>{
        localStorage['userInfo']=JSON.stringify(data.info);
        localStorage.setItem('isLoggedin', 'true');
+       localStorage['profileImage']=data.info.userImage;
        this.router.navigate(['/category-view'],{skipLocationChange:true})
     },error=>{
 

@@ -11,7 +11,7 @@ export class UpdateprofileService {
   constructor(private http:Http) { }
 
   	updateProfilePicture(image,id): Observable<any>{
-        let api = "52.15.178.19:3001/api/uploadProfilePicEncoded/"+id;
+        let api = "http://52.15.178.19:3001/api/uploadProfilePicEncoded/"+id;
         let body= {
             image:image
         };

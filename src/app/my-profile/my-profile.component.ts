@@ -23,14 +23,23 @@ export class MyProfileComponent implements OnInit {
     userData;
     savedPosts;
     userInfo=JSON.parse(localStorage['userInfo']);
-    base64textString
-
+    base64textString;
+    editMobileNumber=false;
+    editgender=false;
+    editAddress=false;
+    editDob=false;
+    days;
+    months;
+    years;
+    dateValue;
+    totalYears=100;
+    profilePicture=localStorage['profileImage'];
     constructor(private updateprofileService:UpdateprofileService,private domSanitizer:DomSanitizer,private router:Router,private appProvider:AppProvider,private allPostsService:AllPostsService,location: Location,  private element: ElementRef) {
       this.userId=this.userInfo._id;
     	this.location = location;
       this.sidebarVisible = false;
       this.getSavedPost();
-      console.log(this.userInfo)
+      console.log(this.profilePicture)
     }
 
   	ngOnInit() {
@@ -39,6 +48,9 @@ export class MyProfileComponent implements OnInit {
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.uploadImage();
+      this.getDays();
+      this.getMonths();
+      this. getYears();
   	}
 
   	navRemove(){
@@ -158,10 +170,95 @@ export class MyProfileComponent implements OnInit {
    uploadImage(){
      if (this.appProvider.current.cropedImage) {
         this.updateprofileService.updateProfilePicture(this.appProvider.current.cropedImage,this.userId).subscribe(response=>{
-         console.log(response);
-         })
+           console.log(response);
+           if (response.success==true) {
+             localStorage['profileImage']=response.url;
+           }
+        })
      }
    }
+
+   edit(field){
+     console.log(field)
+     if (field=='mobileNumber') {
+        this.editMobileNumber=true;
+        this.editgender=false
+        this.editAddress=false
+        this.editDob=false
+     }
+     if (field=='gender') {
+       this.editgender=true
+       this.editMobileNumber=false;
+       this.editAddress=false
+        this.editDob=false
+     }
+     if (field=='address') {
+        this.editAddress=true
+        this.editMobileNumber=false;
+        this.editgender=false
+        this.editDob=false
+
+     }
+     if (field=='dob') {
+        this.editDob=true
+        this.editAddress=false
+        this.editMobileNumber=false;
+        this.editgender=false
+     }
+   }
+
+   onSend(field){
+       if (field=='mobileNumber'){
+        this.editMobileNumber=false;
+
+       }
+      if (field=='gender'){
+         this.editgender=false;
+
+      }
+      if (field=='address'){
+        this.editAddress=false
+
+      }
+      if (field=='dob'){
+        this.editDob=false
+      }
+   }
+
+      // ----------------------------calender------------------
+    getDays(){
+        this.days = [];
+        for(var i=1;i<=31;i++){
+              if(i<=9){
+                this.dateValue = '0' + i;
+              } else {
+                 this.dateValue = i;
+              }
+              this.days.push({value:this.dateValue});
+        }
+        // alert (JSON.stringify(this.days));
+        return this.days;
+    }
+
+    getMonths(){
+      var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+      this.months = [];
+      for(var i=1;i<=12;i++){
+        this.months.push({name: monthNames[i - 1]});
+      }
+        // alert(JSON.stringify(this.months))
+        return this.months;
+    }
+
+
+    getYears(){
+      var currentYear = new Date().getFullYear();
+      this.years=[];
+      for (var i = currentYear; i > currentYear - this.totalYears; i--) {
+          this.years.push({year: [i - 1]});
+      }
+      return this.years;
+    }
 
 
 }

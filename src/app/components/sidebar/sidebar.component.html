@@ -35,13 +35,13 @@
             <ul class="nav">
                 <li routerLinkActive="active" >
                     <a routerLink="/category-view"  skipLocationChange="true" (click)="navRemove()">
-                        <i class="material-icons">account_circle</i>
+                        <i class="material-icons">home</i>
                         <p>{{"MenuScreen.Home" | translate}}</p>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#profile" aria-expanded="false" >
-                        <i class="material-icons">dashboard</i>
+                        <i class="cusIco-profil"></i>
                         <p>{{"MenuScreen.Profile" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="profile" aria-expanded="false">
@@ -82,19 +82,19 @@
 
                 <li routerLinkActive="active" >
                     <a routerLink="/user-contribution" skipLocationChange="true" (click)="navRemove()"> 
-                        <i class="material-icons">group</i>
+                        <i class="material-icons">pie_chart</i>
                         <p>{{"MenuScreen.Contribute" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
                     <a routerLink="/friends" skipLocationChange="true" (click)="navRemove()"> 
-                        <i class="material-icons">person</i>
+                        <i class="material-icons">drafts</i>
                         <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="collapse" href="#section" aria-expanded="false" >
-                        <i class="material-icons">show_chart</i>
+                        <i class="material-icons">dashboard</i>
                         <p>{{"MenuScreen.section" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="section" aria-expanded="false">
@@ -127,23 +127,23 @@
 
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/aboutus" skipLocationChange="true" (click)="navRemove()"> 
-                        <i class="material-icons">person</i>
+                    <a  skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">star</i>
+                        <p>{{"MenuScreen.Rateus" | translate}}</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a  skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">info</i>
                         <p>{{"MenuScreen.Aboutus" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/rateus" skipLocationChange="true" (click)="navRemove()"> 
-                        <i class="material-icons">person</i>
-                        <p>{{"MenuScreen.Rateus" | translate}}</p>
+                    <a  skipLocationChange="true"> 
+                        <i class="material-icons">library_books</i>
+                        <p>{{"MenuScreen.privacyPolicy" | translate}}</p>
                     </a>
                 </li>
-             <!--    <li routerLinkActive="active" >
-                    <a routerLink="/privacy" skipLocationChange="true"> 
-                        <i class="material-icons">person</i>
-                        <p>{{"MenuScreen.InviteFriends" | translate}}</p>
-                    </a>
-                </li> -->
 
             </ul>
         </div>
