@@ -1,0 +1,21 @@
+      
+
+
+      
+<div *ngIf="data">
+
+  <h2>{{ data.firstName | amit }} {{ data.lastName | uppercase }}</h2>
+  <div>
+  	<span>id: </span>{{data._id}}
+  	<span>role:</span>{{data.role}}
+  </div>
+ 
+
+</div>
+<div *ngIf="!data">
+
+<p >Log in true but data not available to show</p>
+
+</div>
+
+<button  (click)="onLogOut()">Log out </button>
