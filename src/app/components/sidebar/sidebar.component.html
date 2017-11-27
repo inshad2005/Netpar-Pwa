@@ -1,0 +1,149 @@
+<div class="logo">
+    <a routerLink="/homepage" skipLocationChange="true" class="simple-text">
+        <div class="logo-img">
+            <img src="./assets/img/logo.png"/>
+        </div>
+        Netpar
+    </a>
+</div>
+    <div class="sidebar-wrapper ps-container" [perfectScrollbar]="config">
+        <!-- <div class="user">
+            <div class="photo">
+                <img src="./assets/img/avatar1.jpg">
+            </div>
+            <div class="info">
+                <a class="" data-toggle="collapse" href="#collapseExample">
+                    <span>
+                        Tania Andrew
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <div class="collapse {{profile}}" id="collapseExample">
+                    <ul class="nav">
+                        <li routerLinkActive="active">
+                            <a routerLink="/profile"> skipLocationChange="true"
+                                <span class="sidebar-mini">MP</span>
+                                <p>My Profile</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="nav-container">
+            <ul class="nav">
+                <li routerLinkActive="active" >
+                    <a routerLink="/category-view"  skipLocationChange="true" (click)="navRemove()">
+                        <i class="material-icons">home</i>
+                        <p>{{"MenuScreen.Home" | translate}}</p>
+                    </a>
+                </li>
+                <li >
+                    <a data-toggle="collapse" href="#profile" aria-expanded="false" >
+                        <i class="cusIco-profil"></i>
+                        <p>{{"MenuScreen.MyAccount" | translate}}<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse" id="profile" aria-expanded="false">
+                        <ul class="nav">
+                            <!-- <li routerLinkActive="active">
+                                <a routerLink="/my-profile" skipLocationChange="true" (click)="navRemove()">
+                                    <p>{{"MenuScreen.MyAccount" | translate}}</p>
+                                </a>
+                            </li> -->
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-contribution" skipLocationChange="true" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.ViewMySavedItems" | translate}}</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-profile" skipLocationChange="true" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.ViewMyDownloadedItems" | translate}}</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-contribution" skipLocationChange="true" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.ViewMyContributions" | translate}}</p>
+                                </a>
+                            </li>
+                            <li routerLinkActive="active">
+                                <a routerLink="/friends" skipLocationChange="true" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.FriendsOnTheNetwork" | translate}}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li routerLinkActive="active" >
+                    <a routerLink="/addContribution" skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">pie_chart</i>
+                        <p>{{"MenuScreen.Contribute" | translate}}</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/friends" skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">drafts</i>
+                        <p>{{"MenuScreen.InviteFriends" | translate}}</p>
+                    </a>
+                </li>
+                <li >
+                    <a data-toggle="collapse" href="#section" aria-expanded="false" >
+                        <i class="material-icons">dashboard</i>
+                        <p>{{"MenuScreen.section" | translate}}<b class="caret"></b></p>
+                    </a>
+                    <div class="collapse" id="section" aria-expanded="false">
+                        <ul class="nav">
+                            <li *ngFor="let sec of sections;let i=index" routerLinkActive="active">
+                                <a data-toggle="collapse" href="#{{i}}" aria-expanded="false" (click)="onSection(sec)" >
+                                    <p >{{sec.sectionName}}<b class="caret"></b> </p>
+                                </a>
+                                <div class="collapse" id="{{i}}" aria-expanded="false">
+                                    <ul class="nav">
+                                        <li *ngFor="let category of sec.section_categories;let j=index" routerLinkActive="active">
+                                            <a data-toggle="collapse" href="#sec_{{j}}" aria-expanded="false" (click)="onCategory(category)">
+                                                <p>{{category.categoryName}}<b class="caret"></b> </p>
+                                            </a>
+                                            <div class="collapse" id="sec_{{j}}" aria-expanded="false">
+                                                <ul class="nav">
+                                                    <li *ngFor="let subCategory of category.section_subcategories" routerLinkActive="active">
+                                                        <a data-toggle="collapse" aria-expanded="false"  skipLocationChange="true" (click)="onSubCategory(subCategory)"> 
+                                                            <p>{{subCategory.subCategoryName}}</p>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li routerLinkActive="active" (click)="navRemove()">
+                    <a  skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">star</i>
+                        <p>{{"MenuScreen.Rateus" | translate}}</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a  skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">info</i>
+                        <p>{{"MenuScreen.Aboutus" | translate}}</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a  skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="material-icons">library_books</i>
+                        <p>{{"MenuScreen.privacyPolicy" | translate}}</p>
+                    </a>
+                </li>
+                <li routerLinkActive="active" >
+                    <a routerLink="/Faq" skipLocationChange="true" (click)="navRemove()"> 
+                        <i class="fa fa-handshake-o"></i>
+                        <p>{{"FloatingButtonScreen_Help.Help" | translate}}</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>

@@ -1,0 +1,19 @@
+<div class="wrapper">
+	<app-back-button-navbar></app-back-button-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="tb-wrap">
+		<div class="comment-sec">
+			<div class="comment-div" *ngFor="let comment of userComments">
+				<div  class="user-img">
+				    <img class="img-responsive" src="./assets/img/profile_user.jpg">
+				</div>
+				<div  class="comment-box">
+				    <h5  class="m-0"> {{comment.userName}} <span class="pull-right">  {{comment.dateOfComment.split('T')[0]}}</span></h5>
+				    <p>{{comment.userComment}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+

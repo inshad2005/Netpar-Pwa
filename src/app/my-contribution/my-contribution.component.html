@@ -1,0 +1,55 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="tb-wrap">
+			<section class="invite-sec">
+				<div class="card cus-card">
+					<mat-tab-group>
+					  	<mat-tab label="{{'ProfilePage_Scroll1.SavedPosts' | translate}}">
+					  		<div class="list-view3 list-view7">
+				    			<div class="view-lists grid-1" *ngFor="let savedPost of savedPosts;let i=index">
+							        <a (click)="onSaved(savedPost)" class="{{colorClass(i)}}">
+							        	<img src="{{savedPost.thumbnailPicture}}" class="img-effect img-responsive" *ngIf="savedPost.thumbnailPicture">
+							        	<img src="http://placehold.it/300x300" class="img-effect img-responsive" *ngIf="!savedPost.thumbnailPicture">   
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">{{savedPost.sectionName}} </div>
+							    			</div>
+							    			<div class="detail-text">{{savedPost.headline}} </div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    </div>	
+					  	</mat-tab>
+					  	<mat-tab label="{{'ProfilePage_Scroll1.Contributions' | translate}}">
+					  		<div class="list-view3 list-view7">
+				    			<div class="view-lists grid-1" *ngFor="let myContribution of myContributions;let i=index">
+							        <a class="{{colorClass(i)}}">
+							        	<img [src]="myContribution.media[0].url" class="img-effect img-responsive" *ngIf="myContribution.media.length !='0'"> 
+							        	<img src="http://placehold.it/300x300" class="img-effect img-responsive" *ngIf="myContribution.media.length =='0'">
+						    			<div class="list-text-wrap one-heading">
+							    			<div class="suggested-div">
+							    				<div class="suggested-text">{{myContribution.sectionName}} </div>
+							    			</div>
+							    			<div class="detail-text">{{myContribution.description}}</div>
+						    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+							    		</div>
+						    			<div class="line"></div>
+						    		</a>
+						    	</div>
+						    </div>	
+					  	</mat-tab>
+					</mat-tab-group>
+				</div>
+			</section>
+			<app-footer></app-footer>
+		</div>
+	</div>
+</div>
