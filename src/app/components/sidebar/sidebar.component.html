@@ -1,12 +1,12 @@
 <div class="logo">
-    <a routerLink="/homepage" class="simple-text">
+    <a routerLink="/homepage" skipLocationChange="false" class="simple-text">
         <div class="logo-img">
             <img src="./assets/img/logo.png"/>
         </div>
         Netpar
     </a>
 </div>
-    <div class="sidebar-wrapper ps-container" [perfect-scrollbar]="config">
+    <div class="sidebar-wrapper ps-container" [perfectScrollbar]="config">
         <!-- <div class="user">
             <div class="photo">
                 <img src="./assets/img/avatar1.jpg">
@@ -21,7 +21,7 @@
                 <div class="collapse {{profile}}" id="collapseExample">
                     <ul class="nav">
                         <li routerLinkActive="active">
-                            <a routerLink="/profile">
+                            <a routerLink="/profile"> skipLocationChange="false"
                                 <span class="sidebar-mini">MP</span>
                                 <p>My Profile</p>
                             </a>
@@ -33,42 +33,42 @@
 
         <div class="nav-container">
             <ul class="nav">
-               
                 <li routerLinkActive="active" >
-                    <a routerLink="/homepage">
-                        <i class="material-icons">account_circle</i>
-                        <p>Home</p>
+                    <a routerLink="/category-view"  skipLocationChange="false" (click)="navRemove()">
+                        <i class="material-icons">home</i>
+                        <p>{{"MenuScreen.Home" | translate}}</p>
                     </a>
                 </li>
-                <li>
-                    <a data-toggle="collapse" href="#profile" aria-expanded="false">
-                        <i class="material-icons">dashboard</i>
-                        <p>Profile<b class="caret"></b></p>
+                <li >
+                    <a data-toggle="collapse" href="#profile" aria-expanded="false" >
+                        <i class="cusIco-profil"></i>
+                        <p>{{"MenuScreen.MyAccount" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="profile" aria-expanded="false">
                         <ul class="nav">
-                            <li routerLinkActive="active" >
-                                <a routerLink="/profile">
-                                    <span class="sidebar-mini">MP</span>
-                                    <p>My Profile</p>
+                            <!-- <li routerLinkActive="active">
+                                <a routerLink="/my-profile" skipLocationChange="false" (click)="navRemove()">
+                                    <p>{{"MenuScreen.MyAccount" | translate}}</p>
+                                </a>
+                            </li> -->
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-contribution" skipLocationChange="false" (click)="onSavedArticles()"> 
+                                    <p>{{"MenuScreen.ViewMySavedItems" | translate}}</p>
                                 </a>
                             </li>
-                            <li routerLinkActive="active" >
-                                <a routerLink="/saved">
-                                    <span class="sidebar-mini">VS</span>
-                                    <p>View Saved</p>
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-profile" skipLocationChange="false" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.ViewMyDownloadedItems" | translate}}</p>
                                 </a>
                             </li>
-                            <li routerLinkActive="active" >
-                                <a routerLink="/download">
-                                    <span class="sidebar-mini">VD</span>
-                                    <p>View Downloaded</p>
+                            <li routerLinkActive="active">
+                                <a routerLink="/my-contribution" skipLocationChange="false" (click)="onMyContriBution()"> 
+                                    <p>{{"MenuScreen.ViewMyContributions" | translate}}</p>
                                 </a>
                             </li>
-                            <li routerLinkActive="active" >
-                                <a routerLink="/contribution">
-                                    <span class="sidebar-mini">VC</span>
-                                    <p>View My Contribution</p>
+                            <li routerLinkActive="active">
+                                <a routerLink="/friends" skipLocationChange="false" (click)="navRemove()"> 
+                                    <p>{{"MenuScreen.FriendsOnTheNetwork" | translate}}</p>
                                 </a>
                             </li>
                         </ul>
@@ -76,85 +76,74 @@
                 </li>
 
                 <li routerLinkActive="active" >
-                    <a routerLink="/user-contribution">
-                        <i class="material-icons">group</i>
-                        <p>Contribute</p>
+                    <a routerLink="/addContribution" skipLocationChange="false" (click)="navRemove()"> 
+                        <i class="material-icons">pie_chart</i>
+                        <p>{{"MenuScreen.Contribute" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/invite">
-                        <i class="material-icons">person</i>
-                        <p>Invite</p>
+                    <a routerLink="/friends" skipLocationChange="false" (click)="onInviteFreinds()"> 
+                        <i class="material-icons">drafts</i>
+                        <p>{{"MenuScreen.InviteFriends" | translate}}</p>
                     </a>
                 </li>
-                <li>
-                    <a data-toggle="collapse" href="#section" aria-expanded="false">
-                        <i class="material-icons">show_chart</i>
-                        <p>Section<b class="caret"></b></p>
+                <li >
+                    <a data-toggle="collapse" href="#section" aria-expanded="false" >
+                        <i class="material-icons">dashboard</i>
+                        <p>{{"MenuScreen.section" | translate}}<b class="caret"></b></p>
                     </a>
                     <div class="collapse" id="section" aria-expanded="false">
                         <ul class="nav">
-                            <li>
-                                <a data-toggle="collapse" href="#news" aria-expanded="false">
-                                    <span class="sidebar-mini">FN</span>
-                                    <p>News <b class="caret"></b> </p>
+                            <li *ngFor="let sec of sections;let i=index" routerLinkActive="active">
+                                <a data-toggle="collapse" href="#{{i}}" aria-expanded="false" (click)="onSection(sec)" >
+                                    <p >{{sec.sectionName}}<b class="caret"></b> </p>
                                 </a>
-                                <div class="collapse" id="news" aria-expanded="false">
+                                <div class="collapse" id="{{i}}" aria-expanded="false">
                                     <ul class="nav">
-                                        <li>
-                                            <a data-toggle="collapse" href="#subnews" aria-expanded="false">
-                                                <span class="sidebar-mini">FN</span>
-                                                <p>Sports News <b class="caret"></b> </p>
+                                        <li *ngFor="let category of sec.section_categories;let j=index" routerLinkActive="active">
+                                            <a data-toggle="collapse" href="#sec_{{j}}" aria-expanded="false" (click)="onCategory(category)">
+                                                <p>{{category.categoryName}}<b class="caret"></b> </p>
                                             </a>
-                                            <div class="collapse" id="subnews" aria-expanded="false">
+                                            <div class="collapse" id="sec_{{j}}" aria-expanded="false">
                                                 <ul class="nav">
-                                                    <li>
-                                                        <a routerLink="/news1">
-                                                            <span class="sidebar-mini">FN</span>
-                                                            <p>Sports News</p>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a routerLink="/news1">
-                                                            <span class="sidebar-mini">CN</span>
-                                                            <p>Cricket News</p>
+                                                    <li *ngFor="let subCategory of category.section_subcategories" routerLinkActive="active">
+                                                        <a data-toggle="collapse" aria-expanded="false"  skipLocationChange="false" (click)="onSubCategory(subCategory)"> 
+                                                            <p>{{subCategory.subCategoryName}}</p>
                                                         </a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li>
-                                        <li>
-                                            <a routerLink="/news1">
-                                                <span class="sidebar-mini">TN</span>
-                                                <p>Technology News</p>
-                                            </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                         </ul>
                     </div>
-
                 </li>
-                <li routerLinkActive="active" >
-                    <a routerLink="/aboutus">
-                        <i class="material-icons">person</i>
-                        <p>About Us</p>
+                <li routerLinkActive="active">
+                    <a  skipLocationChange="false" (click)="onRateus()"> 
+                        <i class="material-icons">star</i>
+                        <p>{{"MenuScreen.Rateus" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/rateus">
-                        <i class="material-icons">person</i>
-                        <p>Rate Us</p>
+                    <a  skipLocationChange="false" (click)="navRemove()"> 
+                        <i class="material-icons">info</i>
+                        <p>{{"MenuScreen.Aboutus" | translate}}</p>
                     </a>
                 </li>
                 <li routerLinkActive="active" >
-                    <a routerLink="/privacy">
-                        <i class="material-icons">person</i>
-                        <p>Privacy Policy</p>
+                    <a  skipLocationChange="false" (click)="navRemove()"> 
+                        <i class="material-icons">library_books</i>
+                        <p>{{"MenuScreen.privacyPolicy" | translate}}</p>
                     </a>
                 </li>
-
+                <li routerLinkActive="active" >
+                    <a routerLink="/Faq" skipLocationChange="false" (click)="navRemove()"> 
+                        <i class="fa fa-handshake-o"></i>
+                        <p>{{"FloatingButtonScreen_Help.Help" | translate}}</p>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

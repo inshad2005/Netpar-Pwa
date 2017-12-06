@@ -1,0 +1,62 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+	<div class="loader-box" *ngIf="loading">
+        <img src="./assets/img/netpar_logo.gif" class="img-responsive" />
+    </div>
+    <div class="cusmain-panel" (click)="navRemove()">
+		<div class="tb-wrap">
+			<section class="invite-sec">
+				<div class="card cus-card">
+					<mat-tab-group class="mat-purple" #tabGroup>
+					  	<mat-tab label="{{'Friendsonthenetwork.FriendsOnNetpar' | translate}}">
+					  		<ul class="friend-ul" type="none" *ngIf="friends">
+					  			<li *ngFor="let friend of friends">
+					  				<div class="img"><img src="{{friend.userImage}}" class="img-responsive" /></div>
+					  				<div class=""> {{friend.firstName}} {{friend.lastName}} </div>
+					  			</li>
+					  		</ul>
+					  	</mat-tab>
+					  	<mat-tab label="{{'Friendsonthenetwork.InviteMoreFriends' | translate}}">
+					  		<div class="download-popup">
+								<div class="flex-div">
+									<div class="flex-innerdiv">
+									   	<p> {{'Friendsonthenetwork.InviteMoreFriends' | translate}}</p>
+						   				<button (click)="onInviteFriends()" class="btn custom-btn btn-round">{{'Friendsonthenetwork.Invite' | translate}} </button>
+						           </div>
+						       </div>
+						   </div>
+					  		<ul class="friend-ul" type="none">
+					  			<li>
+					  				<div class="img"><img src="./assets/img/profile_user.jpg" class="img-responsive" /></div>
+					  				<div class=""> Ravi Kumar </div>
+					  				<button class="btn btn-primary"> Invite </button>
+					  			</li>
+					  			<li>
+					  				<div class="img"><img src="./assets/img/profile_user.jpg" class="img-responsive" /></div>
+					  				<div class=""> Ravi Kumar </div>
+					  				<button class="btn btn-primary"> Invite </button>
+					  			</li>
+					  			<li>
+					  				<div class="img"><img src="./assets/img/profile_user.jpg" class="img-responsive" /></div>
+					  				<div class=""> Ravi Kumar </div>
+					  				<button class="btn btn-primary"> Invite </button>
+					  			</li>
+					  			<li>
+					  				<div class="img"><img src="./assets/img/profile_user.jpg" class="img-responsive" /></div>
+					  				<div class=""> Ravi Kumar </div>
+					  				<button class="btn btn-primary"> Invite </button>
+					  			</li>
+					  		</ul>
+					  	</mat-tab>
+					</mat-tab-group>
+				</div>
+			</section>
+			<app-footer></app-footer>
+		</div>
+	</div>
+</div>

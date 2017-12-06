@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { Navbar2Component } from './navbar2/navbar2.component';
 
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import { PerfectScrollbarConfigInterface}  from 'ngx-perfect-scrollbar';
-const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { BackButtonNavbarComponent } from './back-button-navbar/back-button-navbar.component';
+const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
@@ -16,17 +19,26 @@ const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     RouterModule,
-    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG)
+    PerfectScrollbarModule
   ],
   declarations: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent 
+    SidebarComponent,
+    Navbar2Component,
+    BackButtonNavbarComponent,
   ],
   exports: [
     FooterComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    Navbar2Component
+  ],
+  providers:[
+  {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
   ]
 })
 export class ComponentsModule { }

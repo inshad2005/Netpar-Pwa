@@ -1,0 +1,294 @@
+<div class="wrapper">
+    <div class="sidebar" data-color='orange' data-background-color="orange" data-image="">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
+    </div>
+
+	<app-navbar></app-navbar>
+    <div class="cusmain-panel" (click)="navRemove()">
+    	<div class="loader-box" *ngIf="loading">
+    		<img src="./assets/img/netpar_logo.gif" class="img-responsive" />
+		</div>
+		<div class="header-extra" ></div>
+		<section class="homepage-sec tb-wrap">
+		    <div class="homepage-listing" #fixedBox>
+			    <ul class="homepage-ulist" *ngIf="sectionTemplate=='Section Template One'">
+			    	<li class="{{bgClass(i)}}" *ngFor="let sec of sections | orderbyPipe; let i=index">
+			    		<a (click)= "onSection(sec)" >
+			    			{{getIndex(i)}}
+			    			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}" class="img-responsive"> 
+			    			<img *ngIf="! sec.thumbnailImage" src="./assets/img/heart.png" class="img-responsive">
+			    			{{sec.sectionName}}
+			    	    </a> 
+			    	</li>
+			    	<!-- <li class="bg-orange"> <a routerLink="/homepage">
+			    		<img src="./assets/img/heart.png" class="img-responsive"> News </a> </li>
+			    	<li class="bg-yellow-g"> <a routerLink="/homepage">
+			    		<img src="./assets/img/politics-512.png" class="img-responsive"> Politics </a> </li>
+			    	<li class="bg-blue"> <a routerLink="/homepage">
+			    		<img src="./assets/img/coins.png" class="img-responsive"> Games </a> </li>
+			    	<li class="bg-green-g"> <a routerLink="/homepage">
+			    		<img src="./assets/img/newspaper.png" class="img-responsive"> Newspaper </a> </li>	 -->
+			    	<!-- <li class="bg-purple"> <a routerLink="/homepage">
+			    		<img src="./assets/img/heart.png" class="img-responsive"> Healthcare </a> </li>	
+			    	<li class="bg-pink"> <a routerLink="/homepage">
+			    		<img src="./assets/img/science-512.png" class="img-responsive"> Agriculture </a>
+			    	</li> -->	
+			    </ul>
+			    <ul class="homepage-ulist sec" *ngIf="sectionTemplate=='default Template'">
+			    	<li *ngFor="let sec of sections | orderbyPipe; let i=index">
+			    		<div *ngIf="sec.horigontalImage" [ngStyle]="{'background-image': 'url(' + sec.horigontalImage + ')', 'background-size': 'cover'}" (click)= "onSection(sec)">
+			    			<a >
+			    				{{getIndex(i)}}
+			    				{{sec.sectionName}}
+			    	   		 </a> 
+			    		</div>
+			    		<div *ngIf="!sec.horigontalImage" style="background-image:url('http://placehold.it/300x180')" (click)= "onSection(sec)">
+			    			<a >
+			    				{{getIndex(i)}}
+			    				{{sec.sectionName}}
+			    	   		 </a> 
+			    		</div>
+			    	</li>
+			    </ul>
+
+
+			    <div class="text-center">
+                    <span class="swiper" #swipe (click)="swipr(swipe)">
+                        <span class="up-down">
+                            <i class="fa fa-angle-double-down"></i>
+                        </span>
+                        <span class="up-down up">
+                            <i class="fa fa-angle-double-up"></i>
+                        </span>
+                    </span>
+                </div>
+		    </div>	
+
+		    <div class="scroll-menu" *ngIf="showDiv==true">
+		    	<ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideConfig" *ngIf="sections">
+			        <div ngxSlickItem class="slide" *ngFor="let sec of sections;let i = index">
+			        	<a (click)= "onSection(sec)" class="{{bgClass(i)}}">
+			        		<div>
+			        			<img *ngIf="sec.thumbnailImage" src="{{sec.thumbnailImage}}"> 
+			        			<img *ngIf="! sec.thumbnailImage" src="./assets/img/education-512.png"> 
+			        			<div class="slick-text"> {{sec.sectionName}} </div>
+			        		</div>
+			        	</a>
+			        </div>
+			        
+			        <!-- <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-orange">
+			        		<img src="./assets/img/education-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-yellow-g">
+			        		<img src="./assets/img/jobs-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-blue">
+			        		<img src="./assets/img/news-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-green-g">
+			        		<img src="./assets/img/politics-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-purple">
+			        		<img src="./assets/img/science-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div>
+			        <div ngxSlickItem class="slide">
+			        	<a routerLink="/homepage" class="bg-pink">
+			        		<img src="./assets/img/agriculture-512.png"> 
+			        		<div> Jobs </div>
+			        	</a>
+			        </div> -->
+			        
+		       	</ngx-slick>
+		    </div>
+
+		    <div class="realpage-view">
+    			<div class="list-view list-view7">
+	    			<!-- <div class="big-view">
+	    				<div class="innerbig-view">
+	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
+	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+	    				</div>
+	    			</div> -->
+	    			<div *ngFor="let postData of allPostData;let i = index" class="loop-div {{getclass(i)}}">
+		    			<div class="view-lists grid-1" *ngIf="i%6==0">
+					        <a  class="color-yellow" (click)="onFeeds(postData)">
+					        	<img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture" class="img-effect img-responsive"> 
+					        	<img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive">
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}} </div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="postData.tagline"> {{postData.tagline.slice(0,20)}} </div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>
+					    <div class="view-lists grid-1 right-view" *ngIf="i%6==1">
+					        <a class="color-red" (click)="onFeeds(postData)">
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}}</div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="postData.tagline">{{postData.tagline.slice(0,20)}}</div>
+					    		</div>
+					        	<img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture" class="img-effect img-responsive">
+					        	<img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive"> 
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+				    	</div>
+				    	<div class="view-lists grid-1" *ngIf="i%6==2">
+					        <a  class="color-pink" (click)="onFeeds(postData)">
+					        	<img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture" class="img-effect img-responsive"> 
+					        	<img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive">
+				    			<div class="list-text-wrap one-heading">
+				    				<div class="text-red"> {{postData.sectionName}} </div>
+					    			<div class="suggested-div">
+					    				<div class="suggested-text" *ngIf="postData.headline">{{postData.headline.slice(0,25)}} </div>
+					    			</div>
+					    			<div class="detail-text" *ngIf="postData.tagline"> {{postData.tagline.slice(0,20)}}</div>
+					    		</div>
+			    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+				    			<div class="line"></div>
+				    		</a>
+			    		</div>
+			    		<div class="view-lists grid-3" *ngIf="i%6==3">
+					        <a  class="color-purple" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture"> 
+					        	<img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive">
+				    			<div class="suggested-div">
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+				    			</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
+				    		</a>
+			    		</div>
+				    	<div class="view-lists grid-3" *ngIf="i%6==4">
+					        <a  class="color-green" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture">
+					        <img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive"> 
+				    			<div class="suggested-div">
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+				    			</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
+				    		</a>
+				    	</div>
+				    	<div class="view-lists grid-3" *ngIf="i%6==5">
+					        <a  class="color-yellow" (click)="onFeeds(postData)"><img src="{{postData.thumbnailPicture}}" *ngIf="postData.thumbnailPicture">
+					        <img src="http://placehold.it/300x300" *ngIf="!postData.thumbnailPicture" class="img-effect img-responsive"> 
+				    			<div class="suggested-div">
+				    				<div class="line"></div>
+				    				<div class="suggested-text">{{postData.sectionName}}</div>
+				    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+				    			</div>
+				    			<div class="detail-text" *ngIf="postData.headline"> {{postData.headline.slice(0,25)}}</div>
+				    		</a>
+				    	</div>
+	    			</div>
+	    			
+
+<!-- 			    	<div class="view-lists grid-1 right-view">
+				        <a routerLink="/article-details" class="color-orange">
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+				        	<img src="./assets/img/img_r-2.jpg" class="img-effect img-responsive"> 
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-1">
+				        <a routerLink="/article-details" class="color-yellow">
+				        	<img src="./assets/img/img_r-3.jpg" class="img-effect img-responsive"> 
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/article-details" class="color-blue"><img src="./assets/img/img_r-4.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/article-details" class="color-green"><img src="./assets/img/img_r-5.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div>
+			    	<div class="view-lists grid-3">
+				        <a routerLink="/article-details" class="color-purple"><img src="./assets/img/img_r-6.jpg"> 
+			    			<div class="suggested-div">
+			    				<div class="line"></div>
+			    				<div class="suggested-text">News </div>
+			    				<div class="suggested-icons"><i class="material-icons">arrow_forward</i></div>
+			    			</div>
+			    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. </div>
+			    		</a>
+			    	</div> -->
+			    	<!-- <div class="big-view">
+	    				<div class="innerbig-view">
+	    					<img src="./assets/img/big-img.jpg" class="img-effect img-responsive" />
+	    					<p class="overlay-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam </p>
+	    				</div>
+	    			</div> -->
+
+			    <!-- 	<div class="view-lists grid-1 right-view">
+				        <a routerLink="/article-details" class="color-pink">
+			    			<div class="list-text-wrap one-heading">
+			    				<div class="text-red"> Games </div>
+				    			<div class="suggested-div">
+				    				<div class="suggested-text">News </div>
+				    			</div>
+				    			<div class="detail-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do </div>
+				    		</div>
+				        	<img src="./assets/img/img_r-1.jpg" class="img-effect img-responsive"> 
+		    				<div class="suggested-icons abs-align"><i class="material-icons">arrow_forward</i></div>
+			    			<div class="line"></div>
+			    		</a>
+			    	</div> -->
+			    </div>
+			</div>
+		</section>
+		<app-footer></app-footer>
+	</div>
+</div>

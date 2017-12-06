@@ -1,0 +1,10 @@
+<p>
+  second works!
+
+</p>
+<button  *ngIf="status" (click)="onShow()">show admin details</button>
+<button *ngIf="!status" (click)="onHide()">Hide admin details</button>
+<div>
+	Actual data on third page but call on second page 
+	<app-third [amit]="admindata"></app-third>
+</div>

@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('pwa App', () => {
+describe('netpar-pwa App', () => {
   let page: AppPage;
 
   beforeEach(() => {
