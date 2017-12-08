@@ -233,4 +233,48 @@ export class AllPostsService {
              return error
          });
      }
+
+// -----------------------------------7/12/17-------------------------------------
+
+
+    interested(userId,contentId): Observable<any>{
+        let api = environment.endPoint+"interested/"+userId+"/"+contentId;
+        return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
+
+    call(userId,contentId): Observable<any>{
+        let api = environment.endPoint+"call/"+userId+"/"+contentId;
+        return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
+
+    callmeback(userId,contentId): Observable<any>{
+        let api = environment.endPoint+"callmeback/"+userId+"/"+contentId;
+        return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
+
+    apply(userId,contentId): Observable<any>{
+        let api = environment.endPoint+"apply/"+userId+"/"+contentId;
+        return this.http.get(api)
+        .map(response =>{
+            return response.json();
+        }).catch(error =>{
+            return error;
+        })
+    }
+
 }

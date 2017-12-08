@@ -11,8 +11,8 @@
                 <span class="icon-bar"></span>
             </button>
             <!-- <a class="navbar-brand" href="javascript:void(0);">{{getTitle()}}</a> -->
-            <a class="navbar-brand" (click)="onWhatsappLogo()">
-                <img src="./assets/img/Netpar-logo.png" class="img-responsive" alt="{{getTitle()}}" />
+            <a class="navbar-brand {{logoutClass}}" (click)="onWhatsappLogo()">
+                <img src="./assets/img/Netpar-logo.png" class="img-responsive " alt="{{getTitle()}}" />
             </a>
             <ul class="nav navbar-nav navbar-right cus-navbar">
                 <!-- <li *ngIf="!logoutButtonVisible">

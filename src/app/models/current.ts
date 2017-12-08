@@ -31,6 +31,7 @@ export class Current {
     refferalId:any;
     articleHeadline;
     selectedTab:any;
+    landingArea:any;
     constructor(public leadsFilter?: string) {
     }
 }

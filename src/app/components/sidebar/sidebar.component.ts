@@ -3,6 +3,9 @@ import { Routes, RouterModule ,Router,RouterLinkActive} from '@angular/router';
 import { FetchSectionsService } from '../../providers/fetch-sections.service';
 import { AppProvider } from '../../providers/app';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ShareDialogComponent } from '../../alerts/share-dialog/share-dialog.component'
+
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -39,7 +42,7 @@ export class SidebarComponent implements OnInit {
   profile;
   private toggleButton: any;
   sectionData
-  constructor(private toastr:ToastsManager,vRef: ViewContainerRef,private element:ElementRef,private appProvider:AppProvider,private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) {
+  constructor(private dialog: MatDialog,private toastr:ToastsManager,vRef: ViewContainerRef,private element:ElementRef,private appProvider:AppProvider,private fetchSectionsService:FetchSectionsService ,private route:Router, private activeLink:RouterLinkActive) {
      
    }
 
@@ -195,7 +198,12 @@ export class SidebarComponent implements OnInit {
 
     onInviteFreinds(){
       this.navRemove();
-      this.appProvider.current.selectedTab="inviteFriend";
+      let dialogRef = this.dialog.open(ShareDialogComponent, {
+          width: '300px',
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        
+      });
     }
 
     onSavedArticles(){

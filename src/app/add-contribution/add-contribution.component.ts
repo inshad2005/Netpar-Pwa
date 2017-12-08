@@ -53,6 +53,7 @@ export class AddContributionComponent implements OnInit {
     outputStringLength
     caretPos
     selectedValue:any;
+    postButton=true;
     constructor(private translationService:TranslationService,private elementRefrence:ElementRef,private dialog: MatDialog,private addContributionService:AddContributionService,private domSanitizer:DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
       this.location = location;
       this.sidebarVisible = false;
@@ -148,6 +149,7 @@ export class AddContributionComponent implements OnInit {
 
 
     onUploadImg(type){
+      this.postButton=false;
       for (var i = 0; i < this.length; i++) {
           let formData: FormData = new FormData();
           console.log(this.newUploadFiles[i])
@@ -158,6 +160,7 @@ export class AddContributionComponent implements OnInit {
             if(response.success==true){
                  this.mediaToUpload.push({url:response.filepath});
                  this.userContibutionModel.media=this.mediaToUpload;
+                 this.postButton=true;
             }
           },error=>{
             console.log(error);

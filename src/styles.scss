@@ -912,7 +912,7 @@ ul.homepage-ulist.active {
 span.swiper {
   background-color: #000;
   border-radius: 20px;
-  bottom: -2px;
+  bottom: 5px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -1354,13 +1354,14 @@ footer{
   margin: 0;
 }
 .like-bar li {
+  -moz-box-flex: 1;
   display: inline-block;
-  font-size: 12px;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
   flex: 1 1 auto;
+  font-size: 12px;
   font-weight: normal;
-  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .like-bar li:first-child {
   text-align: left;
@@ -1368,8 +1369,12 @@ footer{
 .like-bar li:last-child {
   text-align: right;
 }
-.like-bar > li > a{
+.like-bar > li > a {
   display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 .like-bar > li span.span-icns {
   border: 1px solid;
@@ -2776,4 +2781,8 @@ input.mat-input-element{
 
 .logout-pop .modal-body .btn{
   width: 46%;
+}
+
+.logoutButtonClass{
+  margin-left: 38px;
 }

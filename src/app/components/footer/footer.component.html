@@ -31,7 +31,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a routerLink="/friends" class="bg-yellow-g" skipLocationChange="false">
+                                <a routerLink="/my-profile" class="bg-yellow-g" skipLocationChange="false" (click)="onMyFriends()">
                                     <i class="cusIco-friends"></i> {{"ProfilePage.FriendsOnMyNetwork" | translate}}
                                 </a>
                             </li>
@@ -78,7 +78,7 @@
                 </a>
                 <ul class="dropdown-menu bottom-dropdown">
                     <!-- <li> <a routerLink="/homepage"> <span class="bg-blue"> <i class="material-icons">call</i> </span><div>Call</div></a> </li> -->
-                    <li> <a href="https://api.whatsapp.com/send?phone=917275583095&text=हा%20नेटपरवर%20मदत"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>{{"FloatingButtonScreen_Help.WhatsappforHelp" | translate}}</div></a> </li>
+                    <li> <a href="https://api.whatsapp.com/send?phone=918879732726&text=हा%20नेटपरवर%20मदत"> <span class="bg-whatsapp"> <i class="fa fa-whatsapp"></i> </span><div>{{"FloatingButtonScreen_Help.WhatsappforHelp" | translate}}</div></a> </li>
                     <li> <a routerLink="/Faq" skipLocationChange="false"> <span class="bg-red"> <i class="fa fa-handshake-o"></i> </span><div>{{"FloatingButtonScreen_Help.Help" | translate}}</div></a> </li>
                 </ul>
             </li>

@@ -45,6 +45,11 @@ export class ArticleDetailsComponent implements OnInit {
     likeButtonClass;
     saveButtonClass;
     downloadButtonClass="inactive";
+    callMeBackButtonClass="inactive";
+    callButtonClass="inactive";
+    shareButtonClass="inactive";
+    applyButtonClass="inactive";
+    interstedButtonClass="inactive";
     likeIcon;
     saveIcon;
     saveClass;
@@ -73,8 +78,12 @@ export class ArticleDetailsComponent implements OnInit {
     downloadGuideText=false;
 
     constructor(private analyticsService:AnalyticsService,public toastr: ToastsManager,private translationService:TranslationService,private translateService:TranslateService,private snackBar: MatSnackBar,private http:Http,private router:Router,private dialog: MatDialog,private allPostsService:AllPostsService,private domSanitizer: DomSanitizer,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
-      	this.location = location;
-        this.sidebarVisible = false;
+      	if (!this.appProvider.current.articleDetails) {
+          this.router.navigate(['/category-view'])
+        }else{
+          this.location = location;
+          this.sidebarVisible = false;
+        }
     }
 
   	ngOnInit() {
@@ -232,6 +241,10 @@ export class ArticleDetailsComponent implements OnInit {
           this.saveButtonClass=""
           this.articleData.saveCount=this.articleData.saveCount+1;
           this.analyticsService.sendEvent('pwa/'+this.articleData.headline,'save');
+          this.snackbarMessage=this.translateService.instant('ContentItemSaved.saved');
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition)
+        }if (data.success==false) {
           this.snackbarMessage=this.translateService.instant('ContentItemSaved.saved');
           let verticalPosition: MatSnackBarVerticalPosition
           this.openSnackBar(this.snackbarMessage,'',verticalPosition)
@@ -558,6 +571,55 @@ export class ArticleDetailsComponent implements OnInit {
       var combine_height = upper_box + wrap_text;
       console.log(combine_height);
       $('.read-panel').css('height',combine_height);
+    }
+
+
+    onCall(){
+      this.allPostsService.call(this.userData._id,this.articleData._id).subscribe(data=>{
+        console.log(data);
+        this.callButtonClass="";
+        this.snackbarMessage="call";
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition);
+      },err=>{
+        console.log(err);
+      })
+    }
+
+    onCallMeBack(){
+      this.allPostsService.callmeback(this.userData._id,this.articleData._id).subscribe(data=>{
+          console.log(data);
+          this.callMeBackButtonClass="";
+          this.snackbarMessage="CallMeBack";
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition);
+      },err=>{
+        console.log(err);
+      })
+    }
+
+    onApply(){
+      this.allPostsService.apply(this.userData._id,this.articleData._id).subscribe(data=>{
+        console.log(data);
+        this.applyButtonClass="";
+        this.snackbarMessage="apply";
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition);
+      },err=>{
+        console.log(err);
+      })
+    }
+
+    onIntersted(){
+      this.allPostsService.interested(this.userData._id,this.articleData._id).subscribe(data=>{
+        console.log(data);
+        this.interstedButtonClass="";
+        this.snackbarMessage="intersted";
+          let verticalPosition: MatSnackBarVerticalPosition
+          this.openSnackBar(this.snackbarMessage,'',verticalPosition);
+      },err=>{
+        console.log(err);
+      })
     }
 
 }

@@ -77,6 +77,10 @@ export class FooterComponent implements OnInit {
     this.analyticsService.sendEvent('pwa/'+this.appProvider.current.articleHeadline,'share'); 
  }
 
+ onMyFriends(){
+   this.appProvider.current.landingArea="downloadSection";
+ }
+
 
 }
 

@@ -14,7 +14,7 @@
 						  	<mat-form-field>
 	                            <input matInput placeholder="{{'LoginScreen_SignIn.MobileNumber' | translate}}" type="tel" maxlength="10" [(ngModel)]="mobileNumber" readonly>
 	                        </mat-form-field>
-						  	<span class="input-group-addon" id="basic-addon1"> <button class="btn-sm btn btn-primary" (click)="onPost()"> post </button> </span>
+						  	<span class="input-group-addon" id="basic-addon1"> <button class="btn-sm btn btn-primary" [disabled]="!postButton" (click)="onPost()"> post </button> </span>
 						</div>
 					</div>
 

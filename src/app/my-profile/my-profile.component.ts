@@ -62,7 +62,6 @@ export class MyProfileComponent implements OnInit {
       this.updateProfileModel.block=this.userInfo.blockRegional
       this.updateMobileModel.mobileNumberNew=localStorage['mobileNumber'];
       if (localStorage['downloadMedia']) {
-        // code...
         this.downloadedMedia=JSON.parse(localStorage['downloadMedia']);
         console.log(this.downloadedMedia);
       }
@@ -78,6 +77,10 @@ export class MyProfileComponent implements OnInit {
       this.getMonths();
       this.getYears();
       this.getStateData();
+      if (this.appProvider.current.landingArea) {
+        console.log("landingArea")
+        document.getElementById("downloadSection").scroll();
+      }
   	}
 
   	navRemove(){

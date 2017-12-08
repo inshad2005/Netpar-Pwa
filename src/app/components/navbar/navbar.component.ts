@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     backButton=false;
     logoutButtonVisible;
     userData=JSON.parse(localStorage['userInfo']);
+    logoutClass='';
     constructor(private dialog: MatDialog,private router:Router,private translateService:TranslateService,location: Location,  private element: ElementRef) {
           this.location = location;
           this.sidebarVisible = false;
@@ -71,6 +72,7 @@ export class NavbarComponent implements OnInit {
       }
       titlee = titlee.split('/').pop();
       if (titlee=='my-profile') {
+         this.logoutClass="logoutButtonClass";
          this.logoutButtonVisible=true;
          return this.translateService.instant('BottomBarandTopBar.welcomeForMale')+" "+ this.userData.firstName
       }
