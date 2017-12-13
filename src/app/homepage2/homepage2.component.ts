@@ -25,7 +25,10 @@ export class Homepage2Component implements OnInit,OnDestroy {
     time=2
     callAgain
     constructor(private allPostsService:AllPostsService ,private toastr:ToastsManager,vRef: ViewContainerRef,private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
-      	this.location = location;
+      	if (!this.appProvider.current.categoryData) {
+          this.router.navigate(['/category-view'])
+        }
+        this.location = location;
         this.sidebarVisible = false;
         this.toastr.setRootViewContainerRef(vRef);
     }

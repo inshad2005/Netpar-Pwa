@@ -32,6 +32,9 @@ export class HomepageComponent implements OnInit,OnDestroy {
     templateId;
 
     constructor(private analyticsService:AnalyticsService,private allPostsService:AllPostsService ,vRef: ViewContainerRef,public toastr: ToastsManager,private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
+      if(!this.appProvider.current.sectionDetails){
+        this.router.navigate(['/category-view'])
+      }
       this.location = location;
       this.sidebarVisible = false;
       this.toastr.setRootViewContainerRef(vRef);

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef,ViewChild,AfterViewInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AllPostsService } from '../providers/allPost.service';
 import { AppProvider } from '../providers/app';
@@ -9,6 +9,8 @@ import { UpdateProfileModel,UpdateMobileModel } from './updateprofile.model.comp
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PopupComponent } from '../alerts/popup/popup.component';
 import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-boxes.component';
+import { ScrollToService,ScrollToConfigOptions} from '@nicky-lenaers/ngx-scroll-to';
+
 
 @Component({
   selector: 'app-my-profile',
@@ -16,8 +18,8 @@ import { ValidationBoxesComponent } from '../alerts/validation-boxes/validation-
   styleUrls: ['./my-profile.component.css'],
   providers:[AllPostsService,UpdateprofileService]
 })
-export class MyProfileComponent implements OnInit {
-
+export class MyProfileComponent implements OnInit,AfterViewInit {
+   @ViewChild('target') target: ElementRef;
    	private listTitles: any[];
     location: Location;
     private toggleButton: any;
@@ -49,8 +51,9 @@ export class MyProfileComponent implements OnInit {
     stateData;
     districtData;
     blockData;
-    downloadedMedia
-    constructor(private dialog: MatDialog,private updateprofileService:UpdateprofileService,private domSanitizer:DomSanitizer,private router:Router,private appProvider:AppProvider,private allPostsService:AllPostsService,location: Location,  private element: ElementRef) {
+    downloadedMedia;
+    destination;
+    constructor(private scrollToService:ScrollToService,private dialog: MatDialog,private updateprofileService:UpdateprofileService,private domSanitizer:DomSanitizer,private router:Router,private appProvider:AppProvider,private allPostsService:AllPostsService,location: Location,  private element: ElementRef) {
       this.userId=this.userInfo._id;
     	this.location = location;
       this.sidebarVisible = false;
@@ -77,11 +80,15 @@ export class MyProfileComponent implements OnInit {
       this.getMonths();
       this.getYears();
       this.getStateData();
-      if (this.appProvider.current.landingArea) {
-        console.log("landingArea")
-        document.getElementById("downloadSection").scroll();
-      }
   	}
+
+    ngAfterViewInit(){
+      if (this.appProvider.current.landingArea=="downloadSection") {
+        console.log("landingArea")
+        this.scrolling()
+        this.appProvider.current.landingArea="";
+      }
+    }
 
   	navRemove(){
   		/*alert('home')*/
@@ -436,6 +443,17 @@ export class MyProfileComponent implements OnInit {
     onRemoveDownload(index){
       this.downloadedMedia.splice(index,1);
       localStorage['downloadMedia']=JSON.stringify(this.downloadedMedia);
+    }
+
+    scrolling() {
+     console.log("scrolling test")
+     const config: ScrollToConfigOptions = {
+        target: 'destination'
+      };
+      this.scrollToService.scrollTo(config).subscribe(
+        value => { console.log(value) },
+        err => console.log(err) // Error is caught and logged instead of thrown
+      );;
     }
 
 }

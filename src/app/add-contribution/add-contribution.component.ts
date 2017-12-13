@@ -158,7 +158,7 @@ export class AddContributionComponent implements OnInit {
           this.addContributionService.uploadMedia(formData,type).subscribe(response=>{
             console.log(response);
             if(response.success==true){
-                 this.mediaToUpload.push({url:response.filepath});
+                 this.mediaToUpload.push({url:response.filepath,type:response.type,size:response.size});
                  this.userContibutionModel.media=this.mediaToUpload;
                  this.postButton=true;
             }

@@ -277,4 +277,17 @@ export class AllPostsService {
         })
     }
 
+    // ------------------------9-12-2017---------------------------------------
+
+    likeParticularSection(data):Observable<any>{
+        let api = environment.endPoint+"likeParticularSection"
+        let body = data
+        return this.http.post(api,body)
+        .map(response=>{
+            return response.json();
+        }).catch(error=>{
+            return error
+        })
+    }
+
 }

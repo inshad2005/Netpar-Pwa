@@ -22,7 +22,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SlickModule } from 'ngx-slick';
 // import { Ng2OrderModule } from 'ng2-order-pipe';
-
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -80,6 +80,7 @@ import { ShareDialogComponent } from './alerts/share-dialog/share-dialog.compone
 import { ShareDirectiveModule  } from 'ngx-sharebuttons';
 import { NotificationComponent } from './notification/notification.component';
 import { DownloadPopupComponent } from './alerts/download-popup/download-popup.component';
+
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -147,6 +148,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     // Ng2OrderModule,
     AppRoutingModule,
     RouterModule.forRoot([],{ useHash: true }),
+    ScrollToModule.forRoot(),
     PerfectScrollbarModule,
     BrowserAnimationsModule,
     NoopAnimationsModule,

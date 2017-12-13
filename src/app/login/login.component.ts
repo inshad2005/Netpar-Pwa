@@ -31,8 +31,11 @@ export class LoginComponent implements OnInit{
  loginOrUpdate
  loading=false;
  constructor(private dialog: MatDialog,private appProvider:AppProvider,private router: Router,private route:  ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder) {
-   console.log(this.appProvider.current.loginOrUpdateFlag);
-   this.loginOrUpdate=this.appProvider.current.loginOrUpdateFlag;
+    if (!this.appProvider.current.loginOrUpdateFlag) {
+      this.router.navigate(['/welcome-screen2']);
+    }else{
+      this.loginOrUpdate=this.appProvider.current.loginOrUpdateFlag;
+    }
   }
 
 

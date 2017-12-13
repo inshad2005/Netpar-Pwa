@@ -50,6 +50,14 @@ export class ArticleDetailsComponent implements OnInit {
     shareButtonClass="inactive";
     applyButtonClass="inactive";
     interstedButtonClass="inactive";
+    classForlikeButton="inactive";
+    countsOnLikeButton;
+    classForlikeButton1="inactive";
+    countsOnLikeButton1;
+    classForlikeButton2="inactive";
+    countsOnLikeButton2;
+    classForlikeButton3="inactive";
+    countsOnLikeButton3;
     likeIcon;
     saveIcon;
     saveClass;
@@ -93,8 +101,8 @@ export class ArticleDetailsComponent implements OnInit {
       this.articleData=this.appProvider.current.articleDetails;
       this.appProvider.current.article_id=this.articleData._id;
       this.appProvider.current.articleHeadline=this.articleData.headline;
-      console.log(this.articleData.categoryId);
-      console.log(this.articleData.sectionId);
+      // console.log(this.articleData.categoryId);
+      // console.log(this.articleData.sectionId);
       this.getComments();
       this.likeOrNot();
       this.savedOrNot();
@@ -530,6 +538,7 @@ export class ArticleDetailsComponent implements OnInit {
     openDownloadPopup(){
       let dialogRef = this.dialog.open(DownloadPopupComponent, {
             width: '260px',
+            disableClose :true
         });
         dialogRef.afterClosed().subscribe(result => {
           if(result=="navigateToPlayStore"){
@@ -544,10 +553,10 @@ export class ArticleDetailsComponent implements OnInit {
             var showChar = 120;
             var ellipsestext = "...";
             let text =this.articleData.contentBody[i].text
-            console.log(text.length)
+            // console.log(text.length)
             let finalText=text.split(' ')
-            console.log(finalText)
-            console.log(finalText.length)
+            // console.log(finalText)
+            // console.log(finalText.length)
             if(finalText.length > showChar) {
               for (var i = 0; i <120; i++) {
                 this.textFirstSpan=this.textFirstSpan+finalText[i]+' '
@@ -557,8 +566,8 @@ export class ArticleDetailsComponent implements OnInit {
               }
               // this.textFirstSpan = this.articleData.contentBody[i].text.substr(0, showChar);
               // this.textSecondSpan = this.articleData.contentBody[i].text.substr(showChar-1, this.articleData.contentBody[i].text.length - showChar);
-              console.log(this.textFirstSpan)
-              console.log(this.textSecondSpan)
+              // console.log(this.textFirstSpan)
+              // console.log(this.textSecondSpan)
             }
          }
        }
@@ -578,7 +587,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.allPostsService.call(this.userData._id,this.articleData._id).subscribe(data=>{
         console.log(data);
         this.callButtonClass="";
-        this.snackbarMessage="call";
+       this.snackbarMessage=this.translateService.instant('toasterMsgs.call');
           let verticalPosition: MatSnackBarVerticalPosition
           this.openSnackBar(this.snackbarMessage,'',verticalPosition);
       },err=>{
@@ -590,7 +599,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.allPostsService.callmeback(this.userData._id,this.articleData._id).subscribe(data=>{
           console.log(data);
           this.callMeBackButtonClass="";
-          this.snackbarMessage="CallMeBack";
+          this.snackbarMessage=this.translateService.instant('toasterMsgs.callMeBack');
           let verticalPosition: MatSnackBarVerticalPosition
           this.openSnackBar(this.snackbarMessage,'',verticalPosition);
       },err=>{
@@ -602,7 +611,7 @@ export class ArticleDetailsComponent implements OnInit {
       this.allPostsService.apply(this.userData._id,this.articleData._id).subscribe(data=>{
         console.log(data);
         this.applyButtonClass="";
-        this.snackbarMessage="apply";
+       this.snackbarMessage=this.translateService.instant('toasterMsgs.apply');
           let verticalPosition: MatSnackBarVerticalPosition
           this.openSnackBar(this.snackbarMessage,'',verticalPosition);
       },err=>{
@@ -614,11 +623,49 @@ export class ArticleDetailsComponent implements OnInit {
       this.allPostsService.interested(this.userData._id,this.articleData._id).subscribe(data=>{
         console.log(data);
         this.interstedButtonClass="";
-        this.snackbarMessage="intersted";
+        this.snackbarMessage=this.translateService.instant('toasterMsgs.intersted');
           let verticalPosition: MatSnackBarVerticalPosition
           this.openSnackBar(this.snackbarMessage,'',verticalPosition);
       },err=>{
         console.log(err);
+      })
+    }
+
+    onDWnldButton(){
+      window.open("https://play.google.com/store/apps/developer?id=WhatsApp+Inc.&hl=en");
+    }
+
+    onLikeButtonInContentBody(tag,orderNo,position,index){
+      let data={
+        contentId:this.articleData._id,
+        tag:tag,
+        orderNo:orderNo,
+        postion:position
+      }
+      this.allPostsService.likeParticularSection(data).subscribe(data=>{
+        console.log(data)
+        if (data.success==true){
+          if (tag=='like') {
+            this.classForlikeButton="";
+            this.countsOnLikeButton=this.articleData.contentBody[index].count+1;
+          }
+          if (tag=="userEngBtn" && position=="count1") {
+            this.classForlikeButton1="";
+            // this.countsOnLikeButton1=data.latest_count;
+             this.countsOnLikeButton1=this.articleData.contentBody[index].count1+1;
+          }else if (tag=="userEngBtn" && position=="count2") {
+            this.classForlikeButton2="";
+            this.countsOnLikeButton2=this.articleData.contentBody[index].count2+1;
+            // this.articleData.contentBody[index].count2=this.articleData.contentBody[index].count2+1
+
+          }else if (tag=="userEngBtn" && position=="count3") {
+            this.classForlikeButton3="";
+            this.countsOnLikeButton3=this.articleData.contentBody[index].count3+1;
+            // this.articleData.contentBody[index].count3=this.articleData.contentBody[index].count3+1
+          }
+        }
+      },err=>{
+        console.log(err)
       })
     }
 

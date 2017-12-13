@@ -24,17 +24,22 @@ export class ListingViewComponent implements OnInit,OnDestroy {
     articleData;
     callAgain;
     time=2;
-    subCategoryData=this.appProvider.current.subCategoryData;
+    subCategoryData;
     templateId;
     constructor(private analyticsService:AnalyticsService,private allPostsService:AllPostsService,private router:Router,private appProvider:AppProvider,location: Location,  private element: ElementRef) {
-      	this.location = location;
-        this.sidebarVisible = false;
-        this.allArticles=this.appProvider.current.allArticles.response.filter(f=>f.subCategoryName==this.appProvider.current.subCategoryData.subCategoryName);
-        this.listingViewFormat=this.appProvider.current.listingViewFormat;
-        // console.log('listviewdata'+ JSON.stringify(this.allArticles));
-        // console.log(this.listingViewFormat)
-        this.getArticleData();
-        this.analytics();
+      	if (!this.appProvider.current.subCategoryData) {
+          this.router.navigate(['/category-view'])
+        }else{
+          this.subCategoryData=this.appProvider.current.subCategoryData;
+          this.location = location;
+          this.sidebarVisible = false;
+          this.allArticles=this.appProvider.current.allArticles.response.filter(f=>f.subCategoryName==this.appProvider.current.subCategoryData.subCategoryName);
+          this.listingViewFormat=this.appProvider.current.listingViewFormat;
+          // console.log('listviewdata'+ JSON.stringify(this.allArticles));
+          // console.log(this.listingViewFormat)
+          this.getArticleData();
+          this.analytics();
+        }
     }
 
   	ngOnInit() {

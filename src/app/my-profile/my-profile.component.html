@@ -3,12 +3,12 @@
         <app-sidebar></app-sidebar>
         <div class="sidebar-background" style="background-image: url(./assets/img/FN3-2.jpg);background-position:center "></div>
     </div>
-
 	<app-navbar></app-navbar>
-    <div class="cusmain-panel" (click)="navRemove()">
+    <div class="cusmain-panel">
 		<div class="tb-wrap">
 			<section class="article-sec">
 				<div class="card cus-card bg-img">
+					<!-- <button (click)=scrolling()>test scroll</button> -->
 	    			<div class="user-profile">	
 	    				<img src="{{profilePicture}}" class="img-responsive" (click)="file.click()" *ngIf="!appProvider.current.cropedImage"/>
 	    				<img src="{{appProvider.current.cropedImage}}" *ngIf="appProvider.current.cropedImage" (click)="file.click()">
@@ -170,14 +170,14 @@
 						<span class="pull-right"> {{"ProfilePage_Scroll1.SeeMore" | translate}} <i class="fa fa-angle-right"></i> </span>
 					</div>
 				</div>
-				<div class="card cus-card friend-list" id="downloadSection">
+				<div class="card cus-card friend-list" id="destination">
 					<div class="list-heading">
 						{{"ProfilePage_Scroll1.FriendsOnMynetwork" | translate}}
 					</div>
 					<div class="download-box">
 						<div class="download-popup">
 							<div class="flex-div">
-								<div class="flex-innerdiv">
+								<div class="flex-innerdiv" >
 								   	<p> {{'download.downloadAppFromPlaystore' | translate}}</p>
 					   				<button class="btn custom-btn btn-round" (click)="onDownloadApp()">  {{'ContentItemView_Scroll2.Donwload' | translate}} </button>
 					           </div>
@@ -209,10 +209,11 @@
 						<span class="pull-right"> {{"ProfilePage_Scroll1.SeeMore" | translate}} <i class="fa fa-angle-right"></i> </span>
 					</div> -->
 				</div>
-				<div class="card cus-card" >
+				
+				<div class="card cus-card"  >
 					<mat-tab-group class="cus-mat mat-purple">
 					  	<mat-tab label="{{'ProfilePage_Scroll1.SavedPosts' | translate}}">
-					  		<div class="list-view3 list-view7">
+					  		<div class="list-view3 list-view7" id="destination">
 				    			<div class="view-lists grid-1" *ngFor="let savedPost of savedPosts;let i=index">
 							        <a (click)="onSaved(savedPost)" class="{{colorClass(i)}}">
 							        	<img src="{{savedPost.thumbnailPicture}}" class="img-effect img-responsive" *ngIf="savedPost.thumbnailPicture">

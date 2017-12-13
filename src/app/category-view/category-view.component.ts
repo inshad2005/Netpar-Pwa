@@ -57,9 +57,9 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
   		const navbar: HTMLElement = this.element.nativeElement;
   		this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
       this.fetchData();
-      this.updateSession();
+      // this.updateSession();
       this.trackEvent();
-      this.getnotification();
+      // this.getnotification();
     }
 
     scrollFunction(){
@@ -179,7 +179,7 @@ export class CategoryViewComponent implements OnInit ,OnDestroy{
       this.sections=results[0].FinalArray;
       this.appProvider.current.sidebarMenuData=results[0].FinalArray;
       this.appProvider.current.allArticles=results[1];
-      this.allPostData=results[1].response.filter(f=> f.publishStatus =="true" ||  f.publishStatus ==true);
+      this.allPostData=results[1].response.filter(f=>( f.publishStatus =="true" ||  f.publishStatus ==true) && f.deleteStatus !=true);
       this.fetchSection();
     },error=>{
       this.loading=false;

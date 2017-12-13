@@ -359,6 +359,7 @@ ul{
 }
 .navbar-header{
   /*float: left;*/
+  position: relative;
   text-align: center;
 }
 .navbar-header .navbar-toggle {
@@ -371,7 +372,7 @@ ul{
 }
 
 .nav.navbar-nav.navbar-right.cus-navbar{
-  margin-top: 20px;
+  margin-top: 15px;
   margin-right: 0;
 }
 .cus-navbar .dropdown .badge {
@@ -424,11 +425,19 @@ ul{
 .header.white.navbar .navbar-toggle .icon-bar{
   color: #fff
 }
-.header.navbar .navbar-brand {
+/* .header.navbar .navbar-brand {
   padding: 15px 0;
   float: none;
   display: inline-block;
+} */
+.header.navbar .navbar-brand { /* 12-08 */
+  display: inline-block;
+  float: none;
+  left: 45%;
+  padding: 15px 0;
+  position: absolute;
 }
+
 .header.navbar .navbar-brand img {
   display: inline-block;
   left: -15px;
@@ -912,7 +921,7 @@ ul.homepage-ulist.active {
 span.swiper {
   background-color: #000;
   border-radius: 20px;
-  bottom: 5px;
+  bottom : -5px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -924,6 +933,10 @@ span.swiper {
   width: 25px;
   z-index: 1;
 }
+.homepage-ulist.sec.active + div span.swiper {
+  bottom : 5px;
+}
+
 .up-down.up{
   display: none;
 }
@@ -2180,7 +2193,7 @@ img.rad-shad{
   max-width: 100px;  
 }
 
-.mat-form-field-placeholder{
+.mat-input-placeholder-wrapper.mat-form-field-placeholder-wrapper .mat-form-field-placeholder{
   line-height: 1.52;
 }
 
@@ -2429,7 +2442,7 @@ img.rad-shad{
 
 }
 
-input.mat-input-element{
+input.mat-input-element, textarea.mat-input-element{
   line-height: 20px;
 }
 
@@ -2549,7 +2562,7 @@ input.mat-input-element{
 }
 
 .suggested-div .suggested-text{
-  height: 43px;
+  max-height: 43px;
   overflow: hidden;
 }
 
@@ -2783,6 +2796,10 @@ input.mat-input-element{
   width: 46%;
 }
 
-.logoutButtonClass{
+/* .logoutButtonClass{
   margin-left: 38px;
+} */
+
+.homeas-sec.otp-sec{
+  padding-top: 80px;
 }

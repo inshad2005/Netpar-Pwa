@@ -20,6 +20,9 @@ export class WelcomeScreen2Component implements OnInit {
   selectedLanguage;
   refrralId
   constructor(private appProvider:AppProvider,private route:ActivatedRoute,private dialog: MatDialog, private router:Router, private stateService:StateService,private languageService:LanguageService) { 
+    if (localStorage.getItem('isLoggedin')) {
+      localStorage.removeItem('isLoggedin');
+    }
     this.routeConfig()
   }
 

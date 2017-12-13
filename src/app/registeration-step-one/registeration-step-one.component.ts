@@ -25,7 +25,7 @@ export class RegisterationStepOneComponent implements OnInit {
   verifiedData;
   errorMessage;
   loading;
-  refrralId
+  refrralId;
   constructor(private route: ActivatedRoute,private dialog: MatDialog,private appProvider:AppProvider,private loginService:LoginService, private router:Router,private formBuilder: FormBuilder) { 
   
 

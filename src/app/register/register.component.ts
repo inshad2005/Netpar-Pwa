@@ -51,20 +51,25 @@ export class RegisterComponent implements OnInit {
  caretPos;
 
   constructor(private elementRefrence: ElementRef,private translationService:TranslationService,private allPostsService:AllPostsService,private formBuilder: FormBuilder,private appProvider:AppProvider,private dialog: MatDialog,private router:Router,private stateService:StateService,private registerService:RegisterService,private route:  ActivatedRoute) { 
-    if (this.appProvider.current.refferalId) {
-      this.registerModel.inviteCode=this.appProvider.current.refferalId;
+    if(!this.appProvider.current.mobileNumber){
+      this.router.navigate(['/welcome-screen2'])
+    }else{
+      if (this.appProvider.current.refferalId) {
+        this.registerModel.inviteCode=this.appProvider.current.refferalId;
+      }
+      this.complexForm = formBuilder.group({
+        'firstName':[null],
+        'lastName':[null],
+        'state': [null, Validators.compose([Validators.required])],
+        'district': [null, Validators.compose([Validators.required])],
+        'block':[null, Validators.compose([Validators.required])],
+        'date':[null,Validators.compose([Validators.required])],
+        'month':[null,Validators.compose([Validators.required])],
+        'year':[null,Validators.compose([Validators.required])],
+        'gender':[null,Validators.compose([Validators.required])]
+      })
     }
-    this.complexForm = formBuilder.group({
-      'firstName':[null],
-      'lastName':[null],
-      'state': [null, Validators.compose([Validators.required])],
-      'district': [null, Validators.compose([Validators.required])],
-      'block':[null, Validators.compose([Validators.required])],
-      'date':[null,Validators.compose([Validators.required])],
-      'month':[null,Validators.compose([Validators.required])],
-      'year':[null,Validators.compose([Validators.required])],
-      'gender':[null,Validators.compose([Validators.required])]
-    })
+    
   }
 
   ngOnInit() {

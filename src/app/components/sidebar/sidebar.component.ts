@@ -211,4 +211,10 @@ export class SidebarComponent implements OnInit {
       this.appProvider.current.selectedTab="savedArticles";
     }
 
+    onFriends(){
+      this.navRemove();
+      this.appProvider.current.landingArea="downloadSection";
+      this.route.navigate(['/my-profile'])
+    }
+
 }

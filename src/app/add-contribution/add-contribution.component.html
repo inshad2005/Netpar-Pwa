@@ -9,7 +9,7 @@
 		<div class="tb-wrap">
 			<section class="add-contribute-sec">
 				<div class="card cus-card">
-                    <div class="col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
 	                    <div class="input-group">
 						  	<mat-form-field>
 	                            <input matInput placeholder="{{'LoginScreen_SignIn.MobileNumber' | translate}}" type="tel" maxlength="10" [(ngModel)]="mobileNumber" readonly>
@@ -18,24 +18,24 @@
 						</div>
 					</div>
 
-                    <div class="col-mat-6 col-sm-6 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <mat-form-field>
                             <input matInput placeholder="{{'LoginScreen_SignIn.FirstName' | translate}}" type="text" [(ngModel)]="firstName" readonly>
                         </mat-form-field>
                     </div>
-                    <div class="col-mat-6 col-sm-6 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <mat-form-field>
                             <input matInput placeholder="{{'LoginScreen_SignIn.LastName' | translate}}" type="text" [(ngModel)]="lastName" readonly>
                         </mat-form-field>
                     </div>
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <mat-form-field>
                             <mat-select placeholder="{{'ContributionForm.SelectSection'|translate}}" [(ngModel)]="userContibutionModel.sectionName">
                         		<mat-option [value]="section.sectionName" *ngFor="let section of sectionData" (click)="onSection(section)"> {{section.sectionName}} </mat-option>
                             </mat-select>
                         </mat-form-field>    
                     </div>
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <mat-form-field>
                             <mat-select placeholder="{{'ContributionForm.SelectCategory'|translate}}" [(ngModel)]="userContibutionModel.categoryName">
                         		<mat-option [value]="category.categoryName" *ngFor="let category of categories" (click)="onCategory(category)"> {{category.categoryName}} </mat-option>
@@ -43,21 +43,21 @@
                         </mat-form-field>    
                     </div>
 
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <mat-form-field>
                             <mat-select placeholder="{{'ContributionForm.SelectSubcategory'|translate}}" [(ngModel)]="userContibutionModel.subCategoryName">
                         		<mat-option [value]="subCategory.subCategoryName" *ngFor="let subCategory of subCategories" (click)="onSubcategory(subCategory)"> {{subCategory.subCategoryName}} </mat-option>
                             </mat-select>
                         </mat-form-field>    
                     </div>
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <mat-form-field>
                            <mat-select placeholder="{{'ContributionForm.SelectLanguage' | translate}}"  [(ngModel)]="userContibutionModel.language">
                                 <mat-option value="मराठी">मराठी</mat-option>
                             </mat-select>
                         </mat-form-field>    
                     </div>
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
                         <mat-form-field>
                             <input matInput placeholder="{{'ContributionForm.Title' | translate}}" type="text" name="title" id="title" #titleInput [matAutocomplete]="title"  [(ngModel)]="userContibutionModel.title" (input)="onTransliteration(userContibutionModel.title,titleInput,'title')"  (keyup)="onKeyUp($event)" (click)="clearSuggstion()">
                             <mat-autocomplete #title="matAutocomplete">
@@ -69,7 +69,7 @@
                         </mat-form-field>    
                     </div>
 
-                    <div class="form-group col-mat-12 col-sm-12 col-xs-12">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
 	                    <mat-form-field>
                             <textarea placeholder="{{'ContributionForm.EnterYourDescriptionHere' | translate}}" rows="4" matInput name="description" id="description" #descriptionInput [matAutocomplete]="description"  [(ngModel)]="userContibutionModel.description" (input)="onTransliteration(userContibutionModel.description,descriptionInput,'description')"  (keyup)="onKeyUp($event)" (click)="clearSuggstion()"></textarea>
                             <mat-autocomplete #description="matAutocomplete">

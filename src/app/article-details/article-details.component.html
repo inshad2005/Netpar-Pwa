@@ -49,7 +49,7 @@
 		    			</div>
 		    		</div> -->
 		    		
-		    		<div class="inner-card" *ngFor="let content of articleData.contentBody">
+		    		<div class="inner-card" *ngFor="let content of articleData.contentBody;let i=index">
 					  	<div class="form-group" *ngIf="content.tag=='image'" [ngStyle]="{background:content.backgroundColor}">
 					   		<img [src]="getSafeUrl(content.url)" class="img-responsive rad-shad" />
 					 	</div>
@@ -193,7 +193,7 @@
 
 
 				        <div class="builder-element" *ngIf="content.tag=='CallToActBtn'">
-				            <button *ngIf="content.btn1==null && content.btn2==null && content.btn3==null" type="button" class="btn custom-btn btn-round" (click)="onClickOnDragcontent(i,content)">Click  me</button>
+				            <button *ngIf="content.btn1==null && content.btn2==null && content.btn3==null" type="button" class="btn custom-btn btn-round">Click  me</button>
 				            <table class="main user-icons" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" style="text-align: center;">
 				                <tbody>
 				                    <tr class="btns">
@@ -408,14 +408,14 @@
 				                <tbody>
 				                    <tr class="btns">
 				                        <td [ngStyle]="{textAlign:content.aligment}">
-				                            <button *ngIf="content.outline==false"  type="button" class="btn danger {{likeButtonClass}}" (click)="onLike()"><i class="cusIco-okay"></i>कडक </button>
-
-				                            <button  *ngIf="content.outline==true" type="button" class="btn not_default {{likeButtonClass}} " (click)="onLike()">
+				                            <button *ngIf="content.outline==false"  type="button" class="btn danger {{classForlikeButton}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count',i)">{{countsOnLikeButton}} <i class="cusIco-okay"></i>कडक	 </button>
+				                            <button  *ngIf="content.outline==true" type="button" class="btn not_default {{classForlikeButton}} " (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count',i)">
 				                                <span class="text-danger">
+				                                    {{countsOnLikeButton}}
 				                                    <span class="">
 				                                        <i class="cusIco-okay"></i> 
 				                                    </span>
-				                                    कडक				                                    
+				                                     कडक				                                    
 				                                </span>
 				                            </button>
 				                        </td>
@@ -477,7 +477,6 @@
 				                                        <i class="cusIco-donload"></i> 
 				                                    </span>
 				                                    डाउनलोड
-				                                    
 				                                </span>
 				                            </button>
 				                        </td>
@@ -485,13 +484,12 @@
 				                </tbody>
 				            </table>
 				        </div>
-				         <div class="builder-element" *ngIf="content.tag=='share'"  (click)="onClickOnDragcontent(i,content)">
+				         <div class="builder-element" *ngIf="content.tag=='share'">
 				            <table class="main user-icons" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" style="text-align: center;">
 				                <tbody>
 				                    <tr class="btns">
 				                        <td [ngStyle]="{textAlign:content.aligment}">
 				                            <button  *ngIf="content.outline==false" type="button" class="btn warning"><i class="fa fa-share-alt"></i> सामायिक करा </button>
-
 				                            <button *ngIf="content.outline==true" type="button" class="btn not_default">
 				                                <span class="text-warning">
 				                                    <span class="">
@@ -505,24 +503,25 @@
 				                </tbody>
 				            </table>
 				        </div>
-				        <div class="builder-element" *ngIf="content.tag=='userEngBtn'" (click)="onClickOnDragcontent(i,content)">
-					        <button *ngIf="content.btn1==null && content.btn2==null && content.btn3==null" type="button" class="btn custom-btn btn-round" (click)="onClickOnDragcontent(i,content)">Click  me</button>
+				        <div class="builder-element" *ngIf="content.tag=='userEngBtn'">
+					        <button *ngIf="content.btn1==null && content.btn2==null && content.btn3==null" type="button" class="btn custom-btn btn-round" >Click  me</button>
 					                       
 					        <table class="main user-icons" width="100%" cellspacing="0" cellpadding="0" border="0" align="center" data-type="text-block" style="text-align: center;">
 					            <tbody>
 					                <tr class="btns">
 					                    <td style="" >
 					                        <span *ngIf="content.btn1=='Kadak'">
-					                            <span class="btn danger {{likeButtonClass}}" (click)="onLike()" *ngIf="content.outline1==false" [ngStyle]="{paddingLeft:content.left1, paddingRight: content.right1,paddingTop:content.top1,paddingBottom:content.bottom1,marginLeft:content.mleft1, marginRight: content.mright1,marginTop:content.mtop1,marginBottom:content.mbottom1}">
-					                                <i class="cusIco-okay"></i> कडक
+					                            <span class="btn danger {{classForlikeButton1}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count1',i)" *ngIf="content.outline1==false" [ngStyle]="{paddingLeft:content.left1, paddingRight: content.right1,paddingTop:content.top1,paddingBottom:content.bottom1,marginLeft:content.mleft1, marginRight: content.mright1,marginTop:content.mtop1,marginBottom:content.mbottom1}">
+					                                {{countsOnLikeButton1}} <i class="cusIco-okay"></i>  कडक	
 					                                
 					                            </span>
-					                            <span class="btn not_default {{likeButtonClass}}" (click)="onLike()" *ngIf="content.outline1==true" [ngStyle]="{paddingLeft:content.left1, paddingRight: content.right1,paddingTop:content.top1,paddingBottom:content.bottom1,marginLeft:content.mleft1, marginRight: content.mright1,marginTop:content.mtop1,marginBottom:content.mbottom1}">
+					                            <span class="btn not_default {{classForlikeButton1}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count1',i)" *ngIf="content.outline1==true" [ngStyle]="{paddingLeft:content.left1, paddingRight: content.right1,paddingTop:content.top1,paddingBottom:content.bottom1,marginLeft:content.mleft1, marginRight: content.mright1,marginTop:content.mtop1,marginBottom:content.mbottom1}">
 					                                <span class="text-danger">
+					                                    {{countsOnLikeButton1}}
 					                                    <span class="">
 					                                        <i class="cusIco-okay"></i>
 					                                    </span>
-					                                    कडक
+					                                     कडक	
 					                                    
 					                                </span>
 					                            </span>
@@ -594,16 +593,17 @@
 
 					                    <td style="" >
 					                        <span *ngIf="content.btn2=='Kadak'">
-					                            <span class="btn danger {{likeButtonClass}}" (click)="onLike()" *ngIf="content.outline2==false" [ngStyle]="{paddingLeft:content.left2, paddingRight: content.right2,paddingTop:content.top2,paddingBottom:content.bottom2,marginLeft:content.mleft2, marginRight: content.mright2,marginTop:content.mtop2,marginBottom:content.mbottom2}">
-					                                <i class="cusIco-okay"></i> कडक
+					                            <span class="btn danger {{classForlikeButton2}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count2',i)" *ngIf="content.outline2==false" [ngStyle]="{paddingLeft:content.left2, paddingRight: content.right2,paddingTop:content.top2,paddingBottom:content.bottom2,marginLeft:content.mleft2, marginRight: content.mright2,marginTop:content.mtop2,marginBottom:content.mbottom2}">
+					                                {{countsOnLikeButton2}} <i class="cusIco-okay"></i>  कडक	
 					                                
 					                            </span>
-					                            <span class="btn not_default {{likeButtonClass}}" (click)="onLike()" *ngIf="content.outline2==true" [ngStyle]="{paddingLeft:content.left2, paddingRight: content.right2,paddingTop:content.top2,paddingBottom:content.bottom2,marginLeft:content.mleft2, marginRight: content.mright2,marginTop:content.mtop2,marginBottom:content.mbottom2}">
+					                            <span class="btn not_default {{classForlikeButton2}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count2',i)" *ngIf="content.outline2==true" [ngStyle]="{paddingLeft:content.left2, paddingRight: content.right2,paddingTop:content.top2,paddingBottom:content.bottom2,marginLeft:content.mleft2, marginRight: content.mright2,marginTop:content.mtop2,marginBottom:content.mbottom2}">
 					                                <span class="text-danger">
+					                                    {{countsOnLikeButton2}}
 					                                    <span class="">
 					                                        <i class="cusIco-okay"></i>
 					                                    </span>
-					                                    कडक
+					                                     कडक	
 					                                    
 					                                </span>
 					                            </span>
@@ -674,17 +674,18 @@
 
 					                    </td>
 					                    <td style="" >
-					                        <span *ngIf="content.btn3=='Kadak'"  (click)="onLike()">
-					                            <span class="btn danger {{likeButtonClass}}" *ngIf="content.outline3==false" [ngStyle]="{paddingLeft:content.left3, paddingRight: content.right3,paddingTop:content.top3,paddingBottom:content.bottom3,marginLeft:content.mleft3, marginRight: content.mright3,marginTop:content.mtop3,marginBottom:content.mbottom3}">
-					                                <i class="cusIco-okay"></i> कडक
+					                        <span *ngIf="content.btn3=='Kadak'" >
+					                            <span class="btn danger {{classForlikeButton3}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count3',i)" *ngIf="content.outline3==false" [ngStyle]="{paddingLeft:content.left3, paddingRight: content.right3,paddingTop:content.top3,paddingBottom:content.bottom3,marginLeft:content.mleft3, marginRight: content.mright3,marginTop:content.mtop3,marginBottom:content.mbottom3}">
+					                              {{countsOnLikeButton3}}  <i class="cusIco-okay"></i>  कडक	
 					                                
 					                            </span>
-					                            <span class="btn not_default {{likeButtonClass}}" (click)="onLike()"  *ngIf="content.outline3==true" [ngStyle]="{paddingLeft:content.left3, paddingRight: content.right3,paddingTop:content.top3,paddingBottom:content.bottom3,marginLeft:content.mleft3, marginRight: content.mright3,marginTop:content.mtop3,marginBottom:content.mbottom3}">
+					                            <span class="btn not_default {{classForlikeButton3}}" (click)="onLikeButtonInContentBody(content.tag,content.orderNo,'count3',i)"  *ngIf="content.outline3==true" [ngStyle]="{paddingLeft:content.left3, paddingRight: content.right3,paddingTop:content.top3,paddingBottom:content.bottom3,marginLeft:content.mleft3, marginRight: content.mright3,marginTop:content.mtop3,marginBottom:content.mbottom3}">
 					                                <span class="text-danger">
+					                                	{{countsOnLikeButton3}}
 					                                    <span class="">
 					                                        <i class="cusIco-okay"></i>
 					                                    </span>
-					                                    कडक
+					                                     कडक	
 					                                </span>
 					                            </span>
 					                        </span>
@@ -766,7 +767,9 @@
    					</div>
 
 
-		    		<div class="inner-card dashed-brd"></div>
+		    		<div class="inner-card dashed-brd text-center">
+		    			<button class="btn custom-btn full-width" (click)="onDWnldButton()"> {{"ContentItemView_Scroll1.Download" | translate}} </button>
+		    		</div>
 		    		<ul class="like-bar dashed-brd">
 		    			<li>
 		    				<a class="text-info" ><span class="span-icns"> <i class="fa fa-eye"></i></span> {{articleData.pageView}} {{"ContentItemView_Scroll2.Views" | translate}} </a> 

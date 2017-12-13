@@ -6,7 +6,8 @@
         Netpar
     </a>
 </div>
-    <div class="sidebar-wrapper ps-container" [perfectScrollbar]="config">
+    <div class="sidebar-wrapper ps-container">
+    <!-- <div class="sidebar-wrapper ps-container" [perfectScrollbar]="config"> -->
         <!-- <div class="user">
             <div class="photo">
                 <img src="./assets/img/avatar1.jpg">
@@ -67,7 +68,7 @@
                                 </a>
                             </li>
                             <li routerLinkActive="active">
-                                <a routerLink="/friends" skipLocationChange="false" (click)="navRemove()"> 
+                                <a  skipLocationChange="false" (click)="onFriends()"> 
                                     <p>{{"MenuScreen.FriendsOnTheNetwork" | translate}}</p>
                                 </a>
                             </li>

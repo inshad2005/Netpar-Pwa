@@ -37,7 +37,11 @@ export class OtpComponent implements OnInit {
   value6;
   generatedOtp
  
-  	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MatDialog,private route:  ActivatedRoute,private otpService:OtpService) { }
+  	constructor(private updateMobileService:UpdateMobileService,private appProvider:AppProvider,private router: Router,private dialog: MatDialog,private route:  ActivatedRoute,private otpService:OtpService) {
+      if (!this.appProvider.current.toOtpPageFlag) {
+        this.router.navigate(['/welcome-screen2'])
+      }
+    }
     
   	ngOnInit() {
       if (this.appProvider.current.toOtpPageFlag=="updateMobileNo") {
@@ -163,7 +167,8 @@ export class OtpComponent implements OnInit {
   // }
 
   onSendOtp(mobileNo){
-    this.generatedOtp=Math.floor(Math.random() * 1000000);
+    // this.generatedOtp=Math.floor(Math.random() * 1000000);
+    this.generatedOtp=Math.floor(Math.random() * (999999 - 111111 + 1)) + 111111;
     this.otpService.sendOtp(mobileNo,this.generatedOtp).subscribe(data=>{
       if (data.Status == "Success") {
        this.appProvider.current.otp=data.otp;
